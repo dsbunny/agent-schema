@@ -1,0 +1,23 @@
+{
+	"name": "@dsbunny/agent-schema",
+	"version": "1.0.0",
+	"description": "Schema for RMM agents",
+	"type": "module",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"author": "Steve-o <fnjordy@gmail.com>",
+	"license": "MIT",
+	"private": false,
+	"scripts": {
+		"build": "tsc",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		"@dsbunny/capability-schema": "github:dsbunny/capability-schema#4bd7bf2",
+		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema#df84663",
+		"zod": "^3.23.8"
+	},
+	"devDependencies": {
+		"typescript": "^5.5.3"
+	}
+}
