@@ -2,7 +2,7 @@
 
 import { z } from 'zod';
 import { RecipeSchema } from '@dsbunny/publisher-schema';
-import { Capability } from '@dsbunny/capability-schema';
+import { CapabilityBase } from '@dsbunny/capability-schema';
 
 export const RENDERER_AGENT_URN = 'urn:dsbunny:agent:renderer';
 
@@ -36,10 +36,8 @@ export const RendererScreen = z.object({
 });
 export type RendererScreen = z.infer<typeof RendererScreen>;
 
-export const RendererScreenCapability = Capability.omit({
-	create_timestamp: true,
-	modify_timestamp: true,
-	is_deleted: true,
+export const RendererScreenCapability = CapabilityBase.omit({
+	tenant_id: true,
 });
 export type RendererScreenCapability = z.infer<typeof RendererScreenCapability>;
 
