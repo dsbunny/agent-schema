@@ -1,7 +1,7 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 import { z } from 'zod';
 import { RecipeSchema } from '@dsbunny/publisher-schema';
-import { Capability } from '@dsbunny/capability-schema';
+import { CapabilityBase } from '@dsbunny/capability-schema';
 export const RENDERER_AGENT_URN = 'urn:dsbunny:agent:renderer';
 export const RendererAgentState = z.object({
     type: z.literal('renderer'),
@@ -27,10 +27,8 @@ export const RendererScreen = z.object({
     device_pixel_ratio: z.number()
         .describe('The ratio of the resolution in physical pixels to the resolution in CSS pixels for the current display device'),
 });
-export const RendererScreenCapability = Capability.omit({
-    create_timestamp: true,
-    modify_timestamp: true,
-    is_deleted: true,
+export const RendererScreenCapability = CapabilityBase.omit({
+    tenant_id: true,
 });
 export const RendererAgentStatus = z.object({
     type: z.literal('renderer'),

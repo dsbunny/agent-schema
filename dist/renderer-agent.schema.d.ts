@@ -121,7 +121,7 @@ export declare const RendererScreen: z.ZodObject<{
     device_pixel_ratio: number;
 }>;
 export type RendererScreen = z.infer<typeof RendererScreen>;
-export declare const RendererScreenCapability: z.ZodObject<Omit<z.objectUtil.extendShape<{
+export declare const RendererScreenCapability: z.ZodObject<Omit<{
     tenant_id: z.ZodString;
     width: z.ZodNumber;
     height: z.ZodNumber;
@@ -130,34 +130,22 @@ export declare const RendererScreenCapability: z.ZodObject<Omit<z.objectUtil.ext
     is_supported: z.ZodBoolean;
     is_smooth: z.ZodBoolean;
     is_power_efficient: z.ZodBoolean;
-}, {
-    capability_id: z.ZodString;
-    create_timestamp: z.ZodString;
-    modify_timestamp: z.ZodString;
-    is_deleted: z.ZodDefault<z.ZodBoolean>;
-    row_number: z.ZodNumber;
-}>, "create_timestamp" | "modify_timestamp" | "is_deleted">, "strip", z.ZodTypeAny, {
+}, "tenant_id">, "strip", z.ZodTypeAny, {
     width: number;
     height: number;
-    tenant_id: string;
     fps: number;
     codec: string;
     is_supported: boolean;
     is_smooth: boolean;
     is_power_efficient: boolean;
-    capability_id: string;
-    row_number: number;
 }, {
     width: number;
     height: number;
-    tenant_id: string;
     fps: number;
     codec: string;
     is_supported: boolean;
     is_smooth: boolean;
     is_power_efficient: boolean;
-    capability_id: string;
-    row_number: number;
 }>;
 export type RendererScreenCapability = z.infer<typeof RendererScreenCapability>;
 export declare const RendererAgentStatus: z.ZodObject<{
@@ -196,7 +184,7 @@ export declare const RendererAgentStatus: z.ZodObject<{
         };
         device_pixel_ratio: number;
     }>;
-    capabilities: z.ZodArray<z.ZodObject<Omit<z.objectUtil.extendShape<{
+    capabilities: z.ZodArray<z.ZodObject<Omit<{
         tenant_id: z.ZodString;
         width: z.ZodNumber;
         height: z.ZodNumber;
@@ -205,34 +193,22 @@ export declare const RendererAgentStatus: z.ZodObject<{
         is_supported: z.ZodBoolean;
         is_smooth: z.ZodBoolean;
         is_power_efficient: z.ZodBoolean;
-    }, {
-        capability_id: z.ZodString;
-        create_timestamp: z.ZodString;
-        modify_timestamp: z.ZodString;
-        is_deleted: z.ZodDefault<z.ZodBoolean>;
-        row_number: z.ZodNumber;
-    }>, "create_timestamp" | "modify_timestamp" | "is_deleted">, "strip", z.ZodTypeAny, {
+    }, "tenant_id">, "strip", z.ZodTypeAny, {
         width: number;
         height: number;
-        tenant_id: string;
         fps: number;
         codec: string;
         is_supported: boolean;
         is_smooth: boolean;
         is_power_efficient: boolean;
-        capability_id: string;
-        row_number: number;
     }, {
         width: number;
         height: number;
-        tenant_id: string;
         fps: number;
         codec: string;
         is_supported: boolean;
         is_smooth: boolean;
         is_power_efficient: boolean;
-        capability_id: string;
-        row_number: number;
     }>, "many">;
 }, "strip", z.ZodTypeAny, {
     type: "renderer";
@@ -249,14 +225,11 @@ export declare const RendererAgentStatus: z.ZodObject<{
     capabilities: {
         width: number;
         height: number;
-        tenant_id: string;
         fps: number;
         codec: string;
         is_supported: boolean;
         is_smooth: boolean;
         is_power_efficient: boolean;
-        capability_id: string;
-        row_number: number;
     }[];
 }, {
     type: "renderer";
@@ -273,14 +246,11 @@ export declare const RendererAgentStatus: z.ZodObject<{
     capabilities: {
         width: number;
         height: number;
-        tenant_id: string;
         fps: number;
         codec: string;
         is_supported: boolean;
         is_smooth: boolean;
         is_power_efficient: boolean;
-        capability_id: string;
-        row_number: number;
     }[];
 }>;
 export type RendererAgentStatus = z.infer<typeof RendererAgentStatus>;
