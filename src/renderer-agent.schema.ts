@@ -36,16 +36,11 @@ export const RendererScreen = z.object({
 });
 export type RendererScreen = z.infer<typeof RendererScreen>;
 
-export const RendererScreenCapability = CapabilityBase.omit({
-	tenant_id: true,
-});
-export type RendererScreenCapability = z.infer<typeof RendererScreenCapability>;
-
 export const RendererAgentStatus = z.object({
 	type: z.literal('renderer'),
 	screen: RendererScreen
 		.describe('The screen of the renderer device'),
-	capabilities: z.array(RendererScreenCapability)
+	capabilities: z.array(CapabilityBase)
 		.describe('The capabilities of the screen'),
 });
 export type RendererAgentStatus = z.infer<typeof RendererAgentStatus>;

@@ -27,14 +27,11 @@ export const RendererScreen = z.object({
     device_pixel_ratio: z.number()
         .describe('The ratio of the resolution in physical pixels to the resolution in CSS pixels for the current display device'),
 });
-export const RendererScreenCapability = CapabilityBase.omit({
-    tenant_id: true,
-});
 export const RendererAgentStatus = z.object({
     type: z.literal('renderer'),
     screen: RendererScreen
         .describe('The screen of the renderer device'),
-    capabilities: z.array(RendererScreenCapability)
+    capabilities: z.array(CapabilityBase)
         .describe('The capabilities of the screen'),
 });
 //# sourceMappingURL=renderer-agent.schema.js.map

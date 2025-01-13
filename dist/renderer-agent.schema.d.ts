@@ -121,33 +121,6 @@ export declare const RendererScreen: z.ZodObject<{
     device_pixel_ratio: number;
 }>;
 export type RendererScreen = z.infer<typeof RendererScreen>;
-export declare const RendererScreenCapability: z.ZodObject<Omit<{
-    tenant_id: z.ZodString;
-    width: z.ZodNumber;
-    height: z.ZodNumber;
-    fps: z.ZodNumber;
-    codec: z.ZodString;
-    is_supported: z.ZodBoolean;
-    is_smooth: z.ZodBoolean;
-    is_power_efficient: z.ZodBoolean;
-}, "tenant_id">, "strip", z.ZodTypeAny, {
-    width: number;
-    height: number;
-    fps: number;
-    codec: string;
-    is_supported: boolean;
-    is_smooth: boolean;
-    is_power_efficient: boolean;
-}, {
-    width: number;
-    height: number;
-    fps: number;
-    codec: string;
-    is_supported: boolean;
-    is_smooth: boolean;
-    is_power_efficient: boolean;
-}>;
-export type RendererScreenCapability = z.infer<typeof RendererScreenCapability>;
 export declare const RendererAgentStatus: z.ZodObject<{
     type: z.ZodLiteral<"renderer">;
     screen: z.ZodObject<{
@@ -184,8 +157,7 @@ export declare const RendererAgentStatus: z.ZodObject<{
         };
         device_pixel_ratio: number;
     }>;
-    capabilities: z.ZodArray<z.ZodObject<Omit<{
-        tenant_id: z.ZodString;
+    capabilities: z.ZodArray<z.ZodObject<{
         width: z.ZodNumber;
         height: z.ZodNumber;
         fps: z.ZodNumber;
@@ -193,7 +165,7 @@ export declare const RendererAgentStatus: z.ZodObject<{
         is_supported: z.ZodBoolean;
         is_smooth: z.ZodBoolean;
         is_power_efficient: z.ZodBoolean;
-    }, "tenant_id">, "strip", z.ZodTypeAny, {
+    }, "strip", z.ZodTypeAny, {
         width: number;
         height: number;
         fps: number;
