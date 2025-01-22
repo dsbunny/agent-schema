@@ -157,31 +157,88 @@ export declare const RendererAgentStatus: z.ZodObject<{
         };
         device_pixel_ratio: number;
     }>;
-    capabilities: z.ZodArray<z.ZodObject<{
+    capabilities: z.ZodArray<z.ZodDiscriminatedUnion<"mime_type", [z.ZodObject<z.objectUtil.extendShape<{
+        mime_type: z.ZodString;
+        mime_subtype: z.ZodString;
+        is_supported: z.ZodBoolean;
+    }, {
+        mime_type: z.ZodLiteral<"video">;
+        codec: z.ZodString;
         width: z.ZodNumber;
         height: z.ZodNumber;
-        fps: z.ZodNumber;
-        codec: z.ZodString;
-        is_supported: z.ZodBoolean;
+        frame_rate: z.ZodNumber;
         is_smooth: z.ZodBoolean;
         is_power_efficient: z.ZodBoolean;
-    }, "strip", z.ZodTypeAny, {
+    }>, "strip", z.ZodTypeAny, {
+        mime_type: "video";
+        mime_subtype: string;
+        is_supported: boolean;
+        codec: string;
         width: number;
         height: number;
-        fps: number;
-        codec: string;
-        is_supported: boolean;
+        frame_rate: number;
         is_smooth: boolean;
         is_power_efficient: boolean;
     }, {
+        mime_type: "video";
+        mime_subtype: string;
+        is_supported: boolean;
+        codec: string;
         width: number;
         height: number;
-        fps: number;
-        codec: string;
-        is_supported: boolean;
+        frame_rate: number;
         is_smooth: boolean;
         is_power_efficient: boolean;
-    }>, "many">;
+    }>, z.ZodObject<z.objectUtil.extendShape<{
+        mime_type: z.ZodString;
+        mime_subtype: z.ZodString;
+        is_supported: z.ZodBoolean;
+    }, {
+        mime_type: z.ZodLiteral<"audio">;
+        codec: z.ZodString;
+        sample_rate: z.ZodNumber;
+        channels: z.ZodString;
+        is_smooth: z.ZodBoolean;
+        is_power_efficient: z.ZodBoolean;
+    }>, "strip", z.ZodTypeAny, {
+        mime_type: "audio";
+        mime_subtype: string;
+        is_supported: boolean;
+        codec: string;
+        is_smooth: boolean;
+        is_power_efficient: boolean;
+        sample_rate: number;
+        channels: string;
+    }, {
+        mime_type: "audio";
+        mime_subtype: string;
+        is_supported: boolean;
+        codec: string;
+        is_smooth: boolean;
+        is_power_efficient: boolean;
+        sample_rate: number;
+        channels: string;
+    }>, z.ZodObject<z.objectUtil.extendShape<{
+        mime_type: z.ZodString;
+        mime_subtype: z.ZodString;
+        is_supported: z.ZodBoolean;
+    }, {
+        mime_type: z.ZodLiteral<"image">;
+        width: z.ZodNumber;
+        height: z.ZodNumber;
+    }>, "strip", z.ZodTypeAny, {
+        mime_type: "image";
+        mime_subtype: string;
+        is_supported: boolean;
+        width: number;
+        height: number;
+    }, {
+        mime_type: "image";
+        mime_subtype: string;
+        is_supported: boolean;
+        width: number;
+        height: number;
+    }>]>, "many">;
 }, "strip", z.ZodTypeAny, {
     type: "renderer";
     screen: {
@@ -194,15 +251,32 @@ export declare const RendererAgentStatus: z.ZodObject<{
         };
         device_pixel_ratio: number;
     };
-    capabilities: {
+    capabilities: ({
+        mime_type: "video";
+        mime_subtype: string;
+        is_supported: boolean;
+        codec: string;
         width: number;
         height: number;
-        fps: number;
-        codec: string;
-        is_supported: boolean;
+        frame_rate: number;
         is_smooth: boolean;
         is_power_efficient: boolean;
-    }[];
+    } | {
+        mime_type: "audio";
+        mime_subtype: string;
+        is_supported: boolean;
+        codec: string;
+        is_smooth: boolean;
+        is_power_efficient: boolean;
+        sample_rate: number;
+        channels: string;
+    } | {
+        mime_type: "image";
+        mime_subtype: string;
+        is_supported: boolean;
+        width: number;
+        height: number;
+    })[];
 }, {
     type: "renderer";
     screen: {
@@ -215,14 +289,31 @@ export declare const RendererAgentStatus: z.ZodObject<{
         };
         device_pixel_ratio: number;
     };
-    capabilities: {
+    capabilities: ({
+        mime_type: "video";
+        mime_subtype: string;
+        is_supported: boolean;
+        codec: string;
         width: number;
         height: number;
-        fps: number;
-        codec: string;
-        is_supported: boolean;
+        frame_rate: number;
         is_smooth: boolean;
         is_power_efficient: boolean;
-    }[];
+    } | {
+        mime_type: "audio";
+        mime_subtype: string;
+        is_supported: boolean;
+        codec: string;
+        is_smooth: boolean;
+        is_power_efficient: boolean;
+        sample_rate: number;
+        channels: string;
+    } | {
+        mime_type: "image";
+        mime_subtype: string;
+        is_supported: boolean;
+        width: number;
+        height: number;
+    })[];
 }>;
 export type RendererAgentStatus = z.infer<typeof RendererAgentStatus>;

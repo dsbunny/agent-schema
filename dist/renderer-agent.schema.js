@@ -1,7 +1,7 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 import { z } from 'zod';
 import { RecipeSchema } from '@dsbunny/publisher-schema';
-import { CapabilityBase } from '@dsbunny/capability-schema';
+import { CapabilityTypes } from '@dsbunny/capability-schema';
 export const RENDERER_AGENT_URN = 'urn:dsbunny:agent:renderer';
 export const RendererAgentState = z.object({
     type: z.literal('renderer'),
@@ -31,7 +31,7 @@ export const RendererAgentStatus = z.object({
     type: z.literal('renderer'),
     screen: RendererScreen
         .describe('The screen of the renderer device'),
-    capabilities: z.array(CapabilityBase)
+    capabilities: z.array(CapabilityTypes)
         .describe('The capabilities of the screen'),
 });
 //# sourceMappingURL=renderer-agent.schema.js.map
