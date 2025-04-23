@@ -5,11 +5,11 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
         timestamp: z.ZodString;
         url: z.ZodString;
     }, "strip", z.ZodTypeAny, {
-        url: string;
         timestamp: string;
+        url: string;
     }, {
-        url: string;
         timestamp: string;
+        url: string;
     }>>;
     firmware: z.ZodOptional<z.ZodObject<{
         version: z.ZodString;
@@ -33,8 +33,8 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
     }>>;
 }, "strip", z.ZodTypeAny, {
     screenshot?: {
-        url: string;
         timestamp: string;
+        url: string;
     } | undefined;
     firmware?: {
         url: string;
@@ -46,8 +46,8 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
     } | undefined;
 }, {
     screenshot?: {
-        url: string;
         timestamp: string;
+        url: string;
     } | undefined;
     firmware?: {
         url: string;
@@ -73,11 +73,11 @@ export declare const LunaAgentStateBase: z.ZodObject<z.objectUtil.extendShape<{
             timestamp: z.ZodString;
             url: z.ZodString;
         }, "strip", z.ZodTypeAny, {
-            url: string;
             timestamp: string;
+            url: string;
         }, {
-            url: string;
             timestamp: string;
+            url: string;
         }>>;
         firmware: z.ZodOptional<z.ZodObject<{
             version: z.ZodString;
@@ -101,8 +101,8 @@ export declare const LunaAgentStateBase: z.ZodObject<z.objectUtil.extendShape<{
         }>>;
     }, "strip", z.ZodTypeAny, {
         screenshot?: {
-            url: string;
             timestamp: string;
+            url: string;
         } | undefined;
         firmware?: {
             url: string;
@@ -114,8 +114,8 @@ export declare const LunaAgentStateBase: z.ZodObject<z.objectUtil.extendShape<{
         } | undefined;
     }, {
         screenshot?: {
-            url: string;
             timestamp: string;
+            url: string;
         } | undefined;
         firmware?: {
             url: string;
@@ -130,8 +130,8 @@ export declare const LunaAgentStateBase: z.ZodObject<z.objectUtil.extendShape<{
     url: "urn:dsbunny:agent:luna";
     detail: {
         screenshot?: {
-            url: string;
             timestamp: string;
+            url: string;
         } | undefined;
         firmware?: {
             url: string;
@@ -150,8 +150,8 @@ export declare const LunaAgentStateBase: z.ZodObject<z.objectUtil.extendShape<{
     url: "urn:dsbunny:agent:luna";
     detail: {
         screenshot?: {
-            url: string;
             timestamp: string;
+            url: string;
         } | undefined;
         firmware?: {
             url: string;
@@ -193,11 +193,11 @@ export declare const LunaAgentState: z.ZodObject<z.objectUtil.extendShape<z.obje
             timestamp: z.ZodString;
             url: z.ZodString;
         }, "strip", z.ZodTypeAny, {
-            url: string;
             timestamp: string;
+            url: string;
         }, {
-            url: string;
             timestamp: string;
+            url: string;
         }>>;
         firmware: z.ZodOptional<z.ZodObject<{
             version: z.ZodString;
@@ -221,8 +221,8 @@ export declare const LunaAgentState: z.ZodObject<z.objectUtil.extendShape<z.obje
         }>>;
     }, "strip", z.ZodTypeAny, {
         screenshot?: {
-            url: string;
             timestamp: string;
+            url: string;
         } | undefined;
         firmware?: {
             url: string;
@@ -234,8 +234,8 @@ export declare const LunaAgentState: z.ZodObject<z.objectUtil.extendShape<z.obje
         } | undefined;
     }, {
         screenshot?: {
-            url: string;
             timestamp: string;
+            url: string;
         } | undefined;
         firmware?: {
             url: string;
@@ -250,8 +250,8 @@ export declare const LunaAgentState: z.ZodObject<z.objectUtil.extendShape<z.obje
     url: "urn:dsbunny:agent:luna";
     detail: {
         screenshot?: {
-            url: string;
             timestamp: string;
+            url: string;
         } | undefined;
         firmware?: {
             url: string;
@@ -273,8 +273,8 @@ export declare const LunaAgentState: z.ZodObject<z.objectUtil.extendShape<z.obje
     url: "urn:dsbunny:agent:luna";
     detail: {
         screenshot?: {
-            url: string;
             timestamp: string;
+            url: string;
         } | undefined;
         firmware?: {
             url: string;
