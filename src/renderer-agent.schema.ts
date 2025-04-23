@@ -74,7 +74,7 @@ export const RendererAgentStatusDetail = z.object({
 	capabilities: z.array(CapabilityTypes)
 		.describe('The capabilities of the screen'),
 });
-export type RendererAgentDetail = z.infer<typeof RendererAgentStatusDetail>;
+export type RendererAgentStatusDetail = z.infer<typeof RendererAgentStatusDetail>;
 
 export const RendererAgentStatusBase = AgentStatusBase.merge(z.object({
 	url: z.literal(RENDERER_AGENT_URN),

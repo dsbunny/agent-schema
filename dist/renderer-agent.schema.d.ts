@@ -708,7 +708,7 @@ export declare const RendererAgentStatusDetail: z.ZodObject<{
         height: number;
     })[];
 }>;
-export type RendererAgentDetail = z.infer<typeof RendererAgentStatusDetail>;
+export type RendererAgentStatusDetail = z.infer<typeof RendererAgentStatusDetail>;
 export declare const RendererAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
     url: z.ZodNullable<z.ZodString>;
     detail: z.ZodNullable<z.ZodRecord<z.ZodString, z.ZodAny>>;
