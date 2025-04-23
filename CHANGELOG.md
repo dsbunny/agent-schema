@@ -1,4 +1,10 @@
 # Changelog
+## v3.0.3
+- Add new `LunaAgent`.
+- Fix `playlist_element_name` to either _luna_, _css_, or _webgl_.
+- Add `storage` and `usb` to `RendererAgentStateDetail`.
+- Replace `type` in `detail` with `url` for fixed URNs.
+
 ## v2.0.2
 - Replace `CapabilityBase` with `CapabilityTypes` as a set of all types.
 

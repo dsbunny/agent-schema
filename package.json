@@ -1,6 +1,6 @@
 {
 	"name": "@dsbunny/agent-schema",
-	"version": "2.0.2",
+	"version": "3.0.3",
 	"description": "Schema for RMM agents",
 	"type": "module",
 	"main": "dist/index.js",
@@ -15,6 +15,7 @@
 	"dependencies": {
 		"@dsbunny/capability-schema": "github:dsbunny/capability-schema#97eb0f8",
 		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema#df84663",
+		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#b4be487",
 		"zod": "^3.23.8"
 	},
 	"devDependencies": {
