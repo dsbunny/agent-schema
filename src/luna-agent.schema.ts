@@ -19,17 +19,17 @@ export const LunaAgentStateDetail = z.object({
 		.describe('The NTP server address (IPv4, IPv6, or domain name)'),
 	// Power
 	pm_mode: z.enum([
-		'PowerOff',
-		'ScreenOff',
-		'ScreenOffAlways',
-		'ScreenOffBacklight',
-		'SustainAspectRation',
-		'NetworkReady',
+		'powerOff',
+		'screenOff',
+		'screenOffAlways',
+		'screenOffBacklight',
+		'sustainAspectRation',
+		'networkReady',
 	]).optional()
 		.describe('The power management mode'),
 	display_mode: z.enum([
-		'DISPLAY_OFF',
-		'DISPLAY_ON',
+		'Screen Off',
+		'Active',
 	]).optional()
 		.describe('The display mode'),
 	// Signage
@@ -106,19 +106,19 @@ export const LunaAgentStatusDetail = z.object({
 			irq: z.number()
 				.describe('The CPU time spent handling interrupts (milliseconds)'),
 		}),
-		memory: z.object({
-			total: z.number()
-				.describe('Total memory space (bytes)'),
-			free: z.number()
-				.describe('Free memory space (bytes)'),
-			used: z.number()
-				.describe('Used memory space (bytes)'),
-			buffer: z.number()
-				.describe('Buffered memory space (bytes)'),
-			cached: z.number()
-				.describe('Cached memory space (bytes)'),
-		}),
 	})).optional(),
+	memory: z.object({
+		total: z.number()
+			.describe('Total memory space (bytes)'),
+		free: z.number()
+			.describe('Free memory space (bytes)'),
+		used: z.number()
+			.describe('Used memory space (bytes)'),
+		buffer: z.number()
+			.describe('Buffered memory space (bytes)'),
+		cached: z.number()
+			.describe('Cached memory space (bytes)'),
+	}).optional(),
 	// Signage
 	screenshot: z.object({
 		data: z.string().base64()
@@ -148,6 +148,21 @@ export const LunaAgentStatusDetail = z.object({
 		deviceId: z.string(),
 	})).optional()
 		.describe('The list of USB devices'),
+	// ScapError
+	errors: z.record(z.string(), z.object({
+		count: z.number().int().min(0)
+			.describe('The number of errors'),
+		entries: z.array(z.object({
+			code: z.number().int()
+				.describe('The error code'),
+			text: z.string()
+				.describe('The error text'),
+			timestamp: z.string().datetime()
+				.describe('The timestamp of the error'),
+		})),
+	})).optional()
+		.describe('The list of errors'),
+
 });
 export type LunaAgentStatusDetail = z.infer<typeof LunaAgentStatusDetail>;
 

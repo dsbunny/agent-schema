@@ -3,8 +3,8 @@ export declare const LUNA_AGENT_URN = "urn:dsbunny:agent:luna";
 export declare const LunaAgentStateDetail: z.ZodObject<{
     ntp: z.ZodOptional<z.ZodBoolean>;
     ntpServerAddress: z.ZodOptional<z.ZodString>;
-    pm_mode: z.ZodOptional<z.ZodEnum<["PowerOff", "ScreenOff", "ScreenOffAlways", "ScreenOffBacklight", "SustainAspectRation", "NetworkReady"]>>;
-    display_mode: z.ZodOptional<z.ZodEnum<["DISPLAY_OFF", "DISPLAY_ON"]>>;
+    pm_mode: z.ZodOptional<z.ZodEnum<["powerOff", "screenOff", "screenOffAlways", "screenOffBacklight", "sustainAspectRation", "networkReady"]>>;
+    display_mode: z.ZodOptional<z.ZodEnum<["Screen Off", "Active"]>>;
     screenshot_timestamp: z.ZodOptional<z.ZodString>;
     screenshot_resolution: z.ZodOptional<z.ZodEnum<["thumbnail", "FHD", "HD"]>>;
     firmware_version: z.ZodOptional<z.ZodString>;
@@ -30,8 +30,8 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
 }, "strip", z.ZodTypeAny, {
     ntp?: boolean | undefined;
     ntpServerAddress?: string | undefined;
-    pm_mode?: "PowerOff" | "ScreenOff" | "ScreenOffAlways" | "ScreenOffBacklight" | "SustainAspectRation" | "NetworkReady" | undefined;
-    display_mode?: "DISPLAY_OFF" | "DISPLAY_ON" | undefined;
+    pm_mode?: "powerOff" | "screenOff" | "screenOffAlways" | "screenOffBacklight" | "sustainAspectRation" | "networkReady" | undefined;
+    display_mode?: "Screen Off" | "Active" | undefined;
     screenshot_timestamp?: string | undefined;
     screenshot_resolution?: "thumbnail" | "FHD" | "HD" | undefined;
     firmware_version?: string | undefined;
@@ -47,8 +47,8 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
 }, {
     ntp?: boolean | undefined;
     ntpServerAddress?: string | undefined;
-    pm_mode?: "PowerOff" | "ScreenOff" | "ScreenOffAlways" | "ScreenOffBacklight" | "SustainAspectRation" | "NetworkReady" | undefined;
-    display_mode?: "DISPLAY_OFF" | "DISPLAY_ON" | undefined;
+    pm_mode?: "powerOff" | "screenOff" | "screenOffAlways" | "screenOffBacklight" | "sustainAspectRation" | "networkReady" | undefined;
+    display_mode?: "Screen Off" | "Active" | undefined;
     screenshot_timestamp?: string | undefined;
     screenshot_resolution?: "thumbnail" | "FHD" | "HD" | undefined;
     firmware_version?: string | undefined;
@@ -75,8 +75,8 @@ export declare const LunaAgentStateBase: z.ZodObject<z.objectUtil.extendShape<{
     detail: z.ZodNullable<z.ZodObject<{
         ntp: z.ZodOptional<z.ZodBoolean>;
         ntpServerAddress: z.ZodOptional<z.ZodString>;
-        pm_mode: z.ZodOptional<z.ZodEnum<["PowerOff", "ScreenOff", "ScreenOffAlways", "ScreenOffBacklight", "SustainAspectRation", "NetworkReady"]>>;
-        display_mode: z.ZodOptional<z.ZodEnum<["DISPLAY_OFF", "DISPLAY_ON"]>>;
+        pm_mode: z.ZodOptional<z.ZodEnum<["powerOff", "screenOff", "screenOffAlways", "screenOffBacklight", "sustainAspectRation", "networkReady"]>>;
+        display_mode: z.ZodOptional<z.ZodEnum<["Screen Off", "Active"]>>;
         screenshot_timestamp: z.ZodOptional<z.ZodString>;
         screenshot_resolution: z.ZodOptional<z.ZodEnum<["thumbnail", "FHD", "HD"]>>;
         firmware_version: z.ZodOptional<z.ZodString>;
@@ -102,8 +102,8 @@ export declare const LunaAgentStateBase: z.ZodObject<z.objectUtil.extendShape<{
     }, "strip", z.ZodTypeAny, {
         ntp?: boolean | undefined;
         ntpServerAddress?: string | undefined;
-        pm_mode?: "PowerOff" | "ScreenOff" | "ScreenOffAlways" | "ScreenOffBacklight" | "SustainAspectRation" | "NetworkReady" | undefined;
-        display_mode?: "DISPLAY_OFF" | "DISPLAY_ON" | undefined;
+        pm_mode?: "powerOff" | "screenOff" | "screenOffAlways" | "screenOffBacklight" | "sustainAspectRation" | "networkReady" | undefined;
+        display_mode?: "Screen Off" | "Active" | undefined;
         screenshot_timestamp?: string | undefined;
         screenshot_resolution?: "thumbnail" | "FHD" | "HD" | undefined;
         firmware_version?: string | undefined;
@@ -119,8 +119,8 @@ export declare const LunaAgentStateBase: z.ZodObject<z.objectUtil.extendShape<{
     }, {
         ntp?: boolean | undefined;
         ntpServerAddress?: string | undefined;
-        pm_mode?: "PowerOff" | "ScreenOff" | "ScreenOffAlways" | "ScreenOffBacklight" | "SustainAspectRation" | "NetworkReady" | undefined;
-        display_mode?: "DISPLAY_OFF" | "DISPLAY_ON" | undefined;
+        pm_mode?: "powerOff" | "screenOff" | "screenOffAlways" | "screenOffBacklight" | "sustainAspectRation" | "networkReady" | undefined;
+        display_mode?: "Screen Off" | "Active" | undefined;
         screenshot_timestamp?: string | undefined;
         screenshot_resolution?: "thumbnail" | "FHD" | "HD" | undefined;
         firmware_version?: string | undefined;
@@ -139,8 +139,8 @@ export declare const LunaAgentStateBase: z.ZodObject<z.objectUtil.extendShape<{
     detail: {
         ntp?: boolean | undefined;
         ntpServerAddress?: string | undefined;
-        pm_mode?: "PowerOff" | "ScreenOff" | "ScreenOffAlways" | "ScreenOffBacklight" | "SustainAspectRation" | "NetworkReady" | undefined;
-        display_mode?: "DISPLAY_OFF" | "DISPLAY_ON" | undefined;
+        pm_mode?: "powerOff" | "screenOff" | "screenOffAlways" | "screenOffBacklight" | "sustainAspectRation" | "networkReady" | undefined;
+        display_mode?: "Screen Off" | "Active" | undefined;
         screenshot_timestamp?: string | undefined;
         screenshot_resolution?: "thumbnail" | "FHD" | "HD" | undefined;
         firmware_version?: string | undefined;
@@ -163,8 +163,8 @@ export declare const LunaAgentStateBase: z.ZodObject<z.objectUtil.extendShape<{
     detail: {
         ntp?: boolean | undefined;
         ntpServerAddress?: string | undefined;
-        pm_mode?: "PowerOff" | "ScreenOff" | "ScreenOffAlways" | "ScreenOffBacklight" | "SustainAspectRation" | "NetworkReady" | undefined;
-        display_mode?: "DISPLAY_OFF" | "DISPLAY_ON" | undefined;
+        pm_mode?: "powerOff" | "screenOff" | "screenOffAlways" | "screenOffBacklight" | "sustainAspectRation" | "networkReady" | undefined;
+        display_mode?: "Screen Off" | "Active" | undefined;
         screenshot_timestamp?: string | undefined;
         screenshot_resolution?: "thumbnail" | "FHD" | "HD" | undefined;
         firmware_version?: string | undefined;
@@ -207,8 +207,8 @@ export declare const LunaAgentState: z.ZodObject<z.objectUtil.extendShape<z.obje
     detail: z.ZodNullable<z.ZodObject<{
         ntp: z.ZodOptional<z.ZodBoolean>;
         ntpServerAddress: z.ZodOptional<z.ZodString>;
-        pm_mode: z.ZodOptional<z.ZodEnum<["PowerOff", "ScreenOff", "ScreenOffAlways", "ScreenOffBacklight", "SustainAspectRation", "NetworkReady"]>>;
-        display_mode: z.ZodOptional<z.ZodEnum<["DISPLAY_OFF", "DISPLAY_ON"]>>;
+        pm_mode: z.ZodOptional<z.ZodEnum<["powerOff", "screenOff", "screenOffAlways", "screenOffBacklight", "sustainAspectRation", "networkReady"]>>;
+        display_mode: z.ZodOptional<z.ZodEnum<["Screen Off", "Active"]>>;
         screenshot_timestamp: z.ZodOptional<z.ZodString>;
         screenshot_resolution: z.ZodOptional<z.ZodEnum<["thumbnail", "FHD", "HD"]>>;
         firmware_version: z.ZodOptional<z.ZodString>;
@@ -234,8 +234,8 @@ export declare const LunaAgentState: z.ZodObject<z.objectUtil.extendShape<z.obje
     }, "strip", z.ZodTypeAny, {
         ntp?: boolean | undefined;
         ntpServerAddress?: string | undefined;
-        pm_mode?: "PowerOff" | "ScreenOff" | "ScreenOffAlways" | "ScreenOffBacklight" | "SustainAspectRation" | "NetworkReady" | undefined;
-        display_mode?: "DISPLAY_OFF" | "DISPLAY_ON" | undefined;
+        pm_mode?: "powerOff" | "screenOff" | "screenOffAlways" | "screenOffBacklight" | "sustainAspectRation" | "networkReady" | undefined;
+        display_mode?: "Screen Off" | "Active" | undefined;
         screenshot_timestamp?: string | undefined;
         screenshot_resolution?: "thumbnail" | "FHD" | "HD" | undefined;
         firmware_version?: string | undefined;
@@ -251,8 +251,8 @@ export declare const LunaAgentState: z.ZodObject<z.objectUtil.extendShape<z.obje
     }, {
         ntp?: boolean | undefined;
         ntpServerAddress?: string | undefined;
-        pm_mode?: "PowerOff" | "ScreenOff" | "ScreenOffAlways" | "ScreenOffBacklight" | "SustainAspectRation" | "NetworkReady" | undefined;
-        display_mode?: "DISPLAY_OFF" | "DISPLAY_ON" | undefined;
+        pm_mode?: "powerOff" | "screenOff" | "screenOffAlways" | "screenOffBacklight" | "sustainAspectRation" | "networkReady" | undefined;
+        display_mode?: "Screen Off" | "Active" | undefined;
         screenshot_timestamp?: string | undefined;
         screenshot_resolution?: "thumbnail" | "FHD" | "HD" | undefined;
         firmware_version?: string | undefined;
@@ -271,8 +271,8 @@ export declare const LunaAgentState: z.ZodObject<z.objectUtil.extendShape<z.obje
     detail: {
         ntp?: boolean | undefined;
         ntpServerAddress?: string | undefined;
-        pm_mode?: "PowerOff" | "ScreenOff" | "ScreenOffAlways" | "ScreenOffBacklight" | "SustainAspectRation" | "NetworkReady" | undefined;
-        display_mode?: "DISPLAY_OFF" | "DISPLAY_ON" | undefined;
+        pm_mode?: "powerOff" | "screenOff" | "screenOffAlways" | "screenOffBacklight" | "sustainAspectRation" | "networkReady" | undefined;
+        display_mode?: "Screen Off" | "Active" | undefined;
         screenshot_timestamp?: string | undefined;
         screenshot_resolution?: "thumbnail" | "FHD" | "HD" | undefined;
         firmware_version?: string | undefined;
@@ -298,8 +298,8 @@ export declare const LunaAgentState: z.ZodObject<z.objectUtil.extendShape<z.obje
     detail: {
         ntp?: boolean | undefined;
         ntpServerAddress?: string | undefined;
-        pm_mode?: "PowerOff" | "ScreenOff" | "ScreenOffAlways" | "ScreenOffBacklight" | "SustainAspectRation" | "NetworkReady" | undefined;
-        display_mode?: "DISPLAY_OFF" | "DISPLAY_ON" | undefined;
+        pm_mode?: "powerOff" | "screenOff" | "screenOffAlways" | "screenOffBacklight" | "sustainAspectRation" | "networkReady" | undefined;
+        display_mode?: "Screen Off" | "Active" | undefined;
         screenshot_timestamp?: string | undefined;
         screenshot_resolution?: "thumbnail" | "FHD" | "HD" | undefined;
         firmware_version?: string | undefined;
@@ -350,25 +350,6 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
             idle: number;
             irq: number;
         }>;
-        memory: z.ZodObject<{
-            total: z.ZodNumber;
-            free: z.ZodNumber;
-            used: z.ZodNumber;
-            buffer: z.ZodNumber;
-            cached: z.ZodNumber;
-        }, "strip", z.ZodTypeAny, {
-            total: number;
-            free: number;
-            used: number;
-            buffer: number;
-            cached: number;
-        }, {
-            total: number;
-            free: number;
-            used: number;
-            buffer: number;
-            cached: number;
-        }>;
     }, "strip", z.ZodTypeAny, {
         model: string;
         times: {
@@ -377,13 +358,6 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
             sys: number;
             idle: number;
             irq: number;
-        };
-        memory: {
-            total: number;
-            free: number;
-            used: number;
-            buffer: number;
-            cached: number;
         };
     }, {
         model: string;
@@ -394,14 +368,26 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
             idle: number;
             irq: number;
         };
-        memory: {
-            total: number;
-            free: number;
-            used: number;
-            buffer: number;
-            cached: number;
-        };
     }>, "many">>;
+    memory: z.ZodOptional<z.ZodObject<{
+        total: z.ZodNumber;
+        free: z.ZodNumber;
+        used: z.ZodNumber;
+        buffer: z.ZodNumber;
+        cached: z.ZodNumber;
+    }, "strip", z.ZodTypeAny, {
+        total: number;
+        free: number;
+        used: number;
+        buffer: number;
+        cached: number;
+    }, {
+        total: number;
+        free: number;
+        used: number;
+        buffer: number;
+        cached: number;
+    }>>;
     screenshot: z.ZodOptional<z.ZodObject<{
         data: z.ZodString;
         size: z.ZodNumber;
@@ -434,6 +420,36 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
         product: string;
         deviceId: string;
     }>, "many">>;
+    errors: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+        count: z.ZodNumber;
+        entries: z.ZodArray<z.ZodObject<{
+            code: z.ZodNumber;
+            text: z.ZodString;
+            timestamp: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            code: number;
+            text: string;
+            timestamp: string;
+        }, {
+            code: number;
+            text: string;
+            timestamp: string;
+        }>, "many">;
+    }, "strip", z.ZodTypeAny, {
+        entries: {
+            code: number;
+            text: string;
+            timestamp: string;
+        }[];
+        count: number;
+    }, {
+        entries: {
+            code: number;
+            text: string;
+            timestamp: string;
+        }[];
+        count: number;
+    }>>>;
 }, "strip", z.ZodTypeAny, {
     hour: number;
     minute: number;
@@ -450,14 +466,14 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
             idle: number;
             irq: number;
         };
-        memory: {
-            total: number;
-            free: number;
-            used: number;
-            buffer: number;
-            cached: number;
-        };
     }[] | undefined;
+    memory?: {
+        total: number;
+        free: number;
+        used: number;
+        buffer: number;
+        cached: number;
+    } | undefined;
     screenshot?: {
         data: string;
         size: number;
@@ -472,6 +488,14 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
         product: string;
         deviceId: string;
     }[] | undefined;
+    errors?: Record<string, {
+        entries: {
+            code: number;
+            text: string;
+            timestamp: string;
+        }[];
+        count: number;
+    }> | undefined;
 }, {
     hour: number;
     minute: number;
@@ -488,14 +512,14 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
             idle: number;
             irq: number;
         };
-        memory: {
-            total: number;
-            free: number;
-            used: number;
-            buffer: number;
-            cached: number;
-        };
     }[] | undefined;
+    memory?: {
+        total: number;
+        free: number;
+        used: number;
+        buffer: number;
+        cached: number;
+    } | undefined;
     screenshot?: {
         data: string;
         size: number;
@@ -510,6 +534,14 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
         product: string;
         deviceId: string;
     }[] | undefined;
+    errors?: Record<string, {
+        entries: {
+            code: number;
+            text: string;
+            timestamp: string;
+        }[];
+        count: number;
+    }> | undefined;
 }>;
 export type LunaAgentStatusDetail = z.infer<typeof LunaAgentStatusDetail>;
 export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
@@ -545,25 +577,6 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
                 idle: number;
                 irq: number;
             }>;
-            memory: z.ZodObject<{
-                total: z.ZodNumber;
-                free: z.ZodNumber;
-                used: z.ZodNumber;
-                buffer: z.ZodNumber;
-                cached: z.ZodNumber;
-            }, "strip", z.ZodTypeAny, {
-                total: number;
-                free: number;
-                used: number;
-                buffer: number;
-                cached: number;
-            }, {
-                total: number;
-                free: number;
-                used: number;
-                buffer: number;
-                cached: number;
-            }>;
         }, "strip", z.ZodTypeAny, {
             model: string;
             times: {
@@ -572,13 +585,6 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
                 sys: number;
                 idle: number;
                 irq: number;
-            };
-            memory: {
-                total: number;
-                free: number;
-                used: number;
-                buffer: number;
-                cached: number;
             };
         }, {
             model: string;
@@ -589,14 +595,26 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
                 idle: number;
                 irq: number;
             };
-            memory: {
-                total: number;
-                free: number;
-                used: number;
-                buffer: number;
-                cached: number;
-            };
         }>, "many">>;
+        memory: z.ZodOptional<z.ZodObject<{
+            total: z.ZodNumber;
+            free: z.ZodNumber;
+            used: z.ZodNumber;
+            buffer: z.ZodNumber;
+            cached: z.ZodNumber;
+        }, "strip", z.ZodTypeAny, {
+            total: number;
+            free: number;
+            used: number;
+            buffer: number;
+            cached: number;
+        }, {
+            total: number;
+            free: number;
+            used: number;
+            buffer: number;
+            cached: number;
+        }>>;
         screenshot: z.ZodOptional<z.ZodObject<{
             data: z.ZodString;
             size: z.ZodNumber;
@@ -629,6 +647,36 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
             product: string;
             deviceId: string;
         }>, "many">>;
+        errors: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+            count: z.ZodNumber;
+            entries: z.ZodArray<z.ZodObject<{
+                code: z.ZodNumber;
+                text: z.ZodString;
+                timestamp: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                code: number;
+                text: string;
+                timestamp: string;
+            }, {
+                code: number;
+                text: string;
+                timestamp: string;
+            }>, "many">;
+        }, "strip", z.ZodTypeAny, {
+            entries: {
+                code: number;
+                text: string;
+                timestamp: string;
+            }[];
+            count: number;
+        }, {
+            entries: {
+                code: number;
+                text: string;
+                timestamp: string;
+            }[];
+            count: number;
+        }>>>;
     }, "strip", z.ZodTypeAny, {
         hour: number;
         minute: number;
@@ -645,14 +693,14 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
                 idle: number;
                 irq: number;
             };
-            memory: {
-                total: number;
-                free: number;
-                used: number;
-                buffer: number;
-                cached: number;
-            };
         }[] | undefined;
+        memory?: {
+            total: number;
+            free: number;
+            used: number;
+            buffer: number;
+            cached: number;
+        } | undefined;
         screenshot?: {
             data: string;
             size: number;
@@ -667,6 +715,14 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
             product: string;
             deviceId: string;
         }[] | undefined;
+        errors?: Record<string, {
+            entries: {
+                code: number;
+                text: string;
+                timestamp: string;
+            }[];
+            count: number;
+        }> | undefined;
     }, {
         hour: number;
         minute: number;
@@ -683,14 +739,14 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
                 idle: number;
                 irq: number;
             };
-            memory: {
-                total: number;
-                free: number;
-                used: number;
-                buffer: number;
-                cached: number;
-            };
         }[] | undefined;
+        memory?: {
+            total: number;
+            free: number;
+            used: number;
+            buffer: number;
+            cached: number;
+        } | undefined;
         screenshot?: {
             data: string;
             size: number;
@@ -705,6 +761,14 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
             product: string;
             deviceId: string;
         }[] | undefined;
+        errors?: Record<string, {
+            entries: {
+                code: number;
+                text: string;
+                timestamp: string;
+            }[];
+            count: number;
+        }> | undefined;
     }>>;
 }>, "strip", z.ZodTypeAny, {
     url: "urn:dsbunny:agent:luna";
@@ -724,14 +788,14 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
                 idle: number;
                 irq: number;
             };
-            memory: {
-                total: number;
-                free: number;
-                used: number;
-                buffer: number;
-                cached: number;
-            };
         }[] | undefined;
+        memory?: {
+            total: number;
+            free: number;
+            used: number;
+            buffer: number;
+            cached: number;
+        } | undefined;
         screenshot?: {
             data: string;
             size: number;
@@ -746,6 +810,14 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
             product: string;
             deviceId: string;
         }[] | undefined;
+        errors?: Record<string, {
+            entries: {
+                code: number;
+                text: string;
+                timestamp: string;
+            }[];
+            count: number;
+        }> | undefined;
     } | null;
 }, {
     url: "urn:dsbunny:agent:luna";
@@ -765,14 +837,14 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
                 idle: number;
                 irq: number;
             };
-            memory: {
-                total: number;
-                free: number;
-                used: number;
-                buffer: number;
-                cached: number;
-            };
         }[] | undefined;
+        memory?: {
+            total: number;
+            free: number;
+            used: number;
+            buffer: number;
+            cached: number;
+        } | undefined;
         screenshot?: {
             data: string;
             size: number;
@@ -787,6 +859,14 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
             product: string;
             deviceId: string;
         }[] | undefined;
+        errors?: Record<string, {
+            entries: {
+                code: number;
+                text: string;
+                timestamp: string;
+            }[];
+            count: number;
+        }> | undefined;
     } | null;
 }>;
 export type LunaAgentStatusBase = z.infer<typeof LunaAgentStatusBase>;
@@ -830,25 +910,6 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
                 idle: number;
                 irq: number;
             }>;
-            memory: z.ZodObject<{
-                total: z.ZodNumber;
-                free: z.ZodNumber;
-                used: z.ZodNumber;
-                buffer: z.ZodNumber;
-                cached: z.ZodNumber;
-            }, "strip", z.ZodTypeAny, {
-                total: number;
-                free: number;
-                used: number;
-                buffer: number;
-                cached: number;
-            }, {
-                total: number;
-                free: number;
-                used: number;
-                buffer: number;
-                cached: number;
-            }>;
         }, "strip", z.ZodTypeAny, {
             model: string;
             times: {
@@ -857,13 +918,6 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
                 sys: number;
                 idle: number;
                 irq: number;
-            };
-            memory: {
-                total: number;
-                free: number;
-                used: number;
-                buffer: number;
-                cached: number;
             };
         }, {
             model: string;
@@ -874,14 +928,26 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
                 idle: number;
                 irq: number;
             };
-            memory: {
-                total: number;
-                free: number;
-                used: number;
-                buffer: number;
-                cached: number;
-            };
         }>, "many">>;
+        memory: z.ZodOptional<z.ZodObject<{
+            total: z.ZodNumber;
+            free: z.ZodNumber;
+            used: z.ZodNumber;
+            buffer: z.ZodNumber;
+            cached: z.ZodNumber;
+        }, "strip", z.ZodTypeAny, {
+            total: number;
+            free: number;
+            used: number;
+            buffer: number;
+            cached: number;
+        }, {
+            total: number;
+            free: number;
+            used: number;
+            buffer: number;
+            cached: number;
+        }>>;
         screenshot: z.ZodOptional<z.ZodObject<{
             data: z.ZodString;
             size: z.ZodNumber;
@@ -914,6 +980,36 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
             product: string;
             deviceId: string;
         }>, "many">>;
+        errors: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+            count: z.ZodNumber;
+            entries: z.ZodArray<z.ZodObject<{
+                code: z.ZodNumber;
+                text: z.ZodString;
+                timestamp: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                code: number;
+                text: string;
+                timestamp: string;
+            }, {
+                code: number;
+                text: string;
+                timestamp: string;
+            }>, "many">;
+        }, "strip", z.ZodTypeAny, {
+            entries: {
+                code: number;
+                text: string;
+                timestamp: string;
+            }[];
+            count: number;
+        }, {
+            entries: {
+                code: number;
+                text: string;
+                timestamp: string;
+            }[];
+            count: number;
+        }>>>;
     }, "strip", z.ZodTypeAny, {
         hour: number;
         minute: number;
@@ -930,14 +1026,14 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
                 idle: number;
                 irq: number;
             };
-            memory: {
-                total: number;
-                free: number;
-                used: number;
-                buffer: number;
-                cached: number;
-            };
         }[] | undefined;
+        memory?: {
+            total: number;
+            free: number;
+            used: number;
+            buffer: number;
+            cached: number;
+        } | undefined;
         screenshot?: {
             data: string;
             size: number;
@@ -952,6 +1048,14 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
             product: string;
             deviceId: string;
         }[] | undefined;
+        errors?: Record<string, {
+            entries: {
+                code: number;
+                text: string;
+                timestamp: string;
+            }[];
+            count: number;
+        }> | undefined;
     }, {
         hour: number;
         minute: number;
@@ -968,14 +1072,14 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
                 idle: number;
                 irq: number;
             };
-            memory: {
-                total: number;
-                free: number;
-                used: number;
-                buffer: number;
-                cached: number;
-            };
         }[] | undefined;
+        memory?: {
+            total: number;
+            free: number;
+            used: number;
+            buffer: number;
+            cached: number;
+        } | undefined;
         screenshot?: {
             data: string;
             size: number;
@@ -990,6 +1094,14 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
             product: string;
             deviceId: string;
         }[] | undefined;
+        errors?: Record<string, {
+            entries: {
+                code: number;
+                text: string;
+                timestamp: string;
+            }[];
+            count: number;
+        }> | undefined;
     }>>;
 }>>, "strip", z.ZodTypeAny, {
     url: "urn:dsbunny:agent:luna";
@@ -1009,14 +1121,14 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
                 idle: number;
                 irq: number;
             };
-            memory: {
-                total: number;
-                free: number;
-                used: number;
-                buffer: number;
-                cached: number;
-            };
         }[] | undefined;
+        memory?: {
+            total: number;
+            free: number;
+            used: number;
+            buffer: number;
+            cached: number;
+        } | undefined;
         screenshot?: {
             data: string;
             size: number;
@@ -1031,6 +1143,14 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
             product: string;
             deviceId: string;
         }[] | undefined;
+        errors?: Record<string, {
+            entries: {
+                code: number;
+                text: string;
+                timestamp: string;
+            }[];
+            count: number;
+        }> | undefined;
     } | null;
     create_timestamp: string;
     modify_timestamp: string;
@@ -1053,14 +1173,14 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
                 idle: number;
                 irq: number;
             };
-            memory: {
-                total: number;
-                free: number;
-                used: number;
-                buffer: number;
-                cached: number;
-            };
         }[] | undefined;
+        memory?: {
+            total: number;
+            free: number;
+            used: number;
+            buffer: number;
+            cached: number;
+        } | undefined;
         screenshot?: {
             data: string;
             size: number;
@@ -1075,6 +1195,14 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
             product: string;
             deviceId: string;
         }[] | undefined;
+        errors?: Record<string, {
+            entries: {
+                code: number;
+                text: string;
+                timestamp: string;
+            }[];
+            count: number;
+        }> | undefined;
     } | null;
     create_timestamp: string;
     modify_timestamp: string;
