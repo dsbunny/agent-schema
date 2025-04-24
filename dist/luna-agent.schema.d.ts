@@ -330,77 +330,77 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
     minute: z.ZodNumber;
     sec: z.ZodNumber;
     cpus: z.ZodOptional<z.ZodArray<z.ZodObject<{
-        model: z.ZodOptional<z.ZodString>;
-        times: z.ZodOptional<z.ZodArray<z.ZodObject<{
-            user: z.ZodOptional<z.ZodNumber>;
-            nice: z.ZodOptional<z.ZodNumber>;
-            sys: z.ZodOptional<z.ZodNumber>;
-            idle: z.ZodOptional<z.ZodNumber>;
-            irq: z.ZodOptional<z.ZodNumber>;
+        model: z.ZodString;
+        times: z.ZodObject<{
+            user: z.ZodNumber;
+            nice: z.ZodNumber;
+            sys: z.ZodNumber;
+            idle: z.ZodNumber;
+            irq: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
-            user?: number | undefined;
-            nice?: number | undefined;
-            sys?: number | undefined;
-            idle?: number | undefined;
-            irq?: number | undefined;
+            user: number;
+            nice: number;
+            sys: number;
+            idle: number;
+            irq: number;
         }, {
-            user?: number | undefined;
-            nice?: number | undefined;
-            sys?: number | undefined;
-            idle?: number | undefined;
-            irq?: number | undefined;
-        }>, "many">>;
-        memory: z.ZodOptional<z.ZodObject<{
-            total: z.ZodOptional<z.ZodNumber>;
-            free: z.ZodOptional<z.ZodNumber>;
-            used: z.ZodOptional<z.ZodNumber>;
-            buffer: z.ZodOptional<z.ZodNumber>;
-            cached: z.ZodOptional<z.ZodNumber>;
+            user: number;
+            nice: number;
+            sys: number;
+            idle: number;
+            irq: number;
+        }>;
+        memory: z.ZodObject<{
+            total: z.ZodNumber;
+            free: z.ZodNumber;
+            used: z.ZodNumber;
+            buffer: z.ZodNumber;
+            cached: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
-            total?: number | undefined;
-            free?: number | undefined;
-            used?: number | undefined;
-            buffer?: number | undefined;
-            cached?: number | undefined;
+            total: number;
+            free: number;
+            used: number;
+            buffer: number;
+            cached: number;
         }, {
-            total?: number | undefined;
-            free?: number | undefined;
-            used?: number | undefined;
-            buffer?: number | undefined;
-            cached?: number | undefined;
-        }>>;
+            total: number;
+            free: number;
+            used: number;
+            buffer: number;
+            cached: number;
+        }>;
     }, "strip", z.ZodTypeAny, {
-        model?: string | undefined;
-        times?: {
-            user?: number | undefined;
-            nice?: number | undefined;
-            sys?: number | undefined;
-            idle?: number | undefined;
-            irq?: number | undefined;
-        }[] | undefined;
-        memory?: {
-            total?: number | undefined;
-            free?: number | undefined;
-            used?: number | undefined;
-            buffer?: number | undefined;
-            cached?: number | undefined;
-        } | undefined;
+        model: string;
+        times: {
+            user: number;
+            nice: number;
+            sys: number;
+            idle: number;
+            irq: number;
+        };
+        memory: {
+            total: number;
+            free: number;
+            used: number;
+            buffer: number;
+            cached: number;
+        };
     }, {
-        model?: string | undefined;
-        times?: {
-            user?: number | undefined;
-            nice?: number | undefined;
-            sys?: number | undefined;
-            idle?: number | undefined;
-            irq?: number | undefined;
-        }[] | undefined;
-        memory?: {
-            total?: number | undefined;
-            free?: number | undefined;
-            used?: number | undefined;
-            buffer?: number | undefined;
-            cached?: number | undefined;
-        } | undefined;
+        model: string;
+        times: {
+            user: number;
+            nice: number;
+            sys: number;
+            idle: number;
+            irq: number;
+        };
+        memory: {
+            total: number;
+            free: number;
+            used: number;
+            buffer: number;
+            cached: number;
+        };
     }>, "many">>;
     screenshot: z.ZodOptional<z.ZodObject<{
         data: z.ZodString;
@@ -442,21 +442,21 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
     day: number;
     sec: number;
     cpus?: {
-        model?: string | undefined;
-        times?: {
-            user?: number | undefined;
-            nice?: number | undefined;
-            sys?: number | undefined;
-            idle?: number | undefined;
-            irq?: number | undefined;
-        }[] | undefined;
-        memory?: {
-            total?: number | undefined;
-            free?: number | undefined;
-            used?: number | undefined;
-            buffer?: number | undefined;
-            cached?: number | undefined;
-        } | undefined;
+        model: string;
+        times: {
+            user: number;
+            nice: number;
+            sys: number;
+            idle: number;
+            irq: number;
+        };
+        memory: {
+            total: number;
+            free: number;
+            used: number;
+            buffer: number;
+            cached: number;
+        };
     }[] | undefined;
     screenshot?: {
         data: string;
@@ -480,21 +480,21 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
     day: number;
     sec: number;
     cpus?: {
-        model?: string | undefined;
-        times?: {
-            user?: number | undefined;
-            nice?: number | undefined;
-            sys?: number | undefined;
-            idle?: number | undefined;
-            irq?: number | undefined;
-        }[] | undefined;
-        memory?: {
-            total?: number | undefined;
-            free?: number | undefined;
-            used?: number | undefined;
-            buffer?: number | undefined;
-            cached?: number | undefined;
-        } | undefined;
+        model: string;
+        times: {
+            user: number;
+            nice: number;
+            sys: number;
+            idle: number;
+            irq: number;
+        };
+        memory: {
+            total: number;
+            free: number;
+            used: number;
+            buffer: number;
+            cached: number;
+        };
     }[] | undefined;
     screenshot?: {
         data: string;
@@ -525,77 +525,77 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
         minute: z.ZodNumber;
         sec: z.ZodNumber;
         cpus: z.ZodOptional<z.ZodArray<z.ZodObject<{
-            model: z.ZodOptional<z.ZodString>;
-            times: z.ZodOptional<z.ZodArray<z.ZodObject<{
-                user: z.ZodOptional<z.ZodNumber>;
-                nice: z.ZodOptional<z.ZodNumber>;
-                sys: z.ZodOptional<z.ZodNumber>;
-                idle: z.ZodOptional<z.ZodNumber>;
-                irq: z.ZodOptional<z.ZodNumber>;
+            model: z.ZodString;
+            times: z.ZodObject<{
+                user: z.ZodNumber;
+                nice: z.ZodNumber;
+                sys: z.ZodNumber;
+                idle: z.ZodNumber;
+                irq: z.ZodNumber;
             }, "strip", z.ZodTypeAny, {
-                user?: number | undefined;
-                nice?: number | undefined;
-                sys?: number | undefined;
-                idle?: number | undefined;
-                irq?: number | undefined;
+                user: number;
+                nice: number;
+                sys: number;
+                idle: number;
+                irq: number;
             }, {
-                user?: number | undefined;
-                nice?: number | undefined;
-                sys?: number | undefined;
-                idle?: number | undefined;
-                irq?: number | undefined;
-            }>, "many">>;
-            memory: z.ZodOptional<z.ZodObject<{
-                total: z.ZodOptional<z.ZodNumber>;
-                free: z.ZodOptional<z.ZodNumber>;
-                used: z.ZodOptional<z.ZodNumber>;
-                buffer: z.ZodOptional<z.ZodNumber>;
-                cached: z.ZodOptional<z.ZodNumber>;
+                user: number;
+                nice: number;
+                sys: number;
+                idle: number;
+                irq: number;
+            }>;
+            memory: z.ZodObject<{
+                total: z.ZodNumber;
+                free: z.ZodNumber;
+                used: z.ZodNumber;
+                buffer: z.ZodNumber;
+                cached: z.ZodNumber;
             }, "strip", z.ZodTypeAny, {
-                total?: number | undefined;
-                free?: number | undefined;
-                used?: number | undefined;
-                buffer?: number | undefined;
-                cached?: number | undefined;
+                total: number;
+                free: number;
+                used: number;
+                buffer: number;
+                cached: number;
             }, {
-                total?: number | undefined;
-                free?: number | undefined;
-                used?: number | undefined;
-                buffer?: number | undefined;
-                cached?: number | undefined;
-            }>>;
+                total: number;
+                free: number;
+                used: number;
+                buffer: number;
+                cached: number;
+            }>;
         }, "strip", z.ZodTypeAny, {
-            model?: string | undefined;
-            times?: {
-                user?: number | undefined;
-                nice?: number | undefined;
-                sys?: number | undefined;
-                idle?: number | undefined;
-                irq?: number | undefined;
-            }[] | undefined;
-            memory?: {
-                total?: number | undefined;
-                free?: number | undefined;
-                used?: number | undefined;
-                buffer?: number | undefined;
-                cached?: number | undefined;
-            } | undefined;
+            model: string;
+            times: {
+                user: number;
+                nice: number;
+                sys: number;
+                idle: number;
+                irq: number;
+            };
+            memory: {
+                total: number;
+                free: number;
+                used: number;
+                buffer: number;
+                cached: number;
+            };
         }, {
-            model?: string | undefined;
-            times?: {
-                user?: number | undefined;
-                nice?: number | undefined;
-                sys?: number | undefined;
-                idle?: number | undefined;
-                irq?: number | undefined;
-            }[] | undefined;
-            memory?: {
-                total?: number | undefined;
-                free?: number | undefined;
-                used?: number | undefined;
-                buffer?: number | undefined;
-                cached?: number | undefined;
-            } | undefined;
+            model: string;
+            times: {
+                user: number;
+                nice: number;
+                sys: number;
+                idle: number;
+                irq: number;
+            };
+            memory: {
+                total: number;
+                free: number;
+                used: number;
+                buffer: number;
+                cached: number;
+            };
         }>, "many">>;
         screenshot: z.ZodOptional<z.ZodObject<{
             data: z.ZodString;
@@ -637,21 +637,21 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
         day: number;
         sec: number;
         cpus?: {
-            model?: string | undefined;
-            times?: {
-                user?: number | undefined;
-                nice?: number | undefined;
-                sys?: number | undefined;
-                idle?: number | undefined;
-                irq?: number | undefined;
-            }[] | undefined;
-            memory?: {
-                total?: number | undefined;
-                free?: number | undefined;
-                used?: number | undefined;
-                buffer?: number | undefined;
-                cached?: number | undefined;
-            } | undefined;
+            model: string;
+            times: {
+                user: number;
+                nice: number;
+                sys: number;
+                idle: number;
+                irq: number;
+            };
+            memory: {
+                total: number;
+                free: number;
+                used: number;
+                buffer: number;
+                cached: number;
+            };
         }[] | undefined;
         screenshot?: {
             data: string;
@@ -675,21 +675,21 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
         day: number;
         sec: number;
         cpus?: {
-            model?: string | undefined;
-            times?: {
-                user?: number | undefined;
-                nice?: number | undefined;
-                sys?: number | undefined;
-                idle?: number | undefined;
-                irq?: number | undefined;
-            }[] | undefined;
-            memory?: {
-                total?: number | undefined;
-                free?: number | undefined;
-                used?: number | undefined;
-                buffer?: number | undefined;
-                cached?: number | undefined;
-            } | undefined;
+            model: string;
+            times: {
+                user: number;
+                nice: number;
+                sys: number;
+                idle: number;
+                irq: number;
+            };
+            memory: {
+                total: number;
+                free: number;
+                used: number;
+                buffer: number;
+                cached: number;
+            };
         }[] | undefined;
         screenshot?: {
             data: string;
@@ -716,21 +716,21 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
         day: number;
         sec: number;
         cpus?: {
-            model?: string | undefined;
-            times?: {
-                user?: number | undefined;
-                nice?: number | undefined;
-                sys?: number | undefined;
-                idle?: number | undefined;
-                irq?: number | undefined;
-            }[] | undefined;
-            memory?: {
-                total?: number | undefined;
-                free?: number | undefined;
-                used?: number | undefined;
-                buffer?: number | undefined;
-                cached?: number | undefined;
-            } | undefined;
+            model: string;
+            times: {
+                user: number;
+                nice: number;
+                sys: number;
+                idle: number;
+                irq: number;
+            };
+            memory: {
+                total: number;
+                free: number;
+                used: number;
+                buffer: number;
+                cached: number;
+            };
         }[] | undefined;
         screenshot?: {
             data: string;
@@ -757,21 +757,21 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
         day: number;
         sec: number;
         cpus?: {
-            model?: string | undefined;
-            times?: {
-                user?: number | undefined;
-                nice?: number | undefined;
-                sys?: number | undefined;
-                idle?: number | undefined;
-                irq?: number | undefined;
-            }[] | undefined;
-            memory?: {
-                total?: number | undefined;
-                free?: number | undefined;
-                used?: number | undefined;
-                buffer?: number | undefined;
-                cached?: number | undefined;
-            } | undefined;
+            model: string;
+            times: {
+                user: number;
+                nice: number;
+                sys: number;
+                idle: number;
+                irq: number;
+            };
+            memory: {
+                total: number;
+                free: number;
+                used: number;
+                buffer: number;
+                cached: number;
+            };
         }[] | undefined;
         screenshot?: {
             data: string;
@@ -810,77 +810,77 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
         minute: z.ZodNumber;
         sec: z.ZodNumber;
         cpus: z.ZodOptional<z.ZodArray<z.ZodObject<{
-            model: z.ZodOptional<z.ZodString>;
-            times: z.ZodOptional<z.ZodArray<z.ZodObject<{
-                user: z.ZodOptional<z.ZodNumber>;
-                nice: z.ZodOptional<z.ZodNumber>;
-                sys: z.ZodOptional<z.ZodNumber>;
-                idle: z.ZodOptional<z.ZodNumber>;
-                irq: z.ZodOptional<z.ZodNumber>;
+            model: z.ZodString;
+            times: z.ZodObject<{
+                user: z.ZodNumber;
+                nice: z.ZodNumber;
+                sys: z.ZodNumber;
+                idle: z.ZodNumber;
+                irq: z.ZodNumber;
             }, "strip", z.ZodTypeAny, {
-                user?: number | undefined;
-                nice?: number | undefined;
-                sys?: number | undefined;
-                idle?: number | undefined;
-                irq?: number | undefined;
+                user: number;
+                nice: number;
+                sys: number;
+                idle: number;
+                irq: number;
             }, {
-                user?: number | undefined;
-                nice?: number | undefined;
-                sys?: number | undefined;
-                idle?: number | undefined;
-                irq?: number | undefined;
-            }>, "many">>;
-            memory: z.ZodOptional<z.ZodObject<{
-                total: z.ZodOptional<z.ZodNumber>;
-                free: z.ZodOptional<z.ZodNumber>;
-                used: z.ZodOptional<z.ZodNumber>;
-                buffer: z.ZodOptional<z.ZodNumber>;
-                cached: z.ZodOptional<z.ZodNumber>;
+                user: number;
+                nice: number;
+                sys: number;
+                idle: number;
+                irq: number;
+            }>;
+            memory: z.ZodObject<{
+                total: z.ZodNumber;
+                free: z.ZodNumber;
+                used: z.ZodNumber;
+                buffer: z.ZodNumber;
+                cached: z.ZodNumber;
             }, "strip", z.ZodTypeAny, {
-                total?: number | undefined;
-                free?: number | undefined;
-                used?: number | undefined;
-                buffer?: number | undefined;
-                cached?: number | undefined;
+                total: number;
+                free: number;
+                used: number;
+                buffer: number;
+                cached: number;
             }, {
-                total?: number | undefined;
-                free?: number | undefined;
-                used?: number | undefined;
-                buffer?: number | undefined;
-                cached?: number | undefined;
-            }>>;
+                total: number;
+                free: number;
+                used: number;
+                buffer: number;
+                cached: number;
+            }>;
         }, "strip", z.ZodTypeAny, {
-            model?: string | undefined;
-            times?: {
-                user?: number | undefined;
-                nice?: number | undefined;
-                sys?: number | undefined;
-                idle?: number | undefined;
-                irq?: number | undefined;
-            }[] | undefined;
-            memory?: {
-                total?: number | undefined;
-                free?: number | undefined;
-                used?: number | undefined;
-                buffer?: number | undefined;
-                cached?: number | undefined;
-            } | undefined;
+            model: string;
+            times: {
+                user: number;
+                nice: number;
+                sys: number;
+                idle: number;
+                irq: number;
+            };
+            memory: {
+                total: number;
+                free: number;
+                used: number;
+                buffer: number;
+                cached: number;
+            };
         }, {
-            model?: string | undefined;
-            times?: {
-                user?: number | undefined;
-                nice?: number | undefined;
-                sys?: number | undefined;
-                idle?: number | undefined;
-                irq?: number | undefined;
-            }[] | undefined;
-            memory?: {
-                total?: number | undefined;
-                free?: number | undefined;
-                used?: number | undefined;
-                buffer?: number | undefined;
-                cached?: number | undefined;
-            } | undefined;
+            model: string;
+            times: {
+                user: number;
+                nice: number;
+                sys: number;
+                idle: number;
+                irq: number;
+            };
+            memory: {
+                total: number;
+                free: number;
+                used: number;
+                buffer: number;
+                cached: number;
+            };
         }>, "many">>;
         screenshot: z.ZodOptional<z.ZodObject<{
             data: z.ZodString;
@@ -922,21 +922,21 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
         day: number;
         sec: number;
         cpus?: {
-            model?: string | undefined;
-            times?: {
-                user?: number | undefined;
-                nice?: number | undefined;
-                sys?: number | undefined;
-                idle?: number | undefined;
-                irq?: number | undefined;
-            }[] | undefined;
-            memory?: {
-                total?: number | undefined;
-                free?: number | undefined;
-                used?: number | undefined;
-                buffer?: number | undefined;
-                cached?: number | undefined;
-            } | undefined;
+            model: string;
+            times: {
+                user: number;
+                nice: number;
+                sys: number;
+                idle: number;
+                irq: number;
+            };
+            memory: {
+                total: number;
+                free: number;
+                used: number;
+                buffer: number;
+                cached: number;
+            };
         }[] | undefined;
         screenshot?: {
             data: string;
@@ -960,21 +960,21 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
         day: number;
         sec: number;
         cpus?: {
-            model?: string | undefined;
-            times?: {
-                user?: number | undefined;
-                nice?: number | undefined;
-                sys?: number | undefined;
-                idle?: number | undefined;
-                irq?: number | undefined;
-            }[] | undefined;
-            memory?: {
-                total?: number | undefined;
-                free?: number | undefined;
-                used?: number | undefined;
-                buffer?: number | undefined;
-                cached?: number | undefined;
-            } | undefined;
+            model: string;
+            times: {
+                user: number;
+                nice: number;
+                sys: number;
+                idle: number;
+                irq: number;
+            };
+            memory: {
+                total: number;
+                free: number;
+                used: number;
+                buffer: number;
+                cached: number;
+            };
         }[] | undefined;
         screenshot?: {
             data: string;
@@ -1001,21 +1001,21 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
         day: number;
         sec: number;
         cpus?: {
-            model?: string | undefined;
-            times?: {
-                user?: number | undefined;
-                nice?: number | undefined;
-                sys?: number | undefined;
-                idle?: number | undefined;
-                irq?: number | undefined;
-            }[] | undefined;
-            memory?: {
-                total?: number | undefined;
-                free?: number | undefined;
-                used?: number | undefined;
-                buffer?: number | undefined;
-                cached?: number | undefined;
-            } | undefined;
+            model: string;
+            times: {
+                user: number;
+                nice: number;
+                sys: number;
+                idle: number;
+                irq: number;
+            };
+            memory: {
+                total: number;
+                free: number;
+                used: number;
+                buffer: number;
+                cached: number;
+            };
         }[] | undefined;
         screenshot?: {
             data: string;
@@ -1045,21 +1045,21 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
         day: number;
         sec: number;
         cpus?: {
-            model?: string | undefined;
-            times?: {
-                user?: number | undefined;
-                nice?: number | undefined;
-                sys?: number | undefined;
-                idle?: number | undefined;
-                irq?: number | undefined;
-            }[] | undefined;
-            memory?: {
-                total?: number | undefined;
-                free?: number | undefined;
-                used?: number | undefined;
-                buffer?: number | undefined;
-                cached?: number | undefined;
-            } | undefined;
+            model: string;
+            times: {
+                user: number;
+                nice: number;
+                sys: number;
+                idle: number;
+                irq: number;
+            };
+            memory: {
+                total: number;
+                free: number;
+                used: number;
+                buffer: number;
+                cached: number;
+            };
         }[] | undefined;
         screenshot?: {
             data: string;

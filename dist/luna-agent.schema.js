@@ -79,32 +79,32 @@ export const LunaAgentStatusDetail = z.object({
         .describe('The second of the current system time'),
     // DeviceInfo
     cpus: z.array(z.object({
-        model: z.string().optional()
+        model: z.string()
             .describe('The CPU model name'),
-        times: z.array(z.object({
-            user: z.number().optional()
+        times: z.object({
+            user: z.number()
                 .describe('The CPU time spent on user space (milliseconds)'),
-            nice: z.number().optional()
+            nice: z.number()
                 .describe('The CPU time spent on low priority processes (milliseconds)'),
-            sys: z.number().optional()
+            sys: z.number()
                 .describe('The CPU time spent on kernel space (milliseconds)'),
-            idle: z.number().optional()
+            idle: z.number()
                 .describe('The CPU time spent idle (milliseconds)'),
-            irq: z.number().optional()
+            irq: z.number()
                 .describe('The CPU time spent handling interrupts (milliseconds)'),
-        })).optional(),
+        }),
         memory: z.object({
-            total: z.number().optional()
+            total: z.number()
                 .describe('Total memory space (bytes)'),
-            free: z.number().optional()
+            free: z.number()
                 .describe('Free memory space (bytes)'),
-            used: z.number().optional()
+            used: z.number()
                 .describe('Used memory space (bytes)'),
-            buffer: z.number().optional()
+            buffer: z.number()
                 .describe('Buffered memory space (bytes)'),
-            cached: z.number().optional()
+            cached: z.number()
                 .describe('Cached memory space (bytes)'),
-        }).optional(),
+        }),
     })).optional(),
     // Signage
     screenshot: z.object({
