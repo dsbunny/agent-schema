@@ -323,12 +323,7 @@ export declare const LunaAgentState: z.ZodObject<z.objectUtil.extendShape<z.obje
 }>;
 export type LunaAgentState = z.infer<typeof LunaAgentState>;
 export declare const LunaAgentStatusDetail: z.ZodObject<{
-    year: z.ZodNumber;
-    month: z.ZodNumber;
-    day: z.ZodNumber;
-    hour: z.ZodNumber;
-    minute: z.ZodNumber;
-    sec: z.ZodNumber;
+    date: z.ZodString;
     cpus: z.ZodOptional<z.ZodArray<z.ZodObject<{
         model: z.ZodString;
         times: z.ZodObject<{
@@ -451,12 +446,7 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
         count: number;
     }>>>;
 }, "strip", z.ZodTypeAny, {
-    hour: number;
-    minute: number;
-    year: number;
-    month: number;
-    day: number;
-    sec: number;
+    date: string;
     cpus?: {
         model: string;
         times: {
@@ -497,12 +487,7 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
         count: number;
     }> | undefined;
 }, {
-    hour: number;
-    minute: number;
-    year: number;
-    month: number;
-    day: number;
-    sec: number;
+    date: string;
     cpus?: {
         model: string;
         times: {
@@ -550,12 +535,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
 }, {
     url: z.ZodLiteral<"urn:dsbunny:agent:luna">;
     detail: z.ZodNullable<z.ZodObject<{
-        year: z.ZodNumber;
-        month: z.ZodNumber;
-        day: z.ZodNumber;
-        hour: z.ZodNumber;
-        minute: z.ZodNumber;
-        sec: z.ZodNumber;
+        date: z.ZodString;
         cpus: z.ZodOptional<z.ZodArray<z.ZodObject<{
             model: z.ZodString;
             times: z.ZodObject<{
@@ -678,12 +658,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
             count: number;
         }>>>;
     }, "strip", z.ZodTypeAny, {
-        hour: number;
-        minute: number;
-        year: number;
-        month: number;
-        day: number;
-        sec: number;
+        date: string;
         cpus?: {
             model: string;
             times: {
@@ -724,12 +699,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
             count: number;
         }> | undefined;
     }, {
-        hour: number;
-        minute: number;
-        year: number;
-        month: number;
-        day: number;
-        sec: number;
+        date: string;
         cpus?: {
             model: string;
             times: {
@@ -773,12 +743,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
 }>, "strip", z.ZodTypeAny, {
     url: "urn:dsbunny:agent:luna";
     detail: {
-        hour: number;
-        minute: number;
-        year: number;
-        month: number;
-        day: number;
-        sec: number;
+        date: string;
         cpus?: {
             model: string;
             times: {
@@ -822,12 +787,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
 }, {
     url: "urn:dsbunny:agent:luna";
     detail: {
-        hour: number;
-        minute: number;
-        year: number;
-        month: number;
-        day: number;
-        sec: number;
+        date: string;
         cpus?: {
             model: string;
             times: {
@@ -883,12 +843,7 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
 }, {
     url: z.ZodLiteral<"urn:dsbunny:agent:luna">;
     detail: z.ZodNullable<z.ZodObject<{
-        year: z.ZodNumber;
-        month: z.ZodNumber;
-        day: z.ZodNumber;
-        hour: z.ZodNumber;
-        minute: z.ZodNumber;
-        sec: z.ZodNumber;
+        date: z.ZodString;
         cpus: z.ZodOptional<z.ZodArray<z.ZodObject<{
             model: z.ZodString;
             times: z.ZodObject<{
@@ -1011,12 +966,7 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
             count: number;
         }>>>;
     }, "strip", z.ZodTypeAny, {
-        hour: number;
-        minute: number;
-        year: number;
-        month: number;
-        day: number;
-        sec: number;
+        date: string;
         cpus?: {
             model: string;
             times: {
@@ -1057,12 +1007,7 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
             count: number;
         }> | undefined;
     }, {
-        hour: number;
-        minute: number;
-        year: number;
-        month: number;
-        day: number;
-        sec: number;
+        date: string;
         cpus?: {
             model: string;
             times: {
@@ -1106,12 +1051,7 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
 }>>, "strip", z.ZodTypeAny, {
     url: "urn:dsbunny:agent:luna";
     detail: {
-        hour: number;
-        minute: number;
-        year: number;
-        month: number;
-        day: number;
-        sec: number;
+        date: string;
         cpus?: {
             model: string;
             times: {
@@ -1158,12 +1098,7 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
 }, {
     url: "urn:dsbunny:agent:luna";
     detail: {
-        hour: number;
-        minute: number;
-        year: number;
-        month: number;
-        day: number;
-        sec: number;
+        date: string;
         cpus?: {
             model: string;
             times: {

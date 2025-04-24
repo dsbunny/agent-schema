@@ -1,6 +1,6 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 
-import { z } from 'zod';
+import { date, z } from 'zod';
 import {
 	AgentState,
 	AgentStateBase,
@@ -75,21 +75,8 @@ export type LunaAgentState = z.infer<typeof LunaAgentState>;
 
 // #region Status
 export const LunaAgentStatusDetail = z.object({
-	// Configuration
-	// Only report time in the status, setting the time over the network will not be
-	// supported in deference to enabling NTP.
-	year: z.number().int().min(2000).max(2037)
-		.describe('The year of the current system time'),
-	month: z.number().int().min(1).max(12)
-		.describe('The month of the current system time'),
-	day: z.number().int().min(1).max(31)
-		.describe('The day of the current system time'),
-	hour: z.number().int().min(0).max(23)
-		.describe('The hour of the current system time'),
-	minute: z.number().int().min(0).max(59)
-		.describe('The minute of the current system time'),
-	sec: z.number().int().min(0).max(59)
-		.describe('The second of the current system time'),
+	date: z.string().datetime()
+		.describe('The local date and time of the agent'),
 	// DeviceInfo
 	cpus: z.array(z.object({
 		model: z.string()
