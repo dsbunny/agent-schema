@@ -49,14 +49,14 @@ export declare const RendererAgentStateDetail: z.ZodObject<{
         product: z.ZodString;
         device_id: z.ZodString;
     }, "strip", z.ZodTypeAny, {
-        name: string;
         vendor: string;
         product: string;
+        name: string;
         device_id: string;
     }, {
-        name: string;
         vendor: string;
         product: string;
+        name: string;
         device_id: string;
     }>>;
 }, "strip", z.ZodTypeAny, {
@@ -75,9 +75,9 @@ export declare const RendererAgentStateDetail: z.ZodObject<{
         integrity: string;
     } | undefined;
     usb?: {
-        name: string;
         vendor: string;
         product: string;
+        name: string;
         device_id: string;
     } | undefined;
 }, {
@@ -96,9 +96,9 @@ export declare const RendererAgentStateDetail: z.ZodObject<{
         integrity: string;
     } | undefined;
     usb?: {
-        name: string;
         vendor: string;
         product: string;
+        name: string;
         device_id: string;
     } | undefined;
 }>;
@@ -207,14 +207,14 @@ export declare const RendererAgentStateBase: z.ZodObject<z.objectUtil.extendShap
             product: z.ZodString;
             device_id: z.ZodString;
         }, "strip", z.ZodTypeAny, {
-            name: string;
             vendor: string;
             product: string;
+            name: string;
             device_id: string;
         }, {
-            name: string;
             vendor: string;
             product: string;
+            name: string;
             device_id: string;
         }>>;
     }, "strip", z.ZodTypeAny, {
@@ -233,9 +233,9 @@ export declare const RendererAgentStateBase: z.ZodObject<z.objectUtil.extendShap
             integrity: string;
         } | undefined;
         usb?: {
-            name: string;
             vendor: string;
             product: string;
+            name: string;
             device_id: string;
         } | undefined;
     }, {
@@ -254,9 +254,9 @@ export declare const RendererAgentStateBase: z.ZodObject<z.objectUtil.extendShap
             integrity: string;
         } | undefined;
         usb?: {
-            name: string;
             vendor: string;
             product: string;
+            name: string;
             device_id: string;
         } | undefined;
     }>>;
@@ -278,9 +278,9 @@ export declare const RendererAgentStateBase: z.ZodObject<z.objectUtil.extendShap
             integrity: string;
         } | undefined;
         usb?: {
-            name: string;
             vendor: string;
             product: string;
+            name: string;
             device_id: string;
         } | undefined;
     } | null;
@@ -306,9 +306,9 @@ export declare const RendererAgentStateBase: z.ZodObject<z.objectUtil.extendShap
             integrity: string;
         } | undefined;
         usb?: {
-            name: string;
             vendor: string;
             product: string;
+            name: string;
             device_id: string;
         } | undefined;
     } | null;
@@ -387,14 +387,14 @@ export declare const RendererAgentState: z.ZodObject<z.objectUtil.extendShape<z.
             product: z.ZodString;
             device_id: z.ZodString;
         }, "strip", z.ZodTypeAny, {
-            name: string;
             vendor: string;
             product: string;
+            name: string;
             device_id: string;
         }, {
-            name: string;
             vendor: string;
             product: string;
+            name: string;
             device_id: string;
         }>>;
     }, "strip", z.ZodTypeAny, {
@@ -413,9 +413,9 @@ export declare const RendererAgentState: z.ZodObject<z.objectUtil.extendShape<z.
             integrity: string;
         } | undefined;
         usb?: {
-            name: string;
             vendor: string;
             product: string;
+            name: string;
             device_id: string;
         } | undefined;
     }, {
@@ -434,9 +434,9 @@ export declare const RendererAgentState: z.ZodObject<z.objectUtil.extendShape<z.
             integrity: string;
         } | undefined;
         usb?: {
-            name: string;
             vendor: string;
             product: string;
+            name: string;
             device_id: string;
         } | undefined;
     }>>;
@@ -458,9 +458,9 @@ export declare const RendererAgentState: z.ZodObject<z.objectUtil.extendShape<z.
             integrity: string;
         } | undefined;
         usb?: {
-            name: string;
             vendor: string;
             product: string;
+            name: string;
             device_id: string;
         } | undefined;
     } | null;
@@ -489,9 +489,9 @@ export declare const RendererAgentState: z.ZodObject<z.objectUtil.extendShape<z.
             integrity: string;
         } | undefined;
         usb?: {
-            name: string;
             vendor: string;
             product: string;
+            name: string;
             device_id: string;
         } | undefined;
     } | null;
