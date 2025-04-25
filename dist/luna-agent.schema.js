@@ -119,7 +119,7 @@ export const LunaAgentStatusDetail = z.object({
         usbName: z.string(),
         vendor: z.string(),
         product: z.string(),
-        deviceId: z.string(),
+        deviceId: z.string().optional(), // Optional/required not documented.
     })).optional()
         .describe('The list of USB devices'),
     // ScapError

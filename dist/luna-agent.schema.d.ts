@@ -403,17 +403,17 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
         usbName: z.ZodString;
         vendor: z.ZodString;
         product: z.ZodString;
-        deviceId: z.ZodString;
+        deviceId: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
         usbName: string;
         vendor: string;
         product: string;
-        deviceId: string;
+        deviceId?: string | undefined;
     }, {
         usbName: string;
         vendor: string;
         product: string;
-        deviceId: string;
+        deviceId?: string | undefined;
     }>, "many">>;
     errors: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
         count: z.ZodNumber;
@@ -476,7 +476,7 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
         usbName: string;
         vendor: string;
         product: string;
-        deviceId: string;
+        deviceId?: string | undefined;
     }[] | undefined;
     errors?: Record<string, {
         entries: {
@@ -517,7 +517,7 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
         usbName: string;
         vendor: string;
         product: string;
-        deviceId: string;
+        deviceId?: string | undefined;
     }[] | undefined;
     errors?: Record<string, {
         entries: {
@@ -615,17 +615,17 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
             usbName: z.ZodString;
             vendor: z.ZodString;
             product: z.ZodString;
-            deviceId: z.ZodString;
+            deviceId: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
             usbName: string;
             vendor: string;
             product: string;
-            deviceId: string;
+            deviceId?: string | undefined;
         }, {
             usbName: string;
             vendor: string;
             product: string;
-            deviceId: string;
+            deviceId?: string | undefined;
         }>, "many">>;
         errors: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
             count: z.ZodNumber;
@@ -688,7 +688,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
             usbName: string;
             vendor: string;
             product: string;
-            deviceId: string;
+            deviceId?: string | undefined;
         }[] | undefined;
         errors?: Record<string, {
             entries: {
@@ -729,7 +729,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
             usbName: string;
             vendor: string;
             product: string;
-            deviceId: string;
+            deviceId?: string | undefined;
         }[] | undefined;
         errors?: Record<string, {
             entries: {
@@ -773,7 +773,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
             usbName: string;
             vendor: string;
             product: string;
-            deviceId: string;
+            deviceId?: string | undefined;
         }[] | undefined;
         errors?: Record<string, {
             entries: {
@@ -817,7 +817,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
             usbName: string;
             vendor: string;
             product: string;
-            deviceId: string;
+            deviceId?: string | undefined;
         }[] | undefined;
         errors?: Record<string, {
             entries: {
@@ -923,17 +923,17 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
             usbName: z.ZodString;
             vendor: z.ZodString;
             product: z.ZodString;
-            deviceId: z.ZodString;
+            deviceId: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
             usbName: string;
             vendor: string;
             product: string;
-            deviceId: string;
+            deviceId?: string | undefined;
         }, {
             usbName: string;
             vendor: string;
             product: string;
-            deviceId: string;
+            deviceId?: string | undefined;
         }>, "many">>;
         errors: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
             count: z.ZodNumber;
@@ -996,7 +996,7 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
             usbName: string;
             vendor: string;
             product: string;
-            deviceId: string;
+            deviceId?: string | undefined;
         }[] | undefined;
         errors?: Record<string, {
             entries: {
@@ -1037,7 +1037,7 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
             usbName: string;
             vendor: string;
             product: string;
-            deviceId: string;
+            deviceId?: string | undefined;
         }[] | undefined;
         errors?: Record<string, {
             entries: {
@@ -1081,7 +1081,7 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
             usbName: string;
             vendor: string;
             product: string;
-            deviceId: string;
+            deviceId?: string | undefined;
         }[] | undefined;
         errors?: Record<string, {
             entries: {
@@ -1128,7 +1128,7 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
             usbName: string;
             vendor: string;
             product: string;
-            deviceId: string;
+            deviceId?: string | undefined;
         }[] | undefined;
         errors?: Record<string, {
             entries: {
