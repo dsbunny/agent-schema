@@ -1,6 +1,6 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 
-import { date, z } from 'zod';
+import { z } from 'zod';
 import {
 	AgentState,
 	AgentStateBase,
@@ -140,7 +140,7 @@ export const LunaAgentStatusDetail = z.object({
 		count: z.number().int().min(0)
 			.describe('The number of errors'),
 		entries: z.array(z.object({
-			code: z.number().int()
+			code: z.string()
 				.describe('The error code'),
 			text: z.string()
 				.describe('The error text'),

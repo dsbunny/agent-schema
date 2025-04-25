@@ -418,28 +418,28 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
     errors: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
         count: z.ZodNumber;
         entries: z.ZodArray<z.ZodObject<{
-            code: z.ZodNumber;
+            code: z.ZodString;
             text: z.ZodString;
             timestamp: z.ZodString;
         }, "strip", z.ZodTypeAny, {
-            code: number;
+            code: string;
             text: string;
             timestamp: string;
         }, {
-            code: number;
+            code: string;
             text: string;
             timestamp: string;
         }>, "many">;
     }, "strip", z.ZodTypeAny, {
         entries: {
-            code: number;
+            code: string;
             text: string;
             timestamp: string;
         }[];
         count: number;
     }, {
         entries: {
-            code: number;
+            code: string;
             text: string;
             timestamp: string;
         }[];
@@ -480,7 +480,7 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
     }[] | undefined;
     errors?: Record<string, {
         entries: {
-            code: number;
+            code: string;
             text: string;
             timestamp: string;
         }[];
@@ -521,7 +521,7 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
     }[] | undefined;
     errors?: Record<string, {
         entries: {
-            code: number;
+            code: string;
             text: string;
             timestamp: string;
         }[];
@@ -630,28 +630,28 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
         errors: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
             count: z.ZodNumber;
             entries: z.ZodArray<z.ZodObject<{
-                code: z.ZodNumber;
+                code: z.ZodString;
                 text: z.ZodString;
                 timestamp: z.ZodString;
             }, "strip", z.ZodTypeAny, {
-                code: number;
+                code: string;
                 text: string;
                 timestamp: string;
             }, {
-                code: number;
+                code: string;
                 text: string;
                 timestamp: string;
             }>, "many">;
         }, "strip", z.ZodTypeAny, {
             entries: {
-                code: number;
+                code: string;
                 text: string;
                 timestamp: string;
             }[];
             count: number;
         }, {
             entries: {
-                code: number;
+                code: string;
                 text: string;
                 timestamp: string;
             }[];
@@ -692,7 +692,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
         }[] | undefined;
         errors?: Record<string, {
             entries: {
-                code: number;
+                code: string;
                 text: string;
                 timestamp: string;
             }[];
@@ -733,7 +733,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
         }[] | undefined;
         errors?: Record<string, {
             entries: {
-                code: number;
+                code: string;
                 text: string;
                 timestamp: string;
             }[];
@@ -777,7 +777,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
         }[] | undefined;
         errors?: Record<string, {
             entries: {
-                code: number;
+                code: string;
                 text: string;
                 timestamp: string;
             }[];
@@ -821,7 +821,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<z.objectUtil.extendShape<{
         }[] | undefined;
         errors?: Record<string, {
             entries: {
-                code: number;
+                code: string;
                 text: string;
                 timestamp: string;
             }[];
@@ -938,28 +938,28 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
         errors: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
             count: z.ZodNumber;
             entries: z.ZodArray<z.ZodObject<{
-                code: z.ZodNumber;
+                code: z.ZodString;
                 text: z.ZodString;
                 timestamp: z.ZodString;
             }, "strip", z.ZodTypeAny, {
-                code: number;
+                code: string;
                 text: string;
                 timestamp: string;
             }, {
-                code: number;
+                code: string;
                 text: string;
                 timestamp: string;
             }>, "many">;
         }, "strip", z.ZodTypeAny, {
             entries: {
-                code: number;
+                code: string;
                 text: string;
                 timestamp: string;
             }[];
             count: number;
         }, {
             entries: {
-                code: number;
+                code: string;
                 text: string;
                 timestamp: string;
             }[];
@@ -1000,7 +1000,7 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
         }[] | undefined;
         errors?: Record<string, {
             entries: {
-                code: number;
+                code: string;
                 text: string;
                 timestamp: string;
             }[];
@@ -1041,7 +1041,7 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
         }[] | undefined;
         errors?: Record<string, {
             entries: {
-                code: number;
+                code: string;
                 text: string;
                 timestamp: string;
             }[];
@@ -1085,7 +1085,7 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
         }[] | undefined;
         errors?: Record<string, {
             entries: {
-                code: number;
+                code: string;
                 text: string;
                 timestamp: string;
             }[];
@@ -1132,7 +1132,7 @@ export declare const LunaAgentStatus: z.ZodObject<z.objectUtil.extendShape<z.obj
         }[] | undefined;
         errors?: Record<string, {
             entries: {
-                code: number;
+                code: string;
                 text: string;
                 timestamp: string;
             }[];
