@@ -43,12 +43,12 @@ export const RendererScreen = z.object({
     device_pixel_ratio: z.number()
         .describe('The ratio of the resolution in physical pixels to the resolution in CSS pixels for the current display device'),
 });
-export const RendererAgentStateBase = AgentStateBase.merge(z.object({
+export const RendererAgentStateBase = AgentStateBase.extend(z.object({
     url: z.literal(RENDERER_AGENT_URN),
     detail: RendererAgentStateDetail.nullable()
         .describe('The detail of the renderer agent state'),
 }));
-export const RendererAgentState = AgentState.merge(RendererAgentStateBase);
+export const RendererAgentState = AgentState.extend(RendererAgentStateBase);
 // #endregion
 // #region Status
 export const RendererAgentStatusDetail = z.object({
@@ -57,11 +57,11 @@ export const RendererAgentStatusDetail = z.object({
     capabilities: z.array(CapabilityTypes)
         .describe('The capabilities of the screen'),
 });
-export const RendererAgentStatusBase = AgentStatusBase.merge(z.object({
+export const RendererAgentStatusBase = AgentStatusBase.extend(z.object({
     url: z.literal(RENDERER_AGENT_URN),
     detail: RendererAgentStatusDetail.nullable()
         .describe('The detail of the renderer agent status'),
 }));
-export const RendererAgentStatus = AgentStatus.merge(RendererAgentStatusBase);
+export const RendererAgentStatus = AgentStatus.extend(RendererAgentStatusBase);
 // #endregion
 //# sourceMappingURL=renderer-agent.schema.js.map

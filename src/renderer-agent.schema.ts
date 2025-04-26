@@ -57,13 +57,13 @@ export const RendererScreen = z.object({
 });
 export type RendererScreen = z.infer<typeof RendererScreen>;
 
-export const RendererAgentStateBase = AgentStateBase.merge(z.object({
+export const RendererAgentStateBase = AgentStateBase.extend(z.object({
 	url: z.literal(RENDERER_AGENT_URN),
 	detail: RendererAgentStateDetail.nullable()
 		.describe('The detail of the renderer agent state'),
 }));
 export type RendererAgentStateBase = z.infer<typeof RendererAgentStateBase>;
-export const RendererAgentState = AgentState.merge(RendererAgentStateBase);
+export const RendererAgentState = AgentState.extend(RendererAgentStateBase);
 export type RendererAgentState = z.infer<typeof RendererAgentState>;
 // #endregion
 
@@ -76,12 +76,12 @@ export const RendererAgentStatusDetail = z.object({
 });
 export type RendererAgentStatusDetail = z.infer<typeof RendererAgentStatusDetail>;
 
-export const RendererAgentStatusBase = AgentStatusBase.merge(z.object({
+export const RendererAgentStatusBase = AgentStatusBase.extend(z.object({
 	url: z.literal(RENDERER_AGENT_URN),
 	detail: RendererAgentStatusDetail.nullable()
 		.describe('The detail of the renderer agent status'),
 }));
 export type RendererAgentStatusBase = z.infer<typeof RendererAgentStatusBase>;
-export const RendererAgentStatus = AgentStatus.merge(RendererAgentStatusBase);
+export const RendererAgentStatus = AgentStatus.extend(RendererAgentStatusBase);
 export type RendererAgentStatus = z.infer<typeof RendererAgentStatus>;
 // #endregion

@@ -1,6 +1,6 @@
 {
 	"name": "@dsbunny/agent-schema",
-	"version": "3.0.3",
+	"version": "3.0.4",
 	"description": "Schema for RMM agents",
 	"type": "module",
 	"main": "dist/index.js",
@@ -13,10 +13,10 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"dependencies": {
-		"@dsbunny/capability-schema": "github:dsbunny/capability-schema#97eb0f8",
-		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema#df84663",
-		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#b4be487",
-		"zod": "^3.23.8"
+		"@dsbunny/capability-schema": "github:dsbunny/capability-schema#6d1e546",
+		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema#afd182c",
+		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#7b8352b",
+		"zod": "4.0.0-beta.20250424T163858"
 	},
 	"devDependencies": {
 		"typescript": "^5.5.3"

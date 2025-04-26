@@ -1,4 +1,7 @@
 # Changelog
+## v3.0.4
+- Bump to `zod@4.0.0-beta`.
+
 ## v3.0.3
 - Add new `LunaAgent`.
 - Fix `playlist_element_name` to either _luna_, _css_, or _webgl_.

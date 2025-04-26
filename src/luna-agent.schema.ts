@@ -63,19 +63,19 @@ export const LunaAgentStateDetail = z.object({
 });
 export type LunaAgentStateDetail = z.infer<typeof LunaAgentStateDetail>;
 
-export const LunaAgentStateBase = AgentStateBase.merge(z.object({
+export const LunaAgentStateBase = AgentStateBase.extend(z.object({
 	url: z.literal(LUNA_AGENT_URN),
 	detail: LunaAgentStateDetail.nullable()
 		.describe('The detail of the Luna agent state'),
 }));
 export type LunaAgentStateBase = z.infer<typeof LunaAgentStateBase>;
-export const LunaAgentState = AgentState.merge(LunaAgentStateBase);
+export const LunaAgentState = AgentState.extend(LunaAgentStateBase);
 export type LunaAgentState = z.infer<typeof LunaAgentState>;
 // #endregion
 
 // #region Status
 export const LunaAgentStatusDetail = z.object({
-	date: z.string().datetime()
+	date: z.iso.datetime()
 		.describe('The local date and time of the agent'),
 	// DeviceInfo
 	cpus: z.array(z.object({
@@ -108,7 +108,7 @@ export const LunaAgentStatusDetail = z.object({
 	}).optional(),
 	// Signage
 	screenshot: z.object({
-		data: z.string().base64()
+		data: z.base64()
 			.describe('The screenshot data in base64 format'),
 		size: z.number().int().min(0)
 			.describe('The size of the screenshot (bytes)'),
@@ -153,12 +153,12 @@ export const LunaAgentStatusDetail = z.object({
 });
 export type LunaAgentStatusDetail = z.infer<typeof LunaAgentStatusDetail>;
 
-export const LunaAgentStatusBase = AgentStatusBase.merge(z.object({
+export const LunaAgentStatusBase = AgentStatusBase.extend(z.object({
 	url: z.literal(LUNA_AGENT_URN),
 	detail: LunaAgentStatusDetail.nullable()
 		.describe('The detail of the Luna agent status'),
 }));
 export type LunaAgentStatusBase = z.infer<typeof LunaAgentStatusBase>;
-export const LunaAgentStatus = AgentStatus.merge(LunaAgentStatusBase);
+export const LunaAgentStatus = AgentStatus.extend(LunaAgentStatusBase);
 export type LunaAgentStatus = z.infer<typeof LunaAgentStatus>;
 // #endregion
