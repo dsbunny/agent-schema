@@ -33,7 +33,7 @@ export const LunaAgentStateDetail = z.object({
 	]).optional()
 		.describe('The display mode'),
 	// Signage
-	screenshot_timestamp: z.string().datetime().optional()
+	screenshot_timestamp: z.iso.datetime().optional()
 		.describe('The timestamp of the screenshot request'),
 	screenshot_resolution: z.enum([
 		'thumbnail',  // 128×72
@@ -46,11 +46,11 @@ export const LunaAgentStateDetail = z.object({
 	// update is performed.
 	firmware_version: z.string().optional()
 		.describe('The version of the firmware'),
-	firmware_url: z.string().url().optional()
+	firmware_url: z.url().optional()
 		.describe('The URL of the firmware'),
 	app_version: z.string().optional()
 		.describe('The version of the app'),
-	app_url: z.string().url().optional()
+	app_url: z.url().optional()
 		.describe('The URL of the app'),
 	// Time
 	timer_list: z.array(z.object({
@@ -63,13 +63,13 @@ export const LunaAgentStateDetail = z.object({
 });
 export type LunaAgentStateDetail = z.infer<typeof LunaAgentStateDetail>;
 
-export const LunaAgentStateBase = AgentStateBase.extend(z.object({
+export const LunaAgentStateBase = AgentStateBase.extend({
 	url: z.literal(LUNA_AGENT_URN),
 	detail: LunaAgentStateDetail.nullable()
 		.describe('The detail of the Luna agent state'),
-}));
+});
 export type LunaAgentStateBase = z.infer<typeof LunaAgentStateBase>;
-export const LunaAgentState = AgentState.extend(LunaAgentStateBase);
+export const LunaAgentState = AgentState.extend(LunaAgentStateBase.shape);
 export type LunaAgentState = z.infer<typeof LunaAgentState>;
 // #endregion
 
@@ -153,12 +153,12 @@ export const LunaAgentStatusDetail = z.object({
 });
 export type LunaAgentStatusDetail = z.infer<typeof LunaAgentStatusDetail>;
 
-export const LunaAgentStatusBase = AgentStatusBase.extend(z.object({
+export const LunaAgentStatusBase = AgentStatusBase.extend({
 	url: z.literal(LUNA_AGENT_URN),
 	detail: LunaAgentStatusDetail.nullable()
 		.describe('The detail of the Luna agent status'),
-}));
+});
 export type LunaAgentStatusBase = z.infer<typeof LunaAgentStatusBase>;
-export const LunaAgentStatus = AgentStatus.extend(LunaAgentStatusBase);
+export const LunaAgentStatus = AgentStatus.extend(LunaAgentStatusBase.shape);
 export type LunaAgentStatus = z.infer<typeof LunaAgentStatus>;
 // #endregion
