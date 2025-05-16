@@ -1,5 +1,5 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
-import { z } from 'zod';
+import { z } from 'zod/v4';
 import { AgentState, AgentStateBase, AgentStatus, AgentStatusBase, } from '@dsbunny/rmm-schema';
 export const LUNA_AGENT_URN = 'urn:dsbunny:agent:luna';
 // #region State

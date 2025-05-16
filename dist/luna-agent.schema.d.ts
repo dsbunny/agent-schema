@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod/v4';
 export declare const LUNA_AGENT_URN = "urn:dsbunny:agent:luna";
 export declare const LunaAgentStateDetail: z.ZodObject<{
     ntp: z.ZodOptional<z.ZodBoolean>;
