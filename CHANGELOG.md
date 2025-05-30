@@ -1,4 +1,7 @@
 # Changelog
+## v4.2.8
+- Add a BrightSign WebGL playlist for latest generation of devices.
+
 ## v4.1.7
 - Extend playlist support to Android, BrightSign, and WebGPU platforms.
 - Rename `css` platform to `web`.

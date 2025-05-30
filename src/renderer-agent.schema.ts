@@ -17,6 +17,7 @@ export const RendererAgentStateDetail = z.object({
 	playlist_element_name: z.enum([
 		'android-play-list',
 		'brightsign-play-list',
+		'brightsign-webgl-play-list',
 		'luna-play-list',
 		'web-play-list',
 		'webgl-play-list',

@@ -4,6 +4,7 @@ export declare const RendererAgentStateDetail: z.ZodObject<{
     playlist_element_name: z.ZodEnum<{
         "android-play-list": "android-play-list";
         "brightsign-play-list": "brightsign-play-list";
+        "brightsign-webgl-play-list": "brightsign-webgl-play-list";
         "luna-play-list": "luna-play-list";
         "web-play-list": "web-play-list";
         "webgl-play-list": "webgl-play-list";
@@ -69,6 +70,7 @@ export declare const RendererAgentStateBase: z.ZodObject<{
         playlist_element_name: z.ZodEnum<{
             "android-play-list": "android-play-list";
             "brightsign-play-list": "brightsign-play-list";
+            "brightsign-webgl-play-list": "brightsign-webgl-play-list";
             "luna-play-list": "luna-play-list";
             "web-play-list": "web-play-list";
             "webgl-play-list": "webgl-play-list";
@@ -112,6 +114,7 @@ export declare const RendererAgentState: z.ZodObject<{
         playlist_element_name: z.ZodEnum<{
             "android-play-list": "android-play-list";
             "brightsign-play-list": "brightsign-play-list";
+            "brightsign-webgl-play-list": "brightsign-webgl-play-list";
             "luna-play-list": "luna-play-list";
             "web-play-list": "web-play-list";
             "webgl-play-list": "webgl-play-list";
