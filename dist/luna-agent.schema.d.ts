@@ -37,12 +37,11 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
 }, {}, {}>;
 export type LunaAgentStateDetail = z.infer<typeof LunaAgentStateDetail>;
 export declare const LunaAgentStateBase: z.ZodObject<{
-    uri: z.ZodNullable<z.ZodString>;
     pull_interval: z.ZodNullable<z.ZodNumber>;
     push_interval: z.ZodNullable<z.ZodNumber>;
     min_backoff_interval: z.ZodNullable<z.ZodNumber>;
     max_backoff_interval: z.ZodNullable<z.ZodNumber>;
-    url: z.ZodLiteral<"urn:dsbunny:agent:luna">;
+    uri: z.ZodLiteral<"urn:dsbunny:agent:luna">;
     detail: z.ZodNullable<z.ZodObject<{
         ntp: z.ZodOptional<z.ZodBoolean>;
         ntpServerAddress: z.ZodOptional<z.ZodString>;
@@ -84,12 +83,11 @@ export declare const LunaAgentState: z.ZodObject<{
     create_timestamp: z.iso.ZodISODateTime;
     modify_timestamp: z.iso.ZodISODateTime;
     is_deleted: z.ZodDefault<z.ZodBoolean>;
-    uri: z.ZodNullable<z.ZodString>;
     pull_interval: z.ZodNullable<z.ZodNumber>;
     push_interval: z.ZodNullable<z.ZodNumber>;
     min_backoff_interval: z.ZodNullable<z.ZodNumber>;
     max_backoff_interval: z.ZodNullable<z.ZodNumber>;
-    url: z.ZodLiteral<"urn:dsbunny:agent:luna">;
+    uri: z.ZodLiteral<"urn:dsbunny:agent:luna">;
     detail: z.ZodNullable<z.ZodObject<{
         ntp: z.ZodOptional<z.ZodBoolean>;
         ntpServerAddress: z.ZodOptional<z.ZodString>;
@@ -178,8 +176,7 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
 }, {}, {}>;
 export type LunaAgentStatusDetail = z.infer<typeof LunaAgentStatusDetail>;
 export declare const LunaAgentStatusBase: z.ZodObject<{
-    uri: z.ZodNullable<z.ZodString>;
-    url: z.ZodLiteral<"urn:dsbunny:agent:luna">;
+    uri: z.ZodLiteral<"urn:dsbunny:agent:luna">;
     detail: z.ZodNullable<z.ZodObject<{
         date: z.iso.ZodISODateTime;
         cpus: z.ZodOptional<z.ZodArray<z.ZodObject<{
@@ -235,8 +232,7 @@ export declare const LunaAgentStatus: z.ZodObject<{
     create_timestamp: z.iso.ZodISODateTime;
     modify_timestamp: z.iso.ZodISODateTime;
     is_deleted: z.ZodDefault<z.ZodBoolean>;
-    uri: z.ZodNullable<z.ZodString>;
-    url: z.ZodLiteral<"urn:dsbunny:agent:luna">;
+    uri: z.ZodLiteral<"urn:dsbunny:agent:luna">;
     detail: z.ZodNullable<z.ZodObject<{
         date: z.iso.ZodISODateTime;
         cpus: z.ZodOptional<z.ZodArray<z.ZodObject<{

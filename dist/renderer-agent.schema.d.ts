@@ -57,12 +57,11 @@ export declare const RendererScreen: z.ZodObject<{
 }, {}, {}>;
 export type RendererScreen = z.infer<typeof RendererScreen>;
 export declare const RendererAgentStateBase: z.ZodObject<{
-    uri: z.ZodNullable<z.ZodString>;
     pull_interval: z.ZodNullable<z.ZodNumber>;
     push_interval: z.ZodNullable<z.ZodNumber>;
     min_backoff_interval: z.ZodNullable<z.ZodNumber>;
     max_backoff_interval: z.ZodNullable<z.ZodNumber>;
-    url: z.ZodLiteral<"urn:dsbunny:agent:renderer">;
+    uri: z.ZodLiteral<"urn:dsbunny:agent:renderer">;
     detail: z.ZodNullable<z.ZodObject<{
         playlist_element_name: z.ZodEnum<{
             "luna-play-list": "luna-play-list";
@@ -98,12 +97,11 @@ export declare const RendererAgentState: z.ZodObject<{
     create_timestamp: z.iso.ZodISODateTime;
     modify_timestamp: z.iso.ZodISODateTime;
     is_deleted: z.ZodDefault<z.ZodBoolean>;
-    uri: z.ZodNullable<z.ZodString>;
     pull_interval: z.ZodNullable<z.ZodNumber>;
     push_interval: z.ZodNullable<z.ZodNumber>;
     min_backoff_interval: z.ZodNullable<z.ZodNumber>;
     max_backoff_interval: z.ZodNullable<z.ZodNumber>;
-    url: z.ZodLiteral<"urn:dsbunny:agent:renderer">;
+    uri: z.ZodLiteral<"urn:dsbunny:agent:renderer">;
     detail: z.ZodNullable<z.ZodObject<{
         playlist_element_name: z.ZodEnum<{
             "luna-play-list": "luna-play-list";
@@ -182,8 +180,7 @@ export declare const RendererAgentStatusDetail: z.ZodObject<{
 }, {}, {}>;
 export type RendererAgentStatusDetail = z.infer<typeof RendererAgentStatusDetail>;
 export declare const RendererAgentStatusBase: z.ZodObject<{
-    uri: z.ZodNullable<z.ZodString>;
-    url: z.ZodLiteral<"urn:dsbunny:agent:renderer">;
+    uri: z.ZodLiteral<"urn:dsbunny:agent:renderer">;
     detail: z.ZodNullable<z.ZodObject<{
         screen: z.ZodObject<{
             width: z.ZodNumber;
@@ -235,8 +232,7 @@ export declare const RendererAgentStatus: z.ZodObject<{
     create_timestamp: z.iso.ZodISODateTime;
     modify_timestamp: z.iso.ZodISODateTime;
     is_deleted: z.ZodDefault<z.ZodBoolean>;
-    uri: z.ZodNullable<z.ZodString>;
-    url: z.ZodLiteral<"urn:dsbunny:agent:renderer">;
+    uri: z.ZodLiteral<"urn:dsbunny:agent:renderer">;
     detail: z.ZodNullable<z.ZodObject<{
         screen: z.ZodObject<{
             width: z.ZodNumber;

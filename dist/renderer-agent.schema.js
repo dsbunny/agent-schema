@@ -44,7 +44,7 @@ export const RendererScreen = z.object({
         .describe('The ratio of the resolution in physical pixels to the resolution in CSS pixels for the current display device'),
 });
 export const RendererAgentStateBase = AgentStateBase.extend({
-    url: z.literal(RENDERER_AGENT_URN),
+    uri: z.literal(RENDERER_AGENT_URN),
     detail: RendererAgentStateDetail.nullable()
         .describe('The detail of the renderer agent state'),
 });
@@ -58,7 +58,7 @@ export const RendererAgentStatusDetail = z.object({
         .describe('The capabilities of the screen'),
 });
 export const RendererAgentStatusBase = AgentStatusBase.extend({
-    url: z.literal(RENDERER_AGENT_URN),
+    uri: z.literal(RENDERER_AGENT_URN),
     detail: RendererAgentStatusDetail.nullable()
         .describe('The detail of the renderer agent status'),
 });

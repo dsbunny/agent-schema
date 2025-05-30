@@ -1,4 +1,7 @@
 # Changelog
+## v4.0.6
+- Change `url` to `uri` per `@dsbunny/rmm-schema` changes.
+
 ## v3.0.5
 - Bump to `zod@next` with `zod/v4` imports.
 

@@ -58,7 +58,7 @@ export const RendererScreen = z.object({
 export type RendererScreen = z.infer<typeof RendererScreen>;
 
 export const RendererAgentStateBase = AgentStateBase.extend({
-	url: z.literal(RENDERER_AGENT_URN),
+	uri: z.literal(RENDERER_AGENT_URN),
 	detail: RendererAgentStateDetail.nullable()
 		.describe('The detail of the renderer agent state'),
 });
@@ -77,7 +77,7 @@ export const RendererAgentStatusDetail = z.object({
 export type RendererAgentStatusDetail = z.infer<typeof RendererAgentStatusDetail>;
 
 export const RendererAgentStatusBase = AgentStatusBase.extend({
-	url: z.literal(RENDERER_AGENT_URN),
+	uri: z.literal(RENDERER_AGENT_URN),
 	detail: RendererAgentStatusDetail.nullable()
 		.describe('The detail of the renderer agent status'),
 });

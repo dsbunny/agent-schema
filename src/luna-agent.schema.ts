@@ -64,7 +64,7 @@ export const LunaAgentStateDetail = z.object({
 export type LunaAgentStateDetail = z.infer<typeof LunaAgentStateDetail>;
 
 export const LunaAgentStateBase = AgentStateBase.extend({
-	url: z.literal(LUNA_AGENT_URN),
+	uri: z.literal(LUNA_AGENT_URN),
 	detail: LunaAgentStateDetail.nullable()
 		.describe('The detail of the Luna agent state'),
 });
@@ -154,7 +154,7 @@ export const LunaAgentStatusDetail = z.object({
 export type LunaAgentStatusDetail = z.infer<typeof LunaAgentStatusDetail>;
 
 export const LunaAgentStatusBase = AgentStatusBase.extend({
-	url: z.literal(LUNA_AGENT_URN),
+	uri: z.literal(LUNA_AGENT_URN),
 	detail: LunaAgentStatusDetail.nullable()
 		.describe('The detail of the Luna agent status'),
 });

@@ -54,7 +54,7 @@ export const LunaAgentStateDetail = z.object({
         .describe('The list of timers'),
 });
 export const LunaAgentStateBase = AgentStateBase.extend({
-    url: z.literal(LUNA_AGENT_URN),
+    uri: z.literal(LUNA_AGENT_URN),
     detail: LunaAgentStateDetail.nullable()
         .describe('The detail of the Luna agent state'),
 });
@@ -138,7 +138,7 @@ export const LunaAgentStatusDetail = z.object({
         .describe('The list of errors'),
 });
 export const LunaAgentStatusBase = AgentStatusBase.extend({
-    url: z.literal(LUNA_AGENT_URN),
+    uri: z.literal(LUNA_AGENT_URN),
     detail: LunaAgentStatusDetail.nullable()
         .describe('The detail of the Luna agent status'),
 });
