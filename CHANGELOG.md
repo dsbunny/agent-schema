@@ -1,4 +1,8 @@
 # Changelog
+## v4.1.7
+- Extend playlist support to Android, BrightSign, and WebGPU platforms.
+- Rename `css` platform to `web`.
+
 ## v4.0.6
 - Change `url` to `uri` per `@dsbunny/rmm-schema` changes.
 

@@ -2,9 +2,12 @@ import { z } from 'zod/v4';
 export declare const RENDERER_AGENT_URN = "urn:dsbunny:agent:renderer";
 export declare const RendererAgentStateDetail: z.ZodObject<{
     playlist_element_name: z.ZodEnum<{
+        "android-play-list": "android-play-list";
+        "brightsign-play-list": "brightsign-play-list";
         "luna-play-list": "luna-play-list";
-        "css-play-list": "css-play-list";
+        "web-play-list": "web-play-list";
         "webgl-play-list": "webgl-play-list";
+        "webgpu-play-list": "webgpu-play-list";
     }>;
     recipe_link: z.ZodOptional<z.ZodObject<{
         "@type": z.ZodLiteral<"RecipeLink">;
@@ -64,9 +67,12 @@ export declare const RendererAgentStateBase: z.ZodObject<{
     uri: z.ZodLiteral<"urn:dsbunny:agent:renderer">;
     detail: z.ZodNullable<z.ZodObject<{
         playlist_element_name: z.ZodEnum<{
+            "android-play-list": "android-play-list";
+            "brightsign-play-list": "brightsign-play-list";
             "luna-play-list": "luna-play-list";
-            "css-play-list": "css-play-list";
+            "web-play-list": "web-play-list";
             "webgl-play-list": "webgl-play-list";
+            "webgpu-play-list": "webgpu-play-list";
         }>;
         recipe_link: z.ZodOptional<z.ZodObject<{
             "@type": z.ZodLiteral<"RecipeLink">;
@@ -104,9 +110,12 @@ export declare const RendererAgentState: z.ZodObject<{
     uri: z.ZodLiteral<"urn:dsbunny:agent:renderer">;
     detail: z.ZodNullable<z.ZodObject<{
         playlist_element_name: z.ZodEnum<{
+            "android-play-list": "android-play-list";
+            "brightsign-play-list": "brightsign-play-list";
             "luna-play-list": "luna-play-list";
-            "css-play-list": "css-play-list";
+            "web-play-list": "web-play-list";
             "webgl-play-list": "webgl-play-list";
+            "webgpu-play-list": "webgpu-play-list";
         }>;
         recipe_link: z.ZodOptional<z.ZodObject<{
             "@type": z.ZodLiteral<"RecipeLink">;

@@ -14,11 +14,21 @@ export const RENDERER_AGENT_URN = 'urn:dsbunny:agent:renderer';
 
 // #region State
 export const RendererAgentStateDetail = z.object({
-	playlist_element_name: z.enum(['luna-play-list', 'css-play-list', 'webgl-play-list'])
+	playlist_element_name: z.enum([
+		'android-play-list',
+		'brightsign-play-list',
+		'luna-play-list',
+		'web-play-list',
+		'webgl-play-list',
+		'webgpu-play-list',
+	])
 		.describe('The name of the playlist element'),
 	recipe_link: RecipeSchema.RecipeLink.optional()
 		.describe('The link to the recipe'),
-	storage: z.enum(['usb', 'internal'])
+	storage: z.enum([
+		'usb',
+		'internal',
+	])
 		.describe('The storage location for the renderer'),
 	usb: z.object({
 		name: z.string()
@@ -36,7 +46,12 @@ export type RendererAgentStateDetail = z.infer<typeof RendererAgentStateDetail>;
 
 // REF: https://developer.mozilla.org/en-US/docs/Web/API/ScreenOrientation
 export const RendererScreenOrientation = z.object({
-	type: z.enum(['portrait-primary', 'portrait-secondary', 'landscape-primary', 'landscape-secondary'])
+	type: z.enum([
+		'portrait-primary',
+		'portrait-secondary',
+		'landscape-primary',
+		'landscape-secondary',
+	])
 		.describe('The orientation of the screen'),
 	angle: z.number()
 		.describe('The angle of the screen in degrees'),
