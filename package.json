@@ -13,9 +13,8 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"dependencies": {
-		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#666a2be",
 		"@dsbunny/capability-schema": "github:dsbunny/capability-schema#cc7b1ed",
-		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema#acdfe79",
+		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema#aaaabbd",
 		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#d341f31",
 		"zod": "3.25.0-beta.20250515T215617"
 	},
