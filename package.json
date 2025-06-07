@@ -14,7 +14,7 @@
 	},
 	"dependencies": {
 		"@dsbunny/capability-schema": "github:dsbunny/capability-schema#cc7b1ed",
-		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema#c6fc5c6",
+		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema#04eef6b",
 		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#94da686",
 		"zod": "3.25.0-beta.20250515T215617"
 	},
