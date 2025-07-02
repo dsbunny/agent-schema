@@ -14,6 +14,7 @@ export declare const RendererAgentStateDetail: z.ZodObject<{
         "@type": z.ZodLiteral<"RecipeLink">;
         id: z.ZodUUID;
         href: z.ZodURL;
+        expires: z.ZodOptional<z.iso.ZodISODateTime>;
         size: z.ZodNumber;
         hash: z.ZodObject<{
             method: z.ZodLiteral<"SHA256">;
@@ -80,6 +81,7 @@ export declare const RendererAgentStateBase: z.ZodObject<{
             "@type": z.ZodLiteral<"RecipeLink">;
             id: z.ZodUUID;
             href: z.ZodURL;
+            expires: z.ZodOptional<z.iso.ZodISODateTime>;
             size: z.ZodNumber;
             hash: z.ZodObject<{
                 method: z.ZodLiteral<"SHA256">;
@@ -124,6 +126,7 @@ export declare const RendererAgentState: z.ZodObject<{
             "@type": z.ZodLiteral<"RecipeLink">;
             id: z.ZodUUID;
             href: z.ZodURL;
+            expires: z.ZodOptional<z.iso.ZodISODateTime>;
             size: z.ZodNumber;
             hash: z.ZodObject<{
                 method: z.ZodLiteral<"SHA256">;
