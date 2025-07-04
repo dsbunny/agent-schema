@@ -195,6 +195,8 @@ export declare const RendererAgentStatusDetail: z.ZodObject<{
 }, {}, {}>;
 export type RendererAgentStatusDetail = z.infer<typeof RendererAgentStatusDetail>;
 export declare const RendererAgentStatusBase: z.ZodObject<{
+    has_error: z.ZodDefault<z.ZodBoolean>;
+    error_stack: z.ZodNullable<z.ZodString>;
     uri: z.ZodLiteral<"urn:dsbunny:agent:renderer">;
     detail: z.ZodNullable<z.ZodObject<{
         screen: z.ZodObject<{
@@ -247,6 +249,8 @@ export declare const RendererAgentStatus: z.ZodObject<{
     create_timestamp: z.iso.ZodISODateTime;
     modify_timestamp: z.iso.ZodISODateTime;
     is_deleted: z.ZodDefault<z.ZodBoolean>;
+    has_error: z.ZodDefault<z.ZodBoolean>;
+    error_stack: z.ZodNullable<z.ZodString>;
     uri: z.ZodLiteral<"urn:dsbunny:agent:renderer">;
     detail: z.ZodNullable<z.ZodObject<{
         screen: z.ZodObject<{

@@ -176,6 +176,8 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
 }, {}, {}>;
 export type LunaAgentStatusDetail = z.infer<typeof LunaAgentStatusDetail>;
 export declare const LunaAgentStatusBase: z.ZodObject<{
+    has_error: z.ZodDefault<z.ZodBoolean>;
+    error_stack: z.ZodNullable<z.ZodString>;
     uri: z.ZodLiteral<"urn:dsbunny:agent:luna">;
     detail: z.ZodNullable<z.ZodObject<{
         date: z.iso.ZodISODateTime;
@@ -232,6 +234,8 @@ export declare const LunaAgentStatus: z.ZodObject<{
     create_timestamp: z.iso.ZodISODateTime;
     modify_timestamp: z.iso.ZodISODateTime;
     is_deleted: z.ZodDefault<z.ZodBoolean>;
+    has_error: z.ZodDefault<z.ZodBoolean>;
+    error_stack: z.ZodNullable<z.ZodString>;
     uri: z.ZodLiteral<"urn:dsbunny:agent:luna">;
     detail: z.ZodNullable<z.ZodObject<{
         date: z.iso.ZodISODateTime;
