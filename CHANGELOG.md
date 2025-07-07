@@ -1,4 +1,7 @@
 # Changelog
+## v5.0.9
+- Replace _Luna_ agent detail with per-module schema.
+
 ## v4.2.8
 - Add a BrightSign WebGL playlist for latest generation of devices.
 

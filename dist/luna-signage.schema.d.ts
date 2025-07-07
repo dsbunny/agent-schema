@@ -1,0 +1,199 @@
+import { z } from 'zod/v4';
+export declare const CaptureScreenRequest: z.ZodObject<{
+    timestamp: z.iso.ZodISODateTime;
+    thumbnail: z.ZodDefault<z.ZodOptional<z.ZodBoolean>>;
+    imgResolution: z.ZodDefault<z.ZodOptional<z.ZodEnum<{
+        thumbnail: "thumbnail";
+        FHD: "FHD";
+        HD: "HD";
+    }>>>;
+}, {}, {}>;
+export type CaptureScreenRequest = z.infer<typeof CaptureScreenRequest>;
+export declare const CaptureScreenStatus: z.ZodObject<{
+    data: z.ZodBase64;
+    size: z.ZodNumber;
+    encoding: z.ZodLiteral<"Base64">;
+}, {}, {}>;
+export type CaptureScreenStatus = z.infer<typeof CaptureScreenStatus>;
+export declare const FailoverMode: z.ZodObject<{
+    mode: z.ZodEnum<{
+        off: "off";
+        auto: "auto";
+        manual: "manual";
+    }>;
+    priority: z.ZodArray<z.ZodString>;
+}, {}, {}>;
+export type FailoverMode = z.infer<typeof FailoverMode>;
+export declare const PowerSaveMode: z.ZodObject<{
+    ses: z.ZodBoolean;
+    dpmMode: z.ZodEnum<{
+        off: "off";
+        "5sec": "5sec";
+        "10sec": "10sec";
+        "15sec": "15sec";
+        "1min": "1min";
+        "3min": "3min";
+        "5min": "5min";
+        "10min": "10min";
+    }>;
+    automaticStandby: z.ZodEnum<{
+        off: "off";
+        "4 hours": "4 hours";
+    }>;
+    do15MinOff: z.ZodBoolean;
+}, {}, {}>;
+export type PowerSaveMode = z.infer<typeof PowerSaveMode>;
+export declare const RS232CConfiguration: z.ZodObject<{
+    mode: z.ZodNumber;
+    port: z.ZodOptional<z.ZodNumber>;
+    baudRate: z.ZodOptional<z.ZodLiteral<0 | 1024000 | 110 | 115200 | 1200 | 128000 | 14400 | 19200 | 230400 | 2400 | 256000 | 300 | 38400 | 4800 | 512000 | 57600 | 600 | 768000 | 921600 | 9600>>;
+    dataBit: z.ZodOptional<z.ZodLiteral<0 | 8 | 7>>;
+    parity: z.ZodOptional<z.ZodLiteral<0 | 1 | 2 | 3>>;
+    stopBit: z.ZodOptional<z.ZodLiteral<0 | 1 | 2>>;
+    flowControl: z.ZodOptional<z.ZodLiteral<0 | 1 | 2 | 3>>;
+    rxTimeoutInMs: z.ZodOptional<z.ZodNumber>;
+}, {}, {}>;
+export type RS232CConfiguration = z.infer<typeof RS232CConfiguration>;
+export declare const TileInfo: z.ZodObject<{
+    enabled: z.ZodBoolean;
+    row: z.ZodNumber;
+    column: z.ZodNumber;
+    tileId: z.ZodNumber;
+    naturalMode: z.ZodBoolean;
+}, {}, {}>;
+export type TileInfo = z.infer<typeof TileInfo>;
+export declare const UsageData: z.ZodObject<{
+    uptime: z.ZodNumber;
+    totalUsed: z.ZodNumber;
+}, {}, {}>;
+export type UsageData = z.infer<typeof UsageData>;
+export declare const UsagePermission: z.ZodObject<{
+    remoteKeyOperationMode: z.ZodEnum<{
+        normal: "normal";
+        blockAll: "blockAll";
+        usePwrOnly: "usePwrOnly";
+    }>;
+    localKeyOperationMode: z.ZodEnum<{
+        normal: "normal";
+        blockAll: "blockAll";
+        usePwrOnly: "usePwrOnly";
+    }>;
+}, {}, {}>;
+export type UsagePermission = z.infer<typeof UsagePermission>;
+export declare const SignageState: z.ZodObject<{
+    captureScreenRequest: z.ZodOptional<z.ZodObject<{
+        timestamp: z.iso.ZodISODateTime;
+        thumbnail: z.ZodDefault<z.ZodOptional<z.ZodBoolean>>;
+        imgResolution: z.ZodDefault<z.ZodOptional<z.ZodEnum<{
+            thumbnail: "thumbnail";
+            FHD: "FHD";
+            HD: "HD";
+        }>>>;
+    }, {}, {}>>;
+    checkScreen: z.ZodDefault<z.ZodOptional<z.ZodBoolean>>;
+    digitalAudioInput: z.ZodOptional<z.ZodEnum<{
+        audioIn: "audioIn";
+        hdmi: "hdmi";
+    }>>;
+    failoverMode: z.ZodOptional<z.ZodObject<{
+        mode: z.ZodEnum<{
+            off: "off";
+            auto: "auto";
+            manual: "manual";
+        }>;
+        priority: z.ZodArray<z.ZodString>;
+    }, {}, {}>>;
+    intelligentAuto: z.ZodOptional<z.ZodBoolean>;
+    ismMethod: z.ZodEnum<{
+        COLORWASH: "COLORWASH";
+        INVERSION: "INVERSION";
+        NORMAL: "NORMAL";
+        ORBITER: "ORBITER";
+        USERIMAGE: "USERIMAGE";
+        USERVIDEO: "USERVIDEO";
+        WASHINGBAR: "WASHINGBAR";
+        WHITEWASH: "WHITEWASH";
+    }>;
+    lanDaisyChain: z.ZodDefault<z.ZodOptional<z.ZodBoolean>>;
+    mirrorMode: z.ZodOptional<z.ZodEnum<{
+        off: "off";
+        on: "on";
+    }>>;
+    noSignalImageMode: z.ZodOptional<z.ZodEnum<{
+        off: "off";
+        on: "on";
+    }>>;
+    portraitMode: z.ZodEnum<{
+        off: "off";
+        90: "90";
+        ___undefined___: "___undefined___";
+    }>;
+    powerSaveMode: z.ZodOptional<z.ZodObject<{
+        ses: z.ZodBoolean;
+        dpmMode: z.ZodEnum<{
+            off: "off";
+            "5sec": "5sec";
+            "10sec": "10sec";
+            "15sec": "15sec";
+            "1min": "1min";
+            "3min": "3min";
+            "5min": "5min";
+            "10min": "10min";
+        }>;
+        automaticStandby: z.ZodEnum<{
+            off: "off";
+            "4 hours": "4 hours";
+        }>;
+        do15MinOff: z.ZodBoolean;
+    }, {}, {}>>;
+    quietMode: z.ZodOptional<z.ZodEnum<{
+        off: "off";
+        on: "on";
+    }>>;
+    RS232CConfiguration: z.ZodOptional<z.ZodObject<{
+        mode: z.ZodNumber;
+        port: z.ZodOptional<z.ZodNumber>;
+        baudRate: z.ZodOptional<z.ZodLiteral<0 | 1024000 | 110 | 115200 | 1200 | 128000 | 14400 | 19200 | 230400 | 2400 | 256000 | 300 | 38400 | 4800 | 512000 | 57600 | 600 | 768000 | 921600 | 9600>>;
+        dataBit: z.ZodOptional<z.ZodLiteral<0 | 8 | 7>>;
+        parity: z.ZodOptional<z.ZodLiteral<0 | 1 | 2 | 3>>;
+        stopBit: z.ZodOptional<z.ZodLiteral<0 | 1 | 2>>;
+        flowControl: z.ZodOptional<z.ZodLiteral<0 | 1 | 2 | 3>>;
+        rxTimeoutInMs: z.ZodOptional<z.ZodNumber>;
+    }, {}, {}>>;
+    simplinkStatus: z.ZodOptional<z.ZodEnum<{
+        off: "off";
+        on: "on";
+    }>>;
+    tileInfo: z.ZodOptional<z.ZodObject<{
+        enabled: z.ZodBoolean;
+        row: z.ZodNumber;
+        column: z.ZodNumber;
+        tileId: z.ZodNumber;
+        naturalMode: z.ZodBoolean;
+    }, {}, {}>>;
+    usagePermission: z.ZodOptional<z.ZodObject<{
+        remoteKeyOperationMode: z.ZodEnum<{
+            normal: "normal";
+            blockAll: "blockAll";
+            usePwrOnly: "usePwrOnly";
+        }>;
+        localKeyOperationMode: z.ZodEnum<{
+            normal: "normal";
+            blockAll: "blockAll";
+            usePwrOnly: "usePwrOnly";
+        }>;
+    }, {}, {}>>;
+}, {}, {}>;
+export type SignageState = z.infer<typeof SignageState>;
+export declare const SignageStatus: z.ZodObject<{
+    captureScreenStatus: z.ZodOptional<z.ZodObject<{
+        data: z.ZodBase64;
+        size: z.ZodNumber;
+        encoding: z.ZodLiteral<"Base64">;
+    }, {}, {}>>;
+    usageData: z.ZodOptional<z.ZodObject<{
+        uptime: z.ZodNumber;
+        totalUsed: z.ZodNumber;
+    }, {}, {}>>;
+}, {}, {}>;
+export type SignageStatus = z.infer<typeof SignageStatus>;
