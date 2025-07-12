@@ -44,7 +44,7 @@ export const PowerOnDelay = z.object({
 })
     .describe('The power-on delay configuration for the signage device, specifying how long to wait before turning on the device after a power command is issued');
 export const WakeOnLan = z.object({
-    wakeOnLan: z.boolean().optional()
+    wakeOnLan: z.boolean()
         .describe('Whether Wake-on-LAN is enabled or not'),
 })
     .describe('The Wake-on-LAN configuration for the signage device, indicating if it can be woken up remotely over the network');

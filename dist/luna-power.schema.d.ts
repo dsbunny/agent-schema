@@ -37,7 +37,7 @@ export declare const PowerOnDelay: z.ZodObject<{
 }, {}, {}>;
 export type PowerOnDelay = z.infer<typeof PowerOnDelay>;
 export declare const WakeOnLan: z.ZodObject<{
-    wakeOnLan: z.ZodOptional<z.ZodBoolean>;
+    wakeOnLan: z.ZodBoolean;
 }, {}, {}>;
 export type WakeOnLan = z.infer<typeof WakeOnLan>;
 export declare const PowerState: z.ZodObject<{
@@ -74,7 +74,7 @@ export declare const PowerState: z.ZodObject<{
         delayTime: z.ZodNumber;
     }, {}, {}>>;
     wakeOnLan: z.ZodOptional<z.ZodObject<{
-        wakeOnLan: z.ZodOptional<z.ZodBoolean>;
+        wakeOnLan: z.ZodBoolean;
     }, {}, {}>>;
 }, {}, {}>;
 export type PowerState = z.infer<typeof PowerState>;

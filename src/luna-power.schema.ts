@@ -56,7 +56,7 @@ export const PowerOnDelay = z.object({
 export type PowerOnDelay = z.infer<typeof PowerOnDelay>;
 
 export const WakeOnLan = z.object({
-	wakeOnLan: z.boolean().optional()
+	wakeOnLan: z.boolean()
 		.describe('Whether Wake-on-LAN is enabled or not'),
 })
 	.describe('The Wake-on-LAN configuration for the signage device, indicating if it can be woken up remotely over the network');

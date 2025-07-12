@@ -207,7 +207,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
             delayTime: z.ZodNumber;
         }, {}, {}>>;
         wakeOnLan: z.ZodOptional<z.ZodObject<{
-            wakeOnLan: z.ZodOptional<z.ZodBoolean>;
+            wakeOnLan: z.ZodBoolean;
         }, {}, {}>>;
     }, {}, {}>>;
     security: z.ZodOptional<z.ZodObject<{
@@ -661,7 +661,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                 delayTime: z.ZodNumber;
             }, {}, {}>>;
             wakeOnLan: z.ZodOptional<z.ZodObject<{
-                wakeOnLan: z.ZodOptional<z.ZodBoolean>;
+                wakeOnLan: z.ZodBoolean;
             }, {}, {}>>;
         }, {}, {}>>;
         security: z.ZodOptional<z.ZodObject<{
@@ -1119,7 +1119,7 @@ export declare const LunaAgentState: z.ZodObject<{
                 delayTime: z.ZodNumber;
             }, {}, {}>>;
             wakeOnLan: z.ZodOptional<z.ZodObject<{
-                wakeOnLan: z.ZodOptional<z.ZodBoolean>;
+                wakeOnLan: z.ZodBoolean;
             }, {}, {}>>;
         }, {}, {}>>;
         security: z.ZodOptional<z.ZodObject<{
