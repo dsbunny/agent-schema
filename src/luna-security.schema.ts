@@ -2,6 +2,11 @@
 
 import { z } from 'zod/v4';
 
+export const PEMChain = z.string().refine((val) => {
+	return val.trim().startsWith('-----BEGIN CERTIFICATE-----') && val.trim().endsWith('-----END CERTIFICATE-----');
+});
+export type PEMChain = z.infer<typeof PEMChain>;
+
 export const ServerCertificate = z.object({
 	domainName: z.string().optional()
 		.describe('The domain name of the server certificate, e.g., "example.com"'),
@@ -15,16 +20,30 @@ export const ServerCertificate = z.object({
 	.describe('The server certificate information, including domain name, issuer name, and validity period');
 export type ServerCertificate = z.infer<typeof ServerCertificate>;
 
+export const ServerCertificateListState = z.object({
+	serverCertificateList: z.array(PEMChain)
+		.describe('The list of server certificates, each containing domain name, issuer name, and validity period'),
+})
+	.describe('The state of server certificates, including a list of certificates with their details');
+export type ServerCertificateListState = z.infer<typeof ServerCertificateListState>;
+
+export const ServerCertificateListStatus = z.object({
+	serverCertificateList: z.array(ServerCertificate)
+		.describe('The list of server certificates, each containing domain name, issuer name, and validity period'),
+})
+	.describe('The status of server certificates, including a list of certificates with their details');
+export type ServerCertificateListStatus = z.infer<typeof ServerCertificateListStatus>;
+
 // #region State
 export const SecurityState = z.object({
-	serverCertificateList: z.array(z.string()).optional()
+	serverCertificateList: ServerCertificateListState.optional()
 });
 export type SecurityState = z.infer<typeof SecurityState>;
 // #endregion
 
 // #region Status
 export const SecurityStatus = z.object({
-	serverCertificateList: z.array(ServerCertificate).optional()
+	serverCertificateList: ServerCertificateListStatus.optional()
 });
 export type SecurityStatus = z.infer<typeof SecurityStatus>;
 // #endregion

@@ -1,6 +1,6 @@
 import { z } from 'zod/v4';
 export declare const BlockedPort: z.ZodObject<{
-    port: z.ZodNumber;
+    blockedPort: z.ZodNumber;
     direction: z.ZodEnum<{
         in: "in";
         out: "out";
@@ -12,12 +12,27 @@ export declare const BlockedPort: z.ZodObject<{
     }>;
 }, {}, {}>;
 export type BlockedPort = z.infer<typeof BlockedPort>;
+export declare const BlockedPortList: z.ZodObject<{
+    blockedPortList: z.ZodArray<z.ZodObject<{
+        blockedPort: z.ZodNumber;
+        direction: z.ZodEnum<{
+            in: "in";
+            out: "out";
+            all: "all";
+        }>;
+        protocol: z.ZodEnum<{
+            tcp: "tcp";
+            udp: "udp";
+        }>;
+    }, {}, {}>>;
+}, {}, {}>;
+export type BlockedPortList = z.infer<typeof BlockedPortList>;
 export declare const NetworkCheckupInfo: z.ZodObject<{
     mode: z.ZodEnum<{
         default: "default";
         manual: "manual";
     }>;
-    url: z.ZodURL;
+    url: z.ZodOptional<z.ZodURL>;
 }, {}, {}>;
 export type NetworkCheckupInfo = z.infer<typeof NetworkCheckupInfo>;
 export declare const NetworkInfoState: z.ZodObject<{
@@ -113,14 +128,18 @@ export declare const PlatformInfo: z.ZodObject<{
 }, {}, {}>;
 export type PlatformInfo = z.infer<typeof PlatformInfo>;
 export declare const ProxyInfo: z.ZodObject<{
-    enabled: z.ZodDefault<z.ZodBoolean>;
+    enabled: z.ZodBoolean;
     ipAddress: z.ZodOptional<z.ZodString>;
     port: z.ZodOptional<z.ZodNumber>;
     userName: z.ZodOptional<z.ZodString>;
     password: z.ZodOptional<z.ZodString>;
 }, {}, {}>;
 export type ProxyInfo = z.infer<typeof ProxyInfo>;
-export declare const SensorValues: z.ZodObject<{
+export declare const SensorValuesState: z.ZodObject<{
+    backlight: z.ZodNumber;
+}, {}, {}>;
+export type SensorValuesState = z.infer<typeof SensorValuesState>;
+export declare const SensorValuesStatus: z.ZodObject<{
     backlight: z.ZodNumber;
     checkScreen: z.ZodObject<{
         colorValid: z.ZodBoolean;
@@ -129,8 +148,8 @@ export declare const SensorValues: z.ZodObject<{
         readRGB: z.ZodNumber;
     }, {}, {}>;
     fan: z.ZodObject<{
-        closedLoop: z.ZodBoolean;
-        openLoop: z.ZodBoolean;
+        closedLoop: z.ZodOptional<z.ZodBoolean>;
+        openLoop: z.ZodOptional<z.ZodBoolean>;
     }, {}, {}>;
     humidity: z.ZodNumber;
     illuminance: z.ZodNumber;
@@ -142,7 +161,7 @@ export declare const SensorValues: z.ZodObject<{
     }>;
     temperature: z.ZodNumber;
 }, {}, {}>;
-export type SensorValues = z.infer<typeof SensorValues>;
+export type SensorValuesStatus = z.infer<typeof SensorValuesStatus>;
 export declare const SystemUsageInfo: z.ZodObject<{
     cpus: z.ZodOptional<z.ZodArray<z.ZodObject<{
         model: z.ZodOptional<z.ZodString>;
@@ -164,24 +183,26 @@ export declare const SystemUsageInfo: z.ZodObject<{
 }, {}, {}>;
 export type SystemUsageInfo = z.infer<typeof SystemUsageInfo>;
 export declare const DeviceInfoState: z.ZodObject<{
-    blockedPortList: z.ZodOptional<z.ZodArray<z.ZodObject<{
-        port: z.ZodNumber;
-        direction: z.ZodEnum<{
-            in: "in";
-            out: "out";
-            all: "all";
-        }>;
-        protocol: z.ZodEnum<{
-            tcp: "tcp";
-            udp: "udp";
-        }>;
-    }, {}, {}>>>;
+    blockedPortList: z.ZodOptional<z.ZodObject<{
+        blockedPortList: z.ZodArray<z.ZodObject<{
+            blockedPort: z.ZodNumber;
+            direction: z.ZodEnum<{
+                in: "in";
+                out: "out";
+                all: "all";
+            }>;
+            protocol: z.ZodEnum<{
+                tcp: "tcp";
+                udp: "udp";
+            }>;
+        }, {}, {}>>;
+    }, {}, {}>>;
     networkCheckupInfo: z.ZodOptional<z.ZodObject<{
         mode: z.ZodEnum<{
             default: "default";
             manual: "manual";
         }>;
-        url: z.ZodURL;
+        url: z.ZodOptional<z.ZodURL>;
     }, {}, {}>>;
     networkInfo: z.ZodOptional<z.ZodObject<{
         wired: z.ZodObject<{
@@ -209,11 +230,14 @@ export declare const DeviceInfoState: z.ZodObject<{
         }, {}, {}>;
     }, {}, {}>>;
     proxyInfo: z.ZodOptional<z.ZodObject<{
-        enabled: z.ZodDefault<z.ZodBoolean>;
+        enabled: z.ZodBoolean;
         ipAddress: z.ZodOptional<z.ZodString>;
         port: z.ZodOptional<z.ZodNumber>;
         userName: z.ZodOptional<z.ZodString>;
         password: z.ZodOptional<z.ZodString>;
+    }, {}, {}>>;
+    sensorValues: z.ZodOptional<z.ZodObject<{
+        backlight: z.ZodNumber;
     }, {}, {}>>;
 }, {}, {}>;
 export type DeviceInfoState = z.infer<typeof DeviceInfoState>;
@@ -290,8 +314,8 @@ export declare const DeviceInfoStatus: z.ZodObject<{
             readRGB: z.ZodNumber;
         }, {}, {}>;
         fan: z.ZodObject<{
-            closedLoop: z.ZodBoolean;
-            openLoop: z.ZodBoolean;
+            closedLoop: z.ZodOptional<z.ZodBoolean>;
+            openLoop: z.ZodOptional<z.ZodBoolean>;
         }, {}, {}>;
         humidity: z.ZodNumber;
         illuminance: z.ZodNumber;

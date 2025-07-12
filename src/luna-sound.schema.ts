@@ -2,7 +2,21 @@
 
 import { z } from 'zod/v4';
 
-export const SoundState = z.object({
+export const ExternalSpeaker = z.object({
+	externalSpeaker: z.boolean()
+		.describe('Whether the external speaker is enabled or not'),
+})
+	.describe('External speaker configuration');
+export type ExternalSpeaker = z.infer<typeof ExternalSpeaker>;
+
+export const Muted = z.object({
+	muted: z.boolean()
+		.describe('Whether the sound is muted or not'),
+})
+	.describe('Sound muted state');
+export type Muted = z.infer<typeof Muted>;
+
+export const SoundMode = z.object({
 	mode: z.enum([
 		'standard',
 		'movie',
@@ -10,20 +24,40 @@ export const SoundState = z.object({
 		'sports',
 		'music',
 		'game',
-	]).default('standard')
-		.describe('The current sound mode and the audio balance.'),
+	])
+		.describe('The current sound mode'),
 	balance: z.number().int().min(-50).max(50).optional()
 		.describe('The audio balance of the sound mode, Range: [-50–50]'),
-	level: z.number().int().min(0).max(100).optional()
-		.describe('The sound level of the device, Range: [0–100]'),
-	muted: z.boolean().default(false)
-		.describe('Whether the sound is muted or not'),
-	externalSpeaker: z.boolean().default(false)
-		.describe('Whether the external speaker is enabled or not'),
+})
+	.describe('Sound mode configuration');
+export type SoundMode = z.infer<typeof SoundMode>;
+
+export const SoundOut = z.object({
 	speakerType: z.enum([
 		'tv_speaker',
 		'bt_soundbar',
-	]).optional()
+	])
 		.describe('The type of the speaker, either "tv_speaker" or "bt_soundbar"'),
+})
+	.describe('Sound output configuration');
+export type SoundOut = z.infer<typeof SoundOut>;
+
+export const VolumeLevel = z.object({
+	level: z.number().int().min(0).max(100)
+		.describe('The sound level of the device, Range: [0–100]'),
+	volOsdEnabled: z.boolean().optional()
+		.describe('Whether the volume OSD (On-Screen Display) is enabled or not'),
+})
+	.describe('Sound volume level');
+export type VolumeLevel = z.infer<typeof VolumeLevel>;
+
+// #region State
+export const SoundState = z.object({
+	muted: Muted.optional(),
+	externalSpeaker: ExternalSpeaker.optional(),
+	soundMode: SoundMode.optional(),
+	soundOut: SoundOut.optional(),
+	volumeLevel: VolumeLevel.optional(),
 });
 export type SoundState = z.infer<typeof SoundState>;
+// #endregion

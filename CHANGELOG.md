@@ -1,4 +1,7 @@
 # Changelog
+## v5.1.10
+- Extend _Luna_ schema with _CustomJS_ module.
+
 ## v5.0.9
 - Replace _Luna_ agent detail with per-module schema.
 

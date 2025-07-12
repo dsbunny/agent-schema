@@ -1,11 +1,5 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 import { z } from 'zod/v4';
-// #region State
-export const InputSourceState = z.object({
-    currentInputSource: z.string()
-        .describe('The current input source, e.g. "ext://hdmi:1"'),
-});
-// #endregion
 // #region Status
 export const InputSourceStatus = z.object({
     externalInputList: z.array(z.object({
@@ -19,6 +13,10 @@ export const InputSourceStatus = z.object({
             .describe('The name of the input source when SIMPLINK is enabled e.g. "BD PLAYER"'),
     }))
         .describe('The list of external input sources'),
+    count: z.number().int().min(0).max(100)
+        .describe('The number of external input sources'),
+    currentInputPort: z.string()
+        .describe('The current input source label, e.g. "ext://hdmi:1"'),
 });
 // #endregion
 //# sourceMappingURL=luna-input-source.schema.js.map

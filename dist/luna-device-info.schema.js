@@ -1,7 +1,7 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 import { z } from 'zod/v4';
 export const BlockedPort = z.object({
-    port: z.number().int().min(1).max(65535)
+    blockedPort: z.number().int().min(1).max(65535)
         .describe('The blocked port number, e.g., 80'),
     direction: z.enum(['in', 'out', 'all'])
         .describe('The direction of the blocked port, e.g., "in", "out", or "all"'),
@@ -9,10 +9,15 @@ export const BlockedPort = z.object({
         .describe('The protocol of the blocked port, e.g., "tcp" or "udp"'),
 })
     .describe('The blocked port in the format "port/direction/protocol"');
+export const BlockedPortList = z.object({
+    blockedPortList: z.array(BlockedPort).max(30)
+        .describe('The list of blocked ports, maximum 30 entries'),
+})
+    .describe('The blocked port list, containing multiple blocked ports');
 export const NetworkCheckupInfo = z.object({
     mode: z.enum(['default', 'manual'])
         .describe('The network checkup mode, either "default" or "manual"'),
-    url: z.url()
+    url: z.url().optional()
         .describe('The URL for the network checkup, e.g., "https://example.com/checkup"'),
 })
     .describe('The network checkup information, including mode and URL');
@@ -132,7 +137,7 @@ export const PlatformInfo = z.object({
 })
     .describe('The platform information of the signage device, including hardware version, manufacturer, model name, SDK version, serial number, and firmware version');
 export const ProxyInfo = z.object({
-    enabled: z.boolean().default(false)
+    enabled: z.boolean()
         .describe('Whether the proxy is enabled or not'),
     ipAddress: z.string().optional()
         .describe('The IP address of the proxy server, e.g. "163.231.22.43"'),
@@ -144,7 +149,12 @@ export const ProxyInfo = z.object({
         .describe('The password for the proxy server, e.g. "password"'),
 })
     .describe('The proxy information of the agent, including whether it is enabled, the IP address, and the port number');
-export const SensorValues = z.object({
+export const SensorValuesState = z.object({
+    backlight: z.number().int().min(0).max(100)
+        .describe('The backlight level of the display. Range: [0–100]'),
+})
+    .describe('The sensor values of the agent, including backlight level and screen color check information');
+export const SensorValuesStatus = z.object({
     backlight: z.number().int().min(0).max(100)
         .describe('The backlight level of the display. Range: [0–100]'),
     checkScreen: z.object({
@@ -158,9 +168,9 @@ export const SensorValues = z.object({
             .describe('The RGB value of the color measured by the sensor, e.g., 0xFF0000 for red.'),
     }).describe('The screen color check information'),
     fan: z.object({
-        closedLoop: z.boolean()
+        closedLoop: z.boolean().optional()
             .describe('Indicates the current state of the closed-loop fan.'),
-        openLoop: z.boolean()
+        openLoop: z.boolean().optional()
             .describe('Indicates the current state of the open-loop fan.'),
     }).describe('The fan information of the agent'),
     humidity: z.number().int().min(0).max(100)
@@ -207,14 +217,14 @@ export const SystemUsageInfo = z.object({
 // #region State
 export const DeviceInfoState = z.object({
     // Skip `beaconInfo` as deprecated.
-    blockedPortList: z.array(BlockedPort).max(30).optional()
-        .describe('The list of blocked ports, maximum 30 entries'),
+    blockedPortList: BlockedPortList.optional(),
     // Skip `eddystoneInfo` due to security concerns and narrow use cases.
     // Skip `HDBaseTMode` due to narrow use cases.
     // Skip `iBeaconInfo` due to security concerns and narrow use cases.
     networkCheckupInfo: NetworkCheckupInfo.optional(),
     networkInfo: NetworkInfoState.optional(),
     proxyInfo: ProxyInfo.optional(),
+    sensorValues: SensorValuesState.optional(),
     // Skip `softApInfo` due to security concerns.
     // Skip `wps` due to security concerns and narrow use cases.
 });
@@ -224,7 +234,7 @@ export const DeviceInfoStatus = z.object({
     networkInfo: NetworkInfoStatus.optional(),
     networkMacInfo: NetworkMacInfo.optional(),
     platformInfo: PlatformInfo.optional(),
-    sensorValues: SensorValues.optional(),
+    sensorValues: SensorValuesStatus.optional(),
     systemUsageInfo: SystemUsageInfo.optional(),
     // Skip `wifiList` due to security concerns.
 });

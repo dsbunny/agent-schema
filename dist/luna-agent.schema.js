@@ -3,23 +3,26 @@ import { z } from 'zod/v4';
 import { AgentState, AgentStateBase, AgentStatus, AgentStatusBase, } from '@dsbunny/rmm-schema';
 import { ConfigurationState, ConfigurationStatus } from './luna-configuration.schema.js';
 import { DeviceInfoState, DeviceInfoStatus } from './luna-device-info.schema.js';
-import { InputSourceState, InputSourceStatus } from './luna-input-source.schema.js';
+import { InputSourceStatus } from './luna-input-source.schema.js';
 import { PowerState } from './luna-power.schema.js';
 import { SecurityState, SecurityStatus } from './luna-security.schema.js';
 import { SignageState, SignageStatus } from './luna-signage.schema.js';
 import { SoundState } from './luna-sound.schema.js';
 import { TimeState } from './luna-time.schema.js';
+import { StorageState, StorageStatus } from './luna-storage.schema.js';
+import { CustomJSState, CustomJSStatus } from './luna-customjs.schema.js';
 export const LUNA_AGENT_URN = 'urn:dsbunny:agent:luna';
 // #region State
 export const LunaAgentStateDetail = z.object({
     configuration: ConfigurationState.optional(),
     deviceInfo: DeviceInfoState.optional(),
-    inputSource: InputSourceState.optional(),
     power: PowerState.optional(),
     security: SecurityState.optional(),
     signage: SignageState.optional(),
     sound: SoundState.optional(),
+    storage: StorageState.optional(),
     time: TimeState.optional(),
+    customJS: CustomJSState.optional(),
 });
 export const LunaAgentStateBase = AgentStateBase.extend({
     uri: z.literal(LUNA_AGENT_URN),
@@ -35,6 +38,8 @@ export const LunaAgentStatusDetail = z.object({
     inputSource: InputSourceStatus.optional(),
     security: SecurityStatus.optional(),
     signage: SignageStatus.optional(),
+    storage: StorageStatus.optional(),
+    customJS: CustomJSStatus.optional(),
     // ScapError
     errors: z.record(z.string(), z.object({
         count: z.number().int().min(0)

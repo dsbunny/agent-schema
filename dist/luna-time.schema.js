@@ -15,31 +15,39 @@ export const OnOffTimer = z.object({
         .describe('The week bitmask for the timer, where Monday = 1, Tuesday = 2, ..., Sunday = 64, and Everyday = 127'),
 })
     .describe('The on/off timer information of the device, including ID, type, hour, minute, and week bitmask');
-export const HolidaySchedule = z.object({
-    _id: z.number().optional()
-        .describe('The ID of the holiday schedule, used for identification'),
-    name: z.string().optional()
-        .describe('The name of the holiday schedule'),
-    settings: z.object({
-        month: z.number().int().min(1).max(12).optional()
-            .describe('The month of the holiday schedule, Range: [1–12]'),
-        year: z.number().int().min(1970).max(2100).optional()
-            .describe('The year of the holiday schedule, Range: [1970–2100]'),
-        date: z.number().int().min(1).max(31).optional()
-            .describe('The date of the holiday schedule, Range: [1–31]'),
-        repeatBy: z.enum(['dayOfWeek', 'dayOfMonth', 'none']).optional()
-            .describe('The repeat type of the holiday schedule, either "dayOfWeek", "dayOfMonth", or "none"'),
-        days: z.number().int().min(0).max(127).optional()
-            .describe('The duration of a holiday.'),
-        repeat: z.enum(['monthly', 'yearly', 'none']).optional()
-            .describe('The repeat type of the holiday schedule, either "monthly", "yearly", or "none"'),
-    }).optional(),
-})
-    .describe('The holiday schedule information of the device, including ID, name, and settings');
-export const TimeState = z.object({
-    timerList: z.array(OnOffTimer).max(21).optional()
+export const AllOnOffTimers = z.object({
+    timeList: z.array(OnOffTimer).max(21)
         .describe('The list of on/off timers, each timer has an ID, type, hour, minute, and week bitmask'),
-    holidayScheduleList: z.array(HolidaySchedule).max(7).optional(),
 })
     .describe('The time information of the device, including current time and time zone');
+export const HolidaySchedule = z.object({
+    holidaySchedule: z.array(z.object({
+        name: z.string().optional()
+            .describe('The name of the holiday schedule'),
+        settings: z.object({
+            month: z.number().int().min(1).max(12).optional()
+                .describe('The month of the holiday schedule, Range: [1–12]'),
+            year: z.number().int().min(1970).max(2100).optional()
+                .describe('The year of the holiday schedule, Range: [1970–2100]'),
+            date: z.number().int().min(1).max(31).optional()
+                .describe('The date of the holiday schedule, Range: [1–31]'),
+            repeatBy: z.enum(['dayOfWeek', 'dayOfMonth', 'none']).optional()
+                .describe('The repeat type of the holiday schedule, either "dayOfWeek", "dayOfMonth", or "none"'),
+            days: z.number().int().min(0).max(127).optional()
+                .describe('The duration of a holiday, represented as a bitmask where each bit represents a day of the week'),
+            repeat: z.enum(['monthly', 'yearly', 'none']).optional()
+                .describe('The repeat type of the holiday schedule, either "monthly", "yearly", or "none"'),
+        }).optional()
+            .describe('The settings of the holiday schedule, including month, year, date, repeat type, days, and repeat type'),
+    })).max(7)
+        .describe('The list of holiday schedules, each schedule has a name and settings'),
+})
+    .describe('The holiday schedule information of the device, including a list of holiday schedules');
+// #region State
+export const TimeState = z.object({
+    allOnOffTimers: AllOnOffTimers.optional(),
+    holidaySchedule: HolidaySchedule.optional(),
+})
+    .describe('The time information of the device, including current time and time zone');
+// #endregion
 //# sourceMappingURL=luna-time.schema.js.map

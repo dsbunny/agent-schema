@@ -5,13 +5,13 @@ import { z } from 'zod/v4';
 export const CaptureScreenRequest = z.object({
 	timestamp: z.iso.datetime()
 		.describe('The timestamp of the screenshot request'),
-	thumbnail: z.boolean().optional().default(false)
+	thumbnail: z.boolean().optional()
 		.describe('Whether to capture a thumbnail screenshot or not'),
 	imgResolution: z.enum([
 		'thumbnail',  // 128×72
 		'FHD',  // 1920×1080
 		'HD',  // 1280×720
-	]).optional().default('HD')
+	]).optional()
 		.describe('The resolution of the screenshot to be captured, either "thumbnail", "FHD", or "HD"'),
 })
 	.describe('The request to capture a screenshot, including timestamp, thumbnail option, and image resolution');
@@ -28,6 +28,20 @@ export const CaptureScreenStatus = z.object({
 	.describe('The response of the screenshot capture request, including data, size, and encoding');
 export type CaptureScreenStatus = z.infer<typeof CaptureScreenStatus>;
 
+export const CheckScreen = z.object({
+	checkScreen: z.boolean().optional()
+		.describe('Indicates whether to enable the pixel sensor'),
+})
+	.describe('The check screen request to enable or disable the pixel sensor');
+export type CheckScreen = z.infer<typeof CheckScreen>;
+
+export const DigitalAudioInputMode = z.object({
+	digitalAudioInput: z.enum(['audioIn', 'hdmi'])
+		.describe('Indicates the status of the digital audio input mode, either "audioIn" or "hdmi"'),
+})
+	.describe('The digital audio input mode of the signage device');
+export type DigitalAudioInputMode = z.infer<typeof DigitalAudioInputMode>;
+
 export const FailoverMode = z.object({
 	mode: z.enum(['auto', 'manual', 'off'])
 		.describe('The failover mode, either "auto", "manual", or "off"'),
@@ -36,6 +50,56 @@ export const FailoverMode = z.object({
 })
 	.describe('The failover mode and priority of input sources for the agent');
 export type FailoverMode = z.infer<typeof FailoverMode>;
+
+export const IntelligentAuto = z.object({
+	enabled: z.boolean()
+		.describe('Whether Intelligent Auto is enabled or disabled. Intelligent Auto is a feature that automatically calibrates the signage device screen when an analog RGB signal is received.'),
+})
+	.describe('The Intelligent Auto feature of the signage device, indicating whether it is enabled or disabled');
+export type IntelligentAuto = z.infer<typeof IntelligentAuto>;
+
+export const IsmMethod = z.object({
+	ismMethod: z.enum([
+		'COLORWASH',
+		'INVERSION',
+		'NORMAL',
+		'ORBITER',
+		'USERIMAGE',
+		'USERVIDEO',
+		'WASHINGBAR',
+		'WHITEWASH',
+	])
+		.describe('The ISM (Image Sticking Minimization) method'),
+})
+	.describe('The ISM method of the signage device, which helps to prevent image retention on the screen');
+export type IsmMethod = z.infer<typeof IsmMethod>;
+
+export const LanDaisyChain = z.object({
+	enabled: z.boolean()
+		.describe('Whether the LAN daisy chain is enabled or not'),
+})
+	.describe('The LAN daisy chain feature of the signage device, indicating whether it is enabled or not');
+export type LanDaisyChain = z.infer<typeof LanDaisyChain>;
+
+export const MirrorMode = z.object({
+	mode: z.enum(['off', 'on'])
+})
+	.describe('Indicates the status of the mirror mode, either "off" or "on"');
+export type MirrorMode = z.infer<typeof MirrorMode>;
+
+export const NoSignalImageMode = z.object({
+	noSignalImageMode: z.enum(['off', 'on'])
+		.describe('Indicates the status of the No Signal Image mode, either "off" or "on"'),
+})
+	.describe('The No Signal Image mode of the signage device, indicating whether it is enabled or not');
+export type NoSignalImageMode = z.infer<typeof NoSignalImageMode>;
+
+export const PortraitMode = z.object({
+	portraitMode: z.enum(['off', '90', '___undefined___'])
+		.describe('The display portrait mode, either "off", "90" (90 degrees rotation), or "___undefined___" (unknown)'),
+})
+	.describe('The portrait mode of the signage device, indicating the orientation of the display');
+export type PortraitMode = z.infer<typeof PortraitMode>;
 
 export const PowerSaveMode = z.object({
 	ses: z.boolean()
@@ -61,6 +125,13 @@ export const PowerSaveMode = z.object({
 })
 	.describe('The power save mode of the agent, including SES mode, DPM mode, automatic standby mode, and 15-minute off mode');
 export type PowerSaveMode = z.infer<typeof PowerSaveMode>;
+
+export const QuietMode = z.object({
+	mode: z.enum(['off', 'on'])
+		.describe('The quiet mode status'),
+})
+	.describe('The quiet mode of the signage device, indicating whether it is enabled or not');
+export type QuietMode = z.infer<typeof QuietMode>;
 
 export const RS232CConfiguration = z.object({
 	mode: z.number().int().min(0).max(1)
@@ -122,6 +193,13 @@ export const RS232CConfiguration = z.object({
 	.describe('The RS-232C configuration of the signage device');
 export type RS232CConfiguration = z.infer<typeof RS232CConfiguration>;
 
+export const SimplinkStatus = z.object({
+	simplinkEnable: z.enum(['on', 'off'])
+		.describe('Indicates the status of the SIMPLINK feature, either "on" or "off"'),
+})
+	.describe('The SIMPLINK status of the signage device, indicating whether the SIMPLINK feature is enabled or not');
+export type SimplinkStatus = z.infer<typeof SimplinkStatus>;
+
 export const TileInfo = z.object({
 	enabled: z.boolean()
 		.describe('Whether the tile mode is enabled or not'),
@@ -158,38 +236,19 @@ export type UsagePermission = z.infer<typeof UsagePermission>;
 // #region State
 export const SignageState = z.object({
 	captureScreenRequest: CaptureScreenRequest.optional(),
-	checkScreen: z.boolean().optional().default(false)
-		.describe('Indicates whether to enable the pixel sensor'),
-	digitalAudioInput: z.enum(['audioIn', 'hdmi']).optional()
-		.describe('Indicates the status of the digital audio input mode.'),
+	checkScreen: CheckScreen.optional(),
+	digitalAudioInput: DigitalAudioInputMode.optional(),
 	failoverMode: FailoverMode.optional(),
-	intelligentAuto: z.boolean().optional()
-		.describe('Checks whether Intelligent Auto is enabled or disabled. Intelligent Auto is a feature that automatically calibrates the signage device screen when an analog RGB signal is received.'),
-	ismMethod: z.enum([
-		'COLORWASH',
-		'INVERSION',
-		'NORMAL',
-		'ORBITER',
-		'USERIMAGE',
-		'USERVIDEO',
-		'WASHINGBAR',
-		'WHITEWASH',
-	])
-		.describe('The ISM (Image Sticking Minimization) method'),
-	lanDaisyChain: z.boolean().optional().default(false)
-		.describe('Indicates whether the LAN daisy chain is enabled or not.'),
-	mirrorMode: z.enum(['off', 'on']).optional()
-		.describe('Indicates the status of the mirror mode.'),
-	noSignalImageMode: z.enum(['off', 'on']).optional()
-		.describe('Indicates the status of the No Signal Image mode.'),
-	portraitMode: z.enum(['off', '90', '___undefined___'])
-		.describe('The display portrait mode.'),
+	intelligentAuto: IntelligentAuto.optional(),
+	ismMethod: IsmMethod.optional(),
+	lanDaisyChain: LanDaisyChain.optional(),
+	mirrorMode: MirrorMode.optional(),
+	noSignalImageMode: NoSignalImageMode.optional(),
+	portraitMode: PortraitMode.optional(),
 	powerSaveMode: PowerSaveMode.optional(),
-	quietMode: z.enum(['off', 'on']).optional()
-		.describe('Returns the status of the quiet mode. If the Quiet Mode is on, it stops the fan and sets the backlight to 65 of the signage device.'),
+	quietMode: QuietMode.optional(),
 	RS232CConfiguration: RS232CConfiguration.optional(),
-	simplinkStatus: z.enum(['on', 'off']).optional()
-		.describe('Indicates the status of the SIMPLINK feature.'),
+	simplinkStatus: SimplinkStatus.optional(),
 	tileInfo: TileInfo.optional(),
 	usagePermission: UsagePermission.optional(),
 });
