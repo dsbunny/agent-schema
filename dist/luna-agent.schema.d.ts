@@ -111,7 +111,9 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
             country: z.ZodString;
             city: z.ZodString;
         }, {}, {}>>;
-        USBLock: z.ZodOptional<z.ZodBoolean>;
+        USBLock: z.ZodOptional<z.ZodObject<{
+            enabled: z.ZodBoolean;
+        }, {}, {}>>;
     }, {}, {}>>;
     deviceInfo: z.ZodOptional<z.ZodObject<{
         blockedPortList: z.ZodOptional<z.ZodObject<{
@@ -563,7 +565,9 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                 country: z.ZodString;
                 city: z.ZodString;
             }, {}, {}>>;
-            USBLock: z.ZodOptional<z.ZodBoolean>;
+            USBLock: z.ZodOptional<z.ZodObject<{
+                enabled: z.ZodBoolean;
+            }, {}, {}>>;
         }, {}, {}>>;
         deviceInfo: z.ZodOptional<z.ZodObject<{
             blockedPortList: z.ZodOptional<z.ZodObject<{
@@ -1019,7 +1023,9 @@ export declare const LunaAgentState: z.ZodObject<{
                 country: z.ZodString;
                 city: z.ZodString;
             }, {}, {}>>;
-            USBLock: z.ZodOptional<z.ZodBoolean>;
+            USBLock: z.ZodOptional<z.ZodObject<{
+                enabled: z.ZodBoolean;
+            }, {}, {}>>;
         }, {}, {}>>;
         deviceInfo: z.ZodOptional<z.ZodObject<{
             blockedPortList: z.ZodOptional<z.ZodObject<{
@@ -1365,14 +1371,16 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
             minute: z.ZodNumber;
             sec: z.ZodNumber;
         }, {}, {}>;
-        localeList: z.ZodArray<z.ZodObject<{
-            language: z.ZodString;
-            languageCode: z.ZodString;
-            countries: z.ZodArray<z.ZodObject<{
-                name: z.ZodString;
-                specifier: z.ZodString;
+        localeList: z.ZodObject<{
+            localList: z.ZodArray<z.ZodObject<{
+                language: z.ZodString;
+                languageCode: z.ZodString;
+                countries: z.ZodArray<z.ZodObject<{
+                    name: z.ZodString;
+                    specifier: z.ZodString;
+                }, {}, {}>>;
             }, {}, {}>>;
-        }, {}, {}>>;
+        }, {}, {}>;
         timeZoneList: z.ZodObject<{
             timeZone: z.ZodArray<z.ZodObject<{
                 continent: z.ZodString;
@@ -1488,14 +1496,16 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
         }, {}, {}>>;
     }, {}, {}>>;
     inputSource: z.ZodOptional<z.ZodObject<{
-        externalInputList: z.ZodArray<z.ZodObject<{
-            inputPort: z.ZodString;
-            signalDetection: z.ZodBoolean;
-            vendorID: z.ZodOptional<z.ZodString>;
-            name: z.ZodOptional<z.ZodString>;
+        externalInputList: z.ZodOptional<z.ZodObject<{
+            inputSourceList: z.ZodArray<z.ZodObject<{
+                inputPort: z.ZodString;
+                signalDetection: z.ZodBoolean;
+                vendorID: z.ZodOptional<z.ZodString>;
+                name: z.ZodOptional<z.ZodString>;
+            }, {}, {}>>;
+            count: z.ZodNumber;
+            currentInputPort: z.ZodString;
         }, {}, {}>>;
-        count: z.ZodNumber;
-        currentInputPort: z.ZodString;
     }, {}, {}>>;
     security: z.ZodOptional<z.ZodObject<{
         serverCertificateList: z.ZodOptional<z.ZodObject<{
@@ -1610,14 +1620,16 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                 minute: z.ZodNumber;
                 sec: z.ZodNumber;
             }, {}, {}>;
-            localeList: z.ZodArray<z.ZodObject<{
-                language: z.ZodString;
-                languageCode: z.ZodString;
-                countries: z.ZodArray<z.ZodObject<{
-                    name: z.ZodString;
-                    specifier: z.ZodString;
+            localeList: z.ZodObject<{
+                localList: z.ZodArray<z.ZodObject<{
+                    language: z.ZodString;
+                    languageCode: z.ZodString;
+                    countries: z.ZodArray<z.ZodObject<{
+                        name: z.ZodString;
+                        specifier: z.ZodString;
+                    }, {}, {}>>;
                 }, {}, {}>>;
-            }, {}, {}>>;
+            }, {}, {}>;
             timeZoneList: z.ZodObject<{
                 timeZone: z.ZodArray<z.ZodObject<{
                     continent: z.ZodString;
@@ -1733,14 +1745,16 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
             }, {}, {}>>;
         }, {}, {}>>;
         inputSource: z.ZodOptional<z.ZodObject<{
-            externalInputList: z.ZodArray<z.ZodObject<{
-                inputPort: z.ZodString;
-                signalDetection: z.ZodBoolean;
-                vendorID: z.ZodOptional<z.ZodString>;
-                name: z.ZodOptional<z.ZodString>;
+            externalInputList: z.ZodOptional<z.ZodObject<{
+                inputSourceList: z.ZodArray<z.ZodObject<{
+                    inputPort: z.ZodString;
+                    signalDetection: z.ZodBoolean;
+                    vendorID: z.ZodOptional<z.ZodString>;
+                    name: z.ZodOptional<z.ZodString>;
+                }, {}, {}>>;
+                count: z.ZodNumber;
+                currentInputPort: z.ZodString;
             }, {}, {}>>;
-            count: z.ZodNumber;
-            currentInputPort: z.ZodString;
         }, {}, {}>>;
         security: z.ZodOptional<z.ZodObject<{
             serverCertificateList: z.ZodOptional<z.ZodObject<{
@@ -1859,14 +1873,16 @@ export declare const LunaAgentStatus: z.ZodObject<{
                 minute: z.ZodNumber;
                 sec: z.ZodNumber;
             }, {}, {}>;
-            localeList: z.ZodArray<z.ZodObject<{
-                language: z.ZodString;
-                languageCode: z.ZodString;
-                countries: z.ZodArray<z.ZodObject<{
-                    name: z.ZodString;
-                    specifier: z.ZodString;
+            localeList: z.ZodObject<{
+                localList: z.ZodArray<z.ZodObject<{
+                    language: z.ZodString;
+                    languageCode: z.ZodString;
+                    countries: z.ZodArray<z.ZodObject<{
+                        name: z.ZodString;
+                        specifier: z.ZodString;
+                    }, {}, {}>>;
                 }, {}, {}>>;
-            }, {}, {}>>;
+            }, {}, {}>;
             timeZoneList: z.ZodObject<{
                 timeZone: z.ZodArray<z.ZodObject<{
                     continent: z.ZodString;
@@ -1982,14 +1998,16 @@ export declare const LunaAgentStatus: z.ZodObject<{
             }, {}, {}>>;
         }, {}, {}>>;
         inputSource: z.ZodOptional<z.ZodObject<{
-            externalInputList: z.ZodArray<z.ZodObject<{
-                inputPort: z.ZodString;
-                signalDetection: z.ZodBoolean;
-                vendorID: z.ZodOptional<z.ZodString>;
-                name: z.ZodOptional<z.ZodString>;
+            externalInputList: z.ZodOptional<z.ZodObject<{
+                inputSourceList: z.ZodArray<z.ZodObject<{
+                    inputPort: z.ZodString;
+                    signalDetection: z.ZodBoolean;
+                    vendorID: z.ZodOptional<z.ZodString>;
+                    name: z.ZodOptional<z.ZodString>;
+                }, {}, {}>>;
+                count: z.ZodNumber;
+                currentInputPort: z.ZodString;
             }, {}, {}>>;
-            count: z.ZodNumber;
-            currentInputPort: z.ZodString;
         }, {}, {}>>;
         security: z.ZodOptional<z.ZodObject<{
             serverCertificateList: z.ZodOptional<z.ZodObject<{

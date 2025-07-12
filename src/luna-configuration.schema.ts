@@ -65,6 +65,12 @@ export const Locale = z.object({
 }).describe('The locale in the format "language (language code) - country (specifier)"');
 export type Locale = z.infer<typeof Locale>;
 
+export const LocaleList = z.object({
+	localList: z.array(Locale)
+		.describe('The list of locales supported by the signage device'),
+});
+export type LocaleList = z.infer<typeof LocaleList>;
+
 export const PictureMode = z.object({
 	mode: z.enum([
 		'eco',  // APS (Auto Power Saving) mode
@@ -205,6 +211,12 @@ export const TimeZoneList = z.object({
 });
 export type TimeZoneList = z.infer<typeof TimeZoneList>;
 
+export const USBLock = z.object({
+	enabled: z.boolean()
+		.describe('Whether the USB ports are locked or not'),
+}).describe('The USB lock status of the signage device');
+export type USBLock = z.infer<typeof USBLock>;
+
 // #region State
 export const ConfigurationState = z.object({
 	clearCacheRequest: ClearCacheRequest.optional(),
@@ -219,8 +231,7 @@ export const ConfigurationState = z.object({
 	restartApplicationRequest: RestartApplicationRequest.optional(),
 	serverProperty: ServerProperty.optional(),
 	timeZone: TimeZone.optional(),
-	USBLock: z.boolean().optional()
-		.describe('Whether the USB ports are locked or not'),
+	USBLock: USBLock.optional(),
 });
 export type ConfigurationState = z.infer<typeof ConfigurationState>;
 // #endregion
@@ -229,7 +240,7 @@ export type ConfigurationState = z.infer<typeof ConfigurationState>;
 export const ConfigurationStatus = z.object({
 	currentTime: CurrentTimeStatus
 		.describe('The local date and time of the signage device'),
-	localeList: z.array(Locale)
+	localeList: LocaleList
 		.describe('The list of locales supported by the signage device'),
 	timeZoneList: TimeZoneList
 		.describe('The list of time zones supported by the signage device'),

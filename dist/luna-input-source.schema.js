@@ -1,8 +1,7 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 import { z } from 'zod/v4';
-// #region Status
-export const InputSourceStatus = z.object({
-    externalInputList: z.array(z.object({
+export const ExternalInputList = z.object({
+    inputSourceList: z.array(z.object({
         inputPort: z.string()
             .describe('The input source label, e.g. "ext://hdmi:1"'),
         signalDetection: z.boolean()
@@ -17,6 +16,11 @@ export const InputSourceStatus = z.object({
         .describe('The number of external input sources'),
     currentInputPort: z.string()
         .describe('The current input source label, e.g. "ext://hdmi:1"'),
+});
+// #region Status
+export const InputSourceStatus = z.object({
+    externalInputList: ExternalInputList.optional()
+        .describe('The list of external input sources'),
 });
 // #endregion
 //# sourceMappingURL=luna-input-source.schema.js.map

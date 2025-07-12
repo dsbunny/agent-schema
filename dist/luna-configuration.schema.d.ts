@@ -38,6 +38,17 @@ export declare const Locale: z.ZodObject<{
     }, {}, {}>>;
 }, {}, {}>;
 export type Locale = z.infer<typeof Locale>;
+export declare const LocaleList: z.ZodObject<{
+    localList: z.ZodArray<z.ZodObject<{
+        language: z.ZodString;
+        languageCode: z.ZodString;
+        countries: z.ZodArray<z.ZodObject<{
+            name: z.ZodString;
+            specifier: z.ZodString;
+        }, {}, {}>>;
+    }, {}, {}>>;
+}, {}, {}>;
+export type LocaleList = z.infer<typeof LocaleList>;
 export declare const PictureMode: z.ZodObject<{
     mode: z.ZodEnum<{
         eco: "eco";
@@ -146,6 +157,10 @@ export declare const TimeZoneList: z.ZodObject<{
     }, {}, {}>>;
 }, {}, {}>;
 export type TimeZoneList = z.infer<typeof TimeZoneList>;
+export declare const USBLock: z.ZodObject<{
+    enabled: z.ZodBoolean;
+}, {}, {}>;
+export type USBLock = z.infer<typeof USBLock>;
 export declare const ConfigurationState: z.ZodObject<{
     clearCacheRequest: z.ZodOptional<z.ZodObject<{
         timestamp: z.iso.ZodISODateTime;
@@ -256,7 +271,9 @@ export declare const ConfigurationState: z.ZodObject<{
         country: z.ZodString;
         city: z.ZodString;
     }, {}, {}>>;
-    USBLock: z.ZodOptional<z.ZodBoolean>;
+    USBLock: z.ZodOptional<z.ZodObject<{
+        enabled: z.ZodBoolean;
+    }, {}, {}>>;
 }, {}, {}>;
 export type ConfigurationState = z.infer<typeof ConfigurationState>;
 export declare const ConfigurationStatus: z.ZodObject<{
@@ -268,14 +285,16 @@ export declare const ConfigurationStatus: z.ZodObject<{
         minute: z.ZodNumber;
         sec: z.ZodNumber;
     }, {}, {}>;
-    localeList: z.ZodArray<z.ZodObject<{
-        language: z.ZodString;
-        languageCode: z.ZodString;
-        countries: z.ZodArray<z.ZodObject<{
-            name: z.ZodString;
-            specifier: z.ZodString;
+    localeList: z.ZodObject<{
+        localList: z.ZodArray<z.ZodObject<{
+            language: z.ZodString;
+            languageCode: z.ZodString;
+            countries: z.ZodArray<z.ZodObject<{
+                name: z.ZodString;
+                specifier: z.ZodString;
+            }, {}, {}>>;
         }, {}, {}>>;
-    }, {}, {}>>;
+    }, {}, {}>;
     timeZoneList: z.ZodObject<{
         timeZone: z.ZodArray<z.ZodObject<{
             continent: z.ZodString;

@@ -2,9 +2,8 @@
 
 import { z } from 'zod/v4';
 
-// #region Status
-export const InputSourceStatus = z.object({
-	externalInputList: z.array(z.object({
+export const ExternalInputList = z.object({
+	inputSourceList: z.array(z.object({
 		inputPort: z.string()
 			.describe('The input source label, e.g. "ext://hdmi:1"'),
 		signalDetection: z.boolean()
@@ -19,6 +18,13 @@ export const InputSourceStatus = z.object({
 		.describe('The number of external input sources'),
 	currentInputPort: z.string()
 		.describe('The current input source label, e.g. "ext://hdmi:1"'),
+});
+export type ExternalInputList = z.infer<typeof ExternalInputList>;
+
+// #region Status
+export const InputSourceStatus = z.object({
+	externalInputList: ExternalInputList.optional()
+		.describe('The list of external input sources'),
 });
 export type InputSourceStatus = z.infer<typeof InputSourceStatus>;
 // #endregion
