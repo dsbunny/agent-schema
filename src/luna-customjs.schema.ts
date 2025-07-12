@@ -42,7 +42,7 @@ export const ApplicationInfo = z.object({
 	.describe('The information about the application, including app ID, title, version, and other metadata');
 export type ApplicationInfo = z.infer<typeof ApplicationInfo>;
 
-export const ClearCacheRequest = z.object({
+export const ClearBrowsingDataRequest = z.object({
 	timestamp: z.iso.datetime()
 		.describe('The timestamp of the cache clear request'),
 	types: z.array(z.enum([
@@ -61,7 +61,7 @@ export const ClearCacheRequest = z.object({
 		.describe('The types of cache to clear'),
 })
 	.describe('The request to clear the cache of the signage device, including timestamp');
-export type ClearCacheRequest = z.infer<typeof ClearCacheRequest>;
+export type ClearBrowsingDataRequest = z.infer<typeof ClearBrowsingDataRequest>;
 
 export const DisableApplicationRequest = z.object({
 	timestamp: z.iso.datetime()
@@ -88,7 +88,7 @@ export type WebOSVersion = z.infer<typeof WebOSVersion>;
 
 // #region State
 export const CustomJSState = z.object({
-	clearCacheRequest: ClearCacheRequest.optional(),
+	clearBrowsingDataRequest: ClearBrowsingDataRequest.optional(),
 	disableApplicationRequest: DisableApplicationRequest.optional(),
 });
 export type CustomJSState = z.infer<typeof CustomJSState>;

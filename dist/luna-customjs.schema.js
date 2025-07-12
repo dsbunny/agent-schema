@@ -38,7 +38,7 @@ export const ApplicationInfo = z.object({
     }),
 })
     .describe('The information about the application, including app ID, title, version, and other metadata');
-export const ClearCacheRequest = z.object({
+export const ClearBrowsingDataRequest = z.object({
     timestamp: z.iso.datetime()
         .describe('The timestamp of the cache clear request'),
     types: z.array(z.enum([
@@ -76,7 +76,7 @@ export const WebOSVersion = z.object({
     .describe('The webOS version of the signage device');
 // #region State
 export const CustomJSState = z.object({
-    clearCacheRequest: ClearCacheRequest.optional(),
+    clearBrowsingDataRequest: ClearBrowsingDataRequest.optional(),
     disableApplicationRequest: DisableApplicationRequest.optional(),
 });
 // #endregion

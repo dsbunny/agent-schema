@@ -433,7 +433,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
         }, {}, {}>>;
     }, {}, {}>>;
     customJS: z.ZodOptional<z.ZodObject<{
-        clearCacheRequest: z.ZodOptional<z.ZodObject<{
+        clearBrowsingDataRequest: z.ZodOptional<z.ZodObject<{
             timestamp: z.iso.ZodISODateTime;
             types: z.ZodOptional<z.ZodArray<z.ZodEnum<{
                 all: "all";
@@ -894,7 +894,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
             }, {}, {}>>;
         }, {}, {}>>;
         customJS: z.ZodOptional<z.ZodObject<{
-            clearCacheRequest: z.ZodOptional<z.ZodObject<{
+            clearBrowsingDataRequest: z.ZodOptional<z.ZodObject<{
                 timestamp: z.iso.ZodISODateTime;
                 types: z.ZodOptional<z.ZodArray<z.ZodEnum<{
                     all: "all";
@@ -1359,7 +1359,7 @@ export declare const LunaAgentState: z.ZodObject<{
             }, {}, {}>>;
         }, {}, {}>>;
         customJS: z.ZodOptional<z.ZodObject<{
-            clearCacheRequest: z.ZodOptional<z.ZodObject<{
+            clearBrowsingDataRequest: z.ZodOptional<z.ZodObject<{
                 timestamp: z.iso.ZodISODateTime;
                 types: z.ZodOptional<z.ZodArray<z.ZodEnum<{
                     all: "all";
@@ -1393,7 +1393,7 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
             sec: z.ZodNumber;
         }, {}, {}>>;
         localeList: z.ZodOptional<z.ZodObject<{
-            localList: z.ZodArray<z.ZodObject<{
+            localeList: z.ZodArray<z.ZodObject<{
                 language: z.ZodString;
                 languageCode: z.ZodString;
                 countries: z.ZodArray<z.ZodObject<{
@@ -1642,7 +1642,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                 sec: z.ZodNumber;
             }, {}, {}>>;
             localeList: z.ZodOptional<z.ZodObject<{
-                localList: z.ZodArray<z.ZodObject<{
+                localeList: z.ZodArray<z.ZodObject<{
                     language: z.ZodString;
                     languageCode: z.ZodString;
                     countries: z.ZodArray<z.ZodObject<{
@@ -1895,7 +1895,7 @@ export declare const LunaAgentStatus: z.ZodObject<{
                 sec: z.ZodNumber;
             }, {}, {}>>;
             localeList: z.ZodOptional<z.ZodObject<{
-                localList: z.ZodArray<z.ZodObject<{
+                localeList: z.ZodArray<z.ZodObject<{
                     language: z.ZodString;
                     languageCode: z.ZodString;
                     countries: z.ZodArray<z.ZodObject<{

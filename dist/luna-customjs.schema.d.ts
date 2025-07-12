@@ -30,7 +30,7 @@ export declare const ApplicationInfo: z.ZodObject<{
     }, {}, {}>;
 }, {}, {}>;
 export type ApplicationInfo = z.infer<typeof ApplicationInfo>;
-export declare const ClearCacheRequest: z.ZodObject<{
+export declare const ClearBrowsingDataRequest: z.ZodObject<{
     timestamp: z.iso.ZodISODateTime;
     types: z.ZodOptional<z.ZodArray<z.ZodEnum<{
         all: "all";
@@ -45,7 +45,7 @@ export declare const ClearCacheRequest: z.ZodObject<{
         webSQL: "webSQL";
     }>>>;
 }, {}, {}>;
-export type ClearCacheRequest = z.infer<typeof ClearCacheRequest>;
+export type ClearBrowsingDataRequest = z.infer<typeof ClearBrowsingDataRequest>;
 export declare const DisableApplicationRequest: z.ZodObject<{
     timestamp: z.iso.ZodISODateTime;
     reset: z.ZodOptional<z.ZodBoolean>;
@@ -60,7 +60,7 @@ export declare const WebOSVersion: z.ZodObject<{
 }, {}, {}>;
 export type WebOSVersion = z.infer<typeof WebOSVersion>;
 export declare const CustomJSState: z.ZodObject<{
-    clearCacheRequest: z.ZodOptional<z.ZodObject<{
+    clearBrowsingDataRequest: z.ZodOptional<z.ZodObject<{
         timestamp: z.iso.ZodISODateTime;
         types: z.ZodOptional<z.ZodArray<z.ZodEnum<{
             all: "all";

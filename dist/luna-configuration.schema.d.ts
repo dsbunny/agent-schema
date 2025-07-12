@@ -39,7 +39,7 @@ export declare const Locale: z.ZodObject<{
 }, {}, {}>;
 export type Locale = z.infer<typeof Locale>;
 export declare const LocaleList: z.ZodObject<{
-    localList: z.ZodArray<z.ZodObject<{
+    localeList: z.ZodArray<z.ZodObject<{
         language: z.ZodString;
         languageCode: z.ZodString;
         countries: z.ZodArray<z.ZodObject<{
@@ -286,7 +286,7 @@ export declare const ConfigurationStatus: z.ZodObject<{
         sec: z.ZodNumber;
     }, {}, {}>>;
     localeList: z.ZodOptional<z.ZodObject<{
-        localList: z.ZodArray<z.ZodObject<{
+        localeList: z.ZodArray<z.ZodObject<{
             language: z.ZodString;
             languageCode: z.ZodString;
             countries: z.ZodArray<z.ZodObject<{

@@ -50,7 +50,7 @@ export const Locale = z.object({
     })),
 }).describe('The locale in the format "language (language code) - country (specifier)"');
 export const LocaleList = z.object({
-    localList: z.array(Locale)
+    localeList: z.array(Locale)
         .describe('The list of locales supported by the signage device'),
 });
 export const PictureMode = z.object({

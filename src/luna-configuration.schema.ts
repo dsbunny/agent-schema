@@ -66,7 +66,7 @@ export const Locale = z.object({
 export type Locale = z.infer<typeof Locale>;
 
 export const LocaleList = z.object({
-	localList: z.array(Locale)
+	localeList: z.array(Locale)
 		.describe('The list of locales supported by the signage device'),
 });
 export type LocaleList = z.infer<typeof LocaleList>;
