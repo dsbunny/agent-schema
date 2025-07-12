@@ -22,7 +22,7 @@ export const OnOffTimer = z.object({
 export type OnOffTimer = z.infer<typeof OnOffTimer>;
 
 export const AllOnOffTimers = z.object({
-	timeList: z.array(OnOffTimer).max(21)
+	timerList: z.array(OnOffTimer).max(21)
 		.describe('The list of on/off timers, each timer has an ID, type, hour, minute, and week bitmask'),
 })
 	.describe('The time information of the device, including current time and time zone');
@@ -47,7 +47,7 @@ export const HolidaySchedule = z.object({
 				.describe('The repeat type of the holiday schedule, either "monthly", "yearly", or "none"'),
 		}).optional()
 			.describe('The settings of the holiday schedule, including month, year, date, repeat type, days, and repeat type'),
-	})).max(7)
+	})).max(7).optional()
 		.describe('The list of holiday schedules, each schedule has a name and settings'),
 })
 	.describe('The holiday schedule information of the device, including a list of holiday schedules');

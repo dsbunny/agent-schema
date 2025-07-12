@@ -169,7 +169,7 @@ export declare const ConfigurationState: z.ZodObject<{
         ntp: z.ZodOptional<z.ZodBoolean>;
         ntpServerAddress: z.ZodOptional<z.ZodString>;
     }, {}, {}>>;
-    masterPinActivated: z.ZodOptional<z.ZodObject<{
+    masterPinStatus: z.ZodOptional<z.ZodObject<{
         activated: z.ZodBoolean;
     }, {}, {}>>;
     OSDLanguage: z.ZodOptional<z.ZodObject<{
@@ -277,15 +277,15 @@ export declare const ConfigurationState: z.ZodObject<{
 }, {}, {}>;
 export type ConfigurationState = z.infer<typeof ConfigurationState>;
 export declare const ConfigurationStatus: z.ZodObject<{
-    currentTime: z.ZodObject<{
+    currentTime: z.ZodOptional<z.ZodObject<{
         year: z.ZodNumber;
         month: z.ZodNumber;
         day: z.ZodNumber;
         hour: z.ZodNumber;
         minute: z.ZodNumber;
         sec: z.ZodNumber;
-    }, {}, {}>;
-    localeList: z.ZodObject<{
+    }, {}, {}>>;
+    localeList: z.ZodOptional<z.ZodObject<{
         localList: z.ZodArray<z.ZodObject<{
             language: z.ZodString;
             languageCode: z.ZodString;
@@ -294,13 +294,13 @@ export declare const ConfigurationStatus: z.ZodObject<{
                 specifier: z.ZodString;
             }, {}, {}>>;
         }, {}, {}>>;
-    }, {}, {}>;
-    timeZoneList: z.ZodObject<{
+    }, {}, {}>>;
+    timeZoneList: z.ZodOptional<z.ZodObject<{
         timeZone: z.ZodArray<z.ZodObject<{
             continent: z.ZodString;
             country: z.ZodString;
             city: z.ZodString;
         }, {}, {}>>;
-    }, {}, {}>;
+    }, {}, {}>>;
 }, {}, {}>;
 export type ConfigurationStatus = z.infer<typeof ConfigurationStatus>;

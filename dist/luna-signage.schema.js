@@ -105,6 +105,13 @@ export const QuietMode = z.object({
         .describe('The quiet mode status'),
 })
     .describe('The quiet mode of the signage device, indicating whether it is enabled or not');
+export const ResetRequest = z.object({
+    timestamp: z.iso.datetime()
+        .describe('The timestamp of the reset request'),
+    mode: z.enum(['softReset', 'factoryReset'])
+        .describe('The reset mode, either "softReset" or "factoryReset"'),
+})
+    .describe('The request to reset the signage device, including timestamp and reset mode');
 export const RS232CConfiguration = z.object({
     mode: z.number().int().min(0).max(1)
         .describe('The RS-232C mode, either 0 ("mediabox_[DATA]_[CHECKSUM]") or 1 (ASCII data)'),
@@ -209,6 +216,7 @@ export const SignageState = z.object({
     portraitMode: PortraitMode.optional(),
     powerSaveMode: PowerSaveMode.optional(),
     quietMode: QuietMode.optional(),
+    resetRequest: ResetRequest.optional(),
     RS232CConfiguration: RS232CConfiguration.optional(),
     simplinkStatus: SimplinkStatus.optional(),
     tileInfo: TileInfo.optional(),

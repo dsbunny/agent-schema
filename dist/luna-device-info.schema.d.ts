@@ -81,7 +81,7 @@ export declare const NetworkInfoStatus: z.ZodObject<{
         dns3: z.ZodOptional<z.ZodString>;
         dns4: z.ZodOptional<z.ZodString>;
         dns5: z.ZodOptional<z.ZodString>;
-        ipv6: z.ZodObject<{
+        ipv6: z.ZodOptional<z.ZodObject<{
             gateway: z.ZodOptional<z.ZodString>;
             ipAddress: z.ZodOptional<z.ZodString>;
             prefixLength: z.ZodOptional<z.ZodNumber>;
@@ -89,7 +89,7 @@ export declare const NetworkInfoStatus: z.ZodObject<{
                 manual: "manual";
                 dhcp: "dhcp";
             }>>;
-        }, {}, {}>;
+        }, {}, {}>>;
     }, {}, {}>;
     wifi: z.ZodObject<{
         state: z.ZodEnum<{
@@ -262,7 +262,7 @@ export declare const DeviceInfoStatus: z.ZodObject<{
             dns3: z.ZodOptional<z.ZodString>;
             dns4: z.ZodOptional<z.ZodString>;
             dns5: z.ZodOptional<z.ZodString>;
-            ipv6: z.ZodObject<{
+            ipv6: z.ZodOptional<z.ZodObject<{
                 gateway: z.ZodOptional<z.ZodString>;
                 ipAddress: z.ZodOptional<z.ZodString>;
                 prefixLength: z.ZodOptional<z.ZodNumber>;
@@ -270,7 +270,7 @@ export declare const DeviceInfoStatus: z.ZodObject<{
                     manual: "manual";
                     dhcp: "dhcp";
                 }>>;
-            }, {}, {}>;
+            }, {}, {}>>;
         }, {}, {}>;
         wifi: z.ZodObject<{
             state: z.ZodEnum<{

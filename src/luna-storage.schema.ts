@@ -98,7 +98,7 @@ export type StorageState = z.infer<typeof StorageState>;
 // #region Status
 export const StorageStatus = z.object({
 	firmwareUpgradeStatus: FirmwareUpgradeStatus.optional(),
-	usbList: USBInfo.optional(),
+	usbInfo: USBInfo.optional(),
 	storageInfo: StorageInfo.optional(),
 });
 export type StorageStatus = z.infer<typeof StorageStatus>;

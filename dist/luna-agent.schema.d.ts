@@ -9,7 +9,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
             ntp: z.ZodOptional<z.ZodBoolean>;
             ntpServerAddress: z.ZodOptional<z.ZodString>;
         }, {}, {}>>;
-        masterPinActivated: z.ZodOptional<z.ZodObject<{
+        masterPinStatus: z.ZodOptional<z.ZodObject<{
             activated: z.ZodBoolean;
         }, {}, {}>>;
         OSDLanguage: z.ZodOptional<z.ZodObject<{
@@ -303,6 +303,13 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 on: "on";
             }>;
         }, {}, {}>>;
+        resetRequest: z.ZodOptional<z.ZodObject<{
+            timestamp: z.iso.ZodISODateTime;
+            mode: z.ZodEnum<{
+                softReset: "softReset";
+                factoryReset: "factoryReset";
+            }>;
+        }, {}, {}>>;
         RS232CConfiguration: z.ZodOptional<z.ZodObject<{
             mode: z.ZodNumber;
             port: z.ZodOptional<z.ZodNumber>;
@@ -392,7 +399,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
     }, {}, {}>>;
     time: z.ZodOptional<z.ZodObject<{
         allOnOffTimers: z.ZodOptional<z.ZodObject<{
-            timeList: z.ZodArray<z.ZodObject<{
+            timerList: z.ZodArray<z.ZodObject<{
                 id: z.ZodOptional<z.ZodNumber>;
                 type: z.ZodEnum<{
                     OFFTIMER: "OFFTIMER";
@@ -404,7 +411,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
             }, {}, {}>>;
         }, {}, {}>>;
         holidaySchedule: z.ZodOptional<z.ZodObject<{
-            holidaySchedule: z.ZodArray<z.ZodObject<{
+            holidaySchedule: z.ZodOptional<z.ZodArray<z.ZodObject<{
                 name: z.ZodOptional<z.ZodString>;
                 settings: z.ZodOptional<z.ZodObject<{
                     month: z.ZodOptional<z.ZodNumber>;
@@ -422,7 +429,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                         yearly: "yearly";
                     }>>;
                 }, {}, {}>>;
-            }, {}, {}>>;
+            }, {}, {}>>>;
         }, {}, {}>>;
     }, {}, {}>>;
     customJS: z.ZodOptional<z.ZodObject<{
@@ -463,7 +470,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                 ntp: z.ZodOptional<z.ZodBoolean>;
                 ntpServerAddress: z.ZodOptional<z.ZodString>;
             }, {}, {}>>;
-            masterPinActivated: z.ZodOptional<z.ZodObject<{
+            masterPinStatus: z.ZodOptional<z.ZodObject<{
                 activated: z.ZodBoolean;
             }, {}, {}>>;
             OSDLanguage: z.ZodOptional<z.ZodObject<{
@@ -757,6 +764,13 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     on: "on";
                 }>;
             }, {}, {}>>;
+            resetRequest: z.ZodOptional<z.ZodObject<{
+                timestamp: z.iso.ZodISODateTime;
+                mode: z.ZodEnum<{
+                    softReset: "softReset";
+                    factoryReset: "factoryReset";
+                }>;
+            }, {}, {}>>;
             RS232CConfiguration: z.ZodOptional<z.ZodObject<{
                 mode: z.ZodNumber;
                 port: z.ZodOptional<z.ZodNumber>;
@@ -846,7 +860,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
         }, {}, {}>>;
         time: z.ZodOptional<z.ZodObject<{
             allOnOffTimers: z.ZodOptional<z.ZodObject<{
-                timeList: z.ZodArray<z.ZodObject<{
+                timerList: z.ZodArray<z.ZodObject<{
                     id: z.ZodOptional<z.ZodNumber>;
                     type: z.ZodEnum<{
                         OFFTIMER: "OFFTIMER";
@@ -858,7 +872,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                 }, {}, {}>>;
             }, {}, {}>>;
             holidaySchedule: z.ZodOptional<z.ZodObject<{
-                holidaySchedule: z.ZodArray<z.ZodObject<{
+                holidaySchedule: z.ZodOptional<z.ZodArray<z.ZodObject<{
                     name: z.ZodOptional<z.ZodString>;
                     settings: z.ZodOptional<z.ZodObject<{
                         month: z.ZodOptional<z.ZodNumber>;
@@ -876,7 +890,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                             yearly: "yearly";
                         }>>;
                     }, {}, {}>>;
-                }, {}, {}>>;
+                }, {}, {}>>>;
             }, {}, {}>>;
         }, {}, {}>>;
         customJS: z.ZodOptional<z.ZodObject<{
@@ -921,7 +935,7 @@ export declare const LunaAgentState: z.ZodObject<{
                 ntp: z.ZodOptional<z.ZodBoolean>;
                 ntpServerAddress: z.ZodOptional<z.ZodString>;
             }, {}, {}>>;
-            masterPinActivated: z.ZodOptional<z.ZodObject<{
+            masterPinStatus: z.ZodOptional<z.ZodObject<{
                 activated: z.ZodBoolean;
             }, {}, {}>>;
             OSDLanguage: z.ZodOptional<z.ZodObject<{
@@ -1215,6 +1229,13 @@ export declare const LunaAgentState: z.ZodObject<{
                     on: "on";
                 }>;
             }, {}, {}>>;
+            resetRequest: z.ZodOptional<z.ZodObject<{
+                timestamp: z.iso.ZodISODateTime;
+                mode: z.ZodEnum<{
+                    softReset: "softReset";
+                    factoryReset: "factoryReset";
+                }>;
+            }, {}, {}>>;
             RS232CConfiguration: z.ZodOptional<z.ZodObject<{
                 mode: z.ZodNumber;
                 port: z.ZodOptional<z.ZodNumber>;
@@ -1304,7 +1325,7 @@ export declare const LunaAgentState: z.ZodObject<{
         }, {}, {}>>;
         time: z.ZodOptional<z.ZodObject<{
             allOnOffTimers: z.ZodOptional<z.ZodObject<{
-                timeList: z.ZodArray<z.ZodObject<{
+                timerList: z.ZodArray<z.ZodObject<{
                     id: z.ZodOptional<z.ZodNumber>;
                     type: z.ZodEnum<{
                         OFFTIMER: "OFFTIMER";
@@ -1316,7 +1337,7 @@ export declare const LunaAgentState: z.ZodObject<{
                 }, {}, {}>>;
             }, {}, {}>>;
             holidaySchedule: z.ZodOptional<z.ZodObject<{
-                holidaySchedule: z.ZodArray<z.ZodObject<{
+                holidaySchedule: z.ZodOptional<z.ZodArray<z.ZodObject<{
                     name: z.ZodOptional<z.ZodString>;
                     settings: z.ZodOptional<z.ZodObject<{
                         month: z.ZodOptional<z.ZodNumber>;
@@ -1334,7 +1355,7 @@ export declare const LunaAgentState: z.ZodObject<{
                             yearly: "yearly";
                         }>>;
                     }, {}, {}>>;
-                }, {}, {}>>;
+                }, {}, {}>>>;
             }, {}, {}>>;
         }, {}, {}>>;
         customJS: z.ZodOptional<z.ZodObject<{
@@ -1363,15 +1384,15 @@ export declare const LunaAgentState: z.ZodObject<{
 export type LunaAgentState = z.infer<typeof LunaAgentState>;
 export declare const LunaAgentStatusDetail: z.ZodObject<{
     configuration: z.ZodOptional<z.ZodObject<{
-        currentTime: z.ZodObject<{
+        currentTime: z.ZodOptional<z.ZodObject<{
             year: z.ZodNumber;
             month: z.ZodNumber;
             day: z.ZodNumber;
             hour: z.ZodNumber;
             minute: z.ZodNumber;
             sec: z.ZodNumber;
-        }, {}, {}>;
-        localeList: z.ZodObject<{
+        }, {}, {}>>;
+        localeList: z.ZodOptional<z.ZodObject<{
             localList: z.ZodArray<z.ZodObject<{
                 language: z.ZodString;
                 languageCode: z.ZodString;
@@ -1380,14 +1401,14 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
                     specifier: z.ZodString;
                 }, {}, {}>>;
             }, {}, {}>>;
-        }, {}, {}>;
-        timeZoneList: z.ZodObject<{
+        }, {}, {}>>;
+        timeZoneList: z.ZodOptional<z.ZodObject<{
             timeZone: z.ZodArray<z.ZodObject<{
                 continent: z.ZodString;
                 country: z.ZodString;
                 city: z.ZodString;
             }, {}, {}>>;
-        }, {}, {}>;
+        }, {}, {}>>;
     }, {}, {}>>;
     deviceInfo: z.ZodOptional<z.ZodObject<{
         networkInfo: z.ZodOptional<z.ZodObject<{
@@ -1410,7 +1431,7 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
                 dns3: z.ZodOptional<z.ZodString>;
                 dns4: z.ZodOptional<z.ZodString>;
                 dns5: z.ZodOptional<z.ZodString>;
-                ipv6: z.ZodObject<{
+                ipv6: z.ZodOptional<z.ZodObject<{
                     gateway: z.ZodOptional<z.ZodString>;
                     ipAddress: z.ZodOptional<z.ZodString>;
                     prefixLength: z.ZodOptional<z.ZodNumber>;
@@ -1418,7 +1439,7 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
                         manual: "manual";
                         dhcp: "dhcp";
                     }>>;
-                }, {}, {}>;
+                }, {}, {}>>;
             }, {}, {}>;
             wifi: z.ZodObject<{
                 state: z.ZodEnum<{
@@ -1541,7 +1562,7 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
             downloadProgress: z.ZodNumber;
             upgradeProgress: z.ZodNumber;
         }, {}, {}>>;
-        usbList: z.ZodOptional<z.ZodArray<z.ZodObject<{
+        usbInfo: z.ZodOptional<z.ZodArray<z.ZodObject<{
             usbName: z.ZodString;
             vendor: z.ZodString;
             product: z.ZodString;
@@ -1612,15 +1633,15 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
     uri: z.ZodLiteral<"urn:dsbunny:agent:luna">;
     detail: z.ZodNullable<z.ZodObject<{
         configuration: z.ZodOptional<z.ZodObject<{
-            currentTime: z.ZodObject<{
+            currentTime: z.ZodOptional<z.ZodObject<{
                 year: z.ZodNumber;
                 month: z.ZodNumber;
                 day: z.ZodNumber;
                 hour: z.ZodNumber;
                 minute: z.ZodNumber;
                 sec: z.ZodNumber;
-            }, {}, {}>;
-            localeList: z.ZodObject<{
+            }, {}, {}>>;
+            localeList: z.ZodOptional<z.ZodObject<{
                 localList: z.ZodArray<z.ZodObject<{
                     language: z.ZodString;
                     languageCode: z.ZodString;
@@ -1629,14 +1650,14 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                         specifier: z.ZodString;
                     }, {}, {}>>;
                 }, {}, {}>>;
-            }, {}, {}>;
-            timeZoneList: z.ZodObject<{
+            }, {}, {}>>;
+            timeZoneList: z.ZodOptional<z.ZodObject<{
                 timeZone: z.ZodArray<z.ZodObject<{
                     continent: z.ZodString;
                     country: z.ZodString;
                     city: z.ZodString;
                 }, {}, {}>>;
-            }, {}, {}>;
+            }, {}, {}>>;
         }, {}, {}>>;
         deviceInfo: z.ZodOptional<z.ZodObject<{
             networkInfo: z.ZodOptional<z.ZodObject<{
@@ -1659,7 +1680,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                     dns3: z.ZodOptional<z.ZodString>;
                     dns4: z.ZodOptional<z.ZodString>;
                     dns5: z.ZodOptional<z.ZodString>;
-                    ipv6: z.ZodObject<{
+                    ipv6: z.ZodOptional<z.ZodObject<{
                         gateway: z.ZodOptional<z.ZodString>;
                         ipAddress: z.ZodOptional<z.ZodString>;
                         prefixLength: z.ZodOptional<z.ZodNumber>;
@@ -1667,7 +1688,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                             manual: "manual";
                             dhcp: "dhcp";
                         }>>;
-                    }, {}, {}>;
+                    }, {}, {}>>;
                 }, {}, {}>;
                 wifi: z.ZodObject<{
                     state: z.ZodEnum<{
@@ -1790,7 +1811,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                 downloadProgress: z.ZodNumber;
                 upgradeProgress: z.ZodNumber;
             }, {}, {}>>;
-            usbList: z.ZodOptional<z.ZodArray<z.ZodObject<{
+            usbInfo: z.ZodOptional<z.ZodArray<z.ZodObject<{
                 usbName: z.ZodString;
                 vendor: z.ZodString;
                 product: z.ZodString;
@@ -1865,15 +1886,15 @@ export declare const LunaAgentStatus: z.ZodObject<{
     uri: z.ZodLiteral<"urn:dsbunny:agent:luna">;
     detail: z.ZodNullable<z.ZodObject<{
         configuration: z.ZodOptional<z.ZodObject<{
-            currentTime: z.ZodObject<{
+            currentTime: z.ZodOptional<z.ZodObject<{
                 year: z.ZodNumber;
                 month: z.ZodNumber;
                 day: z.ZodNumber;
                 hour: z.ZodNumber;
                 minute: z.ZodNumber;
                 sec: z.ZodNumber;
-            }, {}, {}>;
-            localeList: z.ZodObject<{
+            }, {}, {}>>;
+            localeList: z.ZodOptional<z.ZodObject<{
                 localList: z.ZodArray<z.ZodObject<{
                     language: z.ZodString;
                     languageCode: z.ZodString;
@@ -1882,14 +1903,14 @@ export declare const LunaAgentStatus: z.ZodObject<{
                         specifier: z.ZodString;
                     }, {}, {}>>;
                 }, {}, {}>>;
-            }, {}, {}>;
-            timeZoneList: z.ZodObject<{
+            }, {}, {}>>;
+            timeZoneList: z.ZodOptional<z.ZodObject<{
                 timeZone: z.ZodArray<z.ZodObject<{
                     continent: z.ZodString;
                     country: z.ZodString;
                     city: z.ZodString;
                 }, {}, {}>>;
-            }, {}, {}>;
+            }, {}, {}>>;
         }, {}, {}>>;
         deviceInfo: z.ZodOptional<z.ZodObject<{
             networkInfo: z.ZodOptional<z.ZodObject<{
@@ -1912,7 +1933,7 @@ export declare const LunaAgentStatus: z.ZodObject<{
                     dns3: z.ZodOptional<z.ZodString>;
                     dns4: z.ZodOptional<z.ZodString>;
                     dns5: z.ZodOptional<z.ZodString>;
-                    ipv6: z.ZodObject<{
+                    ipv6: z.ZodOptional<z.ZodObject<{
                         gateway: z.ZodOptional<z.ZodString>;
                         ipAddress: z.ZodOptional<z.ZodString>;
                         prefixLength: z.ZodOptional<z.ZodNumber>;
@@ -1920,7 +1941,7 @@ export declare const LunaAgentStatus: z.ZodObject<{
                             manual: "manual";
                             dhcp: "dhcp";
                         }>>;
-                    }, {}, {}>;
+                    }, {}, {}>>;
                 }, {}, {}>;
                 wifi: z.ZodObject<{
                     state: z.ZodEnum<{
@@ -2043,7 +2064,7 @@ export declare const LunaAgentStatus: z.ZodObject<{
                 downloadProgress: z.ZodNumber;
                 upgradeProgress: z.ZodNumber;
             }, {}, {}>>;
-            usbList: z.ZodOptional<z.ZodArray<z.ZodObject<{
+            usbInfo: z.ZodOptional<z.ZodArray<z.ZodObject<{
                 usbName: z.ZodString;
                 vendor: z.ZodString;
                 product: z.ZodString;

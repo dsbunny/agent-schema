@@ -104,6 +104,14 @@ export declare const QuietMode: z.ZodObject<{
     }>;
 }, {}, {}>;
 export type QuietMode = z.infer<typeof QuietMode>;
+export declare const ResetRequest: z.ZodObject<{
+    timestamp: z.iso.ZodISODateTime;
+    mode: z.ZodEnum<{
+        softReset: "softReset";
+        factoryReset: "factoryReset";
+    }>;
+}, {}, {}>;
+export type ResetRequest = z.infer<typeof ResetRequest>;
 export declare const RS232CConfiguration: z.ZodObject<{
     mode: z.ZodNumber;
     port: z.ZodOptional<z.ZodNumber>;
@@ -234,6 +242,13 @@ export declare const SignageState: z.ZodObject<{
         mode: z.ZodEnum<{
             off: "off";
             on: "on";
+        }>;
+    }, {}, {}>>;
+    resetRequest: z.ZodOptional<z.ZodObject<{
+        timestamp: z.iso.ZodISODateTime;
+        mode: z.ZodEnum<{
+            softReset: "softReset";
+            factoryReset: "factoryReset";
         }>;
     }, {}, {}>>;
     RS232CConfiguration: z.ZodOptional<z.ZodObject<{

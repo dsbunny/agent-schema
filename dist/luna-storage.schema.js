@@ -82,7 +82,7 @@ export const StorageState = z.object({
 // #region Status
 export const StorageStatus = z.object({
     firmwareUpgradeStatus: FirmwareUpgradeStatus.optional(),
-    usbList: USBInfo.optional(),
+    usbInfo: USBInfo.optional(),
     storageInfo: StorageInfo.optional(),
 });
 //# sourceMappingURL=luna-storage.schema.js.map

@@ -221,7 +221,7 @@ export type USBLock = z.infer<typeof USBLock>;
 export const ConfigurationState = z.object({
 	clearCacheRequest: ClearCacheRequest.optional(),
 	currentTime: CurrentTimeState.optional(),
-	masterPinActivated: MasterPinStatus.optional(),
+	masterPinStatus: MasterPinStatus.optional(),
 	OSDLanguage: OSDLanguage.optional(),
 	OSDLock: OSDLock.optional(),
 	pictureMode: PictureMode.optional(),
@@ -238,11 +238,11 @@ export type ConfigurationState = z.infer<typeof ConfigurationState>;
 
 // #region Status
 export const ConfigurationStatus = z.object({
-	currentTime: CurrentTimeStatus
+	currentTime: CurrentTimeStatus.optional()
 		.describe('The local date and time of the signage device'),
-	localeList: LocaleList
+	localeList: LocaleList.optional()
 		.describe('The list of locales supported by the signage device'),
-	timeZoneList: TimeZoneList
+	timeZoneList: TimeZoneList.optional()
 		.describe('The list of time zones supported by the signage device'),
 });
 export type ConfigurationStatus = z.infer<typeof ConfigurationStatus>;

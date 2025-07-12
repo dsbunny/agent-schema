@@ -89,7 +89,7 @@ export declare const StorageStatus: z.ZodObject<{
         downloadProgress: z.ZodNumber;
         upgradeProgress: z.ZodNumber;
     }, {}, {}>>;
-    usbList: z.ZodOptional<z.ZodArray<z.ZodObject<{
+    usbInfo: z.ZodOptional<z.ZodArray<z.ZodObject<{
         usbName: z.ZodString;
         vendor: z.ZodString;
         product: z.ZodString;

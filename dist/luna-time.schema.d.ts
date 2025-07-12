@@ -13,7 +13,7 @@ export declare const OnOffTimer: z.ZodObject<{
 }, {}, {}>;
 export type OnOffTimer = z.infer<typeof OnOffTimer>;
 export declare const AllOnOffTimers: z.ZodObject<{
-    timeList: z.ZodArray<z.ZodObject<{
+    timerList: z.ZodArray<z.ZodObject<{
         id: z.ZodOptional<z.ZodNumber>;
         type: z.ZodEnum<{
             OFFTIMER: "OFFTIMER";
@@ -26,7 +26,7 @@ export declare const AllOnOffTimers: z.ZodObject<{
 }, {}, {}>;
 export type AllOnOffTimers = z.infer<typeof AllOnOffTimers>;
 export declare const HolidaySchedule: z.ZodObject<{
-    holidaySchedule: z.ZodArray<z.ZodObject<{
+    holidaySchedule: z.ZodOptional<z.ZodArray<z.ZodObject<{
         name: z.ZodOptional<z.ZodString>;
         settings: z.ZodOptional<z.ZodObject<{
             month: z.ZodOptional<z.ZodNumber>;
@@ -44,12 +44,12 @@ export declare const HolidaySchedule: z.ZodObject<{
                 yearly: "yearly";
             }>>;
         }, {}, {}>>;
-    }, {}, {}>>;
+    }, {}, {}>>>;
 }, {}, {}>;
 export type HolidaySchedule = z.infer<typeof HolidaySchedule>;
 export declare const TimeState: z.ZodObject<{
     allOnOffTimers: z.ZodOptional<z.ZodObject<{
-        timeList: z.ZodArray<z.ZodObject<{
+        timerList: z.ZodArray<z.ZodObject<{
             id: z.ZodOptional<z.ZodNumber>;
             type: z.ZodEnum<{
                 OFFTIMER: "OFFTIMER";
@@ -61,7 +61,7 @@ export declare const TimeState: z.ZodObject<{
         }, {}, {}>>;
     }, {}, {}>>;
     holidaySchedule: z.ZodOptional<z.ZodObject<{
-        holidaySchedule: z.ZodArray<z.ZodObject<{
+        holidaySchedule: z.ZodOptional<z.ZodArray<z.ZodObject<{
             name: z.ZodOptional<z.ZodString>;
             settings: z.ZodOptional<z.ZodObject<{
                 month: z.ZodOptional<z.ZodNumber>;
@@ -79,7 +79,7 @@ export declare const TimeState: z.ZodObject<{
                     yearly: "yearly";
                 }>>;
             }, {}, {}>>;
-        }, {}, {}>>;
+        }, {}, {}>>>;
     }, {}, {}>>;
 }, {}, {}>;
 export type TimeState = z.infer<typeof TimeState>;

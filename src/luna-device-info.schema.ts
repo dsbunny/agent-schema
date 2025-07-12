@@ -98,7 +98,8 @@ export const NetworkInfoStatus = z.object({
 				.describe('The IPv6 prefix length of the wired connection'),
 			method: z.enum(['dhcp', 'manual']).optional()
 				.describe('The method of the IPv6 connection, either "dhcp" or "manual"'),
-		}).describe('The IPv6 network connection information'),
+		}).optional()
+			.describe('The IPv6 network connection information'),
 	}).describe('The wired network connection information'),
 	wifi: z.object({
 		state: z.enum(['connected', 'disconnected'])
