@@ -29,7 +29,7 @@ export const CaptureScreenStatus = z.object({
 export type CaptureScreenStatus = z.infer<typeof CaptureScreenStatus>;
 
 export const CheckScreen = z.object({
-	checkScreen: z.boolean().optional()
+	checkScreen: z.boolean()
 		.describe('Indicates whether to enable the pixel sensor'),
 })
 	.describe('The check screen request to enable or disable the pixel sensor');
@@ -45,7 +45,7 @@ export type DigitalAudioInputMode = z.infer<typeof DigitalAudioInputMode>;
 export const FailoverMode = z.object({
 	mode: z.enum(['auto', 'manual', 'off'])
 		.describe('The failover mode, either "auto", "manual", or "off"'),
-	priority: z.array(z.string())
+	priority: z.array(z.string()).optional()
 		.describe('The list of input sources in priority order for failover, e.g., ["ext://hdmi:1", "ext://hdmi:2"]'),
 })
 	.describe('The failover mode and priority of input sources for the agent');
@@ -143,7 +143,7 @@ export const ResetRequest = z.object({
 export type ResetRequest = z.infer<typeof ResetRequest>;
 
 export const RS232CConfiguration = z.object({
-	mode: z.number().int().min(0).max(1)
+	mode: z.literal([0, 1])
 		.describe('The RS-232C mode, either 0 ("mediabox_[DATA]_[CHECKSUM]") or 1 (ASCII data)'),
 	port: z.number().int().min(1).max(13).optional()
 		.describe('The RS-232C port number, e.g. 1 for COM1, and 13 for COM13'),

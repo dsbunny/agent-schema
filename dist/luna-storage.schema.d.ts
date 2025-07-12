@@ -15,12 +15,14 @@ export declare const StorageInfo: z.ZodObject<{
     }, {}, {}>>>;
 }, {}, {}>;
 export type StorageInfo = z.infer<typeof StorageInfo>;
-export declare const USBInfo: z.ZodArray<z.ZodObject<{
-    usbName: z.ZodString;
-    vendor: z.ZodString;
-    product: z.ZodString;
-    deviceId: z.ZodOptional<z.ZodString>;
-}, {}, {}>>;
+export declare const USBInfo: z.ZodObject<{
+    usbList: z.ZodArray<z.ZodObject<{
+        usbName: z.ZodString;
+        vendor: z.ZodString;
+        product: z.ZodString;
+        deviceId: z.ZodOptional<z.ZodString>;
+    }, {}, {}>>;
+}, {}, {}>;
 export type USBInfo = z.infer<typeof USBInfo>;
 export declare const UpgradeApplicationRequest: z.ZodObject<{
     timestamp: z.iso.ZodISODateTime;
@@ -89,12 +91,14 @@ export declare const StorageStatus: z.ZodObject<{
         downloadProgress: z.ZodNumber;
         upgradeProgress: z.ZodNumber;
     }, {}, {}>>;
-    usbInfo: z.ZodOptional<z.ZodArray<z.ZodObject<{
-        usbName: z.ZodString;
-        vendor: z.ZodString;
-        product: z.ZodString;
-        deviceId: z.ZodOptional<z.ZodString>;
-    }, {}, {}>>>;
+    usbInfo: z.ZodOptional<z.ZodObject<{
+        usbList: z.ZodArray<z.ZodObject<{
+            usbName: z.ZodString;
+            vendor: z.ZodString;
+            product: z.ZodString;
+            deviceId: z.ZodOptional<z.ZodString>;
+        }, {}, {}>>;
+    }, {}, {}>>;
     storageInfo: z.ZodOptional<z.ZodObject<{
         free: z.ZodString;
         total: z.ZodString;

@@ -31,16 +31,19 @@ export const StorageInfo = z.object({
 	.describe('The storage information of the device, including free, total, and used storage space');
 export type StorageInfo = z.infer<typeof StorageInfo>;
 
-export const USBInfo = z.array(z.object({
-	usbName: z.string()
-		.describe('The name of the USB device, e.g., "usb1"'),
-	vendor: z.string()
-		.describe('The vendor of the USB device, e.g., "SanDisk"'),
-	product: z.string()
-		.describe('The product name of the USB device, e.g., "Cruzer Blade"'),
-	deviceId: z.string().optional()
-		.describe('The device ID of the USB device, e.g., "1234567890"'),
-}))
+export const USBInfo = z.object({
+	usbList: z.array(z.object({
+		usbName: z.string()
+			.describe('The name of the USB device, e.g., "usb1"'),
+		vendor: z.string()
+			.describe('The vendor of the USB device, e.g., "SanDisk"'),
+		product: z.string()
+			.describe('The product name of the USB device, e.g., "Cruzer Blade"'),
+		deviceId: z.string().optional()
+			.describe('The device ID of the USB device, e.g., "1234567890"'),
+	})),
+
+})
 	.describe('The list of USB devices connected to the agent, including name, vendor, product, and device ID');
 export type USBInfo = z.infer<typeof USBInfo>;
 

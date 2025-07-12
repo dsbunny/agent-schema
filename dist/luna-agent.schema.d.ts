@@ -226,7 +226,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
             }>>;
         }, {}, {}>>;
         checkScreen: z.ZodOptional<z.ZodObject<{
-            checkScreen: z.ZodOptional<z.ZodBoolean>;
+            checkScreen: z.ZodBoolean;
         }, {}, {}>>;
         digitalAudioInput: z.ZodOptional<z.ZodObject<{
             digitalAudioInput: z.ZodEnum<{
@@ -240,7 +240,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 auto: "auto";
                 manual: "manual";
             }>;
-            priority: z.ZodArray<z.ZodString>;
+            priority: z.ZodOptional<z.ZodArray<z.ZodString>>;
         }, {}, {}>>;
         intelligentAuto: z.ZodOptional<z.ZodObject<{
             enabled: z.ZodBoolean;
@@ -311,7 +311,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
             }>;
         }, {}, {}>>;
         RS232CConfiguration: z.ZodOptional<z.ZodObject<{
-            mode: z.ZodNumber;
+            mode: z.ZodLiteral<0 | 1>;
             port: z.ZodOptional<z.ZodNumber>;
             baudRate: z.ZodOptional<z.ZodLiteral<0 | 1024000 | 110 | 115200 | 1200 | 128000 | 14400 | 19200 | 230400 | 2400 | 256000 | 300 | 38400 | 4800 | 512000 | 57600 | 600 | 768000 | 921600 | 9600>>;
             dataBit: z.ZodOptional<z.ZodLiteral<0 | 8 | 7>>;
@@ -687,7 +687,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                 }>>;
             }, {}, {}>>;
             checkScreen: z.ZodOptional<z.ZodObject<{
-                checkScreen: z.ZodOptional<z.ZodBoolean>;
+                checkScreen: z.ZodBoolean;
             }, {}, {}>>;
             digitalAudioInput: z.ZodOptional<z.ZodObject<{
                 digitalAudioInput: z.ZodEnum<{
@@ -701,7 +701,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     auto: "auto";
                     manual: "manual";
                 }>;
-                priority: z.ZodArray<z.ZodString>;
+                priority: z.ZodOptional<z.ZodArray<z.ZodString>>;
             }, {}, {}>>;
             intelligentAuto: z.ZodOptional<z.ZodObject<{
                 enabled: z.ZodBoolean;
@@ -772,7 +772,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                 }>;
             }, {}, {}>>;
             RS232CConfiguration: z.ZodOptional<z.ZodObject<{
-                mode: z.ZodNumber;
+                mode: z.ZodLiteral<0 | 1>;
                 port: z.ZodOptional<z.ZodNumber>;
                 baudRate: z.ZodOptional<z.ZodLiteral<0 | 1024000 | 110 | 115200 | 1200 | 128000 | 14400 | 19200 | 230400 | 2400 | 256000 | 300 | 38400 | 4800 | 512000 | 57600 | 600 | 768000 | 921600 | 9600>>;
                 dataBit: z.ZodOptional<z.ZodLiteral<0 | 8 | 7>>;
@@ -1152,7 +1152,7 @@ export declare const LunaAgentState: z.ZodObject<{
                 }>>;
             }, {}, {}>>;
             checkScreen: z.ZodOptional<z.ZodObject<{
-                checkScreen: z.ZodOptional<z.ZodBoolean>;
+                checkScreen: z.ZodBoolean;
             }, {}, {}>>;
             digitalAudioInput: z.ZodOptional<z.ZodObject<{
                 digitalAudioInput: z.ZodEnum<{
@@ -1166,7 +1166,7 @@ export declare const LunaAgentState: z.ZodObject<{
                     auto: "auto";
                     manual: "manual";
                 }>;
-                priority: z.ZodArray<z.ZodString>;
+                priority: z.ZodOptional<z.ZodArray<z.ZodString>>;
             }, {}, {}>>;
             intelligentAuto: z.ZodOptional<z.ZodObject<{
                 enabled: z.ZodBoolean;
@@ -1237,7 +1237,7 @@ export declare const LunaAgentState: z.ZodObject<{
                 }>;
             }, {}, {}>>;
             RS232CConfiguration: z.ZodOptional<z.ZodObject<{
-                mode: z.ZodNumber;
+                mode: z.ZodLiteral<0 | 1>;
                 port: z.ZodOptional<z.ZodNumber>;
                 baudRate: z.ZodOptional<z.ZodLiteral<0 | 1024000 | 110 | 115200 | 1200 | 128000 | 14400 | 19200 | 230400 | 2400 | 256000 | 300 | 38400 | 4800 | 512000 | 57600 | 600 | 768000 | 921600 | 9600>>;
                 dataBit: z.ZodOptional<z.ZodLiteral<0 | 8 | 7>>;
@@ -1562,12 +1562,14 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
             downloadProgress: z.ZodNumber;
             upgradeProgress: z.ZodNumber;
         }, {}, {}>>;
-        usbInfo: z.ZodOptional<z.ZodArray<z.ZodObject<{
-            usbName: z.ZodString;
-            vendor: z.ZodString;
-            product: z.ZodString;
-            deviceId: z.ZodOptional<z.ZodString>;
-        }, {}, {}>>>;
+        usbInfo: z.ZodOptional<z.ZodObject<{
+            usbList: z.ZodArray<z.ZodObject<{
+                usbName: z.ZodString;
+                vendor: z.ZodString;
+                product: z.ZodString;
+                deviceId: z.ZodOptional<z.ZodString>;
+            }, {}, {}>>;
+        }, {}, {}>>;
         storageInfo: z.ZodOptional<z.ZodObject<{
             free: z.ZodString;
             total: z.ZodString;
@@ -1811,12 +1813,14 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                 downloadProgress: z.ZodNumber;
                 upgradeProgress: z.ZodNumber;
             }, {}, {}>>;
-            usbInfo: z.ZodOptional<z.ZodArray<z.ZodObject<{
-                usbName: z.ZodString;
-                vendor: z.ZodString;
-                product: z.ZodString;
-                deviceId: z.ZodOptional<z.ZodString>;
-            }, {}, {}>>>;
+            usbInfo: z.ZodOptional<z.ZodObject<{
+                usbList: z.ZodArray<z.ZodObject<{
+                    usbName: z.ZodString;
+                    vendor: z.ZodString;
+                    product: z.ZodString;
+                    deviceId: z.ZodOptional<z.ZodString>;
+                }, {}, {}>>;
+            }, {}, {}>>;
             storageInfo: z.ZodOptional<z.ZodObject<{
                 free: z.ZodString;
                 total: z.ZodString;
@@ -2064,12 +2068,14 @@ export declare const LunaAgentStatus: z.ZodObject<{
                 downloadProgress: z.ZodNumber;
                 upgradeProgress: z.ZodNumber;
             }, {}, {}>>;
-            usbInfo: z.ZodOptional<z.ZodArray<z.ZodObject<{
-                usbName: z.ZodString;
-                vendor: z.ZodString;
-                product: z.ZodString;
-                deviceId: z.ZodOptional<z.ZodString>;
-            }, {}, {}>>>;
+            usbInfo: z.ZodOptional<z.ZodObject<{
+                usbList: z.ZodArray<z.ZodObject<{
+                    usbName: z.ZodString;
+                    vendor: z.ZodString;
+                    product: z.ZodString;
+                    deviceId: z.ZodOptional<z.ZodString>;
+                }, {}, {}>>;
+            }, {}, {}>>;
             storageInfo: z.ZodOptional<z.ZodObject<{
                 free: z.ZodString;
                 total: z.ZodString;

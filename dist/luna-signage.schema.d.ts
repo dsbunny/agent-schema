@@ -16,7 +16,7 @@ export declare const CaptureScreenStatus: z.ZodObject<{
 }, {}, {}>;
 export type CaptureScreenStatus = z.infer<typeof CaptureScreenStatus>;
 export declare const CheckScreen: z.ZodObject<{
-    checkScreen: z.ZodOptional<z.ZodBoolean>;
+    checkScreen: z.ZodBoolean;
 }, {}, {}>;
 export type CheckScreen = z.infer<typeof CheckScreen>;
 export declare const DigitalAudioInputMode: z.ZodObject<{
@@ -32,7 +32,7 @@ export declare const FailoverMode: z.ZodObject<{
         auto: "auto";
         manual: "manual";
     }>;
-    priority: z.ZodArray<z.ZodString>;
+    priority: z.ZodOptional<z.ZodArray<z.ZodString>>;
 }, {}, {}>;
 export type FailoverMode = z.infer<typeof FailoverMode>;
 export declare const IntelligentAuto: z.ZodObject<{
@@ -113,7 +113,7 @@ export declare const ResetRequest: z.ZodObject<{
 }, {}, {}>;
 export type ResetRequest = z.infer<typeof ResetRequest>;
 export declare const RS232CConfiguration: z.ZodObject<{
-    mode: z.ZodNumber;
+    mode: z.ZodLiteral<0 | 1>;
     port: z.ZodOptional<z.ZodNumber>;
     baudRate: z.ZodOptional<z.ZodLiteral<0 | 1024000 | 110 | 115200 | 1200 | 128000 | 14400 | 19200 | 230400 | 2400 | 256000 | 300 | 38400 | 4800 | 512000 | 57600 | 600 | 768000 | 921600 | 9600>>;
     dataBit: z.ZodOptional<z.ZodLiteral<0 | 8 | 7>>;
@@ -167,7 +167,7 @@ export declare const SignageState: z.ZodObject<{
         }>>;
     }, {}, {}>>;
     checkScreen: z.ZodOptional<z.ZodObject<{
-        checkScreen: z.ZodOptional<z.ZodBoolean>;
+        checkScreen: z.ZodBoolean;
     }, {}, {}>>;
     digitalAudioInput: z.ZodOptional<z.ZodObject<{
         digitalAudioInput: z.ZodEnum<{
@@ -181,7 +181,7 @@ export declare const SignageState: z.ZodObject<{
             auto: "auto";
             manual: "manual";
         }>;
-        priority: z.ZodArray<z.ZodString>;
+        priority: z.ZodOptional<z.ZodArray<z.ZodString>>;
     }, {}, {}>>;
     intelligentAuto: z.ZodOptional<z.ZodObject<{
         enabled: z.ZodBoolean;
@@ -252,7 +252,7 @@ export declare const SignageState: z.ZodObject<{
         }>;
     }, {}, {}>>;
     RS232CConfiguration: z.ZodOptional<z.ZodObject<{
-        mode: z.ZodNumber;
+        mode: z.ZodLiteral<0 | 1>;
         port: z.ZodOptional<z.ZodNumber>;
         baudRate: z.ZodOptional<z.ZodLiteral<0 | 1024000 | 110 | 115200 | 1200 | 128000 | 14400 | 19200 | 230400 | 2400 | 256000 | 300 | 38400 | 4800 | 512000 | 57600 | 600 | 768000 | 921600 | 9600>>;
         dataBit: z.ZodOptional<z.ZodLiteral<0 | 8 | 7>>;
