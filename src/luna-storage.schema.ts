@@ -3,7 +3,7 @@
 import { z } from 'zod/v4';
 
 export const ChangeLogoImageRequest = z.object({
-	timestamp: z.iso.datetime()
+	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the logo image change request'),
 	uri: z.string()
 		.describe('The URI of the new logo image to be set, e.g., "file://internal/logo.png"'),
@@ -48,7 +48,7 @@ export const USBStatus = z.object({
 export type USBStatus = z.infer<typeof USBStatus>;
 
 export const UpgradeApplicationRequest = z.object({
-	timestamp: z.iso.datetime()
+	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the application upgrade request'),
 	to: z.enum(['local', 'usb'])
 		.describe('The target storage to store the new app.'),
@@ -61,7 +61,7 @@ export const UpgradeApplicationRequest = z.object({
 export type UpgradeApplicationRequest = z.infer<typeof UpgradeApplicationRequest>;
 
 export const UpgradeFirmwareRequest = z.object({
-	timestamp: z.iso.datetime()
+	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the firmware upgrade request'),
 	path: z.string()
 		.describe('The path of the firmware file to be upgraded, e.g., "file://internal/test.epk"'),

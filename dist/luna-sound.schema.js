@@ -41,6 +41,8 @@ export const SoundOutState = z.object({
 })
     .describe('Sound output configuration');
 export const VolumeState = z.object({
+    _timestamp: z.iso.datetime()
+        .describe('The timestamp of the last time the volume level was updated'),
     level: z.number().int().min(0).max(100)
         .describe('The sound level of the device, Range: [0–100]'),
     volOsdEnabled: z.boolean().optional()

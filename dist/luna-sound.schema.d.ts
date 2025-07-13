@@ -31,6 +31,7 @@ export declare const SoundOutState: z.ZodObject<{
 }, {}, {}>;
 export type SoundOutState = z.infer<typeof SoundOutState>;
 export declare const VolumeState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     level: z.ZodNumber;
     volOsdEnabled: z.ZodOptional<z.ZodBoolean>;
 }, {}, {}>;
@@ -64,6 +65,7 @@ export declare const SoundState: z.ZodObject<{
         }>;
     }, {}, {}>>;
     volumeLevel: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         level: z.ZodNumber;
         volOsdEnabled: z.ZodOptional<z.ZodBoolean>;
     }, {}, {}>>;

@@ -98,6 +98,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
             urlList: z.ZodArray<z.ZodString>;
         }, {}, {}>>;
         serverProperty: z.ZodOptional<z.ZodObject<{
+            _timestamp: z.iso.ZodISODateTime;
             serverIp: z.ZodString;
             serverPort: z.ZodNumber;
             secureConnection: z.ZodBoolean;
@@ -232,6 +233,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
     }, {}, {}>>;
     security: z.ZodOptional<z.ZodObject<{
         serverCertificateList: z.ZodOptional<z.ZodObject<{
+            _timestamp: z.iso.ZodISODateTime;
             serverCertificateList: z.ZodArray<z.ZodString>;
         }, {}, {}>>;
     }, {}, {}>>;
@@ -410,17 +412,18 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
             }>;
         }, {}, {}>>;
         volumeLevel: z.ZodOptional<z.ZodObject<{
+            _timestamp: z.iso.ZodISODateTime;
             level: z.ZodNumber;
             volOsdEnabled: z.ZodOptional<z.ZodBoolean>;
         }, {}, {}>>;
     }, {}, {}>>;
     storage: z.ZodOptional<z.ZodObject<{
         _changeLogoImageRequest: z.ZodOptional<z.ZodObject<{
-            timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.iso.ZodISODateTime;
             uri: z.ZodString;
         }, {}, {}>>;
         _upgradeApplicationRequest: z.ZodOptional<z.ZodObject<{
-            timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.iso.ZodISODateTime;
             to: z.ZodEnum<{
                 local: "local";
                 usb: "usb";
@@ -432,7 +435,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
             }>;
         }, {}, {}>>;
         _upgradeFirmwareRequest: z.ZodOptional<z.ZodObject<{
-            timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.iso.ZodISODateTime;
             path: z.ZodString;
         }, {}, {}>>;
     }, {}, {}>>;
@@ -475,7 +478,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
     }, {}, {}>>;
     customJS: z.ZodOptional<z.ZodObject<{
         _clearBrowsingDataRequest: z.ZodOptional<z.ZodObject<{
-            timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.iso.ZodISODateTime;
             types: z.ZodOptional<z.ZodArray<z.ZodEnum<{
                 all: "all";
                 appcache: "appcache";
@@ -490,7 +493,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
             }>>>;
         }, {}, {}>>;
         _disableApplicationRequest: z.ZodOptional<z.ZodObject<{
-            timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.iso.ZodISODateTime;
             reset: z.ZodOptional<z.ZodBoolean>;
         }, {}, {}>>;
     }, {}, {}>>;
@@ -600,6 +603,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                 urlList: z.ZodArray<z.ZodString>;
             }, {}, {}>>;
             serverProperty: z.ZodOptional<z.ZodObject<{
+                _timestamp: z.iso.ZodISODateTime;
                 serverIp: z.ZodString;
                 serverPort: z.ZodNumber;
                 secureConnection: z.ZodBoolean;
@@ -734,6 +738,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
         }, {}, {}>>;
         security: z.ZodOptional<z.ZodObject<{
             serverCertificateList: z.ZodOptional<z.ZodObject<{
+                _timestamp: z.iso.ZodISODateTime;
                 serverCertificateList: z.ZodArray<z.ZodString>;
             }, {}, {}>>;
         }, {}, {}>>;
@@ -912,17 +917,18 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                 }>;
             }, {}, {}>>;
             volumeLevel: z.ZodOptional<z.ZodObject<{
+                _timestamp: z.iso.ZodISODateTime;
                 level: z.ZodNumber;
                 volOsdEnabled: z.ZodOptional<z.ZodBoolean>;
             }, {}, {}>>;
         }, {}, {}>>;
         storage: z.ZodOptional<z.ZodObject<{
             _changeLogoImageRequest: z.ZodOptional<z.ZodObject<{
-                timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.iso.ZodISODateTime;
                 uri: z.ZodString;
             }, {}, {}>>;
             _upgradeApplicationRequest: z.ZodOptional<z.ZodObject<{
-                timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.iso.ZodISODateTime;
                 to: z.ZodEnum<{
                     local: "local";
                     usb: "usb";
@@ -934,7 +940,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                 }>;
             }, {}, {}>>;
             _upgradeFirmwareRequest: z.ZodOptional<z.ZodObject<{
-                timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.iso.ZodISODateTime;
                 path: z.ZodString;
             }, {}, {}>>;
         }, {}, {}>>;
@@ -977,7 +983,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
         }, {}, {}>>;
         customJS: z.ZodOptional<z.ZodObject<{
             _clearBrowsingDataRequest: z.ZodOptional<z.ZodObject<{
-                timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.iso.ZodISODateTime;
                 types: z.ZodOptional<z.ZodArray<z.ZodEnum<{
                     all: "all";
                     appcache: "appcache";
@@ -992,7 +998,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                 }>>>;
             }, {}, {}>>;
             _disableApplicationRequest: z.ZodOptional<z.ZodObject<{
-                timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.iso.ZodISODateTime;
                 reset: z.ZodOptional<z.ZodBoolean>;
             }, {}, {}>>;
         }, {}, {}>>;
@@ -1106,6 +1112,7 @@ export declare const LunaAgentState: z.ZodObject<{
                 urlList: z.ZodArray<z.ZodString>;
             }, {}, {}>>;
             serverProperty: z.ZodOptional<z.ZodObject<{
+                _timestamp: z.iso.ZodISODateTime;
                 serverIp: z.ZodString;
                 serverPort: z.ZodNumber;
                 secureConnection: z.ZodBoolean;
@@ -1240,6 +1247,7 @@ export declare const LunaAgentState: z.ZodObject<{
         }, {}, {}>>;
         security: z.ZodOptional<z.ZodObject<{
             serverCertificateList: z.ZodOptional<z.ZodObject<{
+                _timestamp: z.iso.ZodISODateTime;
                 serverCertificateList: z.ZodArray<z.ZodString>;
             }, {}, {}>>;
         }, {}, {}>>;
@@ -1418,17 +1426,18 @@ export declare const LunaAgentState: z.ZodObject<{
                 }>;
             }, {}, {}>>;
             volumeLevel: z.ZodOptional<z.ZodObject<{
+                _timestamp: z.iso.ZodISODateTime;
                 level: z.ZodNumber;
                 volOsdEnabled: z.ZodOptional<z.ZodBoolean>;
             }, {}, {}>>;
         }, {}, {}>>;
         storage: z.ZodOptional<z.ZodObject<{
             _changeLogoImageRequest: z.ZodOptional<z.ZodObject<{
-                timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.iso.ZodISODateTime;
                 uri: z.ZodString;
             }, {}, {}>>;
             _upgradeApplicationRequest: z.ZodOptional<z.ZodObject<{
-                timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.iso.ZodISODateTime;
                 to: z.ZodEnum<{
                     local: "local";
                     usb: "usb";
@@ -1440,7 +1449,7 @@ export declare const LunaAgentState: z.ZodObject<{
                 }>;
             }, {}, {}>>;
             _upgradeFirmwareRequest: z.ZodOptional<z.ZodObject<{
-                timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.iso.ZodISODateTime;
                 path: z.ZodString;
             }, {}, {}>>;
         }, {}, {}>>;
@@ -1483,7 +1492,7 @@ export declare const LunaAgentState: z.ZodObject<{
         }, {}, {}>>;
         customJS: z.ZodOptional<z.ZodObject<{
             _clearBrowsingDataRequest: z.ZodOptional<z.ZodObject<{
-                timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.iso.ZodISODateTime;
                 types: z.ZodOptional<z.ZodArray<z.ZodEnum<{
                     all: "all";
                     appcache: "appcache";
@@ -1498,7 +1507,7 @@ export declare const LunaAgentState: z.ZodObject<{
                 }>>>;
             }, {}, {}>>;
             _disableApplicationRequest: z.ZodOptional<z.ZodObject<{
-                timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.iso.ZodISODateTime;
                 reset: z.ZodOptional<z.ZodBoolean>;
             }, {}, {}>>;
         }, {}, {}>>;

@@ -9,6 +9,7 @@ export declare const ServerCertificate: z.ZodObject<{
 }, {}, {}>;
 export type ServerCertificate = z.infer<typeof ServerCertificate>;
 export declare const ServerCertificateListState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     serverCertificateList: z.ZodArray<z.ZodString>;
 }, {}, {}>;
 export type ServerCertificateListState = z.infer<typeof ServerCertificateListState>;
@@ -23,6 +24,7 @@ export declare const ServerCertificateListStatus: z.ZodObject<{
 export type ServerCertificateListStatus = z.infer<typeof ServerCertificateListStatus>;
 export declare const SecurityState: z.ZodObject<{
     serverCertificateList: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         serverCertificateList: z.ZodArray<z.ZodString>;
     }, {}, {}>>;
 }, {}, {}>;

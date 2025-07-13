@@ -15,6 +15,8 @@ export const ServerCertificate = z.object({
 })
     .describe('The server certificate information, including domain name, issuer name, and validity period');
 export const ServerCertificateListState = z.object({
+    _timestamp: z.iso.datetime()
+        .describe('The timestamp of the last time the server certificate list was updated, e.g., "2023-01-01T00:00:00Z"'),
     serverCertificateList: z.array(PEMChain)
         .describe('The list of server certificates, each containing domain name, issuer name, and validity period'),
 })

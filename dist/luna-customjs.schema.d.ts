@@ -31,7 +31,7 @@ export declare const ApplicationInfoStatus: z.ZodObject<{
 }, {}, {}>;
 export type ApplicationInfoStatus = z.infer<typeof ApplicationInfoStatus>;
 export declare const ClearBrowsingDataRequest: z.ZodObject<{
-    timestamp: z.iso.ZodISODateTime;
+    _timestamp: z.iso.ZodISODateTime;
     types: z.ZodOptional<z.ZodArray<z.ZodEnum<{
         all: "all";
         appcache: "appcache";
@@ -47,7 +47,7 @@ export declare const ClearBrowsingDataRequest: z.ZodObject<{
 }, {}, {}>;
 export type ClearBrowsingDataRequest = z.infer<typeof ClearBrowsingDataRequest>;
 export declare const DisableApplicationRequest: z.ZodObject<{
-    timestamp: z.iso.ZodISODateTime;
+    _timestamp: z.iso.ZodISODateTime;
     reset: z.ZodOptional<z.ZodBoolean>;
 }, {}, {}>;
 export type DisableApplicationRequest = z.infer<typeof DisableApplicationRequest>;
@@ -61,7 +61,7 @@ export declare const WebOSVersionStatus: z.ZodObject<{
 export type WebOSVersionStatus = z.infer<typeof WebOSVersionStatus>;
 export declare const CustomJSState: z.ZodObject<{
     _clearBrowsingDataRequest: z.ZodOptional<z.ZodObject<{
-        timestamp: z.iso.ZodISODateTime;
+        _timestamp: z.iso.ZodISODateTime;
         types: z.ZodOptional<z.ZodArray<z.ZodEnum<{
             all: "all";
             appcache: "appcache";
@@ -76,7 +76,7 @@ export declare const CustomJSState: z.ZodObject<{
         }>>>;
     }, {}, {}>>;
     _disableApplicationRequest: z.ZodOptional<z.ZodObject<{
-        timestamp: z.iso.ZodISODateTime;
+        _timestamp: z.iso.ZodISODateTime;
         reset: z.ZodOptional<z.ZodBoolean>;
     }, {}, {}>>;
 }, {}, {}>;

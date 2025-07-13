@@ -39,7 +39,7 @@ export const ApplicationInfoStatus = z.object({
 })
     .describe('The information about the application, including app ID, title, version, and other metadata');
 export const ClearBrowsingDataRequest = z.object({
-    timestamp: z.iso.datetime()
+    _timestamp: z.iso.datetime()
         .describe('The timestamp of the cache clear request'),
     types: z.array(z.enum([
         'all',
@@ -58,7 +58,7 @@ export const ClearBrowsingDataRequest = z.object({
 })
     .describe('The request to clear the cache of the signage device, including timestamp');
 export const DisableApplicationRequest = z.object({
-    timestamp: z.iso.datetime()
+    _timestamp: z.iso.datetime()
         .describe('The timestamp of the disable application request'),
     reset: z.boolean().optional()
         .describe('Whether to reset theserver settings to their default values after disabling it'),

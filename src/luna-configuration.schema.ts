@@ -192,6 +192,8 @@ export const RestartApplicationRequest = z.object({
 export type RestartApplicationRequest = z.infer<typeof RestartApplicationRequest>;
 
 export const ServerPropertyState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the server properties were set'),
 	serverIp: z.string()
 		.describe('The IP address of the server to which the agent connects'),
 	serverPort: z.number().int().min(1).max(65535)

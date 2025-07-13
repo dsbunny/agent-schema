@@ -1,7 +1,7 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 import { z } from 'zod/v4';
 export const ChangeLogoImageRequest = z.object({
-    timestamp: z.iso.datetime()
+    _timestamp: z.iso.datetime()
         .describe('The timestamp of the logo image change request'),
     uri: z.string()
         .describe('The URI of the new logo image to be set, e.g., "file://internal/logo.png"'),
@@ -39,7 +39,7 @@ export const USBStatus = z.object({
 })
     .describe('The list of USB devices connected to the agent, including name, vendor, product, and device ID');
 export const UpgradeApplicationRequest = z.object({
-    timestamp: z.iso.datetime()
+    _timestamp: z.iso.datetime()
         .describe('The timestamp of the application upgrade request'),
     to: z.enum(['local', 'usb'])
         .describe('The target storage to store the new app.'),
@@ -50,7 +50,7 @@ export const UpgradeApplicationRequest = z.object({
 })
     .describe('The request to upgrade the application, including timestamp and URL of the application');
 export const UpgradeFirmwareRequest = z.object({
-    timestamp: z.iso.datetime()
+    _timestamp: z.iso.datetime()
         .describe('The timestamp of the firmware upgrade request'),
     path: z.string()
         .describe('The path of the firmware file to be upgraded, e.g., "file://internal/test.epk"'),

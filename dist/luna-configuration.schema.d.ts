@@ -134,6 +134,7 @@ export declare const RestartApplicationRequest: z.ZodObject<{
 }, {}, {}>;
 export type RestartApplicationRequest = z.infer<typeof RestartApplicationRequest>;
 export declare const ServerPropertyState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     serverIp: z.ZodString;
     serverPort: z.ZodNumber;
     secureConnection: z.ZodBoolean;
@@ -274,6 +275,7 @@ export declare const ConfigurationState: z.ZodObject<{
         urlList: z.ZodArray<z.ZodString>;
     }, {}, {}>>;
     serverProperty: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         serverIp: z.ZodString;
         serverPort: z.ZodNumber;
         secureConnection: z.ZodBoolean;

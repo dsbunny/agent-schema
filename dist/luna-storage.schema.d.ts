@@ -1,6 +1,6 @@
 import { z } from 'zod/v4';
 export declare const ChangeLogoImageRequest: z.ZodObject<{
-    timestamp: z.iso.ZodISODateTime;
+    _timestamp: z.iso.ZodISODateTime;
     uri: z.ZodString;
 }, {}, {}>;
 export type ChangeLogoImageRequest = z.infer<typeof ChangeLogoImageRequest>;
@@ -25,7 +25,7 @@ export declare const USBStatus: z.ZodObject<{
 }, {}, {}>;
 export type USBStatus = z.infer<typeof USBStatus>;
 export declare const UpgradeApplicationRequest: z.ZodObject<{
-    timestamp: z.iso.ZodISODateTime;
+    _timestamp: z.iso.ZodISODateTime;
     to: z.ZodEnum<{
         local: "local";
         usb: "usb";
@@ -38,7 +38,7 @@ export declare const UpgradeApplicationRequest: z.ZodObject<{
 }, {}, {}>;
 export type UpgradeApplicationRequest = z.infer<typeof UpgradeApplicationRequest>;
 export declare const UpgradeFirmwareRequest: z.ZodObject<{
-    timestamp: z.iso.ZodISODateTime;
+    _timestamp: z.iso.ZodISODateTime;
     path: z.ZodString;
 }, {}, {}>;
 export type UpgradeFirmwareRequest = z.infer<typeof UpgradeFirmwareRequest>;
@@ -57,11 +57,11 @@ export declare const FirmwareUpgradeStatus: z.ZodObject<{
 export type FirmwareUpgradeStatus = z.infer<typeof FirmwareUpgradeStatus>;
 export declare const StorageState: z.ZodObject<{
     _changeLogoImageRequest: z.ZodOptional<z.ZodObject<{
-        timestamp: z.iso.ZodISODateTime;
+        _timestamp: z.iso.ZodISODateTime;
         uri: z.ZodString;
     }, {}, {}>>;
     _upgradeApplicationRequest: z.ZodOptional<z.ZodObject<{
-        timestamp: z.iso.ZodISODateTime;
+        _timestamp: z.iso.ZodISODateTime;
         to: z.ZodEnum<{
             local: "local";
             usb: "usb";
@@ -73,7 +73,7 @@ export declare const StorageState: z.ZodObject<{
         }>;
     }, {}, {}>>;
     _upgradeFirmwareRequest: z.ZodOptional<z.ZodObject<{
-        timestamp: z.iso.ZodISODateTime;
+        _timestamp: z.iso.ZodISODateTime;
         path: z.ZodString;
     }, {}, {}>>;
 }, {}, {}>;
