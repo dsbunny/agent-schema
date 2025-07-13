@@ -2,7 +2,7 @@
 import { z } from 'zod/v4';
 import { AgentState, AgentStateBase, AgentStatus, AgentStatusBase, } from '@dsbunny/rmm-schema';
 import { ConfigurationState, ConfigurationStatus } from './luna-configuration.schema.js';
-import { DeviceInfoState, DeviceInfoStatus } from './luna-device-info.schema.js';
+import { DeviceState, DeviceStatus } from './luna-device.schema.js';
 import { InputSourceStatus } from './luna-input-source.schema.js';
 import { PowerState } from './luna-power.schema.js';
 import { SecurityState, SecurityStatus } from './luna-security.schema.js';
@@ -15,7 +15,7 @@ export const LUNA_AGENT_URN = 'urn:dsbunny:agent:luna';
 // #region State
 export const LunaAgentStateDetail = z.object({
     configuration: ConfigurationState.optional(),
-    deviceInfo: DeviceInfoState.optional(),
+    device: DeviceState.optional(),
     power: PowerState.optional(),
     security: SecurityState.optional(),
     signage: SignageState.optional(),
@@ -34,7 +34,7 @@ export const LunaAgentState = AgentState.extend(LunaAgentStateBase.shape);
 // #region Status
 export const LunaAgentStatusDetail = z.object({
     configuration: ConfigurationStatus.optional(),
-    deviceInfo: DeviceInfoStatus.optional(),
+    device: DeviceStatus.optional(),
     inputSource: InputSourceStatus.optional(),
     security: SecurityStatus.optional(),
     signage: SignageStatus.optional(),

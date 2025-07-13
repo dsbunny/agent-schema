@@ -21,14 +21,18 @@ export const OnOffTimer = z.object({
 	.describe('The on/off timer information of the device, including ID, type, hour, minute, and week bitmask');
 export type OnOffTimer = z.infer<typeof OnOffTimer>;
 
-export const AllOnOffTimers = z.object({
+export const AllOnOffTimersState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the on/off timers were updated'),
 	timerList: z.array(OnOffTimer).max(21)
 		.describe('The list of on/off timers, each timer has an ID, type, hour, minute, and week bitmask'),
 })
 	.describe('The time information of the device, including current time and time zone');
-export type AllOnOffTimers = z.infer<typeof AllOnOffTimers>;
+export type AllOnOffTimersState = z.infer<typeof AllOnOffTimersState>;
 
-export const HolidaySchedule = z.object({
+export const HolidayScheduleState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the holiday schedule was updated'),
 	holidaySchedule: z.array(z.object({
 		name: z.string().optional()
 			.describe('The name of the holiday schedule'),
@@ -51,12 +55,12 @@ export const HolidaySchedule = z.object({
 		.describe('The list of holiday schedules, each schedule has a name and settings'),
 })
 	.describe('The holiday schedule information of the device, including a list of holiday schedules');
-export type HolidaySchedule = z.infer<typeof HolidaySchedule>;
+export type HolidayScheduleState = z.infer<typeof HolidayScheduleState>;
 
 // #region State
 export const TimeState = z.object({
-	allOnOffTimers: AllOnOffTimers.optional(),
-	holidaySchedule: HolidaySchedule.optional(),
+	allOnOffTimers: AllOnOffTimersState.optional(),
+	holidaySchedule: HolidayScheduleState.optional(),
 })
 	.describe('The time information of the device, including current time and time zone');
 export type TimeState = z.infer<typeof TimeState>;

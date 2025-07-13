@@ -4,7 +4,7 @@ export declare const ChangeLogoImageRequest: z.ZodObject<{
     uri: z.ZodString;
 }, {}, {}>;
 export type ChangeLogoImageRequest = z.infer<typeof ChangeLogoImageRequest>;
-export declare const StorageInfo: z.ZodObject<{
+export declare const StorageSpaceStatus: z.ZodObject<{
     free: z.ZodString;
     total: z.ZodString;
     used: z.ZodString;
@@ -14,8 +14,8 @@ export declare const StorageInfo: z.ZodObject<{
         used: z.ZodString;
     }, {}, {}>>>;
 }, {}, {}>;
-export type StorageInfo = z.infer<typeof StorageInfo>;
-export declare const USBInfo: z.ZodObject<{
+export type StorageSpaceStatus = z.infer<typeof StorageSpaceStatus>;
+export declare const USBStatus: z.ZodObject<{
     usbList: z.ZodArray<z.ZodObject<{
         usbName: z.ZodString;
         vendor: z.ZodString;
@@ -23,7 +23,7 @@ export declare const USBInfo: z.ZodObject<{
         deviceId: z.ZodOptional<z.ZodString>;
     }, {}, {}>>;
 }, {}, {}>;
-export type USBInfo = z.infer<typeof USBInfo>;
+export type USBStatus = z.infer<typeof USBStatus>;
 export declare const UpgradeApplicationRequest: z.ZodObject<{
     timestamp: z.iso.ZodISODateTime;
     to: z.ZodEnum<{
@@ -56,11 +56,11 @@ export declare const FirmwareUpgradeStatus: z.ZodObject<{
 }, {}, {}>;
 export type FirmwareUpgradeStatus = z.infer<typeof FirmwareUpgradeStatus>;
 export declare const StorageState: z.ZodObject<{
-    changeLogoImageRequest: z.ZodOptional<z.ZodObject<{
+    _changeLogoImageRequest: z.ZodOptional<z.ZodObject<{
         timestamp: z.iso.ZodISODateTime;
         uri: z.ZodString;
     }, {}, {}>>;
-    upgradeApplicationRequest: z.ZodOptional<z.ZodObject<{
+    _upgradeApplicationRequest: z.ZodOptional<z.ZodObject<{
         timestamp: z.iso.ZodISODateTime;
         to: z.ZodEnum<{
             local: "local";
@@ -72,7 +72,7 @@ export declare const StorageState: z.ZodObject<{
             zip: "zip";
         }>;
     }, {}, {}>>;
-    upgradeFirmwareRequest: z.ZodOptional<z.ZodObject<{
+    _upgradeFirmwareRequest: z.ZodOptional<z.ZodObject<{
         timestamp: z.iso.ZodISODateTime;
         path: z.ZodString;
     }, {}, {}>>;

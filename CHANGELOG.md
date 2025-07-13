@@ -1,4 +1,10 @@
 # Changelog
+## v6.0.11
+- Rename `DeviceInfo` to `Device` due to confusing semantics.
+- Drop all usage of `Info` on _state_ based properties.
+- Add `_timestamp` for all _state_ properties to track last modified time.
+- Rename _states_ to `*State` and _statuses_ to `*Status` for consistency.
+
 ## v5.1.10
 - Extend _Luna_ schema with _CustomJS_ module.
 

@@ -1,5 +1,5 @@
 import { z } from 'zod/v4';
-export declare const ApplicationInfo: z.ZodObject<{
+export declare const ApplicationInfoStatus: z.ZodObject<{
     appinfo: z.ZodObject<{
         icon: z.ZodString;
         id: z.ZodLiteral<"com.lg.app.signage">;
@@ -29,7 +29,7 @@ export declare const ApplicationInfo: z.ZodObject<{
         vendor: z.ZodOptional<z.ZodString>;
     }, {}, {}>;
 }, {}, {}>;
-export type ApplicationInfo = z.infer<typeof ApplicationInfo>;
+export type ApplicationInfoStatus = z.infer<typeof ApplicationInfoStatus>;
 export declare const ClearBrowsingDataRequest: z.ZodObject<{
     timestamp: z.iso.ZodISODateTime;
     types: z.ZodOptional<z.ZodArray<z.ZodEnum<{
@@ -51,16 +51,16 @@ export declare const DisableApplicationRequest: z.ZodObject<{
     reset: z.ZodOptional<z.ZodBoolean>;
 }, {}, {}>;
 export type DisableApplicationRequest = z.infer<typeof DisableApplicationRequest>;
-export declare const PowerOnOffHistory: z.ZodObject<{
+export declare const PowerOnOffHistoryStatus: z.ZodObject<{
     powerOnOffHistory: z.ZodArray<z.ZodString>;
 }, {}, {}>;
-export type PowerOnOffHistory = z.infer<typeof PowerOnOffHistory>;
-export declare const WebOSVersion: z.ZodObject<{
+export type PowerOnOffHistoryStatus = z.infer<typeof PowerOnOffHistoryStatus>;
+export declare const WebOSVersionStatus: z.ZodObject<{
     webOSVersion: z.ZodString;
 }, {}, {}>;
-export type WebOSVersion = z.infer<typeof WebOSVersion>;
+export type WebOSVersionStatus = z.infer<typeof WebOSVersionStatus>;
 export declare const CustomJSState: z.ZodObject<{
-    clearBrowsingDataRequest: z.ZodOptional<z.ZodObject<{
+    _clearBrowsingDataRequest: z.ZodOptional<z.ZodObject<{
         timestamp: z.iso.ZodISODateTime;
         types: z.ZodOptional<z.ZodArray<z.ZodEnum<{
             all: "all";
@@ -75,7 +75,7 @@ export declare const CustomJSState: z.ZodObject<{
             webSQL: "webSQL";
         }>>>;
     }, {}, {}>>;
-    disableApplicationRequest: z.ZodOptional<z.ZodObject<{
+    _disableApplicationRequest: z.ZodOptional<z.ZodObject<{
         timestamp: z.iso.ZodISODateTime;
         reset: z.ZodOptional<z.ZodBoolean>;
     }, {}, {}>>;

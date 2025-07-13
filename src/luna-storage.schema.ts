@@ -11,7 +11,7 @@ export const ChangeLogoImageRequest = z.object({
 	.describe('The request to change the logo image, including timestamp and URI of the new logo image');
 export type ChangeLogoImageRequest = z.infer<typeof ChangeLogoImageRequest>;
 
-export const StorageInfo = z.object({
+export const StorageSpaceStatus = z.object({
 	free: z.string()
 		.describe('The free storage space in KB'),
 	total: z.string()
@@ -29,9 +29,9 @@ export const StorageInfo = z.object({
 		.describe('The external memory storage information, if available'),
 })
 	.describe('The storage information of the device, including free, total, and used storage space');
-export type StorageInfo = z.infer<typeof StorageInfo>;
+export type StorageSpaceStatus = z.infer<typeof StorageSpaceStatus>;
 
-export const USBInfo = z.object({
+export const USBStatus = z.object({
 	usbList: z.array(z.object({
 		usbName: z.string()
 			.describe('The name of the USB device, e.g., "usb1"'),
@@ -45,7 +45,7 @@ export const USBInfo = z.object({
 
 })
 	.describe('The list of USB devices connected to the agent, including name, vendor, product, and device ID');
-export type USBInfo = z.infer<typeof USBInfo>;
+export type USBStatus = z.infer<typeof USBStatus>;
 
 export const UpgradeApplicationRequest = z.object({
 	timestamp: z.iso.datetime()
@@ -90,9 +90,9 @@ export type FirmwareUpgradeStatus = z.infer<typeof FirmwareUpgradeStatus>;
 // #region State
 export const StorageState = z.object({
 	// Skip `removeApplicationRequest` as a running application cannot remove itself.
-	changeLogoImageRequest: ChangeLogoImageRequest.optional(),
-	upgradeApplicationRequest: UpgradeApplicationRequest.optional(),
-	upgradeFirmwareRequest: UpgradeFirmwareRequest.optional(),
+	_changeLogoImageRequest: ChangeLogoImageRequest.optional(),
+	_upgradeApplicationRequest: UpgradeApplicationRequest.optional(),
+	_upgradeFirmwareRequest: UpgradeFirmwareRequest.optional(),
 })
 	.describe('The storage information of the device, including firmware and app details');
 export type StorageState = z.infer<typeof StorageState>;
@@ -101,7 +101,7 @@ export type StorageState = z.infer<typeof StorageState>;
 // #region Status
 export const StorageStatus = z.object({
 	firmwareUpgradeStatus: FirmwareUpgradeStatus.optional(),
-	usbInfo: USBInfo.optional(),
-	storageInfo: StorageInfo.optional(),
+	usbInfo: USBStatus.optional(),
+	storageInfo: StorageSpaceStatus.optional(),
 });
 export type StorageStatus = z.infer<typeof StorageStatus>;

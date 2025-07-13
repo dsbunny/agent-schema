@@ -1,13 +1,16 @@
 import { z } from 'zod/v4';
-export declare const ExternalSpeaker: z.ZodObject<{
+export declare const ExternalSpeakerState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     externalSpeaker: z.ZodBoolean;
 }, {}, {}>;
-export type ExternalSpeaker = z.infer<typeof ExternalSpeaker>;
-export declare const Muted: z.ZodObject<{
+export type ExternalSpeakerState = z.infer<typeof ExternalSpeakerState>;
+export declare const MutedState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     muted: z.ZodBoolean;
 }, {}, {}>;
-export type Muted = z.infer<typeof Muted>;
-export declare const SoundMode: z.ZodObject<{
+export type MutedState = z.infer<typeof MutedState>;
+export declare const SoundModeState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     mode: z.ZodEnum<{
         game: "game";
         sports: "sports";
@@ -18,27 +21,31 @@ export declare const SoundMode: z.ZodObject<{
     }>;
     balance: z.ZodOptional<z.ZodNumber>;
 }, {}, {}>;
-export type SoundMode = z.infer<typeof SoundMode>;
-export declare const SoundOut: z.ZodObject<{
+export type SoundModeState = z.infer<typeof SoundModeState>;
+export declare const SoundOutState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     speakerType: z.ZodEnum<{
         tv_speaker: "tv_speaker";
         bt_soundbar: "bt_soundbar";
     }>;
 }, {}, {}>;
-export type SoundOut = z.infer<typeof SoundOut>;
-export declare const VolumeLevel: z.ZodObject<{
+export type SoundOutState = z.infer<typeof SoundOutState>;
+export declare const VolumeState: z.ZodObject<{
     level: z.ZodNumber;
     volOsdEnabled: z.ZodOptional<z.ZodBoolean>;
 }, {}, {}>;
-export type VolumeLevel = z.infer<typeof VolumeLevel>;
+export type VolumeState = z.infer<typeof VolumeState>;
 export declare const SoundState: z.ZodObject<{
     muted: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         muted: z.ZodBoolean;
     }, {}, {}>>;
     externalSpeaker: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         externalSpeaker: z.ZodBoolean;
     }, {}, {}>>;
     soundMode: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         mode: z.ZodEnum<{
             game: "game";
             sports: "sports";
@@ -50,6 +57,7 @@ export declare const SoundState: z.ZodObject<{
         balance: z.ZodOptional<z.ZodNumber>;
     }, {}, {}>>;
     soundOut: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         speakerType: z.ZodEnum<{
             tv_speaker: "tv_speaker";
             bt_soundbar: "bt_soundbar";

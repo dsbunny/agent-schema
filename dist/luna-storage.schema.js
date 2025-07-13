@@ -7,7 +7,7 @@ export const ChangeLogoImageRequest = z.object({
         .describe('The URI of the new logo image to be set, e.g., "file://internal/logo.png"'),
 })
     .describe('The request to change the logo image, including timestamp and URI of the new logo image');
-export const StorageInfo = z.object({
+export const StorageSpaceStatus = z.object({
     free: z.string()
         .describe('The free storage space in KB'),
     total: z.string()
@@ -25,7 +25,7 @@ export const StorageInfo = z.object({
         .describe('The external memory storage information, if available'),
 })
     .describe('The storage information of the device, including free, total, and used storage space');
-export const USBInfo = z.object({
+export const USBStatus = z.object({
     usbList: z.array(z.object({
         usbName: z.string()
             .describe('The name of the USB device, e.g., "usb1"'),
@@ -75,16 +75,16 @@ export const FirmwareUpgradeStatus = z.object({
 // #region State
 export const StorageState = z.object({
     // Skip `removeApplicationRequest` as a running application cannot remove itself.
-    changeLogoImageRequest: ChangeLogoImageRequest.optional(),
-    upgradeApplicationRequest: UpgradeApplicationRequest.optional(),
-    upgradeFirmwareRequest: UpgradeFirmwareRequest.optional(),
+    _changeLogoImageRequest: ChangeLogoImageRequest.optional(),
+    _upgradeApplicationRequest: UpgradeApplicationRequest.optional(),
+    _upgradeFirmwareRequest: UpgradeFirmwareRequest.optional(),
 })
     .describe('The storage information of the device, including firmware and app details');
 // #endregion
 // #region Status
 export const StorageStatus = z.object({
     firmwareUpgradeStatus: FirmwareUpgradeStatus.optional(),
-    usbInfo: USBInfo.optional(),
-    storageInfo: StorageInfo.optional(),
+    usbInfo: USBStatus.optional(),
+    storageInfo: StorageSpaceStatus.optional(),
 });
 //# sourceMappingURL=luna-storage.schema.js.map

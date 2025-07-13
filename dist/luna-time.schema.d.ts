@@ -12,7 +12,8 @@ export declare const OnOffTimer: z.ZodObject<{
     week: z.ZodNumber;
 }, {}, {}>;
 export type OnOffTimer = z.infer<typeof OnOffTimer>;
-export declare const AllOnOffTimers: z.ZodObject<{
+export declare const AllOnOffTimersState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     timerList: z.ZodArray<z.ZodObject<{
         id: z.ZodOptional<z.ZodNumber>;
         type: z.ZodEnum<{
@@ -24,8 +25,9 @@ export declare const AllOnOffTimers: z.ZodObject<{
         week: z.ZodNumber;
     }, {}, {}>>;
 }, {}, {}>;
-export type AllOnOffTimers = z.infer<typeof AllOnOffTimers>;
-export declare const HolidaySchedule: z.ZodObject<{
+export type AllOnOffTimersState = z.infer<typeof AllOnOffTimersState>;
+export declare const HolidayScheduleState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     holidaySchedule: z.ZodOptional<z.ZodArray<z.ZodObject<{
         name: z.ZodOptional<z.ZodString>;
         settings: z.ZodOptional<z.ZodObject<{
@@ -46,9 +48,10 @@ export declare const HolidaySchedule: z.ZodObject<{
         }, {}, {}>>;
     }, {}, {}>>>;
 }, {}, {}>;
-export type HolidaySchedule = z.infer<typeof HolidaySchedule>;
+export type HolidayScheduleState = z.infer<typeof HolidayScheduleState>;
 export declare const TimeState: z.ZodObject<{
     allOnOffTimers: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         timerList: z.ZodArray<z.ZodObject<{
             id: z.ZodOptional<z.ZodNumber>;
             type: z.ZodEnum<{
@@ -61,6 +64,7 @@ export declare const TimeState: z.ZodObject<{
         }, {}, {}>>;
     }, {}, {}>>;
     holidaySchedule: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         holidaySchedule: z.ZodOptional<z.ZodArray<z.ZodObject<{
             name: z.ZodOptional<z.ZodString>;
             settings: z.ZodOptional<z.ZodObject<{

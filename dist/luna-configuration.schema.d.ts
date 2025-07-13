@@ -1,9 +1,10 @@
 import { z } from 'zod/v4';
 export declare const ClearCacheRequest: z.ZodObject<{
-    timestamp: z.iso.ZodISODateTime;
+    _timestamp: z.iso.ZodISODateTime;
 }, {}, {}>;
 export type ClearCacheRequest = z.infer<typeof ClearCacheRequest>;
 export declare const CurrentTimeState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     ntp: z.ZodOptional<z.ZodBoolean>;
     ntpServerAddress: z.ZodOptional<z.ZodString>;
 }, {}, {}>;
@@ -17,18 +18,21 @@ export declare const CurrentTimeStatus: z.ZodObject<{
     sec: z.ZodNumber;
 }, {}, {}>;
 export type CurrentTimeStatus = z.infer<typeof CurrentTimeStatus>;
-export declare const MasterPinStatus: z.ZodObject<{
+export declare const MasterPinState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     activated: z.ZodBoolean;
 }, {}, {}>;
-export type MasterPinStatus = z.infer<typeof MasterPinStatus>;
-export declare const OSDLanguage: z.ZodObject<{
+export type MasterPinState = z.infer<typeof MasterPinState>;
+export declare const OSDLanguageState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     specifier: z.ZodString;
 }, {}, {}>;
-export type OSDLanguage = z.infer<typeof OSDLanguage>;
-export declare const OSDLock: z.ZodObject<{
+export type OSDLanguageState = z.infer<typeof OSDLanguageState>;
+export declare const OSDLockState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     enabled: z.ZodBoolean;
 }, {}, {}>;
-export type OSDLock = z.infer<typeof OSDLock>;
+export type OSDLockState = z.infer<typeof OSDLockState>;
 export declare const Locale: z.ZodObject<{
     language: z.ZodString;
     languageCode: z.ZodString;
@@ -38,7 +42,7 @@ export declare const Locale: z.ZodObject<{
     }, {}, {}>>;
 }, {}, {}>;
 export type Locale = z.infer<typeof Locale>;
-export declare const LocaleList: z.ZodObject<{
+export declare const LocaleListStatus: z.ZodObject<{
     localeList: z.ZodArray<z.ZodObject<{
         language: z.ZodString;
         languageCode: z.ZodString;
@@ -48,8 +52,9 @@ export declare const LocaleList: z.ZodObject<{
         }, {}, {}>>;
     }, {}, {}>>;
 }, {}, {}>;
-export type LocaleList = z.infer<typeof LocaleList>;
-export declare const PictureMode: z.ZodObject<{
+export type LocaleListStatus = z.infer<typeof LocaleListStatus>;
+export declare const PictureModeState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     mode: z.ZodEnum<{
         eco: "eco";
         cinema: "cinema";
@@ -61,8 +66,9 @@ export declare const PictureMode: z.ZodObject<{
         vivid: "vivid";
     }>;
 }, {}, {}>;
-export type PictureMode = z.infer<typeof PictureMode>;
-export declare const PictureProperty: z.ZodObject<{
+export type PictureModeState = z.infer<typeof PictureModeState>;
+export declare const PicturePropertyState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     backlight: z.ZodOptional<z.ZodNumber>;
     contrast: z.ZodOptional<z.ZodNumber>;
     brightness: z.ZodOptional<z.ZodNumber>;
@@ -109,23 +115,25 @@ export declare const PictureProperty: z.ZodObject<{
         high3: "high3";
     }>>;
 }, {}, {}>;
-export type PictureProperty = z.infer<typeof PictureProperty>;
-export declare const Property: z.ZodObject<{
+export type PicturePropertyState = z.infer<typeof PicturePropertyState>;
+export declare const PropertyState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     alias: z.ZodOptional<z.ZodString>;
     operation_mode_after_screen_share: z.ZodOptional<z.ZodString>;
     key_delivery_to_simplink: z.ZodOptional<z.ZodString>;
     cec_device_control: z.ZodOptional<z.ZodString>;
 }, {}, {}>;
-export type Property = z.infer<typeof Property>;
-export declare const ProxyBypassList: z.ZodObject<{
+export type PropertyState = z.infer<typeof PropertyState>;
+export declare const ProxyBypassListState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     urlList: z.ZodArray<z.ZodString>;
 }, {}, {}>;
-export type ProxyBypassList = z.infer<typeof ProxyBypassList>;
+export type ProxyBypassListState = z.infer<typeof ProxyBypassListState>;
 export declare const RestartApplicationRequest: z.ZodObject<{
-    timestamp: z.iso.ZodISODateTime;
+    _timestamp: z.iso.ZodISODateTime;
 }, {}, {}>;
 export type RestartApplicationRequest = z.infer<typeof RestartApplicationRequest>;
-export declare const ServerProperty: z.ZodObject<{
+export declare const ServerPropertyState: z.ZodObject<{
     serverIp: z.ZodString;
     serverPort: z.ZodNumber;
     secureConnection: z.ZodBoolean;
@@ -142,43 +150,59 @@ export declare const ServerProperty: z.ZodObject<{
     fqdnAddr: z.ZodString;
     appLaunchDeviceId: z.ZodOptional<z.ZodString>;
 }, {}, {}>;
-export type ServerProperty = z.infer<typeof ServerProperty>;
+export type ServerPropertyState = z.infer<typeof ServerPropertyState>;
 export declare const TimeZone: z.ZodObject<{
     continent: z.ZodString;
     country: z.ZodString;
     city: z.ZodString;
 }, {}, {}>;
 export type TimeZone = z.infer<typeof TimeZone>;
-export declare const TimeZoneList: z.ZodObject<{
+export declare const TimeZoneState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
+    continent: z.ZodString;
+    country: z.ZodString;
+    city: z.ZodString;
+}, {}, {}>;
+export type TimeZoneState = z.infer<typeof TimeZoneState>;
+export declare const TimeZoneListStatus: z.ZodObject<{
     timeZone: z.ZodArray<z.ZodObject<{
         continent: z.ZodString;
         country: z.ZodString;
         city: z.ZodString;
     }, {}, {}>>;
 }, {}, {}>;
-export type TimeZoneList = z.infer<typeof TimeZoneList>;
-export declare const USBLock: z.ZodObject<{
+export type TimeZoneListStatus = z.infer<typeof TimeZoneListStatus>;
+export declare const USBLockState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     enabled: z.ZodBoolean;
 }, {}, {}>;
-export type USBLock = z.infer<typeof USBLock>;
+export type USBLockState = z.infer<typeof USBLockState>;
 export declare const ConfigurationState: z.ZodObject<{
-    clearCacheRequest: z.ZodOptional<z.ZodObject<{
-        timestamp: z.iso.ZodISODateTime;
+    _clearCacheRequest: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
+    }, {}, {}>>;
+    _restartApplicationRequest: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
     }, {}, {}>>;
     currentTime: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         ntp: z.ZodOptional<z.ZodBoolean>;
         ntpServerAddress: z.ZodOptional<z.ZodString>;
     }, {}, {}>>;
-    masterPinStatus: z.ZodOptional<z.ZodObject<{
+    masterPin: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         activated: z.ZodBoolean;
     }, {}, {}>>;
     OSDLanguage: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         specifier: z.ZodString;
     }, {}, {}>>;
     OSDLock: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         enabled: z.ZodBoolean;
     }, {}, {}>>;
     pictureMode: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         mode: z.ZodEnum<{
             eco: "eco";
             cinema: "cinema";
@@ -191,6 +215,7 @@ export declare const ConfigurationState: z.ZodObject<{
         }>;
     }, {}, {}>>;
     pictureProperty: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         backlight: z.ZodOptional<z.ZodNumber>;
         contrast: z.ZodOptional<z.ZodNumber>;
         brightness: z.ZodOptional<z.ZodNumber>;
@@ -238,16 +263,15 @@ export declare const ConfigurationState: z.ZodObject<{
         }>>;
     }, {}, {}>>;
     property: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         alias: z.ZodOptional<z.ZodString>;
         operation_mode_after_screen_share: z.ZodOptional<z.ZodString>;
         key_delivery_to_simplink: z.ZodOptional<z.ZodString>;
         cec_device_control: z.ZodOptional<z.ZodString>;
     }, {}, {}>>;
     proxyBypassList: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         urlList: z.ZodArray<z.ZodString>;
-    }, {}, {}>>;
-    restartApplicationRequest: z.ZodOptional<z.ZodObject<{
-        timestamp: z.iso.ZodISODateTime;
     }, {}, {}>>;
     serverProperty: z.ZodOptional<z.ZodObject<{
         serverIp: z.ZodString;
@@ -267,11 +291,13 @@ export declare const ConfigurationState: z.ZodObject<{
         appLaunchDeviceId: z.ZodOptional<z.ZodString>;
     }, {}, {}>>;
     timeZone: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         continent: z.ZodString;
         country: z.ZodString;
         city: z.ZodString;
     }, {}, {}>>;
     USBLock: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         enabled: z.ZodBoolean;
     }, {}, {}>>;
 }, {}, {}>;

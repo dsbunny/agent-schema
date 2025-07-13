@@ -1,19 +1,22 @@
 import { z } from 'zod/v4';
-export declare const DisplayMode: z.ZodObject<{
+export declare const DisplayModeState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     displayMode: z.ZodEnum<{
         "Screen Off": "Screen Off";
         Active: "Active";
     }>;
 }, {}, {}>;
-export type DisplayMode = z.infer<typeof DisplayMode>;
-export declare const DPMWakeup: z.ZodObject<{
+export type DisplayModeState = z.infer<typeof DisplayModeState>;
+export declare const DPMWakeupState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     dpmSignalType: z.ZodEnum<{
         clock: "clock";
         clockAndData: "clockAndData";
     }>;
 }, {}, {}>;
-export type DPMWakeup = z.infer<typeof DPMWakeup>;
-export declare const PMMode: z.ZodObject<{
+export type DPMWakeupState = z.infer<typeof DPMWakeupState>;
+export declare const PMModeState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     mode: z.ZodEnum<{
         powerOff: "powerOff";
         screenOff: "screenOff";
@@ -23,37 +26,49 @@ export declare const PMMode: z.ZodObject<{
         networkReady: "networkReady";
     }>;
 }, {}, {}>;
-export type PMMode = z.infer<typeof PMMode>;
+export type PMModeState = z.infer<typeof PMModeState>;
 export declare const PowerCommandRequest: z.ZodObject<{
-    timestamp: z.iso.ZodISODateTime;
+    _timestamp: z.iso.ZodISODateTime;
     powerCommand: z.ZodEnum<{
         powerOff: "powerOff";
         reboot: "reboot";
     }>;
 }, {}, {}>;
 export type PowerCommandRequest = z.infer<typeof PowerCommandRequest>;
-export declare const PowerOnDelay: z.ZodObject<{
+export declare const PowerOnDelayState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     delayTime: z.ZodNumber;
 }, {}, {}>;
-export type PowerOnDelay = z.infer<typeof PowerOnDelay>;
-export declare const WakeOnLan: z.ZodObject<{
+export type PowerOnDelayState = z.infer<typeof PowerOnDelayState>;
+export declare const WakeOnLanState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     wakeOnLan: z.ZodBoolean;
 }, {}, {}>;
-export type WakeOnLan = z.infer<typeof WakeOnLan>;
+export type WakeOnLanState = z.infer<typeof WakeOnLanState>;
 export declare const PowerState: z.ZodObject<{
+    _powerCommandRequest: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
+        powerCommand: z.ZodEnum<{
+            powerOff: "powerOff";
+            reboot: "reboot";
+        }>;
+    }, {}, {}>>;
     displayMode: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         displayMode: z.ZodEnum<{
             "Screen Off": "Screen Off";
             Active: "Active";
         }>;
     }, {}, {}>>;
     dpmWakeup: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         dpmSignalType: z.ZodEnum<{
             clock: "clock";
             clockAndData: "clockAndData";
         }>;
     }, {}, {}>>;
     pmMode: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         mode: z.ZodEnum<{
             powerOff: "powerOff";
             screenOff: "screenOff";
@@ -63,17 +78,12 @@ export declare const PowerState: z.ZodObject<{
             networkReady: "networkReady";
         }>;
     }, {}, {}>>;
-    powerCommandRequest: z.ZodOptional<z.ZodObject<{
-        timestamp: z.iso.ZodISODateTime;
-        powerCommand: z.ZodEnum<{
-            powerOff: "powerOff";
-            reboot: "reboot";
-        }>;
-    }, {}, {}>>;
     powerOnDelay: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         delayTime: z.ZodNumber;
     }, {}, {}>>;
     wakeOnLan: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         wakeOnLan: z.ZodBoolean;
     }, {}, {}>>;
 }, {}, {}>;

@@ -15,12 +15,16 @@ export const OnOffTimer = z.object({
         .describe('The week bitmask for the timer, where Monday = 1, Tuesday = 2, ..., Sunday = 64, and Everyday = 127'),
 })
     .describe('The on/off timer information of the device, including ID, type, hour, minute, and week bitmask');
-export const AllOnOffTimers = z.object({
+export const AllOnOffTimersState = z.object({
+    _timestamp: z.iso.datetime()
+        .describe('The timestamp of the last time the on/off timers were updated'),
     timerList: z.array(OnOffTimer).max(21)
         .describe('The list of on/off timers, each timer has an ID, type, hour, minute, and week bitmask'),
 })
     .describe('The time information of the device, including current time and time zone');
-export const HolidaySchedule = z.object({
+export const HolidayScheduleState = z.object({
+    _timestamp: z.iso.datetime()
+        .describe('The timestamp of the last time the holiday schedule was updated'),
     holidaySchedule: z.array(z.object({
         name: z.string().optional()
             .describe('The name of the holiday schedule'),
@@ -45,8 +49,8 @@ export const HolidaySchedule = z.object({
     .describe('The holiday schedule information of the device, including a list of holiday schedules');
 // #region State
 export const TimeState = z.object({
-    allOnOffTimers: AllOnOffTimers.optional(),
-    holidaySchedule: HolidaySchedule.optional(),
+    allOnOffTimers: AllOnOffTimersState.optional(),
+    holidaySchedule: HolidayScheduleState.optional(),
 })
     .describe('The time information of the device, including current time and time zone');
 // #endregion

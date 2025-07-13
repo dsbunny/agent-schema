@@ -1,6 +1,6 @@
 import { z } from 'zod/v4';
 export declare const CaptureScreenRequest: z.ZodObject<{
-    timestamp: z.iso.ZodISODateTime;
+    _timestamp: z.iso.ZodISODateTime;
     thumbnail: z.ZodOptional<z.ZodBoolean>;
     imgResolution: z.ZodOptional<z.ZodEnum<{
         thumbnail: "thumbnail";
@@ -15,18 +15,21 @@ export declare const CaptureScreenStatus: z.ZodObject<{
     encoding: z.ZodLiteral<"Base64">;
 }, {}, {}>;
 export type CaptureScreenStatus = z.infer<typeof CaptureScreenStatus>;
-export declare const CheckScreen: z.ZodObject<{
+export declare const CheckScreenState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     checkScreen: z.ZodBoolean;
 }, {}, {}>;
-export type CheckScreen = z.infer<typeof CheckScreen>;
-export declare const DigitalAudioInputMode: z.ZodObject<{
+export type CheckScreenState = z.infer<typeof CheckScreenState>;
+export declare const DigitalAudioInputState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     digitalAudioInput: z.ZodEnum<{
         audioIn: "audioIn";
         hdmi: "hdmi";
     }>;
 }, {}, {}>;
-export type DigitalAudioInputMode = z.infer<typeof DigitalAudioInputMode>;
-export declare const FailoverMode: z.ZodObject<{
+export type DigitalAudioInputState = z.infer<typeof DigitalAudioInputState>;
+export declare const FailoverModeState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     mode: z.ZodEnum<{
         off: "off";
         auto: "auto";
@@ -34,12 +37,14 @@ export declare const FailoverMode: z.ZodObject<{
     }>;
     priority: z.ZodOptional<z.ZodArray<z.ZodString>>;
 }, {}, {}>;
-export type FailoverMode = z.infer<typeof FailoverMode>;
-export declare const IntelligentAuto: z.ZodObject<{
+export type FailoverModeState = z.infer<typeof FailoverModeState>;
+export declare const IntelligentAutoState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     enabled: z.ZodBoolean;
 }, {}, {}>;
-export type IntelligentAuto = z.infer<typeof IntelligentAuto>;
-export declare const IsmMethod: z.ZodObject<{
+export type IntelligentAutoState = z.infer<typeof IntelligentAutoState>;
+export declare const IsmMethodState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     ismMethod: z.ZodEnum<{
         COLORWASH: "COLORWASH";
         INVERSION: "INVERSION";
@@ -51,34 +56,39 @@ export declare const IsmMethod: z.ZodObject<{
         WHITEWASH: "WHITEWASH";
     }>;
 }, {}, {}>;
-export type IsmMethod = z.infer<typeof IsmMethod>;
-export declare const LanDaisyChain: z.ZodObject<{
+export type IsmMethodState = z.infer<typeof IsmMethodState>;
+export declare const LanDaisyChainState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     enabled: z.ZodBoolean;
 }, {}, {}>;
-export type LanDaisyChain = z.infer<typeof LanDaisyChain>;
-export declare const MirrorMode: z.ZodObject<{
+export type LanDaisyChainState = z.infer<typeof LanDaisyChainState>;
+export declare const MirrorModeState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     mode: z.ZodEnum<{
         off: "off";
         on: "on";
     }>;
 }, {}, {}>;
-export type MirrorMode = z.infer<typeof MirrorMode>;
-export declare const NoSignalImageMode: z.ZodObject<{
+export type MirrorModeState = z.infer<typeof MirrorModeState>;
+export declare const NoSignalImageModeState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     noSignalImageMode: z.ZodEnum<{
         off: "off";
         on: "on";
     }>;
 }, {}, {}>;
-export type NoSignalImageMode = z.infer<typeof NoSignalImageMode>;
-export declare const PortraitMode: z.ZodObject<{
+export type NoSignalImageModeState = z.infer<typeof NoSignalImageModeState>;
+export declare const PortraitModeState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     portraitMode: z.ZodEnum<{
         off: "off";
         90: "90";
         ___undefined___: "___undefined___";
     }>;
 }, {}, {}>;
-export type PortraitMode = z.infer<typeof PortraitMode>;
-export declare const PowerSaveMode: z.ZodObject<{
+export type PortraitModeState = z.infer<typeof PortraitModeState>;
+export declare const PowerSaveModeState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     ses: z.ZodBoolean;
     dpmMode: z.ZodEnum<{
         off: "off";
@@ -96,23 +106,25 @@ export declare const PowerSaveMode: z.ZodObject<{
     }>;
     do15MinOff: z.ZodBoolean;
 }, {}, {}>;
-export type PowerSaveMode = z.infer<typeof PowerSaveMode>;
-export declare const QuietMode: z.ZodObject<{
+export type PowerSaveModeState = z.infer<typeof PowerSaveModeState>;
+export declare const QuietModeState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     mode: z.ZodEnum<{
         off: "off";
         on: "on";
     }>;
 }, {}, {}>;
-export type QuietMode = z.infer<typeof QuietMode>;
+export type QuietModeState = z.infer<typeof QuietModeState>;
 export declare const ResetRequest: z.ZodObject<{
-    timestamp: z.iso.ZodISODateTime;
+    _timestamp: z.iso.ZodISODateTime;
     mode: z.ZodEnum<{
         softReset: "softReset";
         factoryReset: "factoryReset";
     }>;
 }, {}, {}>;
 export type ResetRequest = z.infer<typeof ResetRequest>;
-export declare const RS232CConfiguration: z.ZodObject<{
+export declare const RS232CState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     mode: z.ZodLiteral<0 | 1>;
     port: z.ZodOptional<z.ZodNumber>;
     baudRate: z.ZodOptional<z.ZodLiteral<0 | 1024000 | 110 | 115200 | 1200 | 128000 | 14400 | 19200 | 230400 | 2400 | 256000 | 300 | 38400 | 4800 | 512000 | 57600 | 600 | 768000 | 921600 | 9600>>;
@@ -122,28 +134,31 @@ export declare const RS232CConfiguration: z.ZodObject<{
     flowControl: z.ZodOptional<z.ZodLiteral<0 | 1 | 2 | 3>>;
     rxTimeoutInMs: z.ZodOptional<z.ZodNumber>;
 }, {}, {}>;
-export type RS232CConfiguration = z.infer<typeof RS232CConfiguration>;
-export declare const SimplinkStatus: z.ZodObject<{
+export type RS232CState = z.infer<typeof RS232CState>;
+export declare const SimplinkState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     simplinkEnable: z.ZodEnum<{
         off: "off";
         on: "on";
     }>;
 }, {}, {}>;
-export type SimplinkStatus = z.infer<typeof SimplinkStatus>;
-export declare const TileInfo: z.ZodObject<{
+export type SimplinkState = z.infer<typeof SimplinkState>;
+export declare const TileState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     enabled: z.ZodBoolean;
     row: z.ZodNumber;
     column: z.ZodNumber;
     tileId: z.ZodNumber;
     naturalMode: z.ZodBoolean;
 }, {}, {}>;
-export type TileInfo = z.infer<typeof TileInfo>;
-export declare const UsageData: z.ZodObject<{
+export type TileState = z.infer<typeof TileState>;
+export declare const UsageStatus: z.ZodObject<{
     uptime: z.ZodNumber;
     totalUsed: z.ZodNumber;
 }, {}, {}>;
-export type UsageData = z.infer<typeof UsageData>;
-export declare const UsagePermission: z.ZodObject<{
+export type UsageStatus = z.infer<typeof UsageStatus>;
+export declare const UsagePermissionState: z.ZodObject<{
+    _timestamp: z.iso.ZodISODateTime;
     remoteKeyOperationMode: z.ZodEnum<{
         normal: "normal";
         blockAll: "blockAll";
@@ -155,10 +170,10 @@ export declare const UsagePermission: z.ZodObject<{
         usePwrOnly: "usePwrOnly";
     }>;
 }, {}, {}>;
-export type UsagePermission = z.infer<typeof UsagePermission>;
+export type UsagePermissionState = z.infer<typeof UsagePermissionState>;
 export declare const SignageState: z.ZodObject<{
-    captureScreenRequest: z.ZodOptional<z.ZodObject<{
-        timestamp: z.iso.ZodISODateTime;
+    _captureScreenRequest: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         thumbnail: z.ZodOptional<z.ZodBoolean>;
         imgResolution: z.ZodOptional<z.ZodEnum<{
             thumbnail: "thumbnail";
@@ -166,16 +181,26 @@ export declare const SignageState: z.ZodObject<{
             HD: "HD";
         }>>;
     }, {}, {}>>;
+    _resetRequest: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
+        mode: z.ZodEnum<{
+            softReset: "softReset";
+            factoryReset: "factoryReset";
+        }>;
+    }, {}, {}>>;
     checkScreen: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         checkScreen: z.ZodBoolean;
     }, {}, {}>>;
     digitalAudioInput: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         digitalAudioInput: z.ZodEnum<{
             audioIn: "audioIn";
             hdmi: "hdmi";
         }>;
     }, {}, {}>>;
     failoverMode: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         mode: z.ZodEnum<{
             off: "off";
             auto: "auto";
@@ -184,9 +209,11 @@ export declare const SignageState: z.ZodObject<{
         priority: z.ZodOptional<z.ZodArray<z.ZodString>>;
     }, {}, {}>>;
     intelligentAuto: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         enabled: z.ZodBoolean;
     }, {}, {}>>;
     ismMethod: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         ismMethod: z.ZodEnum<{
             COLORWASH: "COLORWASH";
             INVERSION: "INVERSION";
@@ -199,21 +226,25 @@ export declare const SignageState: z.ZodObject<{
         }>;
     }, {}, {}>>;
     lanDaisyChain: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         enabled: z.ZodBoolean;
     }, {}, {}>>;
     mirrorMode: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         mode: z.ZodEnum<{
             off: "off";
             on: "on";
         }>;
     }, {}, {}>>;
     noSignalImageMode: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         noSignalImageMode: z.ZodEnum<{
             off: "off";
             on: "on";
         }>;
     }, {}, {}>>;
     portraitMode: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         portraitMode: z.ZodEnum<{
             off: "off";
             90: "90";
@@ -221,6 +252,7 @@ export declare const SignageState: z.ZodObject<{
         }>;
     }, {}, {}>>;
     powerSaveMode: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         ses: z.ZodBoolean;
         dpmMode: z.ZodEnum<{
             off: "off";
@@ -239,19 +271,14 @@ export declare const SignageState: z.ZodObject<{
         do15MinOff: z.ZodBoolean;
     }, {}, {}>>;
     quietMode: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         mode: z.ZodEnum<{
             off: "off";
             on: "on";
         }>;
     }, {}, {}>>;
-    resetRequest: z.ZodOptional<z.ZodObject<{
-        timestamp: z.iso.ZodISODateTime;
-        mode: z.ZodEnum<{
-            softReset: "softReset";
-            factoryReset: "factoryReset";
-        }>;
-    }, {}, {}>>;
     RS232CConfiguration: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         mode: z.ZodLiteral<0 | 1>;
         port: z.ZodOptional<z.ZodNumber>;
         baudRate: z.ZodOptional<z.ZodLiteral<0 | 1024000 | 110 | 115200 | 1200 | 128000 | 14400 | 19200 | 230400 | 2400 | 256000 | 300 | 38400 | 4800 | 512000 | 57600 | 600 | 768000 | 921600 | 9600>>;
@@ -261,13 +288,15 @@ export declare const SignageState: z.ZodObject<{
         flowControl: z.ZodOptional<z.ZodLiteral<0 | 1 | 2 | 3>>;
         rxTimeoutInMs: z.ZodOptional<z.ZodNumber>;
     }, {}, {}>>;
-    simplinkStatus: z.ZodOptional<z.ZodObject<{
+    simplink: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         simplinkEnable: z.ZodEnum<{
             off: "off";
             on: "on";
         }>;
     }, {}, {}>>;
-    tileInfo: z.ZodOptional<z.ZodObject<{
+    tile: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         enabled: z.ZodBoolean;
         row: z.ZodNumber;
         column: z.ZodNumber;
@@ -275,6 +304,7 @@ export declare const SignageState: z.ZodObject<{
         naturalMode: z.ZodBoolean;
     }, {}, {}>>;
     usagePermission: z.ZodOptional<z.ZodObject<{
+        _timestamp: z.iso.ZodISODateTime;
         remoteKeyOperationMode: z.ZodEnum<{
             normal: "normal";
             blockAll: "blockAll";

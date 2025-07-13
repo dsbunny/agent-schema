@@ -3,7 +3,7 @@
 import { z } from 'zod/v4';
 
 export const CaptureScreenRequest = z.object({
-	timestamp: z.iso.datetime()
+	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the screenshot request'),
 	thumbnail: z.boolean().optional()
 		.describe('Whether to capture a thumbnail screenshot or not'),
@@ -28,37 +28,47 @@ export const CaptureScreenStatus = z.object({
 	.describe('The response of the screenshot capture request, including data, size, and encoding');
 export type CaptureScreenStatus = z.infer<typeof CaptureScreenStatus>;
 
-export const CheckScreen = z.object({
+export const CheckScreenState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the pixel sensor was checked'),
 	checkScreen: z.boolean()
 		.describe('Indicates whether to enable the pixel sensor'),
 })
 	.describe('The check screen request to enable or disable the pixel sensor');
-export type CheckScreen = z.infer<typeof CheckScreen>;
+export type CheckScreenState = z.infer<typeof CheckScreenState>;
 
-export const DigitalAudioInputMode = z.object({
+export const DigitalAudioInputState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the digital audio input mode was updated'),
 	digitalAudioInput: z.enum(['audioIn', 'hdmi'])
 		.describe('Indicates the status of the digital audio input mode, either "audioIn" or "hdmi"'),
 })
 	.describe('The digital audio input mode of the signage device');
-export type DigitalAudioInputMode = z.infer<typeof DigitalAudioInputMode>;
+export type DigitalAudioInputState = z.infer<typeof DigitalAudioInputState>;
 
-export const FailoverMode = z.object({
+export const FailoverModeState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the failover mode was updated'),
 	mode: z.enum(['auto', 'manual', 'off'])
 		.describe('The failover mode, either "auto", "manual", or "off"'),
 	priority: z.array(z.string()).optional()
 		.describe('The list of input sources in priority order for failover, e.g., ["ext://hdmi:1", "ext://hdmi:2"]'),
 })
 	.describe('The failover mode and priority of input sources for the agent');
-export type FailoverMode = z.infer<typeof FailoverMode>;
+export type FailoverModeState = z.infer<typeof FailoverModeState>;
 
-export const IntelligentAuto = z.object({
+export const IntelligentAutoState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the Intelligent Auto feature was updated'),
 	enabled: z.boolean()
 		.describe('Whether Intelligent Auto is enabled or disabled. Intelligent Auto is a feature that automatically calibrates the signage device screen when an analog RGB signal is received.'),
 })
 	.describe('The Intelligent Auto feature of the signage device, indicating whether it is enabled or disabled');
-export type IntelligentAuto = z.infer<typeof IntelligentAuto>;
+export type IntelligentAutoState = z.infer<typeof IntelligentAutoState>;
 
-export const IsmMethod = z.object({
+export const IsmMethodState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the ISM method was updated'),
 	ismMethod: z.enum([
 		'COLORWASH',
 		'INVERSION',
@@ -72,36 +82,46 @@ export const IsmMethod = z.object({
 		.describe('The ISM (Image Sticking Minimization) method'),
 })
 	.describe('The ISM method of the signage device, which helps to prevent image retention on the screen');
-export type IsmMethod = z.infer<typeof IsmMethod>;
+export type IsmMethodState = z.infer<typeof IsmMethodState>;
 
-export const LanDaisyChain = z.object({
+export const LanDaisyChainState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the LAN daisy chain state was updated'),
 	enabled: z.boolean()
 		.describe('Whether the LAN daisy chain is enabled or not'),
 })
 	.describe('The LAN daisy chain feature of the signage device, indicating whether it is enabled or not');
-export type LanDaisyChain = z.infer<typeof LanDaisyChain>;
+export type LanDaisyChainState = z.infer<typeof LanDaisyChainState>;
 
-export const MirrorMode = z.object({
+export const MirrorModeState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the mirror mode was updated'),
 	mode: z.enum(['off', 'on'])
 })
 	.describe('Indicates the status of the mirror mode, either "off" or "on"');
-export type MirrorMode = z.infer<typeof MirrorMode>;
+export type MirrorModeState = z.infer<typeof MirrorModeState>;
 
-export const NoSignalImageMode = z.object({
+export const NoSignalImageModeState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the No Signal Image mode was updated'),
 	noSignalImageMode: z.enum(['off', 'on'])
 		.describe('Indicates the status of the No Signal Image mode, either "off" or "on"'),
 })
 	.describe('The No Signal Image mode of the signage device, indicating whether it is enabled or not');
-export type NoSignalImageMode = z.infer<typeof NoSignalImageMode>;
+export type NoSignalImageModeState = z.infer<typeof NoSignalImageModeState>;
 
-export const PortraitMode = z.object({
+export const PortraitModeState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the portrait mode was updated'),
 	portraitMode: z.enum(['off', '90', '___undefined___'])
 		.describe('The display portrait mode, either "off", "90" (90 degrees rotation), or "___undefined___" (unknown)'),
 })
 	.describe('The portrait mode of the signage device, indicating the orientation of the display');
-export type PortraitMode = z.infer<typeof PortraitMode>;
+export type PortraitModeState = z.infer<typeof PortraitModeState>;
 
-export const PowerSaveMode = z.object({
+export const PowerSaveModeState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the power save mode was updated'),
 	ses: z.boolean()
 		.describe('Whether the SES (Smart Energy Saving) mode is enabled or not'),
 	dpmMode: z.enum([
@@ -124,17 +144,19 @@ export const PowerSaveMode = z.object({
 		.describe('Whether the 15-minute off mode is enabled or not'),
 })
 	.describe('The power save mode of the agent, including SES mode, DPM mode, automatic standby mode, and 15-minute off mode');
-export type PowerSaveMode = z.infer<typeof PowerSaveMode>;
+export type PowerSaveModeState = z.infer<typeof PowerSaveModeState>;
 
-export const QuietMode = z.object({
+export const QuietModeState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the quiet mode was updated'),
 	mode: z.enum(['off', 'on'])
 		.describe('The quiet mode status'),
 })
 	.describe('The quiet mode of the signage device, indicating whether it is enabled or not');
-export type QuietMode = z.infer<typeof QuietMode>;
+export type QuietModeState = z.infer<typeof QuietModeState>;
 
 export const ResetRequest = z.object({
-	timestamp: z.iso.datetime()
+	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the reset request'),
 	mode: z.enum(['softReset', 'factoryReset'])
 		.describe('The reset mode, either "softReset" or "factoryReset"'),
@@ -142,7 +164,9 @@ export const ResetRequest = z.object({
 	.describe('The request to reset the signage device, including timestamp and reset mode');
 export type ResetRequest = z.infer<typeof ResetRequest>;
 
-export const RS232CConfiguration = z.object({
+export const RS232CState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the RS-232C configuration was updated'),
 	mode: z.literal([0, 1])
 		.describe('The RS-232C mode, either 0 ("mediabox_[DATA]_[CHECKSUM]") or 1 (ASCII data)'),
 	port: z.number().int().min(1).max(13).optional()
@@ -200,16 +224,20 @@ export const RS232CConfiguration = z.object({
 		.describe('The receive timeout in milliseconds, e.g. 1000'),
 })
 	.describe('The RS-232C configuration of the signage device');
-export type RS232CConfiguration = z.infer<typeof RS232CConfiguration>;
+export type RS232CState = z.infer<typeof RS232CState>;
 
-export const SimplinkStatus = z.object({
+export const SimplinkState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the SIMPLINK status was updated'),
 	simplinkEnable: z.enum(['on', 'off'])
 		.describe('Indicates the status of the SIMPLINK feature, either "on" or "off"'),
 })
 	.describe('The SIMPLINK status of the signage device, indicating whether the SIMPLINK feature is enabled or not');
-export type SimplinkStatus = z.infer<typeof SimplinkStatus>;
+export type SimplinkState = z.infer<typeof SimplinkState>;
 
-export const TileInfo = z.object({
+export const TileState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the tile information was updated'),
 	enabled: z.boolean()
 		.describe('Whether the tile mode is enabled or not'),
 	row: z.number().int().min(1).max(15)
@@ -222,45 +250,47 @@ export const TileInfo = z.object({
 		.describe('Whether the natural mode (bezel correction) is enabled or not.'),
 })
 	.describe('The tile information of the signage device, including whether tile mode is enabled, number of rows and columns, tile ID, and natural mode status');
-export type TileInfo = z.infer<typeof TileInfo>;
+export type TileState = z.infer<typeof TileState>;
 
-export const UsageData = z.object({
+export const UsageStatus = z.object({
 	uptime: z.number()
 		.describe('The uptime of the device in hours, and minutes as fractional part'),
 	totalUsed: z.number().int().min(0)
 		.describe('The total usage time of the device in hours'),
 })
 	.describe('The usage data of the device, including uptime and total used time');
-export type UsageData = z.infer<typeof UsageData>;
+export type UsageStatus = z.infer<typeof UsageStatus>;
 
-export const UsagePermission = z.object({
+export const UsagePermissionState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the usage permission was updated'),
 	remoteKeyOperationMode: z.enum(['normal', 'blockAll', 'usePwrOnly'])
 		.describe('The remote key operation mode that represents the access control for remote key input.'),
 	localKeyOperationMode: z.enum(['normal', 'blockAll', 'usePwrOnly'])
 		.describe('The local key operation mode that represents the access control for local key input.'),
 })
 	.describe('The usage permission of the device, including remote and local key operation modes');
-export type UsagePermission = z.infer<typeof UsagePermission>;
+export type UsagePermissionState = z.infer<typeof UsagePermissionState>;
 
 // #region State
 export const SignageState = z.object({
-	captureScreenRequest: CaptureScreenRequest.optional(),
-	checkScreen: CheckScreen.optional(),
-	digitalAudioInput: DigitalAudioInputMode.optional(),
-	failoverMode: FailoverMode.optional(),
-	intelligentAuto: IntelligentAuto.optional(),
-	ismMethod: IsmMethod.optional(),
-	lanDaisyChain: LanDaisyChain.optional(),
-	mirrorMode: MirrorMode.optional(),
-	noSignalImageMode: NoSignalImageMode.optional(),
-	portraitMode: PortraitMode.optional(),
-	powerSaveMode: PowerSaveMode.optional(),
-	quietMode: QuietMode.optional(),
-	resetRequest: ResetRequest.optional(),
-	RS232CConfiguration: RS232CConfiguration.optional(),
-	simplinkStatus: SimplinkStatus.optional(),
-	tileInfo: TileInfo.optional(),
-	usagePermission: UsagePermission.optional(),
+	_captureScreenRequest: CaptureScreenRequest.optional(),
+	_resetRequest: ResetRequest.optional(),
+	checkScreen: CheckScreenState.optional(),
+	digitalAudioInput: DigitalAudioInputState.optional(),
+	failoverMode: FailoverModeState.optional(),
+	intelligentAuto: IntelligentAutoState.optional(),
+	ismMethod: IsmMethodState.optional(),
+	lanDaisyChain: LanDaisyChainState.optional(),
+	mirrorMode: MirrorModeState.optional(),
+	noSignalImageMode: NoSignalImageModeState.optional(),
+	portraitMode: PortraitModeState.optional(),
+	powerSaveMode: PowerSaveModeState.optional(),
+	quietMode: QuietModeState.optional(),
+	RS232CConfiguration: RS232CState.optional(),
+	simplink: SimplinkState.optional(),
+	tile: TileState.optional(),
+	usagePermission: UsagePermissionState.optional(),
 });
 export type SignageState = z.infer<typeof SignageState>;
 // #endregion
@@ -268,7 +298,7 @@ export type SignageState = z.infer<typeof SignageState>;
 // #region Status
 export const SignageStatus = z.object({
 	captureScreenStatus: CaptureScreenStatus.optional(),
-	usageData: UsageData.optional(),
+	usageData: UsageStatus.optional(),
 });
 export type SignageStatus = z.infer<typeof SignageStatus>;
 // #endregion

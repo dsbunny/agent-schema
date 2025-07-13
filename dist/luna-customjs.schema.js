@@ -1,6 +1,6 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 import { z } from 'zod/v4';
-export const ApplicationInfo = z.object({
+export const ApplicationInfoStatus = z.object({
     appinfo: z.object({
         icon: z.string()
             .describe('The path of the image icon representing your app, displayed on the launcher'),
@@ -64,27 +64,27 @@ export const DisableApplicationRequest = z.object({
         .describe('Whether to reset theserver settings to their default values after disabling it'),
 })
     .describe('The request to disable an application on the signage device, including timestamp and reset option');
-export const PowerOnOffHistory = z.object({
+export const PowerOnOffHistoryStatus = z.object({
     powerOnOffHistory: z.array(z.string())
         .describe('The list of power on/off history timestamps'),
 })
     .describe('The power on/off history of the signage device, including timestamps');
-export const WebOSVersion = z.object({
+export const WebOSVersionStatus = z.object({
     webOSVersion: z.string()
         .describe('The webOS version of the signage device'),
 })
     .describe('The webOS version of the signage device');
 // #region State
 export const CustomJSState = z.object({
-    clearBrowsingDataRequest: ClearBrowsingDataRequest.optional(),
-    disableApplicationRequest: DisableApplicationRequest.optional(),
+    _clearBrowsingDataRequest: ClearBrowsingDataRequest.optional(),
+    _disableApplicationRequest: DisableApplicationRequest.optional(),
 });
 // #endregion
 // #region Status
 export const CustomJSStatus = z.object({
-    applicationInfo: ApplicationInfo.optional(),
-    powerOnOffHistory: PowerOnOffHistory.optional(),
-    webOSVersion: WebOSVersion.optional(),
+    applicationInfo: ApplicationInfoStatus.optional(),
+    powerOnOffHistory: PowerOnOffHistoryStatus.optional(),
+    webOSVersion: WebOSVersionStatus.optional(),
 });
 // #endregion
 //# sourceMappingURL=luna-customjs.schema.js.map

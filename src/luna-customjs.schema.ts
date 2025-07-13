@@ -2,7 +2,7 @@
 
 import { z } from 'zod/v4';
 
-export const ApplicationInfo = z.object({
+export const ApplicationInfoStatus = z.object({
 	appinfo: z.object({
 		icon: z.string()
 			.describe('The path of the image icon representing your app, displayed on the launcher'),
@@ -40,7 +40,7 @@ export const ApplicationInfo = z.object({
 	}),
 })
 	.describe('The information about the application, including app ID, title, version, and other metadata');
-export type ApplicationInfo = z.infer<typeof ApplicationInfo>;
+export type ApplicationInfoStatus = z.infer<typeof ApplicationInfoStatus>;
 
 export const ClearBrowsingDataRequest = z.object({
 	timestamp: z.iso.datetime()
@@ -72,33 +72,33 @@ export const DisableApplicationRequest = z.object({
 	.describe('The request to disable an application on the signage device, including timestamp and reset option');
 export type DisableApplicationRequest = z.infer<typeof DisableApplicationRequest>;
 
-export const PowerOnOffHistory = z.object({
+export const PowerOnOffHistoryStatus = z.object({
 	powerOnOffHistory: z.array(z.string())
 		.describe('The list of power on/off history timestamps'),
 })
 	.describe('The power on/off history of the signage device, including timestamps');
-export type PowerOnOffHistory = z.infer<typeof PowerOnOffHistory>;
+export type PowerOnOffHistoryStatus = z.infer<typeof PowerOnOffHistoryStatus>;
 
-export const WebOSVersion = z.object({
+export const WebOSVersionStatus = z.object({
 	webOSVersion: z.string()
 		.describe('The webOS version of the signage device'),
 })
 	.describe('The webOS version of the signage device');
-export type WebOSVersion = z.infer<typeof WebOSVersion>;
+export type WebOSVersionStatus = z.infer<typeof WebOSVersionStatus>;
 
 // #region State
 export const CustomJSState = z.object({
-	clearBrowsingDataRequest: ClearBrowsingDataRequest.optional(),
-	disableApplicationRequest: DisableApplicationRequest.optional(),
+	_clearBrowsingDataRequest: ClearBrowsingDataRequest.optional(),
+	_disableApplicationRequest: DisableApplicationRequest.optional(),
 });
 export type CustomJSState = z.infer<typeof CustomJSState>;
 // #endregion
 
 // #region Status
 export const CustomJSStatus = z.object({
-	applicationInfo: ApplicationInfo.optional(),
-	powerOnOffHistory: PowerOnOffHistory.optional(),
-	webOSVersion: WebOSVersion.optional(),
+	applicationInfo: ApplicationInfoStatus.optional(),
+	powerOnOffHistory: PowerOnOffHistoryStatus.optional(),
+	webOSVersion: WebOSVersionStatus.optional(),
 });
 export type CustomJSStatus = z.infer<typeof CustomJSStatus>;
 // #endregion

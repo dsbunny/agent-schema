@@ -3,13 +3,15 @@
 import { z } from 'zod/v4';
 
 export const ClearCacheRequest = z.object({
-	timestamp: z.iso.datetime()
+	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the cache clear request'),
 })
 	.describe('The request to clear the cache of the signage device, including timestamp');
 export type ClearCacheRequest = z.infer<typeof ClearCacheRequest>;
 
 export const CurrentTimeState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the current time was set'),
 	ntp: z.boolean().optional()
 		.describe('Whether NTP (Network Time Protocol) is enabled or disabled'),
 	ntpServerAddress: z.string().optional()
@@ -33,23 +35,29 @@ export const CurrentTimeStatus = z.object({
 });
 export type CurrentTimeStatus = z.infer<typeof CurrentTimeStatus>;
 
-export const MasterPinStatus = z.object({
+export const MasterPinState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the master PIN was set'),
 	activated: z.boolean()
 		.describe('Whether the master PIN is activated or not'),
 });
-export type MasterPinStatus = z.infer<typeof MasterPinStatus>;
+export type MasterPinState = z.infer<typeof MasterPinState>;
 
-export const OSDLanguage = z.object({
+export const OSDLanguageState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the OSD language was set'),
 	specifier: z.string()
 		.describe('The OSD (On-Screen Display) language specifier in <language-code>-<country-code> format, e.g., "en-US"'),
 });
-export type OSDLanguage = z.infer<typeof OSDLanguage>;
+export type OSDLanguageState = z.infer<typeof OSDLanguageState>;
 
-export const OSDLock = z.object({
+export const OSDLockState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the OSD lock state was set'),
 	enabled: z.boolean()
 		.describe('Whether the OSD (On-Screen Display) is locked or not'),
 });
-export type OSDLock = z.infer<typeof OSDLock>;
+export type OSDLockState = z.infer<typeof OSDLockState>;
 
 export const Locale = z.object({
 	language: z.string()
@@ -65,13 +73,15 @@ export const Locale = z.object({
 }).describe('The locale in the format "language (language code) - country (specifier)"');
 export type Locale = z.infer<typeof Locale>;
 
-export const LocaleList = z.object({
+export const LocaleListStatus = z.object({
 	localeList: z.array(Locale)
 		.describe('The list of locales supported by the signage device'),
 });
-export type LocaleList = z.infer<typeof LocaleList>;
+export type LocaleListStatus = z.infer<typeof LocaleListStatus>;
 
-export const PictureMode = z.object({
+export const PictureModeState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the picture mode was set'),
 	mode: z.enum([
 		'eco',  // APS (Auto Power Saving) mode
 		'cinema',
@@ -84,9 +94,11 @@ export const PictureMode = z.object({
 	])
 		.describe('The picture mode of the agent'),
 });
-export type PictureMode = z.infer<typeof PictureMode>;
+export type PictureModeState = z.infer<typeof PictureModeState>;
 
-export const PictureProperty = z.object({
+export const PicturePropertyState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the picture properties were set'),
 	backlight: z.number().int().min(0).max(100).optional()
 		.describe('The backlight level of the display. Range: [0–100]'),
 	contrast: z.number().int().min(0).max(100).optional()
@@ -148,9 +160,11 @@ export const PictureProperty = z.object({
 	]).optional()
 		.describe('The gamma level of the display. Range: [low, medium, high, high3]'),
 });
-export type PictureProperty = z.infer<typeof PictureProperty>;
+export type PicturePropertyState = z.infer<typeof PicturePropertyState>;
 
-export const Property = z.object({
+export const PropertyState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the properties were set'),
 	alias: z.string().optional()
 		.describe('Displays alias name'),
 	operation_mode_after_screen_share: z.string().optional()
@@ -160,22 +174,24 @@ export const Property = z.object({
 	cec_device_control: z.string().optional()
 		.describe('Enables or disables CEC (Consumer Electronics Control) device control. A reboot is necessary to apply the changes.'),
 });
-export type Property = z.infer<typeof Property>;
+export type PropertyState = z.infer<typeof PropertyState>;
 
-export const ProxyBypassList = z.object({
+export const ProxyBypassListState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the proxy bypass list was set'),
 	urlList: z.array(z.string())
 		.describe('The list of proxy bypass wildcard addresses, e.g., "*.example.com"'),
 });
-export type ProxyBypassList = z.infer<typeof ProxyBypassList>;
+export type ProxyBypassListState = z.infer<typeof ProxyBypassListState>;
 
 export const RestartApplicationRequest = z.object({
-	timestamp: z.iso.datetime()
+	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the application restart request'),
 })
 	.describe('The request to restart the application of the signage device, including timestamp');
 export type RestartApplicationRequest = z.infer<typeof RestartApplicationRequest>;
 
-export const ServerProperty = z.object({
+export const ServerPropertyState = z.object({
 	serverIp: z.string()
 		.describe('The IP address of the server to which the agent connects'),
 	serverPort: z.number().int().min(1).max(65535)
@@ -193,7 +209,7 @@ export const ServerProperty = z.object({
 	appLaunchDeviceId: z.string().optional()
 		.describe('The device ID of the application to be launched by the agent'),
 });
-export type ServerProperty = z.infer<typeof ServerProperty>;
+export type ServerPropertyState = z.infer<typeof ServerPropertyState>;
 
 export const TimeZone = z.object({
 	continent: z.string()
@@ -205,33 +221,42 @@ export const TimeZone = z.object({
 }).describe('The time zone in the format "Continent/Country/City"');
 export type TimeZone = z.infer<typeof TimeZone>;
 
-export const TimeZoneList = z.object({
+export const TimeZoneState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the time zone was set'),
+}).merge(TimeZone)
+	.describe('The time zone of the signage device, including timestamp');
+export type TimeZoneState = z.infer<typeof TimeZoneState>;
+
+export const TimeZoneListStatus = z.object({
 	timeZone: z.array(TimeZone)
 		.describe('The list of time zones supported by the agent'),
 });
-export type TimeZoneList = z.infer<typeof TimeZoneList>;
+export type TimeZoneListStatus = z.infer<typeof TimeZoneListStatus>;
 
-export const USBLock = z.object({
+export const USBLockState = z.object({
+	_timestamp: z.iso.datetime()
+		.describe('The timestamp of the last time the USB lock state was set'),
 	enabled: z.boolean()
 		.describe('Whether the USB ports are locked or not'),
 }).describe('The USB lock status of the signage device');
-export type USBLock = z.infer<typeof USBLock>;
+export type USBLockState = z.infer<typeof USBLockState>;
 
 // #region State
 export const ConfigurationState = z.object({
-	clearCacheRequest: ClearCacheRequest.optional(),
+	_clearCacheRequest: ClearCacheRequest.optional(),
+	_restartApplicationRequest: RestartApplicationRequest.optional(),
 	currentTime: CurrentTimeState.optional(),
-	masterPinStatus: MasterPinStatus.optional(),
-	OSDLanguage: OSDLanguage.optional(),
-	OSDLock: OSDLock.optional(),
-	pictureMode: PictureMode.optional(),
-	pictureProperty: PictureProperty.optional(),
-	property: Property.optional(),
-	proxyBypassList: ProxyBypassList.optional(),
-	restartApplicationRequest: RestartApplicationRequest.optional(),
-	serverProperty: ServerProperty.optional(),
-	timeZone: TimeZone.optional(),
-	USBLock: USBLock.optional(),
+	masterPin: MasterPinState.optional(),
+	OSDLanguage: OSDLanguageState.optional(),
+	OSDLock: OSDLockState.optional(),
+	pictureMode: PictureModeState.optional(),
+	pictureProperty: PicturePropertyState.optional(),
+	property: PropertyState.optional(),
+	proxyBypassList: ProxyBypassListState.optional(),
+	serverProperty: ServerPropertyState.optional(),
+	timeZone: TimeZoneState.optional(),
+	USBLock: USBLockState.optional(),
 });
 export type ConfigurationState = z.infer<typeof ConfigurationState>;
 // #endregion
@@ -240,9 +265,9 @@ export type ConfigurationState = z.infer<typeof ConfigurationState>;
 export const ConfigurationStatus = z.object({
 	currentTime: CurrentTimeStatus.optional()
 		.describe('The local date and time of the signage device'),
-	localeList: LocaleList.optional()
+	localeList: LocaleListStatus.optional()
 		.describe('The list of locales supported by the signage device'),
-	timeZoneList: TimeZoneList.optional()
+	timeZoneList: TimeZoneListStatus.optional()
 		.describe('The list of time zones supported by the signage device'),
 });
 export type ConfigurationStatus = z.infer<typeof ConfigurationStatus>;

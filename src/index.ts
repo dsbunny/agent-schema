@@ -2,7 +2,7 @@
 
 export * from './luna-agent.schema.js';
 export * from './luna-configuration.schema.js';
-export * from './luna-device-info.schema.js';
+export * from './luna-device.schema.js';
 export * from './luna-input-source.schema.js';
 export * from './luna-power.schema.js';
 export * from './luna-security.schema.js';
