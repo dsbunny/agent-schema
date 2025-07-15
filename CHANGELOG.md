@@ -1,4 +1,7 @@
 # Changelog
+## v6.0.12
+- Fix export of _CustomJS_ schema.
+
 ## v6.0.11
 - Rename `DeviceInfo` to `Device` due to confusing semantics.
 - Drop all usage of `Info` on _state_ based properties.
