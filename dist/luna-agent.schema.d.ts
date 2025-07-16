@@ -218,7 +218,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 screenOff: "screenOff";
                 screenOffAlways: "screenOffAlways";
                 screenOffBacklight: "screenOffBacklight";
-                sustainAspectRation: "sustainAspectRation";
+                sustainAspectRatio: "sustainAspectRatio";
                 networkReady: "networkReady";
             }>;
         }, {}, {}>>;
@@ -723,7 +723,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     screenOff: "screenOff";
                     screenOffAlways: "screenOffAlways";
                     screenOffBacklight: "screenOffBacklight";
-                    sustainAspectRation: "sustainAspectRation";
+                    sustainAspectRatio: "sustainAspectRatio";
                     networkReady: "networkReady";
                 }>;
             }, {}, {}>>;
@@ -1232,7 +1232,7 @@ export declare const LunaAgentState: z.ZodObject<{
                     screenOff: "screenOff";
                     screenOffAlways: "screenOffAlways";
                     screenOffBacklight: "screenOffBacklight";
-                    sustainAspectRation: "sustainAspectRation";
+                    sustainAspectRatio: "sustainAspectRatio";
                     networkReady: "networkReady";
                 }>;
             }, {}, {}>>;

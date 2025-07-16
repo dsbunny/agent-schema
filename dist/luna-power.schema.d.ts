@@ -22,7 +22,7 @@ export declare const PMModeState: z.ZodObject<{
         screenOff: "screenOff";
         screenOffAlways: "screenOffAlways";
         screenOffBacklight: "screenOffBacklight";
-        sustainAspectRation: "sustainAspectRation";
+        sustainAspectRatio: "sustainAspectRatio";
         networkReady: "networkReady";
     }>;
 }, {}, {}>;
@@ -74,7 +74,7 @@ export declare const PowerState: z.ZodObject<{
             screenOff: "screenOff";
             screenOffAlways: "screenOffAlways";
             screenOffBacklight: "screenOffBacklight";
-            sustainAspectRation: "sustainAspectRation";
+            sustainAspectRatio: "sustainAspectRatio";
             networkReady: "networkReady";
         }>;
     }, {}, {}>>;

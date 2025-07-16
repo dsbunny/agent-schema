@@ -28,7 +28,7 @@ export const PMModeState = z.object({
         'screenOff',
         'screenOffAlways',
         'screenOffBacklight',
-        'sustainAspectRation',
+        'sustainAspectRatio',
         'networkReady',
     ])
         .describe('The power management mode, which determines how the signage device behaves when its power is turned off'),
