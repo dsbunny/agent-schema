@@ -39,7 +39,7 @@ export const DigitalAudioInputState = z.object({
 export const FailoverModeState = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the failover mode was updated'),
-    mode: z.enum(['auto', 'manual', 'off'])
+    mode: z.enum(['auto', 'manual', 'off', '___undefined___'])
         .describe('The failover mode, either "auto", "manual", or "off"'),
     priority: z.array(z.string()).optional()
         .describe('The list of input sources in priority order for failover, e.g., ["ext://hdmi:1", "ext://hdmi:2"]'),

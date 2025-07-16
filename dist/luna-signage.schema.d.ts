@@ -34,6 +34,7 @@ export declare const FailoverModeState: z.ZodObject<{
         off: "off";
         auto: "auto";
         manual: "manual";
+        ___undefined___: "___undefined___";
     }>;
     priority: z.ZodOptional<z.ZodArray<z.ZodString>>;
 }, {}, {}>;
@@ -205,6 +206,7 @@ export declare const SignageState: z.ZodObject<{
             off: "off";
             auto: "auto";
             manual: "manual";
+            ___undefined___: "___undefined___";
         }>;
         priority: z.ZodOptional<z.ZodArray<z.ZodString>>;
     }, {}, {}>>;

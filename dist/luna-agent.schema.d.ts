@@ -271,6 +271,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 off: "off";
                 auto: "auto";
                 manual: "manual";
+                ___undefined___: "___undefined___";
             }>;
             priority: z.ZodOptional<z.ZodArray<z.ZodString>>;
         }, {}, {}>>;
@@ -776,6 +777,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     off: "off";
                     auto: "auto";
                     manual: "manual";
+                    ___undefined___: "___undefined___";
                 }>;
                 priority: z.ZodOptional<z.ZodArray<z.ZodString>>;
             }, {}, {}>>;
@@ -1285,6 +1287,7 @@ export declare const LunaAgentState: z.ZodObject<{
                     off: "off";
                     auto: "auto";
                     manual: "manual";
+                    ___undefined___: "___undefined___";
                 }>;
                 priority: z.ZodOptional<z.ZodArray<z.ZodString>>;
             }, {}, {}>>;
