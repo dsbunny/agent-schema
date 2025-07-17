@@ -117,6 +117,13 @@ export const NetworkStatus = z.object({
         dns2: z.string().optional()
             .describe('The secondary DNS server of the Wi-Fi connection'),
     }).describe('The Wi-Fi network connection information'),
+    // Undocumented extensions:
+    // - `bluetooth`: Describes the Bluetooth connection information.
+    // - `cellular`: Describes the cellular network connection information.
+    // - `offlineMode`: Indicates whether the agent is in offline mode or not.
+    // - `wan`: Describes the WAN connection information.
+    // - `wifiDirect`: Describes the Wi-Fi Direct connection information.
+    // - `wired.proxyinfo`: Describes the proxy information for the wired connection.
 })
     .describe('The network information of the agent, including wired and Wi-Fi connections');
 export const NetworkMacStatus = z.object({
@@ -168,7 +175,7 @@ export const SensorValuesState = z.object({
 })
     .describe('The sensor values of the agent, including backlight level and screen color check information');
 export const SensorValuesStatus = z.object({
-    backlight: z.number().int().min(0).max(100)
+    backlight: z.coerce.number().int().min(0).max(100)
         .describe('The backlight level of the display. Range: [0–100]'),
     checkScreen: z.object({
         colorValid: z.boolean()
@@ -179,19 +186,26 @@ export const SensorValuesStatus = z.object({
             .describe('The hex value of the color displayed on the screen, e.g., "#FF0000" for red.'),
         readRGB: z.number().int()
             .describe('The RGB value of the color measured by the sensor, e.g., 0xFF0000 for red.'),
-    }).describe('The screen color check information'),
+    })
+        .describe('The screen color check information')
+        .or(z.literal("Unsupported or Error")),
     fan: z.object({
         closedLoop: z.boolean().optional()
             .describe('Indicates the current state of the closed-loop fan.'),
         openLoop: z.boolean().optional()
             .describe('Indicates the current state of the open-loop fan.'),
-    }).describe('The fan information of the agent'),
+    })
+        .describe('The fan information of the agent')
+        .or(z.literal("Unsupported or Error")),
     humidity: z.number().int().min(0).max(100)
-        .describe('The humidity level of the agent. Range: [0–100]'),
+        .describe('The humidity level of the agent. Range: [0–100]')
+        .or(z.literal("Unsupported or Error")),
     illuminance: z.number().int().min(0).max(100000)
-        .describe('The illuminance level of the agent. Range: [0–100000]'),
+        .describe('The illuminance level of the agent. Range: [0–100000]')
+        .or(z.literal("Unsupported or Error")),
     rotation: z.enum(['0', '90', '180', '270'])
-        .describe('The rotation of the agent, either "0", "90", "180", or "270" degrees'),
+        .describe('The rotation of the agent, either "0", "90", "180", or "270" degrees')
+        .or(z.literal("Unsupported or Error")),
     temperature: z.number().int().min(-50).max(100)
         .describe('The temperature level of the agent. Range: [-50–100]'),
 })
