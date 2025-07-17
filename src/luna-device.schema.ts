@@ -53,6 +53,8 @@ export const NetworkState = z.object({
 			.describe('The secondary DNS server of the wired connection'),
 	}).describe('The wired network connection information'),
 	wifi: z.object({
+		enabled: z.boolean()
+			.describe('Whether the Wi-Fi connection is enabled or not'),
 		method: z.enum(['dhcp', 'manual']).optional()
 			.describe('The method of the Wi-Fi connection, either "dhcp" or "manual"'),
 		ipAddress: z.string().optional()

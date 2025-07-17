@@ -165,6 +165,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 dns2: z.ZodOptional<z.ZodString>;
             }, {}, {}>;
             wifi: z.ZodObject<{
+                enabled: z.ZodBoolean;
                 method: z.ZodOptional<z.ZodEnum<{
                     manual: "manual";
                     dhcp: "dhcp";
@@ -671,6 +672,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     dns2: z.ZodOptional<z.ZodString>;
                 }, {}, {}>;
                 wifi: z.ZodObject<{
+                    enabled: z.ZodBoolean;
                     method: z.ZodOptional<z.ZodEnum<{
                         manual: "manual";
                         dhcp: "dhcp";
@@ -1181,6 +1183,7 @@ export declare const LunaAgentState: z.ZodObject<{
                     dns2: z.ZodOptional<z.ZodString>;
                 }, {}, {}>;
                 wifi: z.ZodObject<{
+                    enabled: z.ZodBoolean;
                     method: z.ZodOptional<z.ZodEnum<{
                         manual: "manual";
                         dhcp: "dhcp";
