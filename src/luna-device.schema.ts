@@ -206,26 +206,21 @@ export const SensorValuesStatus = z.object({
 			.describe('The hex value of the color displayed on the screen, e.g., "#FF0000" for red.'),
 		readRGB: z.number().int()
 			.describe('The RGB value of the color measured by the sensor, e.g., 0xFF0000 for red.'),
-	})
-		.describe('The screen color check information')
-		.or(z.literal("Unsupported or Error")),
+	}).nullable().optional()
+		.describe('The screen color check information'),
 	fan: z.object({
 		closedLoop: z.boolean().optional()
 			.describe('Indicates the current state of the closed-loop fan.'),
 		openLoop: z.boolean().optional()
 			.describe('Indicates the current state of the open-loop fan.'),
-	})
-		.describe('The fan information of the agent')
-		.or(z.literal("Unsupported or Error")),
-	humidity: z.number().int().min(0).max(100)
-		.describe('The humidity level of the agent. Range: [0–100]')
-		.or(z.literal("Unsupported or Error")),
-	illuminance: z.number().int().min(0).max(100000)
-		.describe('The illuminance level of the agent. Range: [0–100000]')
-		.or(z.literal("Unsupported or Error")),
-	rotation: z.enum(['0', '90', '180', '270'])
-		.describe('The rotation of the agent, either "0", "90", "180", or "270" degrees')
-		.or(z.literal("Unsupported or Error")),
+	}).nullable().optional()
+		.describe('The fan information of the agent'),
+	humidity: z.number().int().min(0).max(100).nullable().optional()
+		.describe('The humidity level of the agent. Range: [0–100]'),
+	illuminance: z.number().int().min(0).max(100000).nullable().optional()
+		.describe('The illuminance level of the agent. Range: [0–100000]'),
+	rotation: z.enum(['0', '90', '180', '270']).nullable().optional()
+		.describe('The rotation of the agent, either "0", "90", "180", or "270" degrees'),
 	temperature: z.number().int().min(-50).max(100)
 		.describe('The temperature level of the agent. Range: [-50–100]'),
 })

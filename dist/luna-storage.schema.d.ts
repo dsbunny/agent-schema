@@ -39,7 +39,7 @@ export declare const UpgradeApplicationRequest: z.ZodObject<{
 export type UpgradeApplicationRequest = z.infer<typeof UpgradeApplicationRequest>;
 export declare const UpgradeFirmwareRequest: z.ZodObject<{
     _timestamp: z.iso.ZodISODateTime;
-    path: z.ZodString;
+    uri: z.ZodURL;
 }, {}, {}>;
 export type UpgradeFirmwareRequest = z.infer<typeof UpgradeFirmwareRequest>;
 export declare const FirmwareUpgradeStatus: z.ZodObject<{
@@ -74,7 +74,7 @@ export declare const StorageState: z.ZodObject<{
     }, {}, {}>>;
     _upgradeFirmwareRequest: z.ZodOptional<z.ZodObject<{
         _timestamp: z.iso.ZodISODateTime;
-        path: z.ZodString;
+        uri: z.ZodURL;
     }, {}, {}>>;
 }, {}, {}>;
 export type StorageState = z.infer<typeof StorageState>;

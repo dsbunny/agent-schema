@@ -63,8 +63,11 @@ export type UpgradeApplicationRequest = z.infer<typeof UpgradeApplicationRequest
 export const UpgradeFirmwareRequest = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the firmware upgrade request'),
-	path: z.string()
-		.describe('The path of the firmware file to be upgraded, e.g., "file://internal/test.epk"'),
+	//path: z.string()
+	//	.describe('The path of the firmware file to be upgraded, e.g., "file://internal/test.epk"'),
+	// Pre-processed with `downloadFirmware` to generate a local path.
+	uri: z.url()
+		.describe('The URI of the firmware file to be upgraded, e.g., "https://example.com/firmware.epk"'),
 })
 	.describe('The request to upgrade the firmware, including timestamp and path of the firmware file');
 export type UpgradeFirmwareRequest = z.infer<typeof UpgradeFirmwareRequest>;

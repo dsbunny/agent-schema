@@ -61,6 +61,16 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 medium: "medium";
                 high: "high";
             }>>;
+            colorGamut: z.ZodOptional<z.ZodEnum<{
+                normal: "normal";
+                extended: "extended";
+            }>>;
+            dynamicColor: z.ZodOptional<z.ZodEnum<{
+                off: "off";
+                low: "low";
+                medium: "medium";
+                high: "high";
+            }>>;
             noiseReduction: z.ZodOptional<z.ZodEnum<{
                 off: "off";
                 low: "low";
@@ -438,7 +448,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
         }, {}, {}>>;
         _upgradeFirmwareRequest: z.ZodOptional<z.ZodObject<{
             _timestamp: z.iso.ZodISODateTime;
-            path: z.ZodString;
+            uri: z.ZodURL;
         }, {}, {}>>;
     }, {}, {}>>;
     time: z.ZodOptional<z.ZodObject<{
@@ -563,6 +573,16 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     high: "high";
                 }>>;
                 superResolution: z.ZodOptional<z.ZodEnum<{
+                    off: "off";
+                    low: "low";
+                    medium: "medium";
+                    high: "high";
+                }>>;
+                colorGamut: z.ZodOptional<z.ZodEnum<{
+                    normal: "normal";
+                    extended: "extended";
+                }>>;
+                dynamicColor: z.ZodOptional<z.ZodEnum<{
                     off: "off";
                     low: "low";
                     medium: "medium";
@@ -945,7 +965,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
             }, {}, {}>>;
             _upgradeFirmwareRequest: z.ZodOptional<z.ZodObject<{
                 _timestamp: z.iso.ZodISODateTime;
-                path: z.ZodString;
+                uri: z.ZodURL;
             }, {}, {}>>;
         }, {}, {}>>;
         time: z.ZodOptional<z.ZodObject<{
@@ -1079,6 +1099,16 @@ export declare const LunaAgentState: z.ZodObject<{
                     medium: "medium";
                     high: "high";
                 }>>;
+                colorGamut: z.ZodOptional<z.ZodEnum<{
+                    normal: "normal";
+                    extended: "extended";
+                }>>;
+                dynamicColor: z.ZodOptional<z.ZodEnum<{
+                    off: "off";
+                    low: "low";
+                    medium: "medium";
+                    high: "high";
+                }>>;
                 noiseReduction: z.ZodOptional<z.ZodEnum<{
                     off: "off";
                     low: "low";
@@ -1456,7 +1486,7 @@ export declare const LunaAgentState: z.ZodObject<{
             }, {}, {}>>;
             _upgradeFirmwareRequest: z.ZodOptional<z.ZodObject<{
                 _timestamp: z.iso.ZodISODateTime;
-                path: z.ZodString;
+                uri: z.ZodURL;
             }, {}, {}>>;
         }, {}, {}>>;
         time: z.ZodOptional<z.ZodObject<{
@@ -1614,24 +1644,24 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
         }, {}, {}>>;
         sensorValues: z.ZodOptional<z.ZodObject<{
             backlight: z.coerce.ZodCoercedNumber;
-            checkScreen: z.ZodUnion<[z.ZodObject<{
+            checkScreen: z.ZodOptional<z.ZodNullable<z.ZodObject<{
                 colorValid: z.ZodBoolean;
                 drawRGB: z.ZodNumber;
                 hexValue: z.ZodString;
                 readRGB: z.ZodNumber;
-            }, {}, {}>, z.ZodLiteral<"Unsupported or Error">]>;
-            fan: z.ZodUnion<[z.ZodObject<{
+            }, {}, {}>>>;
+            fan: z.ZodOptional<z.ZodNullable<z.ZodObject<{
                 closedLoop: z.ZodOptional<z.ZodBoolean>;
                 openLoop: z.ZodOptional<z.ZodBoolean>;
-            }, {}, {}>, z.ZodLiteral<"Unsupported or Error">]>;
-            humidity: z.ZodUnion<[z.ZodNumber, z.ZodLiteral<"Unsupported or Error">]>;
-            illuminance: z.ZodUnion<[z.ZodNumber, z.ZodLiteral<"Unsupported or Error">]>;
-            rotation: z.ZodUnion<[z.ZodEnum<{
+            }, {}, {}>>>;
+            humidity: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+            illuminance: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+            rotation: z.ZodOptional<z.ZodNullable<z.ZodEnum<{
                 0: "0";
                 90: "90";
                 180: "180";
                 270: "270";
-            }>, z.ZodLiteral<"Unsupported or Error">]>;
+            }>>>;
             temperature: z.ZodNumber;
         }, {}, {}>>;
         systemUsageInfo: z.ZodOptional<z.ZodObject<{
@@ -1865,24 +1895,24 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
             }, {}, {}>>;
             sensorValues: z.ZodOptional<z.ZodObject<{
                 backlight: z.coerce.ZodCoercedNumber;
-                checkScreen: z.ZodUnion<[z.ZodObject<{
+                checkScreen: z.ZodOptional<z.ZodNullable<z.ZodObject<{
                     colorValid: z.ZodBoolean;
                     drawRGB: z.ZodNumber;
                     hexValue: z.ZodString;
                     readRGB: z.ZodNumber;
-                }, {}, {}>, z.ZodLiteral<"Unsupported or Error">]>;
-                fan: z.ZodUnion<[z.ZodObject<{
+                }, {}, {}>>>;
+                fan: z.ZodOptional<z.ZodNullable<z.ZodObject<{
                     closedLoop: z.ZodOptional<z.ZodBoolean>;
                     openLoop: z.ZodOptional<z.ZodBoolean>;
-                }, {}, {}>, z.ZodLiteral<"Unsupported or Error">]>;
-                humidity: z.ZodUnion<[z.ZodNumber, z.ZodLiteral<"Unsupported or Error">]>;
-                illuminance: z.ZodUnion<[z.ZodNumber, z.ZodLiteral<"Unsupported or Error">]>;
-                rotation: z.ZodUnion<[z.ZodEnum<{
+                }, {}, {}>>>;
+                humidity: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+                illuminance: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+                rotation: z.ZodOptional<z.ZodNullable<z.ZodEnum<{
                     0: "0";
                     90: "90";
                     180: "180";
                     270: "270";
-                }>, z.ZodLiteral<"Unsupported or Error">]>;
+                }>>>;
                 temperature: z.ZodNumber;
             }, {}, {}>>;
             systemUsageInfo: z.ZodOptional<z.ZodObject<{
@@ -2120,24 +2150,24 @@ export declare const LunaAgentStatus: z.ZodObject<{
             }, {}, {}>>;
             sensorValues: z.ZodOptional<z.ZodObject<{
                 backlight: z.coerce.ZodCoercedNumber;
-                checkScreen: z.ZodUnion<[z.ZodObject<{
+                checkScreen: z.ZodOptional<z.ZodNullable<z.ZodObject<{
                     colorValid: z.ZodBoolean;
                     drawRGB: z.ZodNumber;
                     hexValue: z.ZodString;
                     readRGB: z.ZodNumber;
-                }, {}, {}>, z.ZodLiteral<"Unsupported or Error">]>;
-                fan: z.ZodUnion<[z.ZodObject<{
+                }, {}, {}>>>;
+                fan: z.ZodOptional<z.ZodNullable<z.ZodObject<{
                     closedLoop: z.ZodOptional<z.ZodBoolean>;
                     openLoop: z.ZodOptional<z.ZodBoolean>;
-                }, {}, {}>, z.ZodLiteral<"Unsupported or Error">]>;
-                humidity: z.ZodUnion<[z.ZodNumber, z.ZodLiteral<"Unsupported or Error">]>;
-                illuminance: z.ZodUnion<[z.ZodNumber, z.ZodLiteral<"Unsupported or Error">]>;
-                rotation: z.ZodUnion<[z.ZodEnum<{
+                }, {}, {}>>>;
+                humidity: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+                illuminance: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+                rotation: z.ZodOptional<z.ZodNullable<z.ZodEnum<{
                     0: "0";
                     90: "90";
                     180: "180";
                     270: "270";
-                }>, z.ZodLiteral<"Unsupported or Error">]>;
+                }>>>;
                 temperature: z.ZodNumber;
             }, {}, {}>>;
             systemUsageInfo: z.ZodOptional<z.ZodObject<{

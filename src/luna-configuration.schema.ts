@@ -131,6 +131,18 @@ export const PicturePropertyState = z.object({
 		'high',
 	]).optional()
 		.describe('The super resolution level of the display. Range: [off, low, medium, high]'),
+	colorGamut: z.enum([
+		'normal',
+		'extended',
+	]).optional()
+		.describe('The color gamut of the display. Range: [normal, extended]'),
+	dynamicColor: z.enum([
+		'off',
+		'low',
+		'medium',
+		'high',
+	]).optional()
+		.describe('The dynamic color level of the display. Range: [off, low, medium, high]'),
 	noiseReduction: z.enum([
 		'auto',
 		'off',
