@@ -154,8 +154,8 @@ export declare const TileState: z.ZodObject<{
 }, {}, {}>;
 export type TileState = z.infer<typeof TileState>;
 export declare const UsageStatus: z.ZodObject<{
-    uptime: z.ZodNumber;
-    totalUsed: z.ZodNumber;
+    uptime: z.coerce.ZodCoercedNumber;
+    totalUsed: z.coerce.ZodCoercedNumber;
 }, {}, {}>;
 export type UsageStatus = z.infer<typeof UsageStatus>;
 export declare const UsagePermissionState: z.ZodObject<{
@@ -327,8 +327,8 @@ export declare const SignageStatus: z.ZodObject<{
         encoding: z.ZodLiteral<"Base64">;
     }, {}, {}>>;
     usageData: z.ZodOptional<z.ZodObject<{
-        uptime: z.ZodNumber;
-        totalUsed: z.ZodNumber;
+        uptime: z.coerce.ZodCoercedNumber;
+        totalUsed: z.coerce.ZodCoercedNumber;
     }, {}, {}>>;
 }, {}, {}>;
 export type SignageStatus = z.infer<typeof SignageStatus>;

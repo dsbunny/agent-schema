@@ -5,13 +5,13 @@ export declare const ChangeLogoImageRequest: z.ZodObject<{
 }, {}, {}>;
 export type ChangeLogoImageRequest = z.infer<typeof ChangeLogoImageRequest>;
 export declare const StorageSpaceStatus: z.ZodObject<{
-    free: z.ZodString;
-    total: z.ZodString;
-    used: z.ZodString;
+    free: z.coerce.ZodCoercedNumber;
+    total: z.coerce.ZodCoercedNumber;
+    used: z.coerce.ZodCoercedNumber;
     externalMemory: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-        free: z.ZodString;
-        total: z.ZodString;
-        used: z.ZodString;
+        free: z.coerce.ZodCoercedNumber;
+        total: z.coerce.ZodCoercedNumber;
+        used: z.coerce.ZodCoercedNumber;
     }, {}, {}>>>;
 }, {}, {}>;
 export type StorageSpaceStatus = z.infer<typeof StorageSpaceStatus>;
@@ -100,13 +100,13 @@ export declare const StorageStatus: z.ZodObject<{
         }, {}, {}>>;
     }, {}, {}>>;
     storageInfo: z.ZodOptional<z.ZodObject<{
-        free: z.ZodString;
-        total: z.ZodString;
-        used: z.ZodString;
+        free: z.coerce.ZodCoercedNumber;
+        total: z.coerce.ZodCoercedNumber;
+        used: z.coerce.ZodCoercedNumber;
         externalMemory: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-            free: z.ZodString;
-            total: z.ZodString;
-            used: z.ZodString;
+            free: z.coerce.ZodCoercedNumber;
+            total: z.coerce.ZodCoercedNumber;
+            used: z.coerce.ZodCoercedNumber;
         }, {}, {}>>>;
     }, {}, {}>>;
 }, {}, {}>;

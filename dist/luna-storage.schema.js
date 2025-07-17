@@ -8,18 +8,18 @@ export const ChangeLogoImageRequest = z.object({
 })
     .describe('The request to change the logo image, including timestamp and URI of the new logo image');
 export const StorageSpaceStatus = z.object({
-    free: z.string()
+    free: z.coerce.number().positive()
         .describe('The free storage space in KB'),
-    total: z.string()
+    total: z.coerce.number().positive()
         .describe('The total storage space in KB'),
-    used: z.string()
+    used: z.coerce.number().positive()
         .describe('The used storage space in KB'),
     externalMemory: z.record(z.string(), z.object({
-        free: z.string()
+        free: z.coerce.number().positive()
             .describe('The free storage space in KB of the external memory'),
-        total: z.string()
+        total: z.coerce.number().positive()
             .describe('The total storage space in KB of the external memory'),
-        used: z.string()
+        used: z.coerce.number().positive()
             .describe('The used storage space in KB of the external memory'),
     })).optional()
         .describe('The external memory storage information, if available'),

@@ -253,9 +253,9 @@ export const TileState = z.object({
 export type TileState = z.infer<typeof TileState>;
 
 export const UsageStatus = z.object({
-	uptime: z.number()
+	uptime: z.coerce.number().positive()
 		.describe('The uptime of the device in hours, and minutes as fractional part'),
-	totalUsed: z.number().int().min(0)
+	totalUsed: z.coerce.number().positive()
 		.describe('The total usage time of the device in hours'),
 })
 	.describe('The usage data of the device, including uptime and total used time');

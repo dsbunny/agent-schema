@@ -1683,8 +1683,8 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
             encoding: z.ZodLiteral<"Base64">;
         }, {}, {}>>;
         usageData: z.ZodOptional<z.ZodObject<{
-            uptime: z.ZodNumber;
-            totalUsed: z.ZodNumber;
+            uptime: z.coerce.ZodCoercedNumber;
+            totalUsed: z.coerce.ZodCoercedNumber;
         }, {}, {}>>;
     }, {}, {}>>;
     storage: z.ZodOptional<z.ZodObject<{
@@ -1709,13 +1709,13 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
             }, {}, {}>>;
         }, {}, {}>>;
         storageInfo: z.ZodOptional<z.ZodObject<{
-            free: z.ZodString;
-            total: z.ZodString;
-            used: z.ZodString;
+            free: z.coerce.ZodCoercedNumber;
+            total: z.coerce.ZodCoercedNumber;
+            used: z.coerce.ZodCoercedNumber;
             externalMemory: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-                free: z.ZodString;
-                total: z.ZodString;
-                used: z.ZodString;
+                free: z.coerce.ZodCoercedNumber;
+                total: z.coerce.ZodCoercedNumber;
+                used: z.coerce.ZodCoercedNumber;
             }, {}, {}>>>;
         }, {}, {}>>;
     }, {}, {}>>;
@@ -1934,8 +1934,8 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                 encoding: z.ZodLiteral<"Base64">;
             }, {}, {}>>;
             usageData: z.ZodOptional<z.ZodObject<{
-                uptime: z.ZodNumber;
-                totalUsed: z.ZodNumber;
+                uptime: z.coerce.ZodCoercedNumber;
+                totalUsed: z.coerce.ZodCoercedNumber;
             }, {}, {}>>;
         }, {}, {}>>;
         storage: z.ZodOptional<z.ZodObject<{
@@ -1960,13 +1960,13 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                 }, {}, {}>>;
             }, {}, {}>>;
             storageInfo: z.ZodOptional<z.ZodObject<{
-                free: z.ZodString;
-                total: z.ZodString;
-                used: z.ZodString;
+                free: z.coerce.ZodCoercedNumber;
+                total: z.coerce.ZodCoercedNumber;
+                used: z.coerce.ZodCoercedNumber;
                 externalMemory: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-                    free: z.ZodString;
-                    total: z.ZodString;
-                    used: z.ZodString;
+                    free: z.coerce.ZodCoercedNumber;
+                    total: z.coerce.ZodCoercedNumber;
+                    used: z.coerce.ZodCoercedNumber;
                 }, {}, {}>>>;
             }, {}, {}>>;
         }, {}, {}>>;
@@ -2189,8 +2189,8 @@ export declare const LunaAgentStatus: z.ZodObject<{
                 encoding: z.ZodLiteral<"Base64">;
             }, {}, {}>>;
             usageData: z.ZodOptional<z.ZodObject<{
-                uptime: z.ZodNumber;
-                totalUsed: z.ZodNumber;
+                uptime: z.coerce.ZodCoercedNumber;
+                totalUsed: z.coerce.ZodCoercedNumber;
             }, {}, {}>>;
         }, {}, {}>>;
         storage: z.ZodOptional<z.ZodObject<{
@@ -2215,13 +2215,13 @@ export declare const LunaAgentStatus: z.ZodObject<{
                 }, {}, {}>>;
             }, {}, {}>>;
             storageInfo: z.ZodOptional<z.ZodObject<{
-                free: z.ZodString;
-                total: z.ZodString;
-                used: z.ZodString;
+                free: z.coerce.ZodCoercedNumber;
+                total: z.coerce.ZodCoercedNumber;
+                used: z.coerce.ZodCoercedNumber;
                 externalMemory: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-                    free: z.ZodString;
-                    total: z.ZodString;
-                    used: z.ZodString;
+                    free: z.coerce.ZodCoercedNumber;
+                    total: z.coerce.ZodCoercedNumber;
+                    used: z.coerce.ZodCoercedNumber;
                 }, {}, {}>>>;
             }, {}, {}>>;
         }, {}, {}>>;

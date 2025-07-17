@@ -217,9 +217,9 @@ export const TileState = z.object({
 })
     .describe('The tile information of the signage device, including whether tile mode is enabled, number of rows and columns, tile ID, and natural mode status');
 export const UsageStatus = z.object({
-    uptime: z.number()
+    uptime: z.coerce.number().positive()
         .describe('The uptime of the device in hours, and minutes as fractional part'),
-    totalUsed: z.number().int().min(0)
+    totalUsed: z.coerce.number().positive()
         .describe('The total usage time of the device in hours'),
 })
     .describe('The usage data of the device, including uptime and total used time');
