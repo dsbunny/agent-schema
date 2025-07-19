@@ -238,7 +238,8 @@ export type TimeZone = z.infer<typeof TimeZone>;
 export const TimeZoneState = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the last time the time zone was set'),
-}).merge(TimeZone)
+	timeZone: TimeZone,
+})
 	.describe('The time zone of the signage device, including timestamp');
 export type TimeZoneState = z.infer<typeof TimeZoneState>;
 

@@ -206,7 +206,8 @@ export const TimeZone = z.object({
 export const TimeZoneState = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the time zone was set'),
-}).merge(TimeZone)
+    timeZone: TimeZone,
+})
     .describe('The time zone of the signage device, including timestamp');
 export const TimeZoneListStatus = z.object({
     timeZone: z.array(TimeZone)

@@ -170,9 +170,11 @@ export declare const TimeZone: z.ZodObject<{
 export type TimeZone = z.infer<typeof TimeZone>;
 export declare const TimeZoneState: z.ZodObject<{
     _timestamp: z.iso.ZodISODateTime;
-    continent: z.ZodString;
-    country: z.ZodString;
-    city: z.ZodString;
+    timeZone: z.ZodObject<{
+        continent: z.ZodString;
+        country: z.ZodString;
+        city: z.ZodString;
+    }, {}, {}>;
 }, {}, {}>;
 export type TimeZoneState = z.infer<typeof TimeZoneState>;
 export declare const TimeZoneListStatus: z.ZodObject<{
@@ -314,9 +316,11 @@ export declare const ConfigurationState: z.ZodObject<{
     }, {}, {}>>;
     timeZone: z.ZodOptional<z.ZodObject<{
         _timestamp: z.iso.ZodISODateTime;
-        continent: z.ZodString;
-        country: z.ZodString;
-        city: z.ZodString;
+        timeZone: z.ZodObject<{
+            continent: z.ZodString;
+            country: z.ZodString;
+            city: z.ZodString;
+        }, {}, {}>;
     }, {}, {}>>;
     USBLock: z.ZodOptional<z.ZodObject<{
         _timestamp: z.iso.ZodISODateTime;

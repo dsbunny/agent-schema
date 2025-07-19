@@ -127,9 +127,11 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
         }, {}, {}>>;
         timeZone: z.ZodOptional<z.ZodObject<{
             _timestamp: z.iso.ZodISODateTime;
-            continent: z.ZodString;
-            country: z.ZodString;
-            city: z.ZodString;
+            timeZone: z.ZodObject<{
+                continent: z.ZodString;
+                country: z.ZodString;
+                city: z.ZodString;
+            }, {}, {}>;
         }, {}, {}>>;
         USBLock: z.ZodOptional<z.ZodObject<{
             _timestamp: z.iso.ZodISODateTime;
@@ -644,9 +646,11 @@ export declare const LunaAgentStateBase: z.ZodObject<{
             }, {}, {}>>;
             timeZone: z.ZodOptional<z.ZodObject<{
                 _timestamp: z.iso.ZodISODateTime;
-                continent: z.ZodString;
-                country: z.ZodString;
-                city: z.ZodString;
+                timeZone: z.ZodObject<{
+                    continent: z.ZodString;
+                    country: z.ZodString;
+                    city: z.ZodString;
+                }, {}, {}>;
             }, {}, {}>>;
             USBLock: z.ZodOptional<z.ZodObject<{
                 _timestamp: z.iso.ZodISODateTime;
@@ -1165,9 +1169,11 @@ export declare const LunaAgentState: z.ZodObject<{
             }, {}, {}>>;
             timeZone: z.ZodOptional<z.ZodObject<{
                 _timestamp: z.iso.ZodISODateTime;
-                continent: z.ZodString;
-                country: z.ZodString;
-                city: z.ZodString;
+                timeZone: z.ZodObject<{
+                    continent: z.ZodString;
+                    country: z.ZodString;
+                    city: z.ZodString;
+                }, {}, {}>;
             }, {}, {}>>;
             USBLock: z.ZodOptional<z.ZodObject<{
                 _timestamp: z.iso.ZodISODateTime;
