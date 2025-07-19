@@ -47,12 +47,12 @@ export const OSDLockState = z.object({
 });
 export const Locale = z.object({
     language: z.string()
-        .describe('The language in native language with HTML entities, e.g., "Espa&ntilde;ol"'),
+        .describe('The language in native language, e.g., "Español"'),
     languageCode: z.string()
         .describe('The language code in ISO 639-1 format, e.g., "es"'),
     countries: z.array(z.object({
         name: z.string()
-            .describe('The country name in native language with HTML entities, e.g., "Espa&ntilde;a"'),
+            .describe('The country name in native language, e.g., "España"'),
         specifier: z.string()
             .describe('The country specifier in <language-code>-<country-code> format, e.g., "es-ES"'),
     })),
@@ -161,7 +161,7 @@ export const PropertyState = z.object({
         .describe('Launches the app when Screen Sharing exits. A reboot is necessary to apply the changes. A reboot is necessary to apply the changes.'),
     key_delivery_to_simplink: z.string().optional()
         .describe('Enables or disables the delivery of key input to Simplink devices. A reboot is necessary to apply the changes.'),
-    cec_device_control: z.string().optional()
+    cec_device_control: z.string().nullable().optional()
         .describe('Enables or disables CEC (Consumer Electronics Control) device control. A reboot is necessary to apply the changes.'),
 });
 export const ProxyBypassListState = z.object({

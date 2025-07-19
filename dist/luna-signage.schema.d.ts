@@ -210,10 +210,10 @@ export declare const SignageState: z.ZodObject<{
         }>;
         priority: z.ZodOptional<z.ZodArray<z.ZodString>>;
     }, {}, {}>>;
-    intelligentAuto: z.ZodOptional<z.ZodObject<{
+    intelligentAuto: z.ZodOptional<z.ZodNullable<z.ZodObject<{
         _timestamp: z.iso.ZodISODateTime;
         enabled: z.ZodBoolean;
-    }, {}, {}>>;
+    }, {}, {}>>>;
     ismMethod: z.ZodOptional<z.ZodObject<{
         _timestamp: z.iso.ZodISODateTime;
         ismMethod: z.ZodEnum<{
@@ -227,17 +227,17 @@ export declare const SignageState: z.ZodObject<{
             WHITEWASH: "WHITEWASH";
         }>;
     }, {}, {}>>;
-    lanDaisyChain: z.ZodOptional<z.ZodObject<{
+    lanDaisyChain: z.ZodOptional<z.ZodNullable<z.ZodObject<{
         _timestamp: z.iso.ZodISODateTime;
         enabled: z.ZodBoolean;
-    }, {}, {}>>;
-    mirrorMode: z.ZodOptional<z.ZodObject<{
+    }, {}, {}>>>;
+    mirrorMode: z.ZodOptional<z.ZodNullable<z.ZodObject<{
         _timestamp: z.iso.ZodISODateTime;
         mode: z.ZodEnum<{
             off: "off";
             on: "on";
         }>;
-    }, {}, {}>>;
+    }, {}, {}>>>;
     noSignalImageMode: z.ZodOptional<z.ZodObject<{
         _timestamp: z.iso.ZodISODateTime;
         noSignalImageMode: z.ZodEnum<{
@@ -272,13 +272,13 @@ export declare const SignageState: z.ZodObject<{
         }>;
         do15MinOff: z.ZodBoolean;
     }, {}, {}>>;
-    quietMode: z.ZodOptional<z.ZodObject<{
+    quietMode: z.ZodOptional<z.ZodNullable<z.ZodObject<{
         _timestamp: z.iso.ZodISODateTime;
         mode: z.ZodEnum<{
             off: "off";
             on: "on";
         }>;
-    }, {}, {}>>;
+    }, {}, {}>>>;
     RS232CConfiguration: z.ZodOptional<z.ZodObject<{
         _timestamp: z.iso.ZodISODateTime;
         mode: z.ZodLiteral<0 | 1>;
@@ -297,14 +297,14 @@ export declare const SignageState: z.ZodObject<{
             on: "on";
         }>;
     }, {}, {}>>;
-    tile: z.ZodOptional<z.ZodObject<{
+    tile: z.ZodOptional<z.ZodNullable<z.ZodObject<{
         _timestamp: z.iso.ZodISODateTime;
         enabled: z.ZodBoolean;
         row: z.ZodNumber;
         column: z.ZodNumber;
         tileId: z.ZodNumber;
         naturalMode: z.ZodBoolean;
-    }, {}, {}>>;
+    }, {}, {}>>>;
     usagePermission: z.ZodOptional<z.ZodObject<{
         _timestamp: z.iso.ZodISODateTime;
         remoteKeyOperationMode: z.ZodEnum<{

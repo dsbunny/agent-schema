@@ -131,7 +131,7 @@ export declare const PropertyState: z.ZodObject<{
     alias: z.ZodOptional<z.ZodString>;
     operation_mode_after_screen_share: z.ZodOptional<z.ZodString>;
     key_delivery_to_simplink: z.ZodOptional<z.ZodString>;
-    cec_device_control: z.ZodOptional<z.ZodString>;
+    cec_device_control: z.ZodOptional<z.ZodNullable<z.ZodString>>;
 }, {}, {}>;
 export type PropertyState = z.infer<typeof PropertyState>;
 export declare const ProxyBypassListState: z.ZodObject<{
@@ -288,7 +288,7 @@ export declare const ConfigurationState: z.ZodObject<{
         alias: z.ZodOptional<z.ZodString>;
         operation_mode_after_screen_share: z.ZodOptional<z.ZodString>;
         key_delivery_to_simplink: z.ZodOptional<z.ZodString>;
-        cec_device_control: z.ZodOptional<z.ZodString>;
+        cec_device_control: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     }, {}, {}>>;
     proxyBypassList: z.ZodOptional<z.ZodObject<{
         _timestamp: z.iso.ZodISODateTime;

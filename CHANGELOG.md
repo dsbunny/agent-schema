@@ -1,4 +1,7 @@
 # Changelog
+## v6.1.13
+- Make `nullable` fields that may be unsupported.
+
 ## v6.0.12
 - Fix export of _CustomJS_ schema.
 
