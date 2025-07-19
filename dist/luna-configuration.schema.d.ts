@@ -84,12 +84,12 @@ export declare const PicturePropertyState: z.ZodObject<{
         medium: "medium";
         high: "high";
     }>>;
-    superResolution: z.ZodOptional<z.ZodEnum<{
+    superResolution: z.ZodOptional<z.ZodNullable<z.ZodEnum<{
         off: "off";
         low: "low";
         medium: "medium";
         high: "high";
-    }>>;
+    }>>>;
     colorGamut: z.ZodOptional<z.ZodEnum<{
         normal: "normal";
         extended: "extended";
@@ -242,12 +242,12 @@ export declare const ConfigurationState: z.ZodObject<{
             medium: "medium";
             high: "high";
         }>>;
-        superResolution: z.ZodOptional<z.ZodEnum<{
+        superResolution: z.ZodOptional<z.ZodNullable<z.ZodEnum<{
             off: "off";
             low: "low";
             medium: "medium";
             high: "high";
-        }>>;
+        }>>>;
         colorGamut: z.ZodOptional<z.ZodEnum<{
             normal: "normal";
             extended: "extended";

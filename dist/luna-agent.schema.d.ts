@@ -55,12 +55,12 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 medium: "medium";
                 high: "high";
             }>>;
-            superResolution: z.ZodOptional<z.ZodEnum<{
+            superResolution: z.ZodOptional<z.ZodNullable<z.ZodEnum<{
                 off: "off";
                 low: "low";
                 medium: "medium";
                 high: "high";
-            }>>;
+            }>>>;
             colorGamut: z.ZodOptional<z.ZodEnum<{
                 normal: "normal";
                 extended: "extended";
@@ -572,12 +572,12 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     medium: "medium";
                     high: "high";
                 }>>;
-                superResolution: z.ZodOptional<z.ZodEnum<{
+                superResolution: z.ZodOptional<z.ZodNullable<z.ZodEnum<{
                     off: "off";
                     low: "low";
                     medium: "medium";
                     high: "high";
-                }>>;
+                }>>>;
                 colorGamut: z.ZodOptional<z.ZodEnum<{
                     normal: "normal";
                     extended: "extended";
@@ -1093,12 +1093,12 @@ export declare const LunaAgentState: z.ZodObject<{
                     medium: "medium";
                     high: "high";
                 }>>;
-                superResolution: z.ZodOptional<z.ZodEnum<{
+                superResolution: z.ZodOptional<z.ZodNullable<z.ZodEnum<{
                     off: "off";
                     low: "low";
                     medium: "medium";
                     high: "high";
-                }>>;
+                }>>>;
                 colorGamut: z.ZodOptional<z.ZodEnum<{
                     normal: "normal";
                     extended: "extended";
