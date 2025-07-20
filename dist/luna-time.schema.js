@@ -50,7 +50,7 @@ export const HolidayScheduleState = z.object({
 // #region State
 export const TimeState = z.object({
     allOnOffTimers: AllOnOffTimersState.optional(),
-    holidaySchedule: HolidayScheduleState.optional(),
+    holidayScheduleList: HolidayScheduleState.optional(),
 })
     .describe('The time information of the device, including current time and time zone');
 // #endregion

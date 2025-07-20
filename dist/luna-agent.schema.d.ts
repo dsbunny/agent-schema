@@ -467,7 +467,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 week: z.ZodNumber;
             }, {}, {}>>;
         }, {}, {}>>;
-        holidaySchedule: z.ZodOptional<z.ZodObject<{
+        holidayScheduleList: z.ZodOptional<z.ZodObject<{
             _timestamp: z.iso.ZodISODateTime;
             holidaySchedule: z.ZodOptional<z.ZodArray<z.ZodObject<{
                 name: z.ZodOptional<z.ZodString>;
@@ -986,7 +986,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     week: z.ZodNumber;
                 }, {}, {}>>;
             }, {}, {}>>;
-            holidaySchedule: z.ZodOptional<z.ZodObject<{
+            holidayScheduleList: z.ZodOptional<z.ZodObject<{
                 _timestamp: z.iso.ZodISODateTime;
                 holidaySchedule: z.ZodOptional<z.ZodArray<z.ZodObject<{
                     name: z.ZodOptional<z.ZodString>;
@@ -1509,7 +1509,7 @@ export declare const LunaAgentState: z.ZodObject<{
                     week: z.ZodNumber;
                 }, {}, {}>>;
             }, {}, {}>>;
-            holidaySchedule: z.ZodOptional<z.ZodObject<{
+            holidayScheduleList: z.ZodOptional<z.ZodObject<{
                 _timestamp: z.iso.ZodISODateTime;
                 holidaySchedule: z.ZodOptional<z.ZodArray<z.ZodObject<{
                     name: z.ZodOptional<z.ZodString>;
