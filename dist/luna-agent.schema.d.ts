@@ -416,7 +416,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 news: "news";
                 music: "music";
             }>;
-            balance: z.ZodOptional<z.ZodNumber>;
+            balance: z.ZodOptional<z.coerce.ZodCoercedNumber>;
         }, {}, {}>>;
         soundOut: z.ZodOptional<z.ZodObject<{
             _timestamp: z.iso.ZodISODateTime;
@@ -935,7 +935,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     news: "news";
                     music: "music";
                 }>;
-                balance: z.ZodOptional<z.ZodNumber>;
+                balance: z.ZodOptional<z.coerce.ZodCoercedNumber>;
             }, {}, {}>>;
             soundOut: z.ZodOptional<z.ZodObject<{
                 _timestamp: z.iso.ZodISODateTime;
@@ -1458,7 +1458,7 @@ export declare const LunaAgentState: z.ZodObject<{
                     news: "news";
                     music: "music";
                 }>;
-                balance: z.ZodOptional<z.ZodNumber>;
+                balance: z.ZodOptional<z.coerce.ZodCoercedNumber>;
             }, {}, {}>>;
             soundOut: z.ZodOptional<z.ZodObject<{
                 _timestamp: z.iso.ZodISODateTime;

@@ -19,7 +19,7 @@ export declare const SoundModeState: z.ZodObject<{
         news: "news";
         music: "music";
     }>;
-    balance: z.ZodOptional<z.ZodNumber>;
+    balance: z.ZodOptional<z.coerce.ZodCoercedNumber>;
 }, {}, {}>;
 export type SoundModeState = z.infer<typeof SoundModeState>;
 export declare const SoundOutState: z.ZodObject<{
@@ -55,7 +55,7 @@ export declare const SoundState: z.ZodObject<{
             news: "news";
             music: "music";
         }>;
-        balance: z.ZodOptional<z.ZodNumber>;
+        balance: z.ZodOptional<z.coerce.ZodCoercedNumber>;
     }, {}, {}>>;
     soundOut: z.ZodOptional<z.ZodObject<{
         _timestamp: z.iso.ZodISODateTime;

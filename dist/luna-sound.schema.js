@@ -26,7 +26,7 @@ export const SoundModeState = z.object({
         'game',
     ])
         .describe('The current sound mode'),
-    balance: z.number().int().min(-50).max(50).optional()
+    balance: z.coerce.number().int().min(-50).max(50).optional()
         .describe('The audio balance of the sound mode, Range: [-50–50]'),
 })
     .describe('Sound mode configuration');
