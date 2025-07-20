@@ -1770,7 +1770,7 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
                 crossDomainSecurity: z.ZodOptional<z.ZodEnum<{
                     low: "low";
                     high: "high";
-                    disabled: "disabled";
+                    disable: "disable";
                 }>>;
                 disableBackHistoryAPI: z.ZodOptional<z.ZodBoolean>;
                 inspectable: z.ZodOptional<z.ZodBoolean>;
@@ -2021,7 +2021,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                     crossDomainSecurity: z.ZodOptional<z.ZodEnum<{
                         low: "low";
                         high: "high";
-                        disabled: "disabled";
+                        disable: "disable";
                     }>>;
                     disableBackHistoryAPI: z.ZodOptional<z.ZodBoolean>;
                     inspectable: z.ZodOptional<z.ZodBoolean>;
@@ -2276,7 +2276,7 @@ export declare const LunaAgentStatus: z.ZodObject<{
                     crossDomainSecurity: z.ZodOptional<z.ZodEnum<{
                         low: "low";
                         high: "high";
-                        disabled: "disabled";
+                        disable: "disable";
                     }>>;
                     disableBackHistoryAPI: z.ZodOptional<z.ZodBoolean>;
                     inspectable: z.ZodOptional<z.ZodBoolean>;

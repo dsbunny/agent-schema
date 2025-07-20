@@ -22,7 +22,7 @@ export const ApplicationInfoStatus = z.object({
 			.describe('Sets whether the video is captured using webcam through the navigator.mediaDevices API'),
 		appDescription: z.string().max(60).optional()
 			.describe('The appDescription provides brief information of the app'),
-		crossDomainSecurity: z.enum(['high', 'low', 'disabled']).optional()
+		crossDomainSecurity: z.enum(['high', 'low', 'disable']).optional()
 			.describe('The flag that sets the security level of cross domain policy'),
 		disableBackHistoryAPI: z.boolean().optional()
 			.describe('Set whether an app can receive a back key event when the back button is pressed'),

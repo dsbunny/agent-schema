@@ -13,7 +13,7 @@ export declare const ApplicationInfoStatus: z.ZodObject<{
         crossDomainSecurity: z.ZodOptional<z.ZodEnum<{
             low: "low";
             high: "high";
-            disabled: "disabled";
+            disable: "disable";
         }>>;
         disableBackHistoryAPI: z.ZodOptional<z.ZodBoolean>;
         inspectable: z.ZodOptional<z.ZodBoolean>;
@@ -96,7 +96,7 @@ export declare const CustomJSStatus: z.ZodObject<{
             crossDomainSecurity: z.ZodOptional<z.ZodEnum<{
                 low: "low";
                 high: "high";
-                disabled: "disabled";
+                disable: "disable";
             }>>;
             disableBackHistoryAPI: z.ZodOptional<z.ZodBoolean>;
             inspectable: z.ZodOptional<z.ZodBoolean>;
