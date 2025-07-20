@@ -1,6 +1,6 @@
 {
 	"name": "@dsbunny/agent-schema",
-	"version": "6.1.13",
+	"version": "6.1.14",
 	"description": "Schema for RMM agents",
 	"type": "module",
 	"main": "dist/index.js",

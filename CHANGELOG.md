@@ -1,4 +1,7 @@
 # Changelog
+## v6.1.14
+- Fix name of `digitalAudioInputMode`.
+
 ## v6.1.13
 - Make `nullable` fields that may be unsupported.
 

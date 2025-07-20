@@ -40,7 +40,7 @@ export type CheckScreenState = z.infer<typeof CheckScreenState>;
 export const DigitalAudioInputState = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the last time the digital audio input mode was updated'),
-	digitalAudioInput: z.enum(['audioIn', 'hdmi'])
+	digitalAudioInputMode: z.enum(['audioIn', 'hdmi'])
 		.describe('Indicates the status of the digital audio input mode, either "audioIn" or "hdmi"'),
 })
 	.describe('The digital audio input mode of the signage device');

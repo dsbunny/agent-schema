@@ -273,7 +273,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
         }, {}, {}>>;
         digitalAudioInput: z.ZodOptional<z.ZodObject<{
             _timestamp: z.iso.ZodISODateTime;
-            digitalAudioInput: z.ZodEnum<{
+            digitalAudioInputMode: z.ZodEnum<{
                 audioIn: "audioIn";
                 hdmi: "hdmi";
             }>;
@@ -792,7 +792,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
             }, {}, {}>>;
             digitalAudioInput: z.ZodOptional<z.ZodObject<{
                 _timestamp: z.iso.ZodISODateTime;
-                digitalAudioInput: z.ZodEnum<{
+                digitalAudioInputMode: z.ZodEnum<{
                     audioIn: "audioIn";
                     hdmi: "hdmi";
                 }>;
@@ -1315,7 +1315,7 @@ export declare const LunaAgentState: z.ZodObject<{
             }, {}, {}>>;
             digitalAudioInput: z.ZodOptional<z.ZodObject<{
                 _timestamp: z.iso.ZodISODateTime;
-                digitalAudioInput: z.ZodEnum<{
+                digitalAudioInputMode: z.ZodEnum<{
                     audioIn: "audioIn";
                     hdmi: "hdmi";
                 }>;

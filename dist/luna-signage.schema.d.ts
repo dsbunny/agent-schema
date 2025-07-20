@@ -22,7 +22,7 @@ export declare const CheckScreenState: z.ZodObject<{
 export type CheckScreenState = z.infer<typeof CheckScreenState>;
 export declare const DigitalAudioInputState: z.ZodObject<{
     _timestamp: z.iso.ZodISODateTime;
-    digitalAudioInput: z.ZodEnum<{
+    digitalAudioInputMode: z.ZodEnum<{
         audioIn: "audioIn";
         hdmi: "hdmi";
     }>;
@@ -195,7 +195,7 @@ export declare const SignageState: z.ZodObject<{
     }, {}, {}>>;
     digitalAudioInput: z.ZodOptional<z.ZodObject<{
         _timestamp: z.iso.ZodISODateTime;
-        digitalAudioInput: z.ZodEnum<{
+        digitalAudioInputMode: z.ZodEnum<{
             audioIn: "audioIn";
             hdmi: "hdmi";
         }>;
