@@ -33,7 +33,7 @@ export type AllOnOffTimersState = z.infer<typeof AllOnOffTimersState>;
 export const HolidayScheduleState = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the last time the holiday schedule was updated'),
-	holidaySchedule: z.array(z.object({
+	holidayScheduleList: z.array(z.object({
 		name: z.string().optional()
 			.describe('The name of the holiday schedule'),
 		settings: z.object({
@@ -60,7 +60,7 @@ export type HolidayScheduleState = z.infer<typeof HolidayScheduleState>;
 // #region State
 export const TimeState = z.object({
 	allOnOffTimers: AllOnOffTimersState.optional(),
-	holidayScheduleList: HolidayScheduleState.optional(),
+	holidaySchedule: HolidayScheduleState.optional(),
 })
 	.describe('The time information of the device, including current time and time zone');
 export type TimeState = z.infer<typeof TimeState>;

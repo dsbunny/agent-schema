@@ -28,7 +28,7 @@ export declare const AllOnOffTimersState: z.ZodObject<{
 export type AllOnOffTimersState = z.infer<typeof AllOnOffTimersState>;
 export declare const HolidayScheduleState: z.ZodObject<{
     _timestamp: z.iso.ZodISODateTime;
-    holidaySchedule: z.ZodOptional<z.ZodArray<z.ZodObject<{
+    holidayScheduleList: z.ZodOptional<z.ZodArray<z.ZodObject<{
         name: z.ZodOptional<z.ZodString>;
         settings: z.ZodOptional<z.ZodObject<{
             month: z.ZodOptional<z.ZodNumber>;
@@ -63,9 +63,9 @@ export declare const TimeState: z.ZodObject<{
             week: z.ZodNumber;
         }, {}, {}>>;
     }, {}, {}>>;
-    holidayScheduleList: z.ZodOptional<z.ZodObject<{
+    holidaySchedule: z.ZodOptional<z.ZodObject<{
         _timestamp: z.iso.ZodISODateTime;
-        holidaySchedule: z.ZodOptional<z.ZodArray<z.ZodObject<{
+        holidayScheduleList: z.ZodOptional<z.ZodArray<z.ZodObject<{
             name: z.ZodOptional<z.ZodString>;
             settings: z.ZodOptional<z.ZodObject<{
                 month: z.ZodOptional<z.ZodNumber>;
