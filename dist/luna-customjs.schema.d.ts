@@ -118,5 +118,6 @@ export declare const CustomJSStatus: z.ZodObject<{
     webOSVersion: z.ZodOptional<z.ZodObject<{
         webOSVersion: z.ZodString;
     }, {}, {}>>;
+    _debug: z.ZodOptional<z.ZodString>;
 }, {}, {}>;
 export type CustomJSStatus = z.infer<typeof CustomJSStatus>;

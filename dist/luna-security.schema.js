@@ -33,7 +33,9 @@ export const SecurityState = z.object({
 // #endregion
 // #region Status
 export const SecurityStatus = z.object({
-    serverCertificateList: ServerCertificateListStatus.optional()
+    serverCertificateList: ServerCertificateListStatus.optional(),
+    _debug: z.string().optional()
+        .describe('SCAP debug mode output'),
 });
 // #endregion
 //# sourceMappingURL=luna-security.schema.js.map

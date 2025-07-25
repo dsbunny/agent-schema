@@ -87,3 +87,7 @@ export declare const TimeState: z.ZodObject<{
     }, {}, {}>>;
 }, {}, {}>;
 export type TimeState = z.infer<typeof TimeState>;
+export declare const TimeStatus: z.ZodObject<{
+    _debug: z.ZodOptional<z.ZodString>;
+}, {}, {}>;
+export type TimeStatus = z.infer<typeof TimeStatus>;

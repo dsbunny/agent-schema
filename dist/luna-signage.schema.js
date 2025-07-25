@@ -257,6 +257,8 @@ export const SignageState = z.object({
 export const SignageStatus = z.object({
     captureScreenStatus: CaptureScreenStatus.optional(),
     usageData: UsageStatus.optional(),
+    _debug: z.string().optional()
+        .describe('SCAP debug mode output'),
 });
 // #endregion
 //# sourceMappingURL=luna-signage.schema.js.map

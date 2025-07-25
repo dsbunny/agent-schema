@@ -65,3 +65,11 @@ export const TimeState = z.object({
 	.describe('The time information of the device, including current time and time zone');
 export type TimeState = z.infer<typeof TimeState>;
 // #endregion
+
+// #region Status
+export const TimeStatus = z.object({
+	_debug: z.string().optional()
+		.describe('SCAP debug mode output'),
+});
+export type TimeStatus = z.infer<typeof TimeStatus>;
+// #endregion

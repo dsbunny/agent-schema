@@ -330,5 +330,6 @@ export declare const SignageStatus: z.ZodObject<{
         uptime: z.coerce.ZodCoercedNumber;
         totalUsed: z.coerce.ZodCoercedNumber;
     }, {}, {}>>;
+    _debug: z.ZodOptional<z.ZodString>;
 }, {}, {}>;
 export type SignageStatus = z.infer<typeof SignageStatus>;

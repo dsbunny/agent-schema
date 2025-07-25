@@ -21,6 +21,8 @@ export const ExternalInputListStatus = z.object({
 export const InputSourceStatus = z.object({
     externalInputList: ExternalInputListStatus.optional()
         .describe('The list of external input sources'),
+    _debug: z.string().optional()
+        .describe('SCAP debug mode output'),
 });
 // #endregion
 //# sourceMappingURL=luna-input-source.schema.js.map

@@ -84,3 +84,11 @@ export const PowerState = z.object({
 });
 export type PowerState = z.infer<typeof PowerState>;
 // #endregion
+
+// #region Status
+export const PowerStatus = z.object({
+	_debug: z.string().optional()
+		.describe('SCAP debug mode output'),
+});
+export type PowerStatus = z.infer<typeof PowerStatus>;
+// #endregion

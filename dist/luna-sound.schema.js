@@ -58,4 +58,10 @@ export const SoundState = z.object({
     volumeLevel: VolumeState.optional(),
 });
 // #endregion
+// #region Status
+export const SoundStatus = z.object({
+    _debug: z.string().optional()
+        .describe('SCAP debug mode output'),
+});
+// #endregion
 //# sourceMappingURL=luna-sound.schema.js.map

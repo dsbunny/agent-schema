@@ -201,6 +201,7 @@ export const SensorValuesStatus = z.object({
         .describe('The illuminance level of the agent. Range: [0–100000]'),
     rotation: z.enum(['0', '90', '180', '270']).nullable().optional()
         .describe('The rotation of the agent, either "0", "90", "180", or "270" degrees'),
+    // Device will automatically shutdown if the temperature exceeds 86 degrees Celsius.
     temperature: z.number().int().min(-50).max(100)
         .describe('The temperature level of the agent. Range: [-50–100]'),
 })
@@ -259,6 +260,8 @@ export const DeviceStatus = z.object({
     sensorValues: SensorValuesStatus.optional(),
     systemUsageInfo: SystemUsageStatus.optional(),
     // Skip `wifiList` due to security concerns.
+    _debug: z.string().optional()
+        .describe('SCAP debug mode output'),
 });
 // #endregion
 //# sourceMappingURL=luna-device.schema.js.map

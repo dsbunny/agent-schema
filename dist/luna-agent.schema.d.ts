@@ -124,6 +124,10 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
             fqdnMode: z.ZodBoolean;
             fqdnAddr: z.ZodString;
             appLaunchDeviceId: z.ZodOptional<z.ZodString>;
+            autoSet: z.ZodOptional<z.ZodEnum<{
+                off: "off";
+                on: "on";
+            }>>;
         }, {}, {}>>;
         timeZone: z.ZodOptional<z.ZodObject<{
             _timestamp: z.iso.ZodISODateTime;
@@ -511,6 +515,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
             reset: z.ZodOptional<z.ZodBoolean>;
         }, {}, {}>>;
     }, {}, {}>>;
+    _debug: z.ZodOptional<z.ZodBoolean>;
 }, {}, {}>;
 export type LunaAgentStateDetail = z.infer<typeof LunaAgentStateDetail>;
 export declare const LunaAgentStateBase: z.ZodObject<{
@@ -643,6 +648,10 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                 fqdnMode: z.ZodBoolean;
                 fqdnAddr: z.ZodString;
                 appLaunchDeviceId: z.ZodOptional<z.ZodString>;
+                autoSet: z.ZodOptional<z.ZodEnum<{
+                    off: "off";
+                    on: "on";
+                }>>;
             }, {}, {}>>;
             timeZone: z.ZodOptional<z.ZodObject<{
                 _timestamp: z.iso.ZodISODateTime;
@@ -1030,6 +1039,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                 reset: z.ZodOptional<z.ZodBoolean>;
             }, {}, {}>>;
         }, {}, {}>>;
+        _debug: z.ZodOptional<z.ZodBoolean>;
     }, {}, {}>>;
 }, {}, {}>;
 export type LunaAgentStateBase = z.infer<typeof LunaAgentStateBase>;
@@ -1166,6 +1176,10 @@ export declare const LunaAgentState: z.ZodObject<{
                 fqdnMode: z.ZodBoolean;
                 fqdnAddr: z.ZodString;
                 appLaunchDeviceId: z.ZodOptional<z.ZodString>;
+                autoSet: z.ZodOptional<z.ZodEnum<{
+                    off: "off";
+                    on: "on";
+                }>>;
             }, {}, {}>>;
             timeZone: z.ZodOptional<z.ZodObject<{
                 _timestamp: z.iso.ZodISODateTime;
@@ -1553,6 +1567,7 @@ export declare const LunaAgentState: z.ZodObject<{
                 reset: z.ZodOptional<z.ZodBoolean>;
             }, {}, {}>>;
         }, {}, {}>>;
+        _debug: z.ZodOptional<z.ZodBoolean>;
     }, {}, {}>>;
 }, {}, {}>;
 export type LunaAgentState = z.infer<typeof LunaAgentState>;
@@ -1583,6 +1598,7 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
                 city: z.ZodString;
             }, {}, {}>>;
         }, {}, {}>>;
+        _debug: z.ZodOptional<z.ZodString>;
     }, {}, {}>>;
     device: z.ZodOptional<z.ZodObject<{
         networkInfo: z.ZodOptional<z.ZodObject<{
@@ -1689,6 +1705,7 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
                 cached: z.ZodOptional<z.ZodNumber>;
             }, {}, {}>>;
         }, {}, {}>>;
+        _debug: z.ZodOptional<z.ZodString>;
     }, {}, {}>>;
     inputSource: z.ZodOptional<z.ZodObject<{
         externalInputList: z.ZodOptional<z.ZodObject<{
@@ -1701,6 +1718,10 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
             count: z.ZodNumber;
             currentInputPort: z.ZodString;
         }, {}, {}>>;
+        _debug: z.ZodOptional<z.ZodString>;
+    }, {}, {}>>;
+    power: z.ZodOptional<z.ZodObject<{
+        _debug: z.ZodOptional<z.ZodString>;
     }, {}, {}>>;
     security: z.ZodOptional<z.ZodObject<{
         serverCertificateList: z.ZodOptional<z.ZodObject<{
@@ -1711,6 +1732,7 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
                 validTo: z.ZodOptional<z.iso.ZodISODateTime>;
             }, {}, {}>>;
         }, {}, {}>>;
+        _debug: z.ZodOptional<z.ZodString>;
     }, {}, {}>>;
     signage: z.ZodOptional<z.ZodObject<{
         captureScreenStatus: z.ZodOptional<z.ZodObject<{
@@ -1722,6 +1744,10 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
             uptime: z.coerce.ZodCoercedNumber;
             totalUsed: z.coerce.ZodCoercedNumber;
         }, {}, {}>>;
+        _debug: z.ZodOptional<z.ZodString>;
+    }, {}, {}>>;
+    sound: z.ZodOptional<z.ZodObject<{
+        _debug: z.ZodOptional<z.ZodString>;
     }, {}, {}>>;
     storage: z.ZodOptional<z.ZodObject<{
         firmwareUpgradeStatus: z.ZodOptional<z.ZodObject<{
@@ -1754,6 +1780,10 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
                 used: z.coerce.ZodCoercedNumber;
             }, {}, {}>>>;
         }, {}, {}>>;
+        _debug: z.ZodOptional<z.ZodString>;
+    }, {}, {}>>;
+    time: z.ZodOptional<z.ZodObject<{
+        _debug: z.ZodOptional<z.ZodString>;
     }, {}, {}>>;
     customJS: z.ZodOptional<z.ZodObject<{
         applicationInfo: z.ZodOptional<z.ZodObject<{
@@ -1792,15 +1822,8 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
         webOSVersion: z.ZodOptional<z.ZodObject<{
             webOSVersion: z.ZodString;
         }, {}, {}>>;
+        _debug: z.ZodOptional<z.ZodString>;
     }, {}, {}>>;
-    errors: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-        count: z.ZodNumber;
-        entries: z.ZodArray<z.ZodObject<{
-            code: z.ZodString;
-            text: z.ZodString;
-            timestamp: z.iso.ZodISODateTime;
-        }, {}, {}>>;
-    }, {}, {}>>>;
 }, {}, {}>;
 export type LunaAgentStatusDetail = z.infer<typeof LunaAgentStatusDetail>;
 export declare const LunaAgentStatusBase: z.ZodObject<{
@@ -1834,6 +1857,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                     city: z.ZodString;
                 }, {}, {}>>;
             }, {}, {}>>;
+            _debug: z.ZodOptional<z.ZodString>;
         }, {}, {}>>;
         device: z.ZodOptional<z.ZodObject<{
             networkInfo: z.ZodOptional<z.ZodObject<{
@@ -1940,6 +1964,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                     cached: z.ZodOptional<z.ZodNumber>;
                 }, {}, {}>>;
             }, {}, {}>>;
+            _debug: z.ZodOptional<z.ZodString>;
         }, {}, {}>>;
         inputSource: z.ZodOptional<z.ZodObject<{
             externalInputList: z.ZodOptional<z.ZodObject<{
@@ -1952,6 +1977,10 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                 count: z.ZodNumber;
                 currentInputPort: z.ZodString;
             }, {}, {}>>;
+            _debug: z.ZodOptional<z.ZodString>;
+        }, {}, {}>>;
+        power: z.ZodOptional<z.ZodObject<{
+            _debug: z.ZodOptional<z.ZodString>;
         }, {}, {}>>;
         security: z.ZodOptional<z.ZodObject<{
             serverCertificateList: z.ZodOptional<z.ZodObject<{
@@ -1962,6 +1991,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                     validTo: z.ZodOptional<z.iso.ZodISODateTime>;
                 }, {}, {}>>;
             }, {}, {}>>;
+            _debug: z.ZodOptional<z.ZodString>;
         }, {}, {}>>;
         signage: z.ZodOptional<z.ZodObject<{
             captureScreenStatus: z.ZodOptional<z.ZodObject<{
@@ -1973,6 +2003,10 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                 uptime: z.coerce.ZodCoercedNumber;
                 totalUsed: z.coerce.ZodCoercedNumber;
             }, {}, {}>>;
+            _debug: z.ZodOptional<z.ZodString>;
+        }, {}, {}>>;
+        sound: z.ZodOptional<z.ZodObject<{
+            _debug: z.ZodOptional<z.ZodString>;
         }, {}, {}>>;
         storage: z.ZodOptional<z.ZodObject<{
             firmwareUpgradeStatus: z.ZodOptional<z.ZodObject<{
@@ -2005,6 +2039,10 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                     used: z.coerce.ZodCoercedNumber;
                 }, {}, {}>>>;
             }, {}, {}>>;
+            _debug: z.ZodOptional<z.ZodString>;
+        }, {}, {}>>;
+        time: z.ZodOptional<z.ZodObject<{
+            _debug: z.ZodOptional<z.ZodString>;
         }, {}, {}>>;
         customJS: z.ZodOptional<z.ZodObject<{
             applicationInfo: z.ZodOptional<z.ZodObject<{
@@ -2043,15 +2081,8 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
             webOSVersion: z.ZodOptional<z.ZodObject<{
                 webOSVersion: z.ZodString;
             }, {}, {}>>;
+            _debug: z.ZodOptional<z.ZodString>;
         }, {}, {}>>;
-        errors: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-            count: z.ZodNumber;
-            entries: z.ZodArray<z.ZodObject<{
-                code: z.ZodString;
-                text: z.ZodString;
-                timestamp: z.iso.ZodISODateTime;
-            }, {}, {}>>;
-        }, {}, {}>>>;
     }, {}, {}>>;
 }, {}, {}>;
 export type LunaAgentStatusBase = z.infer<typeof LunaAgentStatusBase>;
@@ -2089,6 +2120,7 @@ export declare const LunaAgentStatus: z.ZodObject<{
                     city: z.ZodString;
                 }, {}, {}>>;
             }, {}, {}>>;
+            _debug: z.ZodOptional<z.ZodString>;
         }, {}, {}>>;
         device: z.ZodOptional<z.ZodObject<{
             networkInfo: z.ZodOptional<z.ZodObject<{
@@ -2195,6 +2227,7 @@ export declare const LunaAgentStatus: z.ZodObject<{
                     cached: z.ZodOptional<z.ZodNumber>;
                 }, {}, {}>>;
             }, {}, {}>>;
+            _debug: z.ZodOptional<z.ZodString>;
         }, {}, {}>>;
         inputSource: z.ZodOptional<z.ZodObject<{
             externalInputList: z.ZodOptional<z.ZodObject<{
@@ -2207,6 +2240,10 @@ export declare const LunaAgentStatus: z.ZodObject<{
                 count: z.ZodNumber;
                 currentInputPort: z.ZodString;
             }, {}, {}>>;
+            _debug: z.ZodOptional<z.ZodString>;
+        }, {}, {}>>;
+        power: z.ZodOptional<z.ZodObject<{
+            _debug: z.ZodOptional<z.ZodString>;
         }, {}, {}>>;
         security: z.ZodOptional<z.ZodObject<{
             serverCertificateList: z.ZodOptional<z.ZodObject<{
@@ -2217,6 +2254,7 @@ export declare const LunaAgentStatus: z.ZodObject<{
                     validTo: z.ZodOptional<z.iso.ZodISODateTime>;
                 }, {}, {}>>;
             }, {}, {}>>;
+            _debug: z.ZodOptional<z.ZodString>;
         }, {}, {}>>;
         signage: z.ZodOptional<z.ZodObject<{
             captureScreenStatus: z.ZodOptional<z.ZodObject<{
@@ -2228,6 +2266,10 @@ export declare const LunaAgentStatus: z.ZodObject<{
                 uptime: z.coerce.ZodCoercedNumber;
                 totalUsed: z.coerce.ZodCoercedNumber;
             }, {}, {}>>;
+            _debug: z.ZodOptional<z.ZodString>;
+        }, {}, {}>>;
+        sound: z.ZodOptional<z.ZodObject<{
+            _debug: z.ZodOptional<z.ZodString>;
         }, {}, {}>>;
         storage: z.ZodOptional<z.ZodObject<{
             firmwareUpgradeStatus: z.ZodOptional<z.ZodObject<{
@@ -2260,6 +2302,10 @@ export declare const LunaAgentStatus: z.ZodObject<{
                     used: z.coerce.ZodCoercedNumber;
                 }, {}, {}>>>;
             }, {}, {}>>;
+            _debug: z.ZodOptional<z.ZodString>;
+        }, {}, {}>>;
+        time: z.ZodOptional<z.ZodObject<{
+            _debug: z.ZodOptional<z.ZodString>;
         }, {}, {}>>;
         customJS: z.ZodOptional<z.ZodObject<{
             applicationInfo: z.ZodOptional<z.ZodObject<{
@@ -2298,15 +2344,8 @@ export declare const LunaAgentStatus: z.ZodObject<{
             webOSVersion: z.ZodOptional<z.ZodObject<{
                 webOSVersion: z.ZodString;
             }, {}, {}>>;
+            _debug: z.ZodOptional<z.ZodString>;
         }, {}, {}>>;
-        errors: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-            count: z.ZodNumber;
-            entries: z.ZodArray<z.ZodObject<{
-                code: z.ZodString;
-                text: z.ZodString;
-                timestamp: z.iso.ZodISODateTime;
-            }, {}, {}>>;
-        }, {}, {}>>>;
     }, {}, {}>>;
 }, {}, {}>;
 export type LunaAgentStatus = z.infer<typeof LunaAgentStatus>;

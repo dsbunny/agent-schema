@@ -10,11 +10,11 @@ import {
 import { ConfigurationState, ConfigurationStatus } from './luna-configuration.schema.js';
 import { DeviceState, DeviceStatus } from './luna-device.schema.js';
 import { InputSourceStatus } from './luna-input-source.schema.js';
-import { PowerState } from './luna-power.schema.js';
+import { PowerState, PowerStatus } from './luna-power.schema.js';
 import { SecurityState, SecurityStatus } from './luna-security.schema.js';
 import { SignageState, SignageStatus } from './luna-signage.schema.js';
-import { SoundState } from './luna-sound.schema.js';
-import { TimeState } from './luna-time.schema.js';
+import { SoundState, SoundStatus } from './luna-sound.schema.js';
+import { TimeState, TimeStatus } from './luna-time.schema.js';
 import { StorageState, StorageStatus } from './luna-storage.schema.js';
 import { CustomJSState, CustomJSStatus } from './luna-customjs.schema.js';
 
@@ -31,6 +31,8 @@ export const LunaAgentStateDetail = z.object({
 	storage: StorageState.optional(),
 	time: TimeState.optional(),
 	customJS: CustomJSState.optional(),
+	_debug: z.boolean().optional()
+		.describe('Indicates if SCAP debug mode is enabled'),
 });
 export type LunaAgentStateDetail = z.infer<typeof LunaAgentStateDetail>;
 
@@ -49,24 +51,13 @@ export const LunaAgentStatusDetail = z.object({
 	configuration: ConfigurationStatus.optional(),
 	device: DeviceStatus.optional(),
 	inputSource: InputSourceStatus.optional(),
+	power: PowerStatus.optional(),
 	security: SecurityStatus.optional(),
 	signage: SignageStatus.optional(),
+	sound: SoundStatus.optional(),
 	storage: StorageStatus.optional(),
+	time: TimeStatus.optional(),
 	customJS: CustomJSStatus.optional(),
-	// ScapError
-	errors: z.record(z.string(), z.object({
-		count: z.number().int().min(0)
-			.describe('The number of errors'),
-		entries: z.array(z.object({
-			code: z.string()
-				.describe('The error code'),
-			text: z.string()
-				.describe('The error text'),
-			timestamp: z.iso.datetime()
-				.describe('The timestamp of the error'),
-		})),
-	})).optional()
-		.describe('The list of errors'),
 });
 export type LunaAgentStatusDetail = z.infer<typeof LunaAgentStatusDetail>;
 

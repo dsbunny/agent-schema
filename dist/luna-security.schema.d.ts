@@ -38,5 +38,6 @@ export declare const SecurityStatus: z.ZodObject<{
             validTo: z.ZodOptional<z.iso.ZodISODateTime>;
         }, {}, {}>>;
     }, {}, {}>>;
+    _debug: z.ZodOptional<z.ZodString>;
 }, {}, {}>;
 export type SecurityStatus = z.infer<typeof SecurityStatus>;

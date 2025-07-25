@@ -1,6 +1,17 @@
 # Changelog
+## v6.2.16
+- Replace `LunaAgentStatusDetail.errors` with per module `_debug` containers.
+- Add `power`, `sound`, and `time` to _runtime-status_ to enable `_debug` propagation.
+
+## v6.1.15
+- Update range for `colorTemperature`.
+- Add `ServerProperty.autoSet` which is also supported in SCAP 1.8.
+
 ## v6.1.14
 - Fix name of `digitalAudioInputMode`.
+- Coerce `balance` to a `number`.
+- Correct field `crossDomainSecurity.disable`.
+- Update `holidayScheduleList` following _getter_ rather than _setter_.
 
 ## v6.1.13
 - Make `nullable` fields that may be unsupported.

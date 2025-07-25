@@ -358,5 +358,6 @@ export declare const DeviceStatus: z.ZodObject<{
             cached: z.ZodOptional<z.ZodNumber>;
         }, {}, {}>>;
     }, {}, {}>>;
+    _debug: z.ZodOptional<z.ZodString>;
 }, {}, {}>;
 export type DeviceStatus = z.infer<typeof DeviceStatus>;

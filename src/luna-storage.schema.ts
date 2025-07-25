@@ -106,5 +106,7 @@ export const StorageStatus = z.object({
 	firmwareUpgradeStatus: FirmwareUpgradeStatus.optional(),
 	usbInfo: USBStatus.optional(),
 	storageInfo: StorageSpaceStatus.optional(),
+	_debug: z.string().optional()
+		.describe('SCAP debug mode output'),
 });
 export type StorageStatus = z.infer<typeof StorageStatus>;

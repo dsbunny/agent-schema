@@ -71,3 +71,11 @@ export const SoundState = z.object({
 });
 export type SoundState = z.infer<typeof SoundState>;
 // #endregion
+
+// #region Status
+export const SoundStatus = z.object({
+	_debug: z.string().optional()
+		.describe('SCAP debug mode output'),
+});
+export type SoundStatus = z.infer<typeof SoundStatus>;
+// #endregion

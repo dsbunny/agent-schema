@@ -69,4 +69,10 @@ export const PowerState = z.object({
     // Skip `offTimerList` and `onTimerList` as deprecated.
 });
 // #endregion
+// #region Status
+export const PowerStatus = z.object({
+    _debug: z.string().optional()
+        .describe('SCAP debug mode output'),
+});
+// #endregion
 //# sourceMappingURL=luna-power.schema.js.map

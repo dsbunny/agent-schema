@@ -1,6 +1,6 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 
-import { property, z } from 'zod/v4';
+import { z } from 'zod/v4';
 
 export const ClearCacheRequest = z.object({
 	_timestamp: z.iso.datetime()
@@ -14,6 +14,8 @@ export const CurrentTimeState = z.object({
 		.describe('The timestamp of the last time the current time was set'),
 	ntp: z.boolean().optional()
 		.describe('Whether NTP (Network Time Protocol) is enabled or disabled'),
+	// WebOS 4 will default to `us.pool.ntp.org`,
+	// WebOS 6 will default to `us.pool.ntp.org`, `uk.pool.ntp.org`, `kr.pool.ntp.org`, `au.pool.ntp.org`
 	ntpServerAddress: z.string().optional()
 		.describe('The NTP server address (IPv4, IPv6, or domain name)'),
 });
@@ -115,8 +117,8 @@ export const PicturePropertyState = z.object({
 		.describe('The color saturation of the display. Range: [0–100]'),
 	tint: z.number().int().min(0).max(100).optional()
 		.describe('The tint level of the display. Range: [0–100] Red: 0, Green: 100'),
-	colorTemperature: z.number().int().min(0).max(100).optional()
-		.describe('The color temperature of the display. Range: [0–100] Warm: 0, Cool: 100'),
+	colorTemperature: z.number().int().min(3200).max(13000).optional()
+		.describe('The color temperature of the display. Range: [3200–13000] Warm: 3200, Cool: 13000'),
 	dynamicContrast: z.enum([
 		'off',
 		'low',
@@ -222,6 +224,8 @@ export const ServerPropertyState = z.object({
 		.describe('The FQDN address of the server to which the agent connects'),
 	appLaunchDeviceId: z.string().optional()
 		.describe('The device ID of the application to be launched by the agent'),
+	autoSet: z.enum(['on', 'off']).optional()
+		.describe('Whether the server properties are set via `scap_installation.json` on a USB device or not'),
 });
 export type ServerPropertyState = z.infer<typeof ServerPropertyState>;
 
@@ -284,6 +288,8 @@ export const ConfigurationStatus = z.object({
 		.describe('The list of locales supported by the signage device'),
 	timeZoneList: TimeZoneListStatus.optional()
 		.describe('The list of time zones supported by the signage device'),
+	_debug: z.string().optional()
+		.describe('SCAP debug mode output'),
 });
 export type ConfigurationStatus = z.infer<typeof ConfigurationStatus>;
 // #endregion

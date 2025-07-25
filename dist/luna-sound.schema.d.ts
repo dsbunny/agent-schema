@@ -71,3 +71,7 @@ export declare const SoundState: z.ZodObject<{
     }, {}, {}>>;
 }, {}, {}>;
 export type SoundState = z.infer<typeof SoundState>;
+export declare const SoundStatus: z.ZodObject<{
+    _debug: z.ZodOptional<z.ZodString>;
+}, {}, {}>;
+export type SoundStatus = z.infer<typeof SoundStatus>;

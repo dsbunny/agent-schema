@@ -85,6 +85,8 @@ export const CustomJSStatus = z.object({
     applicationInfo: ApplicationInfoStatus.optional(),
     powerOnOffHistory: PowerOnOffHistoryStatus.optional(),
     webOSVersion: WebOSVersionStatus.optional(),
+    _debug: z.string().optional()
+        .describe('SCAP debug mode output'),
 });
 // #endregion
 //# sourceMappingURL=luna-customjs.schema.js.map

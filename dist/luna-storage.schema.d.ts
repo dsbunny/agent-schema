@@ -109,5 +109,6 @@ export declare const StorageStatus: z.ZodObject<{
             used: z.coerce.ZodCoercedNumber;
         }, {}, {}>>>;
     }, {}, {}>>;
+    _debug: z.ZodOptional<z.ZodString>;
 }, {}, {}>;
 export type StorageStatus = z.infer<typeof StorageStatus>;

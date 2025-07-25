@@ -21,5 +21,6 @@ export declare const InputSourceStatus: z.ZodObject<{
         count: z.ZodNumber;
         currentInputPort: z.ZodString;
     }, {}, {}>>;
+    _debug: z.ZodOptional<z.ZodString>;
 }, {}, {}>;
 export type InputSourceStatus = z.infer<typeof InputSourceStatus>;

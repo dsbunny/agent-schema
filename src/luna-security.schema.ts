@@ -45,7 +45,9 @@ export type SecurityState = z.infer<typeof SecurityState>;
 
 // #region Status
 export const SecurityStatus = z.object({
-	serverCertificateList: ServerCertificateListStatus.optional()
+	serverCertificateList: ServerCertificateListStatus.optional(),
+	_debug: z.string().optional()
+		.describe('SCAP debug mode output'),
 });
 export type SecurityStatus = z.infer<typeof SecurityStatus>;
 // #endregion

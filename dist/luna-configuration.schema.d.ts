@@ -160,6 +160,10 @@ export declare const ServerPropertyState: z.ZodObject<{
     fqdnMode: z.ZodBoolean;
     fqdnAddr: z.ZodString;
     appLaunchDeviceId: z.ZodOptional<z.ZodString>;
+    autoSet: z.ZodOptional<z.ZodEnum<{
+        off: "off";
+        on: "on";
+    }>>;
 }, {}, {}>;
 export type ServerPropertyState = z.infer<typeof ServerPropertyState>;
 export declare const TimeZone: z.ZodObject<{
@@ -313,6 +317,10 @@ export declare const ConfigurationState: z.ZodObject<{
         fqdnMode: z.ZodBoolean;
         fqdnAddr: z.ZodString;
         appLaunchDeviceId: z.ZodOptional<z.ZodString>;
+        autoSet: z.ZodOptional<z.ZodEnum<{
+            off: "off";
+            on: "on";
+        }>>;
     }, {}, {}>>;
     timeZone: z.ZodOptional<z.ZodObject<{
         _timestamp: z.iso.ZodISODateTime;
@@ -354,5 +362,6 @@ export declare const ConfigurationStatus: z.ZodObject<{
             city: z.ZodString;
         }, {}, {}>>;
     }, {}, {}>>;
+    _debug: z.ZodOptional<z.ZodString>;
 }, {}, {}>;
 export type ConfigurationStatus = z.infer<typeof ConfigurationStatus>;

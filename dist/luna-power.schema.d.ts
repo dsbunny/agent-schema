@@ -88,3 +88,7 @@ export declare const PowerState: z.ZodObject<{
     }, {}, {}>>;
 }, {}, {}>;
 export type PowerState = z.infer<typeof PowerState>;
+export declare const PowerStatus: z.ZodObject<{
+    _debug: z.ZodOptional<z.ZodString>;
+}, {}, {}>;
+export type PowerStatus = z.infer<typeof PowerStatus>;

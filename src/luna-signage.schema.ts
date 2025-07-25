@@ -299,6 +299,8 @@ export type SignageState = z.infer<typeof SignageState>;
 export const SignageStatus = z.object({
 	captureScreenStatus: CaptureScreenStatus.optional(),
 	usageData: UsageStatus.optional(),
+	_debug: z.string().optional()
+		.describe('SCAP debug mode output'),
 });
 export type SignageStatus = z.infer<typeof SignageStatus>;
 // #endregion

@@ -54,4 +54,10 @@ export const TimeState = z.object({
 })
     .describe('The time information of the device, including current time and time zone');
 // #endregion
+// #region Status
+export const TimeStatus = z.object({
+    _debug: z.string().optional()
+        .describe('SCAP debug mode output'),
+});
+// #endregion
 //# sourceMappingURL=luna-time.schema.js.map

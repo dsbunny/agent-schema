@@ -25,6 +25,8 @@ export type ExternalInputListStatus = z.infer<typeof ExternalInputListStatus>;
 export const InputSourceStatus = z.object({
 	externalInputList: ExternalInputListStatus.optional()
 		.describe('The list of external input sources'),
+	_debug: z.string().optional()
+		.describe('SCAP debug mode output'),
 });
 export type InputSourceStatus = z.infer<typeof InputSourceStatus>;
 // #endregion
