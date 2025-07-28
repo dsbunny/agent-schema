@@ -3,6 +3,7 @@
 - Replace `LunaAgentStatusDetail.errors` with per module `_debug` containers.
 - Add `power`, `sound`, and `time` to _runtime-status_ to enable `_debug` propagation.
 - Add `_errorFlags` for indicating API failures.
+- Use a simple timestamp for `CurrentTimeStatus` to avoid BIOS time offsets.
 
 ## v6.1.15
 - Update range for `colorTemperature`.

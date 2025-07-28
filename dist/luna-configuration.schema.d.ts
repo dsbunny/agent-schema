@@ -10,12 +10,7 @@ export declare const CurrentTimeState: z.ZodObject<{
 }, {}, {}>;
 export type CurrentTimeState = z.infer<typeof CurrentTimeState>;
 export declare const CurrentTimeStatus: z.ZodObject<{
-    year: z.ZodNumber;
-    month: z.ZodNumber;
-    day: z.ZodNumber;
-    hour: z.ZodNumber;
-    minute: z.ZodNumber;
-    sec: z.ZodNumber;
+    timestamp: z.iso.ZodISODateTime;
 }, {}, {}>;
 export type CurrentTimeStatus = z.infer<typeof CurrentTimeStatus>;
 export declare const MasterPinState: z.ZodObject<{
@@ -338,12 +333,7 @@ export declare const ConfigurationState: z.ZodObject<{
 export type ConfigurationState = z.infer<typeof ConfigurationState>;
 export declare const ConfigurationStatus: z.ZodObject<{
     currentTime: z.ZodOptional<z.ZodObject<{
-        year: z.ZodNumber;
-        month: z.ZodNumber;
-        day: z.ZodNumber;
-        hour: z.ZodNumber;
-        minute: z.ZodNumber;
-        sec: z.ZodNumber;
+        timestamp: z.iso.ZodISODateTime;
     }, {}, {}>>;
     localeList: z.ZodOptional<z.ZodObject<{
         localeList: z.ZodArray<z.ZodObject<{

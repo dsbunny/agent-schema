@@ -1574,12 +1574,7 @@ export type LunaAgentState = z.infer<typeof LunaAgentState>;
 export declare const LunaAgentStatusDetail: z.ZodObject<{
     configuration: z.ZodOptional<z.ZodObject<{
         currentTime: z.ZodOptional<z.ZodObject<{
-            year: z.ZodNumber;
-            month: z.ZodNumber;
-            day: z.ZodNumber;
-            hour: z.ZodNumber;
-            minute: z.ZodNumber;
-            sec: z.ZodNumber;
+            timestamp: z.iso.ZodISODateTime;
         }, {}, {}>>;
         localeList: z.ZodOptional<z.ZodObject<{
             localeList: z.ZodArray<z.ZodObject<{
@@ -1834,12 +1829,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
     detail: z.ZodNullable<z.ZodObject<{
         configuration: z.ZodOptional<z.ZodObject<{
             currentTime: z.ZodOptional<z.ZodObject<{
-                year: z.ZodNumber;
-                month: z.ZodNumber;
-                day: z.ZodNumber;
-                hour: z.ZodNumber;
-                minute: z.ZodNumber;
-                sec: z.ZodNumber;
+                timestamp: z.iso.ZodISODateTime;
             }, {}, {}>>;
             localeList: z.ZodOptional<z.ZodObject<{
                 localeList: z.ZodArray<z.ZodObject<{
@@ -2098,12 +2088,7 @@ export declare const LunaAgentStatus: z.ZodObject<{
     detail: z.ZodNullable<z.ZodObject<{
         configuration: z.ZodOptional<z.ZodObject<{
             currentTime: z.ZodOptional<z.ZodObject<{
-                year: z.ZodNumber;
-                month: z.ZodNumber;
-                day: z.ZodNumber;
-                hour: z.ZodNumber;
-                minute: z.ZodNumber;
-                sec: z.ZodNumber;
+                timestamp: z.iso.ZodISODateTime;
             }, {}, {}>>;
             localeList: z.ZodOptional<z.ZodObject<{
                 localeList: z.ZodArray<z.ZodObject<{

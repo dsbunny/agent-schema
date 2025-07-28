@@ -22,18 +22,8 @@ export const CurrentTimeState = z.object({
 export type CurrentTimeState = z.infer<typeof CurrentTimeState>;
 
 export const CurrentTimeStatus = z.object({
-	year: z.number().int().min(2000).max(2037)
-		.describe('The current year'),
-	month: z.number().int().min(1).max(12)
-		.describe('The current month (1-12)'),
-	day: z.number().int().min(1).max(31)
-		.describe('The current day of the month (1-31)'),
-	hour: z.number().int().min(0).max(23)
-		.describe('The current hour (0-23)'),
-	minute: z.number().int().min(0).max(59)
-		.describe('The current minute (0-59)'),
-	sec: z.number().int().min(0).max(59)
-		.describe('The current second (0-59)'),
+	timestamp: z.iso.datetime()
+		.describe('The current local date and time of the signage device'),
 });
 export type CurrentTimeStatus = z.infer<typeof CurrentTimeStatus>;
 
