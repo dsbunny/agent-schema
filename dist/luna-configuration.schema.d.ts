@@ -84,6 +84,7 @@ export declare const PicturePropertyState: z.ZodObject<{
         low: "low";
         medium: "medium";
         high: "high";
+        Unsupported: "Unsupported";
     }>>>;
     colorGamut: z.ZodOptional<z.ZodEnum<{
         normal: "normal";
@@ -248,6 +249,7 @@ export declare const ConfigurationState: z.ZodObject<{
             low: "low";
             medium: "medium";
             high: "high";
+            Unsupported: "Unsupported";
         }>>>;
         colorGamut: z.ZodOptional<z.ZodEnum<{
             normal: "normal";

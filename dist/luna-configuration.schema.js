@@ -101,6 +101,7 @@ export const PicturePropertyState = z.object({
         'low',
         'medium',
         'high',
+        'Unsupported', // Not supported by some models
     ]).nullable().optional()
         .describe('The super resolution level of the display. Range: [off, low, medium, high]'),
     colorGamut: z.enum([

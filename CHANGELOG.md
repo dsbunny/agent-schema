@@ -4,6 +4,7 @@
 - Add `power`, `sound`, and `time` to _runtime-status_ to enable `_debug` propagation.
 - Add `_errorFlags` for indicating API failures.
 - Use a simple timestamp for `CurrentTimeStatus` to avoid BIOS time offsets.
+- Prefer pass through of `Unsupported` and `Unsupported or Error` values.
 
 ## v6.1.15
 - Update range for `colorTemperature`.

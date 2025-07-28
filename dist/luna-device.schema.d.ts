@@ -147,24 +147,24 @@ export declare const SensorValuesState: z.ZodObject<{
 export type SensorValuesState = z.infer<typeof SensorValuesState>;
 export declare const SensorValuesStatus: z.ZodObject<{
     backlight: z.coerce.ZodCoercedNumber;
-    checkScreen: z.ZodOptional<z.ZodNullable<z.ZodObject<{
+    checkScreen: z.ZodOptional<z.ZodUnion<readonly [z.ZodObject<{
         colorValid: z.ZodBoolean;
         drawRGB: z.ZodNumber;
         hexValue: z.ZodString;
         readRGB: z.ZodNumber;
-    }, {}, {}>>>;
-    fan: z.ZodOptional<z.ZodNullable<z.ZodObject<{
+    }, {}, {}>, z.ZodLiteral<"Unsupported or Error">]>>;
+    fan: z.ZodOptional<z.ZodUnion<readonly [z.ZodObject<{
         closedLoop: z.ZodOptional<z.ZodBoolean>;
         openLoop: z.ZodOptional<z.ZodBoolean>;
-    }, {}, {}>>>;
-    humidity: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
-    illuminance: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
-    rotation: z.ZodOptional<z.ZodNullable<z.ZodEnum<{
+    }, {}, {}>, z.ZodLiteral<"Unsupported or Error">]>>;
+    humidity: z.ZodOptional<z.ZodUnion<readonly [z.ZodNumber, z.ZodLiteral<"Unsupported or Error">]>>;
+    illuminance: z.ZodOptional<z.ZodUnion<readonly [z.ZodNumber, z.ZodLiteral<"Unsupported or Error">]>>;
+    rotation: z.ZodOptional<z.ZodUnion<readonly [z.ZodEnum<{
         0: "0";
         90: "90";
         180: "180";
         270: "270";
-    }>>>;
+    }>, z.ZodLiteral<"Unsupported or Error">]>>;
     temperature: z.ZodNumber;
 }, {}, {}>;
 export type SensorValuesStatus = z.infer<typeof SensorValuesStatus>;
@@ -319,24 +319,24 @@ export declare const DeviceStatus: z.ZodObject<{
     }, {}, {}>>;
     sensorValues: z.ZodOptional<z.ZodObject<{
         backlight: z.coerce.ZodCoercedNumber;
-        checkScreen: z.ZodOptional<z.ZodNullable<z.ZodObject<{
+        checkScreen: z.ZodOptional<z.ZodUnion<readonly [z.ZodObject<{
             colorValid: z.ZodBoolean;
             drawRGB: z.ZodNumber;
             hexValue: z.ZodString;
             readRGB: z.ZodNumber;
-        }, {}, {}>>>;
-        fan: z.ZodOptional<z.ZodNullable<z.ZodObject<{
+        }, {}, {}>, z.ZodLiteral<"Unsupported or Error">]>>;
+        fan: z.ZodOptional<z.ZodUnion<readonly [z.ZodObject<{
             closedLoop: z.ZodOptional<z.ZodBoolean>;
             openLoop: z.ZodOptional<z.ZodBoolean>;
-        }, {}, {}>>>;
-        humidity: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
-        illuminance: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
-        rotation: z.ZodOptional<z.ZodNullable<z.ZodEnum<{
+        }, {}, {}>, z.ZodLiteral<"Unsupported or Error">]>>;
+        humidity: z.ZodOptional<z.ZodUnion<readonly [z.ZodNumber, z.ZodLiteral<"Unsupported or Error">]>>;
+        illuminance: z.ZodOptional<z.ZodUnion<readonly [z.ZodNumber, z.ZodLiteral<"Unsupported or Error">]>>;
+        rotation: z.ZodOptional<z.ZodUnion<readonly [z.ZodEnum<{
             0: "0";
             90: "90";
             180: "180";
             270: "270";
-        }>>>;
+        }>, z.ZodLiteral<"Unsupported or Error">]>>;
         temperature: z.ZodNumber;
     }, {}, {}>>;
     systemUsageInfo: z.ZodOptional<z.ZodObject<{

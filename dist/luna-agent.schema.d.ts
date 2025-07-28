@@ -60,6 +60,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 low: "low";
                 medium: "medium";
                 high: "high";
+                Unsupported: "Unsupported";
             }>>>;
             colorGamut: z.ZodOptional<z.ZodEnum<{
                 normal: "normal";
@@ -584,6 +585,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     low: "low";
                     medium: "medium";
                     high: "high";
+                    Unsupported: "Unsupported";
                 }>>>;
                 colorGamut: z.ZodOptional<z.ZodEnum<{
                     normal: "normal";
@@ -1112,6 +1114,7 @@ export declare const LunaAgentState: z.ZodObject<{
                     low: "low";
                     medium: "medium";
                     high: "high";
+                    Unsupported: "Unsupported";
                 }>>>;
                 colorGamut: z.ZodOptional<z.ZodEnum<{
                     normal: "normal";
@@ -1661,24 +1664,24 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
         }, {}, {}>>;
         sensorValues: z.ZodOptional<z.ZodObject<{
             backlight: z.coerce.ZodCoercedNumber;
-            checkScreen: z.ZodOptional<z.ZodNullable<z.ZodObject<{
+            checkScreen: z.ZodOptional<z.ZodUnion<readonly [z.ZodObject<{
                 colorValid: z.ZodBoolean;
                 drawRGB: z.ZodNumber;
                 hexValue: z.ZodString;
                 readRGB: z.ZodNumber;
-            }, {}, {}>>>;
-            fan: z.ZodOptional<z.ZodNullable<z.ZodObject<{
+            }, {}, {}>, z.ZodLiteral<"Unsupported or Error">]>>;
+            fan: z.ZodOptional<z.ZodUnion<readonly [z.ZodObject<{
                 closedLoop: z.ZodOptional<z.ZodBoolean>;
                 openLoop: z.ZodOptional<z.ZodBoolean>;
-            }, {}, {}>>>;
-            humidity: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
-            illuminance: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
-            rotation: z.ZodOptional<z.ZodNullable<z.ZodEnum<{
+            }, {}, {}>, z.ZodLiteral<"Unsupported or Error">]>>;
+            humidity: z.ZodOptional<z.ZodUnion<readonly [z.ZodNumber, z.ZodLiteral<"Unsupported or Error">]>>;
+            illuminance: z.ZodOptional<z.ZodUnion<readonly [z.ZodNumber, z.ZodLiteral<"Unsupported or Error">]>>;
+            rotation: z.ZodOptional<z.ZodUnion<readonly [z.ZodEnum<{
                 0: "0";
                 90: "90";
                 180: "180";
                 270: "270";
-            }>>>;
+            }>, z.ZodLiteral<"Unsupported or Error">]>>;
             temperature: z.ZodNumber;
         }, {}, {}>>;
         systemUsageInfo: z.ZodOptional<z.ZodObject<{
@@ -1916,24 +1919,24 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
             }, {}, {}>>;
             sensorValues: z.ZodOptional<z.ZodObject<{
                 backlight: z.coerce.ZodCoercedNumber;
-                checkScreen: z.ZodOptional<z.ZodNullable<z.ZodObject<{
+                checkScreen: z.ZodOptional<z.ZodUnion<readonly [z.ZodObject<{
                     colorValid: z.ZodBoolean;
                     drawRGB: z.ZodNumber;
                     hexValue: z.ZodString;
                     readRGB: z.ZodNumber;
-                }, {}, {}>>>;
-                fan: z.ZodOptional<z.ZodNullable<z.ZodObject<{
+                }, {}, {}>, z.ZodLiteral<"Unsupported or Error">]>>;
+                fan: z.ZodOptional<z.ZodUnion<readonly [z.ZodObject<{
                     closedLoop: z.ZodOptional<z.ZodBoolean>;
                     openLoop: z.ZodOptional<z.ZodBoolean>;
-                }, {}, {}>>>;
-                humidity: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
-                illuminance: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
-                rotation: z.ZodOptional<z.ZodNullable<z.ZodEnum<{
+                }, {}, {}>, z.ZodLiteral<"Unsupported or Error">]>>;
+                humidity: z.ZodOptional<z.ZodUnion<readonly [z.ZodNumber, z.ZodLiteral<"Unsupported or Error">]>>;
+                illuminance: z.ZodOptional<z.ZodUnion<readonly [z.ZodNumber, z.ZodLiteral<"Unsupported or Error">]>>;
+                rotation: z.ZodOptional<z.ZodUnion<readonly [z.ZodEnum<{
                     0: "0";
                     90: "90";
                     180: "180";
                     270: "270";
-                }>>>;
+                }>, z.ZodLiteral<"Unsupported or Error">]>>;
                 temperature: z.ZodNumber;
             }, {}, {}>>;
             systemUsageInfo: z.ZodOptional<z.ZodObject<{
@@ -2175,24 +2178,24 @@ export declare const LunaAgentStatus: z.ZodObject<{
             }, {}, {}>>;
             sensorValues: z.ZodOptional<z.ZodObject<{
                 backlight: z.coerce.ZodCoercedNumber;
-                checkScreen: z.ZodOptional<z.ZodNullable<z.ZodObject<{
+                checkScreen: z.ZodOptional<z.ZodUnion<readonly [z.ZodObject<{
                     colorValid: z.ZodBoolean;
                     drawRGB: z.ZodNumber;
                     hexValue: z.ZodString;
                     readRGB: z.ZodNumber;
-                }, {}, {}>>>;
-                fan: z.ZodOptional<z.ZodNullable<z.ZodObject<{
+                }, {}, {}>, z.ZodLiteral<"Unsupported or Error">]>>;
+                fan: z.ZodOptional<z.ZodUnion<readonly [z.ZodObject<{
                     closedLoop: z.ZodOptional<z.ZodBoolean>;
                     openLoop: z.ZodOptional<z.ZodBoolean>;
-                }, {}, {}>>>;
-                humidity: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
-                illuminance: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
-                rotation: z.ZodOptional<z.ZodNullable<z.ZodEnum<{
+                }, {}, {}>, z.ZodLiteral<"Unsupported or Error">]>>;
+                humidity: z.ZodOptional<z.ZodUnion<readonly [z.ZodNumber, z.ZodLiteral<"Unsupported or Error">]>>;
+                illuminance: z.ZodOptional<z.ZodUnion<readonly [z.ZodNumber, z.ZodLiteral<"Unsupported or Error">]>>;
+                rotation: z.ZodOptional<z.ZodUnion<readonly [z.ZodEnum<{
                     0: "0";
                     90: "90";
                     180: "180";
                     270: "270";
-                }>>>;
+                }>, z.ZodLiteral<"Unsupported or Error">]>>;
                 temperature: z.ZodNumber;
             }, {}, {}>>;
             systemUsageInfo: z.ZodOptional<z.ZodObject<{

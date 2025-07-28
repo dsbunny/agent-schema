@@ -177,29 +177,29 @@ export const SensorValuesState = z.object({
 export const SensorValuesStatus = z.object({
     backlight: z.coerce.number().int().min(0).max(100)
         .describe('The backlight level of the display. Range: [0–100]'),
-    checkScreen: z.object({
-        colorValid: z.boolean()
-            .describe('Indicates whether the RGB value of the color displayed on the screen is the same as measured by the sensor.'),
-        drawRGB: z.number().int()
-            .describe('The RGB value of the color displayed on the screen, e.g., 0xFF0000 for red.'),
-        hexValue: z.string()
-            .describe('The hex value of the color displayed on the screen, e.g., "#FF0000" for red.'),
-        readRGB: z.number().int()
-            .describe('The RGB value of the color measured by the sensor, e.g., 0xFF0000 for red.'),
-    }).nullable().optional()
+    checkScreen: z.union([z.object({
+            colorValid: z.boolean()
+                .describe('Indicates whether the RGB value of the color displayed on the screen is the same as measured by the sensor.'),
+            drawRGB: z.number().int()
+                .describe('The RGB value of the color displayed on the screen, e.g., 0xFF0000 for red.'),
+            hexValue: z.string()
+                .describe('The hex value of the color displayed on the screen, e.g., "#FF0000" for red.'),
+            readRGB: z.number().int()
+                .describe('The RGB value of the color measured by the sensor, e.g., 0xFF0000 for red.'),
+        }), z.literal("Unsupported or Error")]).optional()
         .describe('The screen color check information'),
-    fan: z.object({
-        closedLoop: z.boolean().optional()
-            .describe('Indicates the current state of the closed-loop fan.'),
-        openLoop: z.boolean().optional()
-            .describe('Indicates the current state of the open-loop fan.'),
-    }).nullable().optional()
+    fan: z.union([z.object({
+            closedLoop: z.boolean().optional()
+                .describe('Indicates the current state of the closed-loop fan.'),
+            openLoop: z.boolean().optional()
+                .describe('Indicates the current state of the open-loop fan.'),
+        }), z.literal("Unsupported or Error")]).optional()
         .describe('The fan information of the agent'),
-    humidity: z.number().int().min(0).max(100).nullable().optional()
+    humidity: z.union([z.number().int().min(0).max(100), z.literal("Unsupported or Error")]).optional()
         .describe('The humidity level of the agent. Range: [0–100]'),
-    illuminance: z.number().int().min(0).max(100000).nullable().optional()
+    illuminance: z.union([z.number().int().min(0).max(100000), z.literal("Unsupported or Error")]).optional()
         .describe('The illuminance level of the agent. Range: [0–100000]'),
-    rotation: z.enum(['0', '90', '180', '270']).nullable().optional()
+    rotation: z.union([z.enum(['0', '90', '180', '270']), z.literal("Unsupported or Error")]).optional()
         .describe('The rotation of the agent, either "0", "90", "180", or "270" degrees'),
     // Device will automatically shutdown if the temperature exceeds 86 degrees Celsius.
     temperature: z.number().int().min(-50).max(100)
