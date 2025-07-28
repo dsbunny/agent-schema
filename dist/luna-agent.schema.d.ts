@@ -1824,6 +1824,7 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
         }, {}, {}>>;
         _debug: z.ZodOptional<z.ZodString>;
     }, {}, {}>>;
+    _errorFlags: z.ZodOptional<z.ZodArray<z.ZodString>>;
 }, {}, {}>;
 export type LunaAgentStatusDetail = z.infer<typeof LunaAgentStatusDetail>;
 export declare const LunaAgentStatusBase: z.ZodObject<{
@@ -2083,6 +2084,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
             }, {}, {}>>;
             _debug: z.ZodOptional<z.ZodString>;
         }, {}, {}>>;
+        _errorFlags: z.ZodOptional<z.ZodArray<z.ZodString>>;
     }, {}, {}>>;
 }, {}, {}>;
 export type LunaAgentStatusBase = z.infer<typeof LunaAgentStatusBase>;
@@ -2346,6 +2348,7 @@ export declare const LunaAgentStatus: z.ZodObject<{
             }, {}, {}>>;
             _debug: z.ZodOptional<z.ZodString>;
         }, {}, {}>>;
+        _errorFlags: z.ZodOptional<z.ZodArray<z.ZodString>>;
     }, {}, {}>>;
 }, {}, {}>;
 export type LunaAgentStatus = z.infer<typeof LunaAgentStatus>;

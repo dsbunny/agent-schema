@@ -58,6 +58,8 @@ export const LunaAgentStatusDetail = z.object({
 	storage: StorageStatus.optional(),
 	time: TimeStatus.optional(),
 	customJS: CustomJSStatus.optional(),
+	_errorFlags: z.array(z.string()).optional()
+		.describe('An array of error flags indicating issues with the Luna agent'),
 });
 export type LunaAgentStatusDetail = z.infer<typeof LunaAgentStatusDetail>;
 
