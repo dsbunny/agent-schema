@@ -177,7 +177,7 @@ export const SensorValuesState = z.object({
 export const SensorValuesStatus = z.object({
     backlight: z.coerce.number().int().min(0).max(100)
         .describe('The backlight level of the display. Range: [0–100]'),
-    checkScreen: z.union([z.object({
+    checkscreen: z.union([z.object({
             colorValid: z.boolean()
                 .describe('Indicates whether the RGB value of the color displayed on the screen is the same as measured by the sensor.'),
             drawRGB: z.number().int()

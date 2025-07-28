@@ -147,7 +147,7 @@ export declare const SensorValuesState: z.ZodObject<{
 export type SensorValuesState = z.infer<typeof SensorValuesState>;
 export declare const SensorValuesStatus: z.ZodObject<{
     backlight: z.coerce.ZodCoercedNumber;
-    checkScreen: z.ZodOptional<z.ZodUnion<readonly [z.ZodObject<{
+    checkscreen: z.ZodOptional<z.ZodUnion<readonly [z.ZodObject<{
         colorValid: z.ZodBoolean;
         drawRGB: z.ZodNumber;
         hexValue: z.ZodString;
@@ -319,7 +319,7 @@ export declare const DeviceStatus: z.ZodObject<{
     }, {}, {}>>;
     sensorValues: z.ZodOptional<z.ZodObject<{
         backlight: z.coerce.ZodCoercedNumber;
-        checkScreen: z.ZodOptional<z.ZodUnion<readonly [z.ZodObject<{
+        checkscreen: z.ZodOptional<z.ZodUnion<readonly [z.ZodObject<{
             colorValid: z.ZodBoolean;
             drawRGB: z.ZodNumber;
             hexValue: z.ZodString;

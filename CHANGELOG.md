@@ -5,6 +5,7 @@
 - Add `_errorFlags` for indicating API failures.
 - Use a simple timestamp for `CurrentTimeStatus` to avoid BIOS time offsets.
 - Prefer pass through of `Unsupported` and `Unsupported or Error` values.
+- Correct case on `checkscreen`.
 
 ## v6.1.15
 - Update range for `colorTemperature`.
