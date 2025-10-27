@@ -1,4 +1,8 @@
 # Changelog
+## v6.3.17
+- Bump to `zod@4.1.11`.
+- Move Zod to `peerDependencies` so users can bring their own Zod.
+
 ## v6.2.16
 - Replace `LunaAgentStatusDetail.errors` with per module `_debug` containers.
 - Add `power`, `sound`, and `time` to _runtime-status_ to enable `_debug` propagation.

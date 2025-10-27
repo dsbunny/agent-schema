@@ -1,5 +1,5 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
-import { z } from 'zod/v4';
+import * as z from "zod";
 export const ExternalSpeakerState = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the external speaker state was updated'),

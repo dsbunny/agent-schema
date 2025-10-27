@@ -1,32 +1,32 @@
-import { z } from 'zod/v4';
+import * as z from "zod";
 export declare const LUNA_AGENT_URN = "urn:dsbunny:agent:luna";
 export declare const LunaAgentStateDetail: z.ZodObject<{
     configuration: z.ZodOptional<z.ZodObject<{
         _clearCacheRequest: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
-        }, {}, {}>>;
+            _timestamp: z.ZodISODateTime;
+        }, z.core.$strip>>;
         _restartApplicationRequest: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
-        }, {}, {}>>;
+            _timestamp: z.ZodISODateTime;
+        }, z.core.$strip>>;
         currentTime: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             ntp: z.ZodOptional<z.ZodBoolean>;
             ntpServerAddress: z.ZodOptional<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         masterPin: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             activated: z.ZodBoolean;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         OSDLanguage: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             specifier: z.ZodString;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         OSDLock: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             enabled: z.ZodBoolean;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         pictureMode: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             mode: z.ZodEnum<{
                 eco: "eco";
                 cinema: "cinema";
@@ -37,9 +37,9 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 normal: "normal";
                 vivid: "vivid";
             }>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         pictureProperty: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             backlight: z.ZodOptional<z.ZodNumber>;
             contrast: z.ZodOptional<z.ZodNumber>;
             brightness: z.ZodOptional<z.ZodNumber>;
@@ -96,20 +96,20 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 high: "high";
                 high3: "high3";
             }>>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         property: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             alias: z.ZodOptional<z.ZodString>;
             operation_mode_after_screen_share: z.ZodOptional<z.ZodString>;
             key_delivery_to_simplink: z.ZodOptional<z.ZodString>;
             cec_device_control: z.ZodOptional<z.ZodNullable<z.ZodString>>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         proxyBypassList: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             urlList: z.ZodArray<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         serverProperty: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             serverIp: z.ZodString;
             serverPort: z.ZodNumber;
             secureConnection: z.ZodBoolean;
@@ -129,46 +129,46 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 off: "off";
                 on: "on";
             }>>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         timeZone: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             timeZone: z.ZodObject<{
                 continent: z.ZodString;
                 country: z.ZodString;
                 city: z.ZodString;
-            }, {}, {}>;
-        }, {}, {}>>;
+            }, z.core.$strip>;
+        }, z.core.$strip>>;
         USBLock: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             enabled: z.ZodBoolean;
-        }, {}, {}>>;
-    }, {}, {}>>;
+        }, z.core.$strip>>;
+    }, z.core.$strip>>;
     device: z.ZodOptional<z.ZodObject<{
         blockedPortList: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             blockedPortList: z.ZodArray<z.ZodObject<{
                 blockedPort: z.ZodNumber;
                 direction: z.ZodEnum<{
-                    in: "in";
                     out: "out";
+                    in: "in";
                     all: "all";
                 }>;
                 protocol: z.ZodEnum<{
                     tcp: "tcp";
                     udp: "udp";
                 }>;
-            }, {}, {}>>;
-        }, {}, {}>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         networkCheckup: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             mode: z.ZodEnum<{
                 default: "default";
                 manual: "manual";
             }>;
             url: z.ZodOptional<z.ZodURL>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         network: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             wired: z.ZodObject<{
                 enabled: z.ZodBoolean;
                 method: z.ZodOptional<z.ZodEnum<{
@@ -180,7 +180,7 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 gateway: z.ZodOptional<z.ZodString>;
                 dns1: z.ZodOptional<z.ZodString>;
                 dns2: z.ZodOptional<z.ZodString>;
-            }, {}, {}>;
+            }, z.core.$strip>;
             wifi: z.ZodObject<{
                 enabled: z.ZodBoolean;
                 method: z.ZodOptional<z.ZodEnum<{
@@ -192,45 +192,45 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 gateway: z.ZodOptional<z.ZodString>;
                 dns1: z.ZodOptional<z.ZodString>;
                 dns2: z.ZodOptional<z.ZodString>;
-            }, {}, {}>;
-        }, {}, {}>>;
+            }, z.core.$strip>;
+        }, z.core.$strip>>;
         proxy: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             enabled: z.ZodBoolean;
             ipAddress: z.ZodOptional<z.ZodString>;
             port: z.ZodOptional<z.ZodNumber>;
             userName: z.ZodOptional<z.ZodString>;
             password: z.ZodOptional<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         sensorValues: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             backlight: z.ZodNumber;
-        }, {}, {}>>;
-    }, {}, {}>>;
+        }, z.core.$strip>>;
+    }, z.core.$strip>>;
     power: z.ZodOptional<z.ZodObject<{
         _powerCommandRequest: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             powerCommand: z.ZodEnum<{
                 powerOff: "powerOff";
                 reboot: "reboot";
             }>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         displayMode: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             displayMode: z.ZodEnum<{
                 "Screen Off": "Screen Off";
                 Active: "Active";
             }>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         dpmWakeup: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             dpmSignalType: z.ZodEnum<{
                 clock: "clock";
                 clockAndData: "clockAndData";
             }>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         pmMode: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             mode: z.ZodEnum<{
                 powerOff: "powerOff";
                 screenOff: "screenOff";
@@ -239,52 +239,52 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 sustainAspectRatio: "sustainAspectRatio";
                 networkReady: "networkReady";
             }>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         powerOnDelay: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             delayTime: z.ZodNumber;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         wakeOnLan: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             wakeOnLan: z.ZodBoolean;
-        }, {}, {}>>;
-    }, {}, {}>>;
+        }, z.core.$strip>>;
+    }, z.core.$strip>>;
     security: z.ZodOptional<z.ZodObject<{
         serverCertificateList: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             serverCertificateList: z.ZodArray<z.ZodString>;
-        }, {}, {}>>;
-    }, {}, {}>>;
+        }, z.core.$strip>>;
+    }, z.core.$strip>>;
     signage: z.ZodOptional<z.ZodObject<{
         _captureScreenRequest: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             thumbnail: z.ZodOptional<z.ZodBoolean>;
             imgResolution: z.ZodOptional<z.ZodEnum<{
                 thumbnail: "thumbnail";
                 FHD: "FHD";
                 HD: "HD";
             }>>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         _resetRequest: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             mode: z.ZodEnum<{
                 softReset: "softReset";
                 factoryReset: "factoryReset";
             }>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         checkScreen: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             checkScreen: z.ZodBoolean;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         digitalAudioInput: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             digitalAudioInputMode: z.ZodEnum<{
                 audioIn: "audioIn";
                 hdmi: "hdmi";
             }>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         failoverMode: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             mode: z.ZodEnum<{
                 off: "off";
                 auto: "auto";
@@ -292,13 +292,13 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 ___undefined___: "___undefined___";
             }>;
             priority: z.ZodOptional<z.ZodArray<z.ZodString>>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         intelligentAuto: z.ZodOptional<z.ZodNullable<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             enabled: z.ZodBoolean;
-        }, {}, {}>>>;
+        }, z.core.$strip>>>;
         ismMethod: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             ismMethod: z.ZodEnum<{
                 COLORWASH: "COLORWASH";
                 INVERSION: "INVERSION";
@@ -309,35 +309,35 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 WASHINGBAR: "WASHINGBAR";
                 WHITEWASH: "WHITEWASH";
             }>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         lanDaisyChain: z.ZodOptional<z.ZodNullable<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             enabled: z.ZodBoolean;
-        }, {}, {}>>>;
+        }, z.core.$strip>>>;
         mirrorMode: z.ZodOptional<z.ZodNullable<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             mode: z.ZodEnum<{
                 off: "off";
                 on: "on";
             }>;
-        }, {}, {}>>>;
+        }, z.core.$strip>>>;
         noSignalImageMode: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             noSignalImageMode: z.ZodEnum<{
                 off: "off";
                 on: "on";
             }>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         portraitMode: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             portraitMode: z.ZodEnum<{
                 off: "off";
                 90: "90";
                 ___undefined___: "___undefined___";
             }>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         powerSaveMode: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             ses: z.ZodBoolean;
             dpmMode: z.ZodEnum<{
                 off: "off";
@@ -354,16 +354,16 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 "4 hours": "4 hours";
             }>;
             do15MinOff: z.ZodBoolean;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         quietMode: z.ZodOptional<z.ZodNullable<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             mode: z.ZodEnum<{
                 off: "off";
                 on: "on";
             }>;
-        }, {}, {}>>>;
+        }, z.core.$strip>>>;
         RS232CConfiguration: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             mode: z.ZodLiteral<0 | 1>;
             port: z.ZodOptional<z.ZodNumber>;
             baudRate: z.ZodOptional<z.ZodLiteral<0 | 1024000 | 110 | 115200 | 1200 | 128000 | 14400 | 19200 | 230400 | 2400 | 256000 | 300 | 38400 | 4800 | 512000 | 57600 | 600 | 768000 | 921600 | 9600>>;
@@ -372,24 +372,24 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
             stopBit: z.ZodOptional<z.ZodLiteral<0 | 1 | 2>>;
             flowControl: z.ZodOptional<z.ZodLiteral<0 | 1 | 2 | 3>>;
             rxTimeoutInMs: z.ZodOptional<z.ZodNumber>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         simplink: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             simplinkEnable: z.ZodEnum<{
                 off: "off";
                 on: "on";
             }>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         tile: z.ZodOptional<z.ZodNullable<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             enabled: z.ZodBoolean;
             row: z.ZodNumber;
             column: z.ZodNumber;
             tileId: z.ZodNumber;
             naturalMode: z.ZodBoolean;
-        }, {}, {}>>>;
+        }, z.core.$strip>>>;
         usagePermission: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             remoteKeyOperationMode: z.ZodEnum<{
                 normal: "normal";
                 blockAll: "blockAll";
@@ -400,19 +400,19 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 blockAll: "blockAll";
                 usePwrOnly: "usePwrOnly";
             }>;
-        }, {}, {}>>;
-    }, {}, {}>>;
+        }, z.core.$strip>>;
+    }, z.core.$strip>>;
     sound: z.ZodOptional<z.ZodObject<{
         muted: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             muted: z.ZodBoolean;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         externalSpeaker: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             externalSpeaker: z.ZodBoolean;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         soundMode: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             mode: z.ZodEnum<{
                 game: "game";
                 sports: "sports";
@@ -421,28 +421,28 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 news: "news";
                 music: "music";
             }>;
-            balance: z.ZodOptional<z.coerce.ZodCoercedNumber>;
-        }, {}, {}>>;
+            balance: z.ZodOptional<z.ZodCoercedNumber<unknown>>;
+        }, z.core.$strip>>;
         soundOut: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             speakerType: z.ZodEnum<{
                 tv_speaker: "tv_speaker";
                 bt_soundbar: "bt_soundbar";
             }>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         volumeLevel: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             level: z.ZodNumber;
             volOsdEnabled: z.ZodOptional<z.ZodBoolean>;
-        }, {}, {}>>;
-    }, {}, {}>>;
+        }, z.core.$strip>>;
+    }, z.core.$strip>>;
     storage: z.ZodOptional<z.ZodObject<{
         _changeLogoImageRequest: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             uri: z.ZodString;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         _upgradeApplicationRequest: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             to: z.ZodEnum<{
                 local: "local";
                 usb: "usb";
@@ -452,15 +452,15 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 ipk: "ipk";
                 zip: "zip";
             }>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         _upgradeFirmwareRequest: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             uri: z.ZodURL;
-        }, {}, {}>>;
-    }, {}, {}>>;
+        }, z.core.$strip>>;
+    }, z.core.$strip>>;
     time: z.ZodOptional<z.ZodObject<{
         allOnOffTimers: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             timerList: z.ZodArray<z.ZodObject<{
                 id: z.ZodOptional<z.ZodNumber>;
                 type: z.ZodEnum<{
@@ -470,10 +470,10 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 hour: z.ZodNumber;
                 minute: z.ZodNumber;
                 week: z.ZodNumber;
-            }, {}, {}>>;
-        }, {}, {}>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         holidaySchedule: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             holidayScheduleList: z.ZodOptional<z.ZodArray<z.ZodObject<{
                 name: z.ZodOptional<z.ZodString>;
                 settings: z.ZodOptional<z.ZodObject<{
@@ -491,13 +491,13 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                         monthly: "monthly";
                         yearly: "yearly";
                     }>>;
-                }, {}, {}>>;
-            }, {}, {}>>>;
-        }, {}, {}>>;
-    }, {}, {}>>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>>>;
+        }, z.core.$strip>>;
+    }, z.core.$strip>>;
     customJS: z.ZodOptional<z.ZodObject<{
         _clearBrowsingDataRequest: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             types: z.ZodOptional<z.ZodArray<z.ZodEnum<{
                 all: "all";
                 appcache: "appcache";
@@ -510,14 +510,14 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
                 serviceWorkers: "serviceWorkers";
                 webSQL: "webSQL";
             }>>>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         _disableApplicationRequest: z.ZodOptional<z.ZodObject<{
-            _timestamp: z.iso.ZodISODateTime;
+            _timestamp: z.ZodISODateTime;
             reset: z.ZodOptional<z.ZodBoolean>;
-        }, {}, {}>>;
-    }, {}, {}>>;
+        }, z.core.$strip>>;
+    }, z.core.$strip>>;
     _debug: z.ZodOptional<z.ZodBoolean>;
-}, {}, {}>;
+}, z.core.$strip>;
 export type LunaAgentStateDetail = z.infer<typeof LunaAgentStateDetail>;
 export declare const LunaAgentStateBase: z.ZodObject<{
     pull_interval: z.ZodNullable<z.ZodNumber>;
@@ -528,30 +528,30 @@ export declare const LunaAgentStateBase: z.ZodObject<{
     detail: z.ZodNullable<z.ZodObject<{
         configuration: z.ZodOptional<z.ZodObject<{
             _clearCacheRequest: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
-            }, {}, {}>>;
+                _timestamp: z.ZodISODateTime;
+            }, z.core.$strip>>;
             _restartApplicationRequest: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
-            }, {}, {}>>;
+                _timestamp: z.ZodISODateTime;
+            }, z.core.$strip>>;
             currentTime: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 ntp: z.ZodOptional<z.ZodBoolean>;
                 ntpServerAddress: z.ZodOptional<z.ZodString>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             masterPin: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 activated: z.ZodBoolean;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             OSDLanguage: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 specifier: z.ZodString;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             OSDLock: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 enabled: z.ZodBoolean;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             pictureMode: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 mode: z.ZodEnum<{
                     eco: "eco";
                     cinema: "cinema";
@@ -562,9 +562,9 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     normal: "normal";
                     vivid: "vivid";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             pictureProperty: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 backlight: z.ZodOptional<z.ZodNumber>;
                 contrast: z.ZodOptional<z.ZodNumber>;
                 brightness: z.ZodOptional<z.ZodNumber>;
@@ -621,20 +621,20 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     high: "high";
                     high3: "high3";
                 }>>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             property: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 alias: z.ZodOptional<z.ZodString>;
                 operation_mode_after_screen_share: z.ZodOptional<z.ZodString>;
                 key_delivery_to_simplink: z.ZodOptional<z.ZodString>;
                 cec_device_control: z.ZodOptional<z.ZodNullable<z.ZodString>>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             proxyBypassList: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 urlList: z.ZodArray<z.ZodString>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             serverProperty: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 serverIp: z.ZodString;
                 serverPort: z.ZodNumber;
                 secureConnection: z.ZodBoolean;
@@ -654,46 +654,46 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     off: "off";
                     on: "on";
                 }>>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             timeZone: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 timeZone: z.ZodObject<{
                     continent: z.ZodString;
                     country: z.ZodString;
                     city: z.ZodString;
-                }, {}, {}>;
-            }, {}, {}>>;
+                }, z.core.$strip>;
+            }, z.core.$strip>>;
             USBLock: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 enabled: z.ZodBoolean;
-            }, {}, {}>>;
-        }, {}, {}>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         device: z.ZodOptional<z.ZodObject<{
             blockedPortList: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 blockedPortList: z.ZodArray<z.ZodObject<{
                     blockedPort: z.ZodNumber;
                     direction: z.ZodEnum<{
-                        in: "in";
                         out: "out";
+                        in: "in";
                         all: "all";
                     }>;
                     protocol: z.ZodEnum<{
                         tcp: "tcp";
                         udp: "udp";
                     }>;
-                }, {}, {}>>;
-            }, {}, {}>>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>>;
             networkCheckup: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 mode: z.ZodEnum<{
                     default: "default";
                     manual: "manual";
                 }>;
                 url: z.ZodOptional<z.ZodURL>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             network: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 wired: z.ZodObject<{
                     enabled: z.ZodBoolean;
                     method: z.ZodOptional<z.ZodEnum<{
@@ -705,7 +705,7 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     gateway: z.ZodOptional<z.ZodString>;
                     dns1: z.ZodOptional<z.ZodString>;
                     dns2: z.ZodOptional<z.ZodString>;
-                }, {}, {}>;
+                }, z.core.$strip>;
                 wifi: z.ZodObject<{
                     enabled: z.ZodBoolean;
                     method: z.ZodOptional<z.ZodEnum<{
@@ -717,45 +717,45 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     gateway: z.ZodOptional<z.ZodString>;
                     dns1: z.ZodOptional<z.ZodString>;
                     dns2: z.ZodOptional<z.ZodString>;
-                }, {}, {}>;
-            }, {}, {}>>;
+                }, z.core.$strip>;
+            }, z.core.$strip>>;
             proxy: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 enabled: z.ZodBoolean;
                 ipAddress: z.ZodOptional<z.ZodString>;
                 port: z.ZodOptional<z.ZodNumber>;
                 userName: z.ZodOptional<z.ZodString>;
                 password: z.ZodOptional<z.ZodString>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             sensorValues: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 backlight: z.ZodNumber;
-            }, {}, {}>>;
-        }, {}, {}>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         power: z.ZodOptional<z.ZodObject<{
             _powerCommandRequest: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 powerCommand: z.ZodEnum<{
                     powerOff: "powerOff";
                     reboot: "reboot";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             displayMode: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 displayMode: z.ZodEnum<{
                     "Screen Off": "Screen Off";
                     Active: "Active";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             dpmWakeup: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 dpmSignalType: z.ZodEnum<{
                     clock: "clock";
                     clockAndData: "clockAndData";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             pmMode: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 mode: z.ZodEnum<{
                     powerOff: "powerOff";
                     screenOff: "screenOff";
@@ -764,52 +764,52 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     sustainAspectRatio: "sustainAspectRatio";
                     networkReady: "networkReady";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             powerOnDelay: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 delayTime: z.ZodNumber;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             wakeOnLan: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 wakeOnLan: z.ZodBoolean;
-            }, {}, {}>>;
-        }, {}, {}>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         security: z.ZodOptional<z.ZodObject<{
             serverCertificateList: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 serverCertificateList: z.ZodArray<z.ZodString>;
-            }, {}, {}>>;
-        }, {}, {}>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         signage: z.ZodOptional<z.ZodObject<{
             _captureScreenRequest: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 thumbnail: z.ZodOptional<z.ZodBoolean>;
                 imgResolution: z.ZodOptional<z.ZodEnum<{
                     thumbnail: "thumbnail";
                     FHD: "FHD";
                     HD: "HD";
                 }>>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             _resetRequest: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 mode: z.ZodEnum<{
                     softReset: "softReset";
                     factoryReset: "factoryReset";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             checkScreen: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 checkScreen: z.ZodBoolean;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             digitalAudioInput: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 digitalAudioInputMode: z.ZodEnum<{
                     audioIn: "audioIn";
                     hdmi: "hdmi";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             failoverMode: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 mode: z.ZodEnum<{
                     off: "off";
                     auto: "auto";
@@ -817,13 +817,13 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     ___undefined___: "___undefined___";
                 }>;
                 priority: z.ZodOptional<z.ZodArray<z.ZodString>>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             intelligentAuto: z.ZodOptional<z.ZodNullable<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 enabled: z.ZodBoolean;
-            }, {}, {}>>>;
+            }, z.core.$strip>>>;
             ismMethod: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 ismMethod: z.ZodEnum<{
                     COLORWASH: "COLORWASH";
                     INVERSION: "INVERSION";
@@ -834,35 +834,35 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     WASHINGBAR: "WASHINGBAR";
                     WHITEWASH: "WHITEWASH";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             lanDaisyChain: z.ZodOptional<z.ZodNullable<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 enabled: z.ZodBoolean;
-            }, {}, {}>>>;
+            }, z.core.$strip>>>;
             mirrorMode: z.ZodOptional<z.ZodNullable<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 mode: z.ZodEnum<{
                     off: "off";
                     on: "on";
                 }>;
-            }, {}, {}>>>;
+            }, z.core.$strip>>>;
             noSignalImageMode: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 noSignalImageMode: z.ZodEnum<{
                     off: "off";
                     on: "on";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             portraitMode: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 portraitMode: z.ZodEnum<{
                     off: "off";
                     90: "90";
                     ___undefined___: "___undefined___";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             powerSaveMode: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 ses: z.ZodBoolean;
                 dpmMode: z.ZodEnum<{
                     off: "off";
@@ -879,16 +879,16 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     "4 hours": "4 hours";
                 }>;
                 do15MinOff: z.ZodBoolean;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             quietMode: z.ZodOptional<z.ZodNullable<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 mode: z.ZodEnum<{
                     off: "off";
                     on: "on";
                 }>;
-            }, {}, {}>>>;
+            }, z.core.$strip>>>;
             RS232CConfiguration: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 mode: z.ZodLiteral<0 | 1>;
                 port: z.ZodOptional<z.ZodNumber>;
                 baudRate: z.ZodOptional<z.ZodLiteral<0 | 1024000 | 110 | 115200 | 1200 | 128000 | 14400 | 19200 | 230400 | 2400 | 256000 | 300 | 38400 | 4800 | 512000 | 57600 | 600 | 768000 | 921600 | 9600>>;
@@ -897,24 +897,24 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                 stopBit: z.ZodOptional<z.ZodLiteral<0 | 1 | 2>>;
                 flowControl: z.ZodOptional<z.ZodLiteral<0 | 1 | 2 | 3>>;
                 rxTimeoutInMs: z.ZodOptional<z.ZodNumber>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             simplink: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 simplinkEnable: z.ZodEnum<{
                     off: "off";
                     on: "on";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             tile: z.ZodOptional<z.ZodNullable<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 enabled: z.ZodBoolean;
                 row: z.ZodNumber;
                 column: z.ZodNumber;
                 tileId: z.ZodNumber;
                 naturalMode: z.ZodBoolean;
-            }, {}, {}>>>;
+            }, z.core.$strip>>>;
             usagePermission: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 remoteKeyOperationMode: z.ZodEnum<{
                     normal: "normal";
                     blockAll: "blockAll";
@@ -925,19 +925,19 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     blockAll: "blockAll";
                     usePwrOnly: "usePwrOnly";
                 }>;
-            }, {}, {}>>;
-        }, {}, {}>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         sound: z.ZodOptional<z.ZodObject<{
             muted: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 muted: z.ZodBoolean;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             externalSpeaker: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 externalSpeaker: z.ZodBoolean;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             soundMode: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 mode: z.ZodEnum<{
                     game: "game";
                     sports: "sports";
@@ -946,28 +946,28 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     news: "news";
                     music: "music";
                 }>;
-                balance: z.ZodOptional<z.coerce.ZodCoercedNumber>;
-            }, {}, {}>>;
+                balance: z.ZodOptional<z.ZodCoercedNumber<unknown>>;
+            }, z.core.$strip>>;
             soundOut: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 speakerType: z.ZodEnum<{
                     tv_speaker: "tv_speaker";
                     bt_soundbar: "bt_soundbar";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             volumeLevel: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 level: z.ZodNumber;
                 volOsdEnabled: z.ZodOptional<z.ZodBoolean>;
-            }, {}, {}>>;
-        }, {}, {}>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         storage: z.ZodOptional<z.ZodObject<{
             _changeLogoImageRequest: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 uri: z.ZodString;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             _upgradeApplicationRequest: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 to: z.ZodEnum<{
                     local: "local";
                     usb: "usb";
@@ -977,15 +977,15 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     ipk: "ipk";
                     zip: "zip";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             _upgradeFirmwareRequest: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 uri: z.ZodURL;
-            }, {}, {}>>;
-        }, {}, {}>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         time: z.ZodOptional<z.ZodObject<{
             allOnOffTimers: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 timerList: z.ZodArray<z.ZodObject<{
                     id: z.ZodOptional<z.ZodNumber>;
                     type: z.ZodEnum<{
@@ -995,10 +995,10 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     hour: z.ZodNumber;
                     minute: z.ZodNumber;
                     week: z.ZodNumber;
-                }, {}, {}>>;
-            }, {}, {}>>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>>;
             holidaySchedule: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 holidayScheduleList: z.ZodOptional<z.ZodArray<z.ZodObject<{
                     name: z.ZodOptional<z.ZodString>;
                     settings: z.ZodOptional<z.ZodObject<{
@@ -1016,13 +1016,13 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                             monthly: "monthly";
                             yearly: "yearly";
                         }>>;
-                    }, {}, {}>>;
-                }, {}, {}>>>;
-            }, {}, {}>>;
-        }, {}, {}>>;
+                    }, z.core.$strip>>;
+                }, z.core.$strip>>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         customJS: z.ZodOptional<z.ZodObject<{
             _clearBrowsingDataRequest: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 types: z.ZodOptional<z.ZodArray<z.ZodEnum<{
                     all: "all";
                     appcache: "appcache";
@@ -1035,19 +1035,19 @@ export declare const LunaAgentStateBase: z.ZodObject<{
                     serviceWorkers: "serviceWorkers";
                     webSQL: "webSQL";
                 }>>>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             _disableApplicationRequest: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 reset: z.ZodOptional<z.ZodBoolean>;
-            }, {}, {}>>;
-        }, {}, {}>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         _debug: z.ZodOptional<z.ZodBoolean>;
-    }, {}, {}>>;
-}, {}, {}>;
+    }, z.core.$strip>>;
+}, z.core.$strip>;
 export type LunaAgentStateBase = z.infer<typeof LunaAgentStateBase>;
 export declare const LunaAgentState: z.ZodObject<{
-    create_timestamp: z.iso.ZodISODateTime;
-    modify_timestamp: z.iso.ZodISODateTime;
+    create_timestamp: z.ZodISODateTime;
+    modify_timestamp: z.ZodISODateTime;
     is_deleted: z.ZodDefault<z.ZodBoolean>;
     pull_interval: z.ZodNullable<z.ZodNumber>;
     push_interval: z.ZodNullable<z.ZodNumber>;
@@ -1057,30 +1057,30 @@ export declare const LunaAgentState: z.ZodObject<{
     detail: z.ZodNullable<z.ZodObject<{
         configuration: z.ZodOptional<z.ZodObject<{
             _clearCacheRequest: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
-            }, {}, {}>>;
+                _timestamp: z.ZodISODateTime;
+            }, z.core.$strip>>;
             _restartApplicationRequest: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
-            }, {}, {}>>;
+                _timestamp: z.ZodISODateTime;
+            }, z.core.$strip>>;
             currentTime: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 ntp: z.ZodOptional<z.ZodBoolean>;
                 ntpServerAddress: z.ZodOptional<z.ZodString>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             masterPin: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 activated: z.ZodBoolean;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             OSDLanguage: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 specifier: z.ZodString;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             OSDLock: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 enabled: z.ZodBoolean;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             pictureMode: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 mode: z.ZodEnum<{
                     eco: "eco";
                     cinema: "cinema";
@@ -1091,9 +1091,9 @@ export declare const LunaAgentState: z.ZodObject<{
                     normal: "normal";
                     vivid: "vivid";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             pictureProperty: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 backlight: z.ZodOptional<z.ZodNumber>;
                 contrast: z.ZodOptional<z.ZodNumber>;
                 brightness: z.ZodOptional<z.ZodNumber>;
@@ -1150,20 +1150,20 @@ export declare const LunaAgentState: z.ZodObject<{
                     high: "high";
                     high3: "high3";
                 }>>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             property: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 alias: z.ZodOptional<z.ZodString>;
                 operation_mode_after_screen_share: z.ZodOptional<z.ZodString>;
                 key_delivery_to_simplink: z.ZodOptional<z.ZodString>;
                 cec_device_control: z.ZodOptional<z.ZodNullable<z.ZodString>>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             proxyBypassList: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 urlList: z.ZodArray<z.ZodString>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             serverProperty: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 serverIp: z.ZodString;
                 serverPort: z.ZodNumber;
                 secureConnection: z.ZodBoolean;
@@ -1183,46 +1183,46 @@ export declare const LunaAgentState: z.ZodObject<{
                     off: "off";
                     on: "on";
                 }>>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             timeZone: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 timeZone: z.ZodObject<{
                     continent: z.ZodString;
                     country: z.ZodString;
                     city: z.ZodString;
-                }, {}, {}>;
-            }, {}, {}>>;
+                }, z.core.$strip>;
+            }, z.core.$strip>>;
             USBLock: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 enabled: z.ZodBoolean;
-            }, {}, {}>>;
-        }, {}, {}>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         device: z.ZodOptional<z.ZodObject<{
             blockedPortList: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 blockedPortList: z.ZodArray<z.ZodObject<{
                     blockedPort: z.ZodNumber;
                     direction: z.ZodEnum<{
-                        in: "in";
                         out: "out";
+                        in: "in";
                         all: "all";
                     }>;
                     protocol: z.ZodEnum<{
                         tcp: "tcp";
                         udp: "udp";
                     }>;
-                }, {}, {}>>;
-            }, {}, {}>>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>>;
             networkCheckup: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 mode: z.ZodEnum<{
                     default: "default";
                     manual: "manual";
                 }>;
                 url: z.ZodOptional<z.ZodURL>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             network: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 wired: z.ZodObject<{
                     enabled: z.ZodBoolean;
                     method: z.ZodOptional<z.ZodEnum<{
@@ -1234,7 +1234,7 @@ export declare const LunaAgentState: z.ZodObject<{
                     gateway: z.ZodOptional<z.ZodString>;
                     dns1: z.ZodOptional<z.ZodString>;
                     dns2: z.ZodOptional<z.ZodString>;
-                }, {}, {}>;
+                }, z.core.$strip>;
                 wifi: z.ZodObject<{
                     enabled: z.ZodBoolean;
                     method: z.ZodOptional<z.ZodEnum<{
@@ -1246,45 +1246,45 @@ export declare const LunaAgentState: z.ZodObject<{
                     gateway: z.ZodOptional<z.ZodString>;
                     dns1: z.ZodOptional<z.ZodString>;
                     dns2: z.ZodOptional<z.ZodString>;
-                }, {}, {}>;
-            }, {}, {}>>;
+                }, z.core.$strip>;
+            }, z.core.$strip>>;
             proxy: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 enabled: z.ZodBoolean;
                 ipAddress: z.ZodOptional<z.ZodString>;
                 port: z.ZodOptional<z.ZodNumber>;
                 userName: z.ZodOptional<z.ZodString>;
                 password: z.ZodOptional<z.ZodString>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             sensorValues: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 backlight: z.ZodNumber;
-            }, {}, {}>>;
-        }, {}, {}>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         power: z.ZodOptional<z.ZodObject<{
             _powerCommandRequest: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 powerCommand: z.ZodEnum<{
                     powerOff: "powerOff";
                     reboot: "reboot";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             displayMode: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 displayMode: z.ZodEnum<{
                     "Screen Off": "Screen Off";
                     Active: "Active";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             dpmWakeup: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 dpmSignalType: z.ZodEnum<{
                     clock: "clock";
                     clockAndData: "clockAndData";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             pmMode: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 mode: z.ZodEnum<{
                     powerOff: "powerOff";
                     screenOff: "screenOff";
@@ -1293,52 +1293,52 @@ export declare const LunaAgentState: z.ZodObject<{
                     sustainAspectRatio: "sustainAspectRatio";
                     networkReady: "networkReady";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             powerOnDelay: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 delayTime: z.ZodNumber;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             wakeOnLan: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 wakeOnLan: z.ZodBoolean;
-            }, {}, {}>>;
-        }, {}, {}>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         security: z.ZodOptional<z.ZodObject<{
             serverCertificateList: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 serverCertificateList: z.ZodArray<z.ZodString>;
-            }, {}, {}>>;
-        }, {}, {}>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         signage: z.ZodOptional<z.ZodObject<{
             _captureScreenRequest: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 thumbnail: z.ZodOptional<z.ZodBoolean>;
                 imgResolution: z.ZodOptional<z.ZodEnum<{
                     thumbnail: "thumbnail";
                     FHD: "FHD";
                     HD: "HD";
                 }>>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             _resetRequest: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 mode: z.ZodEnum<{
                     softReset: "softReset";
                     factoryReset: "factoryReset";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             checkScreen: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 checkScreen: z.ZodBoolean;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             digitalAudioInput: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 digitalAudioInputMode: z.ZodEnum<{
                     audioIn: "audioIn";
                     hdmi: "hdmi";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             failoverMode: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 mode: z.ZodEnum<{
                     off: "off";
                     auto: "auto";
@@ -1346,13 +1346,13 @@ export declare const LunaAgentState: z.ZodObject<{
                     ___undefined___: "___undefined___";
                 }>;
                 priority: z.ZodOptional<z.ZodArray<z.ZodString>>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             intelligentAuto: z.ZodOptional<z.ZodNullable<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 enabled: z.ZodBoolean;
-            }, {}, {}>>>;
+            }, z.core.$strip>>>;
             ismMethod: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 ismMethod: z.ZodEnum<{
                     COLORWASH: "COLORWASH";
                     INVERSION: "INVERSION";
@@ -1363,35 +1363,35 @@ export declare const LunaAgentState: z.ZodObject<{
                     WASHINGBAR: "WASHINGBAR";
                     WHITEWASH: "WHITEWASH";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             lanDaisyChain: z.ZodOptional<z.ZodNullable<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 enabled: z.ZodBoolean;
-            }, {}, {}>>>;
+            }, z.core.$strip>>>;
             mirrorMode: z.ZodOptional<z.ZodNullable<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 mode: z.ZodEnum<{
                     off: "off";
                     on: "on";
                 }>;
-            }, {}, {}>>>;
+            }, z.core.$strip>>>;
             noSignalImageMode: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 noSignalImageMode: z.ZodEnum<{
                     off: "off";
                     on: "on";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             portraitMode: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 portraitMode: z.ZodEnum<{
                     off: "off";
                     90: "90";
                     ___undefined___: "___undefined___";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             powerSaveMode: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 ses: z.ZodBoolean;
                 dpmMode: z.ZodEnum<{
                     off: "off";
@@ -1408,16 +1408,16 @@ export declare const LunaAgentState: z.ZodObject<{
                     "4 hours": "4 hours";
                 }>;
                 do15MinOff: z.ZodBoolean;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             quietMode: z.ZodOptional<z.ZodNullable<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 mode: z.ZodEnum<{
                     off: "off";
                     on: "on";
                 }>;
-            }, {}, {}>>>;
+            }, z.core.$strip>>>;
             RS232CConfiguration: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 mode: z.ZodLiteral<0 | 1>;
                 port: z.ZodOptional<z.ZodNumber>;
                 baudRate: z.ZodOptional<z.ZodLiteral<0 | 1024000 | 110 | 115200 | 1200 | 128000 | 14400 | 19200 | 230400 | 2400 | 256000 | 300 | 38400 | 4800 | 512000 | 57600 | 600 | 768000 | 921600 | 9600>>;
@@ -1426,24 +1426,24 @@ export declare const LunaAgentState: z.ZodObject<{
                 stopBit: z.ZodOptional<z.ZodLiteral<0 | 1 | 2>>;
                 flowControl: z.ZodOptional<z.ZodLiteral<0 | 1 | 2 | 3>>;
                 rxTimeoutInMs: z.ZodOptional<z.ZodNumber>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             simplink: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 simplinkEnable: z.ZodEnum<{
                     off: "off";
                     on: "on";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             tile: z.ZodOptional<z.ZodNullable<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 enabled: z.ZodBoolean;
                 row: z.ZodNumber;
                 column: z.ZodNumber;
                 tileId: z.ZodNumber;
                 naturalMode: z.ZodBoolean;
-            }, {}, {}>>>;
+            }, z.core.$strip>>>;
             usagePermission: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 remoteKeyOperationMode: z.ZodEnum<{
                     normal: "normal";
                     blockAll: "blockAll";
@@ -1454,19 +1454,19 @@ export declare const LunaAgentState: z.ZodObject<{
                     blockAll: "blockAll";
                     usePwrOnly: "usePwrOnly";
                 }>;
-            }, {}, {}>>;
-        }, {}, {}>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         sound: z.ZodOptional<z.ZodObject<{
             muted: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 muted: z.ZodBoolean;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             externalSpeaker: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 externalSpeaker: z.ZodBoolean;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             soundMode: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 mode: z.ZodEnum<{
                     game: "game";
                     sports: "sports";
@@ -1475,28 +1475,28 @@ export declare const LunaAgentState: z.ZodObject<{
                     news: "news";
                     music: "music";
                 }>;
-                balance: z.ZodOptional<z.coerce.ZodCoercedNumber>;
-            }, {}, {}>>;
+                balance: z.ZodOptional<z.ZodCoercedNumber<unknown>>;
+            }, z.core.$strip>>;
             soundOut: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 speakerType: z.ZodEnum<{
                     tv_speaker: "tv_speaker";
                     bt_soundbar: "bt_soundbar";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             volumeLevel: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 level: z.ZodNumber;
                 volOsdEnabled: z.ZodOptional<z.ZodBoolean>;
-            }, {}, {}>>;
-        }, {}, {}>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         storage: z.ZodOptional<z.ZodObject<{
             _changeLogoImageRequest: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 uri: z.ZodString;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             _upgradeApplicationRequest: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 to: z.ZodEnum<{
                     local: "local";
                     usb: "usb";
@@ -1506,15 +1506,15 @@ export declare const LunaAgentState: z.ZodObject<{
                     ipk: "ipk";
                     zip: "zip";
                 }>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             _upgradeFirmwareRequest: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 uri: z.ZodURL;
-            }, {}, {}>>;
-        }, {}, {}>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         time: z.ZodOptional<z.ZodObject<{
             allOnOffTimers: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 timerList: z.ZodArray<z.ZodObject<{
                     id: z.ZodOptional<z.ZodNumber>;
                     type: z.ZodEnum<{
@@ -1524,10 +1524,10 @@ export declare const LunaAgentState: z.ZodObject<{
                     hour: z.ZodNumber;
                     minute: z.ZodNumber;
                     week: z.ZodNumber;
-                }, {}, {}>>;
-            }, {}, {}>>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>>;
             holidaySchedule: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 holidayScheduleList: z.ZodOptional<z.ZodArray<z.ZodObject<{
                     name: z.ZodOptional<z.ZodString>;
                     settings: z.ZodOptional<z.ZodObject<{
@@ -1545,13 +1545,13 @@ export declare const LunaAgentState: z.ZodObject<{
                             monthly: "monthly";
                             yearly: "yearly";
                         }>>;
-                    }, {}, {}>>;
-                }, {}, {}>>>;
-            }, {}, {}>>;
-        }, {}, {}>>;
+                    }, z.core.$strip>>;
+                }, z.core.$strip>>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         customJS: z.ZodOptional<z.ZodObject<{
             _clearBrowsingDataRequest: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 types: z.ZodOptional<z.ZodArray<z.ZodEnum<{
                     all: "all";
                     appcache: "appcache";
@@ -1564,21 +1564,21 @@ export declare const LunaAgentState: z.ZodObject<{
                     serviceWorkers: "serviceWorkers";
                     webSQL: "webSQL";
                 }>>>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             _disableApplicationRequest: z.ZodOptional<z.ZodObject<{
-                _timestamp: z.iso.ZodISODateTime;
+                _timestamp: z.ZodISODateTime;
                 reset: z.ZodOptional<z.ZodBoolean>;
-            }, {}, {}>>;
-        }, {}, {}>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         _debug: z.ZodOptional<z.ZodBoolean>;
-    }, {}, {}>>;
-}, {}, {}>;
+    }, z.core.$strip>>;
+}, z.core.$strip>;
 export type LunaAgentState = z.infer<typeof LunaAgentState>;
 export declare const LunaAgentStatusDetail: z.ZodObject<{
     configuration: z.ZodOptional<z.ZodObject<{
         currentTime: z.ZodOptional<z.ZodObject<{
-            timestamp: z.iso.ZodISODateTime;
-        }, {}, {}>>;
+            timestamp: z.ZodISODateTime;
+        }, z.core.$strip>>;
         localeList: z.ZodOptional<z.ZodObject<{
             localeList: z.ZodArray<z.ZodObject<{
                 language: z.ZodString;
@@ -1586,18 +1586,18 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
                 countries: z.ZodArray<z.ZodObject<{
                     name: z.ZodString;
                     specifier: z.ZodString;
-                }, {}, {}>>;
-            }, {}, {}>>;
-        }, {}, {}>>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         timeZoneList: z.ZodOptional<z.ZodObject<{
             timeZone: z.ZodArray<z.ZodObject<{
                 continent: z.ZodString;
                 country: z.ZodString;
                 city: z.ZodString;
-            }, {}, {}>>;
-        }, {}, {}>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         _debug: z.ZodOptional<z.ZodString>;
-    }, {}, {}>>;
+    }, z.core.$strip>>;
     device: z.ZodOptional<z.ZodObject<{
         networkInfo: z.ZodOptional<z.ZodObject<{
             isInternetConnectionAvailable: z.ZodBoolean;
@@ -1627,8 +1627,8 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
                         manual: "manual";
                         dhcp: "dhcp";
                     }>>;
-                }, {}, {}>>;
-            }, {}, {}>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>;
             wifi: z.ZodObject<{
                 state: z.ZodEnum<{
                     connected: "connected";
@@ -1644,16 +1644,16 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
                 }>>;
                 dns1: z.ZodOptional<z.ZodString>;
                 dns2: z.ZodOptional<z.ZodString>;
-            }, {}, {}>;
-        }, {}, {}>>;
+            }, z.core.$strip>;
+        }, z.core.$strip>>;
         networkMacInfo: z.ZodOptional<z.ZodObject<{
             wiredInfo: z.ZodOptional<z.ZodObject<{
                 macAddress: z.ZodOptional<z.ZodString>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             wifiInfo: z.ZodOptional<z.ZodObject<{
                 macAddress: z.ZodOptional<z.ZodString>;
-            }, {}, {}>>;
-        }, {}, {}>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         platformInfo: z.ZodOptional<z.ZodObject<{
             hardwareVersion: z.ZodString;
             manufacturer: z.ZodString;
@@ -1661,19 +1661,19 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
             sdkVersion: z.ZodString;
             serialNumber: z.ZodString;
             firmwareVersion: z.ZodString;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         sensorValues: z.ZodOptional<z.ZodObject<{
-            backlight: z.coerce.ZodCoercedNumber;
+            backlight: z.ZodCoercedNumber<unknown>;
             checkscreen: z.ZodOptional<z.ZodUnion<readonly [z.ZodObject<{
                 colorValid: z.ZodBoolean;
                 drawRGB: z.ZodNumber;
                 hexValue: z.ZodString;
                 readRGB: z.ZodNumber;
-            }, {}, {}>, z.ZodLiteral<"Unsupported or Error">]>>;
+            }, z.core.$strip>, z.ZodLiteral<"Unsupported or Error">]>>;
             fan: z.ZodOptional<z.ZodUnion<readonly [z.ZodObject<{
                 closedLoop: z.ZodOptional<z.ZodBoolean>;
                 openLoop: z.ZodOptional<z.ZodBoolean>;
-            }, {}, {}>, z.ZodLiteral<"Unsupported or Error">]>>;
+            }, z.core.$strip>, z.ZodLiteral<"Unsupported or Error">]>>;
             humidity: z.ZodOptional<z.ZodUnion<readonly [z.ZodNumber, z.ZodLiteral<"Unsupported or Error">]>>;
             illuminance: z.ZodOptional<z.ZodUnion<readonly [z.ZodNumber, z.ZodLiteral<"Unsupported or Error">]>>;
             rotation: z.ZodOptional<z.ZodUnion<readonly [z.ZodEnum<{
@@ -1683,7 +1683,7 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
                 270: "270";
             }>, z.ZodLiteral<"Unsupported or Error">]>>;
             temperature: z.ZodNumber;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         systemUsageInfo: z.ZodOptional<z.ZodObject<{
             cpus: z.ZodOptional<z.ZodArray<z.ZodObject<{
                 model: z.ZodOptional<z.ZodString>;
@@ -1693,18 +1693,18 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
                     sys: z.ZodOptional<z.ZodNumber>;
                     idle: z.ZodOptional<z.ZodNumber>;
                     irq: z.ZodOptional<z.ZodNumber>;
-                }, {}, {}>;
-            }, {}, {}>>>;
+                }, z.core.$strip>;
+            }, z.core.$strip>>>;
             memory: z.ZodOptional<z.ZodObject<{
                 total: z.ZodOptional<z.ZodNumber>;
                 free: z.ZodOptional<z.ZodNumber>;
                 used: z.ZodOptional<z.ZodNumber>;
                 buffer: z.ZodOptional<z.ZodNumber>;
                 cached: z.ZodOptional<z.ZodNumber>;
-            }, {}, {}>>;
-        }, {}, {}>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         _debug: z.ZodOptional<z.ZodString>;
-    }, {}, {}>>;
+    }, z.core.$strip>>;
     inputSource: z.ZodOptional<z.ZodObject<{
         externalInputList: z.ZodOptional<z.ZodObject<{
             inputSourceList: z.ZodArray<z.ZodObject<{
@@ -1712,41 +1712,41 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
                 signalDetection: z.ZodBoolean;
                 vendorID: z.ZodOptional<z.ZodString>;
                 name: z.ZodOptional<z.ZodString>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             count: z.ZodNumber;
             currentInputPort: z.ZodString;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         _debug: z.ZodOptional<z.ZodString>;
-    }, {}, {}>>;
+    }, z.core.$strip>>;
     power: z.ZodOptional<z.ZodObject<{
         _debug: z.ZodOptional<z.ZodString>;
-    }, {}, {}>>;
+    }, z.core.$strip>>;
     security: z.ZodOptional<z.ZodObject<{
         serverCertificateList: z.ZodOptional<z.ZodObject<{
             serverCertificateList: z.ZodArray<z.ZodObject<{
                 domainName: z.ZodOptional<z.ZodString>;
                 issuerName: z.ZodOptional<z.ZodString>;
-                validFrom: z.ZodOptional<z.iso.ZodISODateTime>;
-                validTo: z.ZodOptional<z.iso.ZodISODateTime>;
-            }, {}, {}>>;
-        }, {}, {}>>;
+                validFrom: z.ZodOptional<z.ZodISODateTime>;
+                validTo: z.ZodOptional<z.ZodISODateTime>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         _debug: z.ZodOptional<z.ZodString>;
-    }, {}, {}>>;
+    }, z.core.$strip>>;
     signage: z.ZodOptional<z.ZodObject<{
         captureScreenStatus: z.ZodOptional<z.ZodObject<{
             data: z.ZodBase64;
             size: z.ZodNumber;
             encoding: z.ZodLiteral<"Base64">;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         usageData: z.ZodOptional<z.ZodObject<{
-            uptime: z.coerce.ZodCoercedNumber;
-            totalUsed: z.coerce.ZodCoercedNumber;
-        }, {}, {}>>;
+            uptime: z.ZodCoercedNumber<unknown>;
+            totalUsed: z.ZodCoercedNumber<unknown>;
+        }, z.core.$strip>>;
         _debug: z.ZodOptional<z.ZodString>;
-    }, {}, {}>>;
+    }, z.core.$strip>>;
     sound: z.ZodOptional<z.ZodObject<{
         _debug: z.ZodOptional<z.ZodString>;
-    }, {}, {}>>;
+    }, z.core.$strip>>;
     storage: z.ZodOptional<z.ZodObject<{
         firmwareUpgradeStatus: z.ZodOptional<z.ZodObject<{
             status: z.ZodEnum<{
@@ -1759,30 +1759,30 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
             }>;
             downloadProgress: z.ZodNumber;
             upgradeProgress: z.ZodNumber;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         usbInfo: z.ZodOptional<z.ZodObject<{
             usbList: z.ZodArray<z.ZodObject<{
                 usbName: z.ZodString;
                 vendor: z.ZodString;
                 product: z.ZodString;
                 deviceId: z.ZodOptional<z.ZodString>;
-            }, {}, {}>>;
-        }, {}, {}>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
         storageInfo: z.ZodOptional<z.ZodObject<{
-            free: z.coerce.ZodCoercedNumber;
-            total: z.coerce.ZodCoercedNumber;
-            used: z.coerce.ZodCoercedNumber;
+            free: z.ZodCoercedNumber<unknown>;
+            total: z.ZodCoercedNumber<unknown>;
+            used: z.ZodCoercedNumber<unknown>;
             externalMemory: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-                free: z.coerce.ZodCoercedNumber;
-                total: z.coerce.ZodCoercedNumber;
-                used: z.coerce.ZodCoercedNumber;
-            }, {}, {}>>>;
-        }, {}, {}>>;
+                free: z.ZodCoercedNumber<unknown>;
+                total: z.ZodCoercedNumber<unknown>;
+                used: z.ZodCoercedNumber<unknown>;
+            }, z.core.$strip>>>;
+        }, z.core.$strip>>;
         _debug: z.ZodOptional<z.ZodString>;
-    }, {}, {}>>;
+    }, z.core.$strip>>;
     time: z.ZodOptional<z.ZodObject<{
         _debug: z.ZodOptional<z.ZodString>;
-    }, {}, {}>>;
+    }, z.core.$strip>>;
     customJS: z.ZodOptional<z.ZodObject<{
         applicationInfo: z.ZodOptional<z.ZodObject<{
             appinfo: z.ZodObject<{
@@ -1812,18 +1812,18 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
                 }>>>;
                 useVirtualKeyboard: z.ZodOptional<z.ZodBoolean>;
                 vendor: z.ZodOptional<z.ZodString>;
-            }, {}, {}>;
-        }, {}, {}>>;
+            }, z.core.$strip>;
+        }, z.core.$strip>>;
         powerOnOffHistory: z.ZodOptional<z.ZodObject<{
             powerOnOffHistory: z.ZodArray<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         webOSVersion: z.ZodOptional<z.ZodObject<{
             webOSVersion: z.ZodString;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         _debug: z.ZodOptional<z.ZodString>;
-    }, {}, {}>>;
+    }, z.core.$strip>>;
     _errorFlags: z.ZodOptional<z.ZodArray<z.ZodString>>;
-}, {}, {}>;
+}, z.core.$strip>;
 export type LunaAgentStatusDetail = z.infer<typeof LunaAgentStatusDetail>;
 export declare const LunaAgentStatusBase: z.ZodObject<{
     has_error: z.ZodDefault<z.ZodBoolean>;
@@ -1832,8 +1832,8 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
     detail: z.ZodNullable<z.ZodObject<{
         configuration: z.ZodOptional<z.ZodObject<{
             currentTime: z.ZodOptional<z.ZodObject<{
-                timestamp: z.iso.ZodISODateTime;
-            }, {}, {}>>;
+                timestamp: z.ZodISODateTime;
+            }, z.core.$strip>>;
             localeList: z.ZodOptional<z.ZodObject<{
                 localeList: z.ZodArray<z.ZodObject<{
                     language: z.ZodString;
@@ -1841,18 +1841,18 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                     countries: z.ZodArray<z.ZodObject<{
                         name: z.ZodString;
                         specifier: z.ZodString;
-                    }, {}, {}>>;
-                }, {}, {}>>;
-            }, {}, {}>>;
+                    }, z.core.$strip>>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>>;
             timeZoneList: z.ZodOptional<z.ZodObject<{
                 timeZone: z.ZodArray<z.ZodObject<{
                     continent: z.ZodString;
                     country: z.ZodString;
                     city: z.ZodString;
-                }, {}, {}>>;
-            }, {}, {}>>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>>;
             _debug: z.ZodOptional<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         device: z.ZodOptional<z.ZodObject<{
             networkInfo: z.ZodOptional<z.ZodObject<{
                 isInternetConnectionAvailable: z.ZodBoolean;
@@ -1882,8 +1882,8 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                             manual: "manual";
                             dhcp: "dhcp";
                         }>>;
-                    }, {}, {}>>;
-                }, {}, {}>;
+                    }, z.core.$strip>>;
+                }, z.core.$strip>;
                 wifi: z.ZodObject<{
                     state: z.ZodEnum<{
                         connected: "connected";
@@ -1899,16 +1899,16 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                     }>>;
                     dns1: z.ZodOptional<z.ZodString>;
                     dns2: z.ZodOptional<z.ZodString>;
-                }, {}, {}>;
-            }, {}, {}>>;
+                }, z.core.$strip>;
+            }, z.core.$strip>>;
             networkMacInfo: z.ZodOptional<z.ZodObject<{
                 wiredInfo: z.ZodOptional<z.ZodObject<{
                     macAddress: z.ZodOptional<z.ZodString>;
-                }, {}, {}>>;
+                }, z.core.$strip>>;
                 wifiInfo: z.ZodOptional<z.ZodObject<{
                     macAddress: z.ZodOptional<z.ZodString>;
-                }, {}, {}>>;
-            }, {}, {}>>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>>;
             platformInfo: z.ZodOptional<z.ZodObject<{
                 hardwareVersion: z.ZodString;
                 manufacturer: z.ZodString;
@@ -1916,19 +1916,19 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                 sdkVersion: z.ZodString;
                 serialNumber: z.ZodString;
                 firmwareVersion: z.ZodString;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             sensorValues: z.ZodOptional<z.ZodObject<{
-                backlight: z.coerce.ZodCoercedNumber;
+                backlight: z.ZodCoercedNumber<unknown>;
                 checkscreen: z.ZodOptional<z.ZodUnion<readonly [z.ZodObject<{
                     colorValid: z.ZodBoolean;
                     drawRGB: z.ZodNumber;
                     hexValue: z.ZodString;
                     readRGB: z.ZodNumber;
-                }, {}, {}>, z.ZodLiteral<"Unsupported or Error">]>>;
+                }, z.core.$strip>, z.ZodLiteral<"Unsupported or Error">]>>;
                 fan: z.ZodOptional<z.ZodUnion<readonly [z.ZodObject<{
                     closedLoop: z.ZodOptional<z.ZodBoolean>;
                     openLoop: z.ZodOptional<z.ZodBoolean>;
-                }, {}, {}>, z.ZodLiteral<"Unsupported or Error">]>>;
+                }, z.core.$strip>, z.ZodLiteral<"Unsupported or Error">]>>;
                 humidity: z.ZodOptional<z.ZodUnion<readonly [z.ZodNumber, z.ZodLiteral<"Unsupported or Error">]>>;
                 illuminance: z.ZodOptional<z.ZodUnion<readonly [z.ZodNumber, z.ZodLiteral<"Unsupported or Error">]>>;
                 rotation: z.ZodOptional<z.ZodUnion<readonly [z.ZodEnum<{
@@ -1938,7 +1938,7 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                     270: "270";
                 }>, z.ZodLiteral<"Unsupported or Error">]>>;
                 temperature: z.ZodNumber;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             systemUsageInfo: z.ZodOptional<z.ZodObject<{
                 cpus: z.ZodOptional<z.ZodArray<z.ZodObject<{
                     model: z.ZodOptional<z.ZodString>;
@@ -1948,18 +1948,18 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                         sys: z.ZodOptional<z.ZodNumber>;
                         idle: z.ZodOptional<z.ZodNumber>;
                         irq: z.ZodOptional<z.ZodNumber>;
-                    }, {}, {}>;
-                }, {}, {}>>>;
+                    }, z.core.$strip>;
+                }, z.core.$strip>>>;
                 memory: z.ZodOptional<z.ZodObject<{
                     total: z.ZodOptional<z.ZodNumber>;
                     free: z.ZodOptional<z.ZodNumber>;
                     used: z.ZodOptional<z.ZodNumber>;
                     buffer: z.ZodOptional<z.ZodNumber>;
                     cached: z.ZodOptional<z.ZodNumber>;
-                }, {}, {}>>;
-            }, {}, {}>>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>>;
             _debug: z.ZodOptional<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         inputSource: z.ZodOptional<z.ZodObject<{
             externalInputList: z.ZodOptional<z.ZodObject<{
                 inputSourceList: z.ZodArray<z.ZodObject<{
@@ -1967,41 +1967,41 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                     signalDetection: z.ZodBoolean;
                     vendorID: z.ZodOptional<z.ZodString>;
                     name: z.ZodOptional<z.ZodString>;
-                }, {}, {}>>;
+                }, z.core.$strip>>;
                 count: z.ZodNumber;
                 currentInputPort: z.ZodString;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             _debug: z.ZodOptional<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         power: z.ZodOptional<z.ZodObject<{
             _debug: z.ZodOptional<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         security: z.ZodOptional<z.ZodObject<{
             serverCertificateList: z.ZodOptional<z.ZodObject<{
                 serverCertificateList: z.ZodArray<z.ZodObject<{
                     domainName: z.ZodOptional<z.ZodString>;
                     issuerName: z.ZodOptional<z.ZodString>;
-                    validFrom: z.ZodOptional<z.iso.ZodISODateTime>;
-                    validTo: z.ZodOptional<z.iso.ZodISODateTime>;
-                }, {}, {}>>;
-            }, {}, {}>>;
+                    validFrom: z.ZodOptional<z.ZodISODateTime>;
+                    validTo: z.ZodOptional<z.ZodISODateTime>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>>;
             _debug: z.ZodOptional<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         signage: z.ZodOptional<z.ZodObject<{
             captureScreenStatus: z.ZodOptional<z.ZodObject<{
                 data: z.ZodBase64;
                 size: z.ZodNumber;
                 encoding: z.ZodLiteral<"Base64">;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             usageData: z.ZodOptional<z.ZodObject<{
-                uptime: z.coerce.ZodCoercedNumber;
-                totalUsed: z.coerce.ZodCoercedNumber;
-            }, {}, {}>>;
+                uptime: z.ZodCoercedNumber<unknown>;
+                totalUsed: z.ZodCoercedNumber<unknown>;
+            }, z.core.$strip>>;
             _debug: z.ZodOptional<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         sound: z.ZodOptional<z.ZodObject<{
             _debug: z.ZodOptional<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         storage: z.ZodOptional<z.ZodObject<{
             firmwareUpgradeStatus: z.ZodOptional<z.ZodObject<{
                 status: z.ZodEnum<{
@@ -2014,30 +2014,30 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                 }>;
                 downloadProgress: z.ZodNumber;
                 upgradeProgress: z.ZodNumber;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             usbInfo: z.ZodOptional<z.ZodObject<{
                 usbList: z.ZodArray<z.ZodObject<{
                     usbName: z.ZodString;
                     vendor: z.ZodString;
                     product: z.ZodString;
                     deviceId: z.ZodOptional<z.ZodString>;
-                }, {}, {}>>;
-            }, {}, {}>>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>>;
             storageInfo: z.ZodOptional<z.ZodObject<{
-                free: z.coerce.ZodCoercedNumber;
-                total: z.coerce.ZodCoercedNumber;
-                used: z.coerce.ZodCoercedNumber;
+                free: z.ZodCoercedNumber<unknown>;
+                total: z.ZodCoercedNumber<unknown>;
+                used: z.ZodCoercedNumber<unknown>;
                 externalMemory: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-                    free: z.coerce.ZodCoercedNumber;
-                    total: z.coerce.ZodCoercedNumber;
-                    used: z.coerce.ZodCoercedNumber;
-                }, {}, {}>>>;
-            }, {}, {}>>;
+                    free: z.ZodCoercedNumber<unknown>;
+                    total: z.ZodCoercedNumber<unknown>;
+                    used: z.ZodCoercedNumber<unknown>;
+                }, z.core.$strip>>>;
+            }, z.core.$strip>>;
             _debug: z.ZodOptional<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         time: z.ZodOptional<z.ZodObject<{
             _debug: z.ZodOptional<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         customJS: z.ZodOptional<z.ZodObject<{
             applicationInfo: z.ZodOptional<z.ZodObject<{
                 appinfo: z.ZodObject<{
@@ -2067,23 +2067,23 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
                     }>>>;
                     useVirtualKeyboard: z.ZodOptional<z.ZodBoolean>;
                     vendor: z.ZodOptional<z.ZodString>;
-                }, {}, {}>;
-            }, {}, {}>>;
+                }, z.core.$strip>;
+            }, z.core.$strip>>;
             powerOnOffHistory: z.ZodOptional<z.ZodObject<{
                 powerOnOffHistory: z.ZodArray<z.ZodString>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             webOSVersion: z.ZodOptional<z.ZodObject<{
                 webOSVersion: z.ZodString;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             _debug: z.ZodOptional<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         _errorFlags: z.ZodOptional<z.ZodArray<z.ZodString>>;
-    }, {}, {}>>;
-}, {}, {}>;
+    }, z.core.$strip>>;
+}, z.core.$strip>;
 export type LunaAgentStatusBase = z.infer<typeof LunaAgentStatusBase>;
 export declare const LunaAgentStatus: z.ZodObject<{
-    create_timestamp: z.iso.ZodISODateTime;
-    modify_timestamp: z.iso.ZodISODateTime;
+    create_timestamp: z.ZodISODateTime;
+    modify_timestamp: z.ZodISODateTime;
     is_deleted: z.ZodDefault<z.ZodBoolean>;
     has_error: z.ZodDefault<z.ZodBoolean>;
     error_stack: z.ZodNullable<z.ZodString>;
@@ -2091,8 +2091,8 @@ export declare const LunaAgentStatus: z.ZodObject<{
     detail: z.ZodNullable<z.ZodObject<{
         configuration: z.ZodOptional<z.ZodObject<{
             currentTime: z.ZodOptional<z.ZodObject<{
-                timestamp: z.iso.ZodISODateTime;
-            }, {}, {}>>;
+                timestamp: z.ZodISODateTime;
+            }, z.core.$strip>>;
             localeList: z.ZodOptional<z.ZodObject<{
                 localeList: z.ZodArray<z.ZodObject<{
                     language: z.ZodString;
@@ -2100,18 +2100,18 @@ export declare const LunaAgentStatus: z.ZodObject<{
                     countries: z.ZodArray<z.ZodObject<{
                         name: z.ZodString;
                         specifier: z.ZodString;
-                    }, {}, {}>>;
-                }, {}, {}>>;
-            }, {}, {}>>;
+                    }, z.core.$strip>>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>>;
             timeZoneList: z.ZodOptional<z.ZodObject<{
                 timeZone: z.ZodArray<z.ZodObject<{
                     continent: z.ZodString;
                     country: z.ZodString;
                     city: z.ZodString;
-                }, {}, {}>>;
-            }, {}, {}>>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>>;
             _debug: z.ZodOptional<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         device: z.ZodOptional<z.ZodObject<{
             networkInfo: z.ZodOptional<z.ZodObject<{
                 isInternetConnectionAvailable: z.ZodBoolean;
@@ -2141,8 +2141,8 @@ export declare const LunaAgentStatus: z.ZodObject<{
                             manual: "manual";
                             dhcp: "dhcp";
                         }>>;
-                    }, {}, {}>>;
-                }, {}, {}>;
+                    }, z.core.$strip>>;
+                }, z.core.$strip>;
                 wifi: z.ZodObject<{
                     state: z.ZodEnum<{
                         connected: "connected";
@@ -2158,16 +2158,16 @@ export declare const LunaAgentStatus: z.ZodObject<{
                     }>>;
                     dns1: z.ZodOptional<z.ZodString>;
                     dns2: z.ZodOptional<z.ZodString>;
-                }, {}, {}>;
-            }, {}, {}>>;
+                }, z.core.$strip>;
+            }, z.core.$strip>>;
             networkMacInfo: z.ZodOptional<z.ZodObject<{
                 wiredInfo: z.ZodOptional<z.ZodObject<{
                     macAddress: z.ZodOptional<z.ZodString>;
-                }, {}, {}>>;
+                }, z.core.$strip>>;
                 wifiInfo: z.ZodOptional<z.ZodObject<{
                     macAddress: z.ZodOptional<z.ZodString>;
-                }, {}, {}>>;
-            }, {}, {}>>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>>;
             platformInfo: z.ZodOptional<z.ZodObject<{
                 hardwareVersion: z.ZodString;
                 manufacturer: z.ZodString;
@@ -2175,19 +2175,19 @@ export declare const LunaAgentStatus: z.ZodObject<{
                 sdkVersion: z.ZodString;
                 serialNumber: z.ZodString;
                 firmwareVersion: z.ZodString;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             sensorValues: z.ZodOptional<z.ZodObject<{
-                backlight: z.coerce.ZodCoercedNumber;
+                backlight: z.ZodCoercedNumber<unknown>;
                 checkscreen: z.ZodOptional<z.ZodUnion<readonly [z.ZodObject<{
                     colorValid: z.ZodBoolean;
                     drawRGB: z.ZodNumber;
                     hexValue: z.ZodString;
                     readRGB: z.ZodNumber;
-                }, {}, {}>, z.ZodLiteral<"Unsupported or Error">]>>;
+                }, z.core.$strip>, z.ZodLiteral<"Unsupported or Error">]>>;
                 fan: z.ZodOptional<z.ZodUnion<readonly [z.ZodObject<{
                     closedLoop: z.ZodOptional<z.ZodBoolean>;
                     openLoop: z.ZodOptional<z.ZodBoolean>;
-                }, {}, {}>, z.ZodLiteral<"Unsupported or Error">]>>;
+                }, z.core.$strip>, z.ZodLiteral<"Unsupported or Error">]>>;
                 humidity: z.ZodOptional<z.ZodUnion<readonly [z.ZodNumber, z.ZodLiteral<"Unsupported or Error">]>>;
                 illuminance: z.ZodOptional<z.ZodUnion<readonly [z.ZodNumber, z.ZodLiteral<"Unsupported or Error">]>>;
                 rotation: z.ZodOptional<z.ZodUnion<readonly [z.ZodEnum<{
@@ -2197,7 +2197,7 @@ export declare const LunaAgentStatus: z.ZodObject<{
                     270: "270";
                 }>, z.ZodLiteral<"Unsupported or Error">]>>;
                 temperature: z.ZodNumber;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             systemUsageInfo: z.ZodOptional<z.ZodObject<{
                 cpus: z.ZodOptional<z.ZodArray<z.ZodObject<{
                     model: z.ZodOptional<z.ZodString>;
@@ -2207,18 +2207,18 @@ export declare const LunaAgentStatus: z.ZodObject<{
                         sys: z.ZodOptional<z.ZodNumber>;
                         idle: z.ZodOptional<z.ZodNumber>;
                         irq: z.ZodOptional<z.ZodNumber>;
-                    }, {}, {}>;
-                }, {}, {}>>>;
+                    }, z.core.$strip>;
+                }, z.core.$strip>>>;
                 memory: z.ZodOptional<z.ZodObject<{
                     total: z.ZodOptional<z.ZodNumber>;
                     free: z.ZodOptional<z.ZodNumber>;
                     used: z.ZodOptional<z.ZodNumber>;
                     buffer: z.ZodOptional<z.ZodNumber>;
                     cached: z.ZodOptional<z.ZodNumber>;
-                }, {}, {}>>;
-            }, {}, {}>>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>>;
             _debug: z.ZodOptional<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         inputSource: z.ZodOptional<z.ZodObject<{
             externalInputList: z.ZodOptional<z.ZodObject<{
                 inputSourceList: z.ZodArray<z.ZodObject<{
@@ -2226,41 +2226,41 @@ export declare const LunaAgentStatus: z.ZodObject<{
                     signalDetection: z.ZodBoolean;
                     vendorID: z.ZodOptional<z.ZodString>;
                     name: z.ZodOptional<z.ZodString>;
-                }, {}, {}>>;
+                }, z.core.$strip>>;
                 count: z.ZodNumber;
                 currentInputPort: z.ZodString;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             _debug: z.ZodOptional<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         power: z.ZodOptional<z.ZodObject<{
             _debug: z.ZodOptional<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         security: z.ZodOptional<z.ZodObject<{
             serverCertificateList: z.ZodOptional<z.ZodObject<{
                 serverCertificateList: z.ZodArray<z.ZodObject<{
                     domainName: z.ZodOptional<z.ZodString>;
                     issuerName: z.ZodOptional<z.ZodString>;
-                    validFrom: z.ZodOptional<z.iso.ZodISODateTime>;
-                    validTo: z.ZodOptional<z.iso.ZodISODateTime>;
-                }, {}, {}>>;
-            }, {}, {}>>;
+                    validFrom: z.ZodOptional<z.ZodISODateTime>;
+                    validTo: z.ZodOptional<z.ZodISODateTime>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>>;
             _debug: z.ZodOptional<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         signage: z.ZodOptional<z.ZodObject<{
             captureScreenStatus: z.ZodOptional<z.ZodObject<{
                 data: z.ZodBase64;
                 size: z.ZodNumber;
                 encoding: z.ZodLiteral<"Base64">;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             usageData: z.ZodOptional<z.ZodObject<{
-                uptime: z.coerce.ZodCoercedNumber;
-                totalUsed: z.coerce.ZodCoercedNumber;
-            }, {}, {}>>;
+                uptime: z.ZodCoercedNumber<unknown>;
+                totalUsed: z.ZodCoercedNumber<unknown>;
+            }, z.core.$strip>>;
             _debug: z.ZodOptional<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         sound: z.ZodOptional<z.ZodObject<{
             _debug: z.ZodOptional<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         storage: z.ZodOptional<z.ZodObject<{
             firmwareUpgradeStatus: z.ZodOptional<z.ZodObject<{
                 status: z.ZodEnum<{
@@ -2273,30 +2273,30 @@ export declare const LunaAgentStatus: z.ZodObject<{
                 }>;
                 downloadProgress: z.ZodNumber;
                 upgradeProgress: z.ZodNumber;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             usbInfo: z.ZodOptional<z.ZodObject<{
                 usbList: z.ZodArray<z.ZodObject<{
                     usbName: z.ZodString;
                     vendor: z.ZodString;
                     product: z.ZodString;
                     deviceId: z.ZodOptional<z.ZodString>;
-                }, {}, {}>>;
-            }, {}, {}>>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>>;
             storageInfo: z.ZodOptional<z.ZodObject<{
-                free: z.coerce.ZodCoercedNumber;
-                total: z.coerce.ZodCoercedNumber;
-                used: z.coerce.ZodCoercedNumber;
+                free: z.ZodCoercedNumber<unknown>;
+                total: z.ZodCoercedNumber<unknown>;
+                used: z.ZodCoercedNumber<unknown>;
                 externalMemory: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-                    free: z.coerce.ZodCoercedNumber;
-                    total: z.coerce.ZodCoercedNumber;
-                    used: z.coerce.ZodCoercedNumber;
-                }, {}, {}>>>;
-            }, {}, {}>>;
+                    free: z.ZodCoercedNumber<unknown>;
+                    total: z.ZodCoercedNumber<unknown>;
+                    used: z.ZodCoercedNumber<unknown>;
+                }, z.core.$strip>>>;
+            }, z.core.$strip>>;
             _debug: z.ZodOptional<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         time: z.ZodOptional<z.ZodObject<{
             _debug: z.ZodOptional<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         customJS: z.ZodOptional<z.ZodObject<{
             applicationInfo: z.ZodOptional<z.ZodObject<{
                 appinfo: z.ZodObject<{
@@ -2326,17 +2326,17 @@ export declare const LunaAgentStatus: z.ZodObject<{
                     }>>>;
                     useVirtualKeyboard: z.ZodOptional<z.ZodBoolean>;
                     vendor: z.ZodOptional<z.ZodString>;
-                }, {}, {}>;
-            }, {}, {}>>;
+                }, z.core.$strip>;
+            }, z.core.$strip>>;
             powerOnOffHistory: z.ZodOptional<z.ZodObject<{
                 powerOnOffHistory: z.ZodArray<z.ZodString>;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             webOSVersion: z.ZodOptional<z.ZodObject<{
                 webOSVersion: z.ZodString;
-            }, {}, {}>>;
+            }, z.core.$strip>>;
             _debug: z.ZodOptional<z.ZodString>;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         _errorFlags: z.ZodOptional<z.ZodArray<z.ZodString>>;
-    }, {}, {}>>;
-}, {}, {}>;
+    }, z.core.$strip>>;
+}, z.core.$strip>;
 export type LunaAgentStatus = z.infer<typeof LunaAgentStatus>;

@@ -1,4 +1,4 @@
-import { z } from 'zod/v4';
+import * as z from "zod";
 export declare const RENDERER_AGENT_URN = "urn:dsbunny:agent:renderer";
 export declare const RendererAgentStateDetail: z.ZodObject<{
     playlist_element_name: z.ZodEnum<{
@@ -14,15 +14,15 @@ export declare const RendererAgentStateDetail: z.ZodObject<{
         "@type": z.ZodLiteral<"RecipeLink">;
         id: z.ZodUUID;
         href: z.ZodURL;
-        expires: z.ZodOptional<z.iso.ZodISODateTime>;
+        expires: z.ZodOptional<z.ZodISODateTime>;
         size: z.ZodNumber;
         hash: z.ZodObject<{
             method: z.ZodLiteral<"SHA256">;
             hex: z.ZodString;
-        }, {}, {}>;
+        }, z.core.$strip>;
         md5: z.ZodString;
         integrity: z.ZodString;
-    }, {}, {}>>;
+    }, z.core.$strip>>;
     storage: z.ZodEnum<{
         usb: "usb";
         internal: "internal";
@@ -32,8 +32,8 @@ export declare const RendererAgentStateDetail: z.ZodObject<{
         vendor: z.ZodString;
         product: z.ZodString;
         device_id: z.ZodString;
-    }, {}, {}>>;
-}, {}, {}>;
+    }, z.core.$strip>>;
+}, z.core.$strip>;
 export type RendererAgentStateDetail = z.infer<typeof RendererAgentStateDetail>;
 export declare const RendererScreenOrientation: z.ZodObject<{
     type: z.ZodEnum<{
@@ -43,7 +43,7 @@ export declare const RendererScreenOrientation: z.ZodObject<{
         "landscape-secondary": "landscape-secondary";
     }>;
     angle: z.ZodNumber;
-}, {}, {}>;
+}, z.core.$strip>;
 export type RendererScreenOrientation = z.infer<typeof RendererScreenOrientation>;
 export declare const RendererScreen: z.ZodObject<{
     width: z.ZodNumber;
@@ -57,9 +57,9 @@ export declare const RendererScreen: z.ZodObject<{
             "landscape-secondary": "landscape-secondary";
         }>;
         angle: z.ZodNumber;
-    }, {}, {}>;
+    }, z.core.$strip>;
     device_pixel_ratio: z.ZodNumber;
-}, {}, {}>;
+}, z.core.$strip>;
 export type RendererScreen = z.infer<typeof RendererScreen>;
 export declare const RendererAgentStateBase: z.ZodObject<{
     pull_interval: z.ZodNullable<z.ZodNumber>;
@@ -81,15 +81,15 @@ export declare const RendererAgentStateBase: z.ZodObject<{
             "@type": z.ZodLiteral<"RecipeLink">;
             id: z.ZodUUID;
             href: z.ZodURL;
-            expires: z.ZodOptional<z.iso.ZodISODateTime>;
+            expires: z.ZodOptional<z.ZodISODateTime>;
             size: z.ZodNumber;
             hash: z.ZodObject<{
                 method: z.ZodLiteral<"SHA256">;
                 hex: z.ZodString;
-            }, {}, {}>;
+            }, z.core.$strip>;
             md5: z.ZodString;
             integrity: z.ZodString;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         storage: z.ZodEnum<{
             usb: "usb";
             internal: "internal";
@@ -99,13 +99,13 @@ export declare const RendererAgentStateBase: z.ZodObject<{
             vendor: z.ZodString;
             product: z.ZodString;
             device_id: z.ZodString;
-        }, {}, {}>>;
-    }, {}, {}>>;
-}, {}, {}>;
+        }, z.core.$strip>>;
+    }, z.core.$strip>>;
+}, z.core.$strip>;
 export type RendererAgentStateBase = z.infer<typeof RendererAgentStateBase>;
 export declare const RendererAgentState: z.ZodObject<{
-    create_timestamp: z.iso.ZodISODateTime;
-    modify_timestamp: z.iso.ZodISODateTime;
+    create_timestamp: z.ZodISODateTime;
+    modify_timestamp: z.ZodISODateTime;
     is_deleted: z.ZodDefault<z.ZodBoolean>;
     pull_interval: z.ZodNullable<z.ZodNumber>;
     push_interval: z.ZodNullable<z.ZodNumber>;
@@ -126,15 +126,15 @@ export declare const RendererAgentState: z.ZodObject<{
             "@type": z.ZodLiteral<"RecipeLink">;
             id: z.ZodUUID;
             href: z.ZodURL;
-            expires: z.ZodOptional<z.iso.ZodISODateTime>;
+            expires: z.ZodOptional<z.ZodISODateTime>;
             size: z.ZodNumber;
             hash: z.ZodObject<{
                 method: z.ZodLiteral<"SHA256">;
                 hex: z.ZodString;
-            }, {}, {}>;
+            }, z.core.$strip>;
             md5: z.ZodString;
             integrity: z.ZodString;
-        }, {}, {}>>;
+        }, z.core.$strip>>;
         storage: z.ZodEnum<{
             usb: "usb";
             internal: "internal";
@@ -144,9 +144,9 @@ export declare const RendererAgentState: z.ZodObject<{
             vendor: z.ZodString;
             product: z.ZodString;
             device_id: z.ZodString;
-        }, {}, {}>>;
-    }, {}, {}>>;
-}, {}, {}>;
+        }, z.core.$strip>>;
+    }, z.core.$strip>>;
+}, z.core.$strip>;
 export type RendererAgentState = z.infer<typeof RendererAgentState>;
 export declare const RendererAgentStatusDetail: z.ZodObject<{
     screen: z.ZodObject<{
@@ -161,9 +161,9 @@ export declare const RendererAgentStatusDetail: z.ZodObject<{
                 "landscape-secondary": "landscape-secondary";
             }>;
             angle: z.ZodNumber;
-        }, {}, {}>;
+        }, z.core.$strip>;
         device_pixel_ratio: z.ZodNumber;
-    }, {}, {}>;
+    }, z.core.$strip>;
     capabilities: z.ZodArray<z.ZodDiscriminatedUnion<[z.ZodObject<{
         mime_subtype: z.ZodString;
         is_supported: z.ZodBoolean;
@@ -174,7 +174,7 @@ export declare const RendererAgentStatusDetail: z.ZodObject<{
         width: z.ZodNumber;
         height: z.ZodNumber;
         frame_rate: z.ZodNumber;
-    }, {}, {}>, z.ZodObject<{
+    }, z.core.$strip>, z.ZodObject<{
         mime_subtype: z.ZodString;
         is_supported: z.ZodBoolean;
         is_smooth: z.ZodBoolean;
@@ -183,7 +183,7 @@ export declare const RendererAgentStatusDetail: z.ZodObject<{
         codec: z.ZodString;
         sample_rate: z.ZodNumber;
         channels: z.ZodString;
-    }, {}, {}>, z.ZodObject<{
+    }, z.core.$strip>, z.ZodObject<{
         mime_subtype: z.ZodString;
         is_supported: z.ZodBoolean;
         mime_type: z.ZodLiteral<"image">;
@@ -191,8 +191,8 @@ export declare const RendererAgentStatusDetail: z.ZodObject<{
         height: z.ZodNumber;
         is_smooth: z.ZodLiteral<false>;
         is_power_efficient: z.ZodLiteral<true>;
-    }, {}, {}>]>>;
-}, {}, {}>;
+    }, z.core.$strip>], "mime_type">>;
+}, z.core.$strip>;
 export type RendererAgentStatusDetail = z.infer<typeof RendererAgentStatusDetail>;
 export declare const RendererAgentStatusBase: z.ZodObject<{
     has_error: z.ZodDefault<z.ZodBoolean>;
@@ -211,9 +211,9 @@ export declare const RendererAgentStatusBase: z.ZodObject<{
                     "landscape-secondary": "landscape-secondary";
                 }>;
                 angle: z.ZodNumber;
-            }, {}, {}>;
+            }, z.core.$strip>;
             device_pixel_ratio: z.ZodNumber;
-        }, {}, {}>;
+        }, z.core.$strip>;
         capabilities: z.ZodArray<z.ZodDiscriminatedUnion<[z.ZodObject<{
             mime_subtype: z.ZodString;
             is_supported: z.ZodBoolean;
@@ -224,7 +224,7 @@ export declare const RendererAgentStatusBase: z.ZodObject<{
             width: z.ZodNumber;
             height: z.ZodNumber;
             frame_rate: z.ZodNumber;
-        }, {}, {}>, z.ZodObject<{
+        }, z.core.$strip>, z.ZodObject<{
             mime_subtype: z.ZodString;
             is_supported: z.ZodBoolean;
             is_smooth: z.ZodBoolean;
@@ -233,7 +233,7 @@ export declare const RendererAgentStatusBase: z.ZodObject<{
             codec: z.ZodString;
             sample_rate: z.ZodNumber;
             channels: z.ZodString;
-        }, {}, {}>, z.ZodObject<{
+        }, z.core.$strip>, z.ZodObject<{
             mime_subtype: z.ZodString;
             is_supported: z.ZodBoolean;
             mime_type: z.ZodLiteral<"image">;
@@ -241,13 +241,13 @@ export declare const RendererAgentStatusBase: z.ZodObject<{
             height: z.ZodNumber;
             is_smooth: z.ZodLiteral<false>;
             is_power_efficient: z.ZodLiteral<true>;
-        }, {}, {}>]>>;
-    }, {}, {}>>;
-}, {}, {}>;
+        }, z.core.$strip>], "mime_type">>;
+    }, z.core.$strip>>;
+}, z.core.$strip>;
 export type RendererAgentStatusBase = z.infer<typeof RendererAgentStatusBase>;
 export declare const RendererAgentStatus: z.ZodObject<{
-    create_timestamp: z.iso.ZodISODateTime;
-    modify_timestamp: z.iso.ZodISODateTime;
+    create_timestamp: z.ZodISODateTime;
+    modify_timestamp: z.ZodISODateTime;
     is_deleted: z.ZodDefault<z.ZodBoolean>;
     has_error: z.ZodDefault<z.ZodBoolean>;
     error_stack: z.ZodNullable<z.ZodString>;
@@ -265,9 +265,9 @@ export declare const RendererAgentStatus: z.ZodObject<{
                     "landscape-secondary": "landscape-secondary";
                 }>;
                 angle: z.ZodNumber;
-            }, {}, {}>;
+            }, z.core.$strip>;
             device_pixel_ratio: z.ZodNumber;
-        }, {}, {}>;
+        }, z.core.$strip>;
         capabilities: z.ZodArray<z.ZodDiscriminatedUnion<[z.ZodObject<{
             mime_subtype: z.ZodString;
             is_supported: z.ZodBoolean;
@@ -278,7 +278,7 @@ export declare const RendererAgentStatus: z.ZodObject<{
             width: z.ZodNumber;
             height: z.ZodNumber;
             frame_rate: z.ZodNumber;
-        }, {}, {}>, z.ZodObject<{
+        }, z.core.$strip>, z.ZodObject<{
             mime_subtype: z.ZodString;
             is_supported: z.ZodBoolean;
             is_smooth: z.ZodBoolean;
@@ -287,7 +287,7 @@ export declare const RendererAgentStatus: z.ZodObject<{
             codec: z.ZodString;
             sample_rate: z.ZodNumber;
             channels: z.ZodString;
-        }, {}, {}>, z.ZodObject<{
+        }, z.core.$strip>, z.ZodObject<{
             mime_subtype: z.ZodString;
             is_supported: z.ZodBoolean;
             mime_type: z.ZodLiteral<"image">;
@@ -295,7 +295,7 @@ export declare const RendererAgentStatus: z.ZodObject<{
             height: z.ZodNumber;
             is_smooth: z.ZodLiteral<false>;
             is_power_efficient: z.ZodLiteral<true>;
-        }, {}, {}>]>>;
-    }, {}, {}>>;
-}, {}, {}>;
+        }, z.core.$strip>], "mime_type">>;
+    }, z.core.$strip>>;
+}, z.core.$strip>;
 export type RendererAgentStatus = z.infer<typeof RendererAgentStatus>;
