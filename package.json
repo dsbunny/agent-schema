@@ -15,9 +15,9 @@
 	"devDependencies": {
 		"typescript": "^5.5.3",
 		"zod": "^4.1.11",
-		"@dsbunny/capability-schema": "github:dsbunny/capability-schema#4c19cee",
-		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema#6f44c25",
-		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#5dd9aef"
+		"@dsbunny/capability-schema": "github:dsbunny/capability-schema#f7dfd46",
+		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema#63f5823",
+		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#241bd6e"
 	},
 	"peerDependencies": {
 		"zod": "^4.0.0",
