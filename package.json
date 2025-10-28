@@ -13,16 +13,16 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"devDependencies": {
-		"typescript": "^5.5.3",
-		"zod": "^4.1.11",
 		"@dsbunny/capability-schema": "github:dsbunny/capability-schema#f7dfd46",
 		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema#63f5823",
-		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#241bd6e"
+		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#4606d76",
+		"typescript": "^5.5.3",
+		"zod": "^4.1.11"
 	},
 	"peerDependencies": {
-		"zod": "^4.0.0",
 		"@dsbunny/capability-schema": "github:dsbunny/capability-schema",
 		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema",
-		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema"
+		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema",
+		"zod": "^4.0.0"
 	}
 }
