@@ -14,7 +14,7 @@
 	},
 	"devDependencies": {
 		"@dsbunny/capability-schema": "github:dsbunny/capability-schema#f7dfd46",
-		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema#63f5823",
+		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema#1baefea",
 		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#c500cbd",
 		"typescript": "^5.5.3",
 		"zod": "^4.1.11"
