@@ -1,4 +1,4 @@
-import * as z from "zod";
+import * as z from "zod/v4";
 export declare const ClearCacheRequest: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
 }, z.core.$strip>;

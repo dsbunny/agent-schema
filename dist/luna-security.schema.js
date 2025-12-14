@@ -1,5 +1,5 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
-import * as z from "zod";
+import * as z from "zod/v4";
 export const PEMChain = z.string().refine((val) => {
     return val.trim().startsWith('-----BEGIN CERTIFICATE-----') && val.trim().endsWith('-----END CERTIFICATE-----');
 });

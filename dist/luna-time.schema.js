@@ -1,5 +1,5 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
-import * as z from "zod";
+import * as z from "zod/v4";
 export const TimerWeek = z.number().int().min(0).max(127)
     .describe('The week bitmask for the timer, where Monday = 1, Tuesday = 2, ..., Sunday = 64, and Everyday = 127');
 export const OnOffTimer = z.object({

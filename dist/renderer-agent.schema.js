@@ -1,5 +1,5 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
-import * as z from "zod";
+import * as z from "zod/v4";
 import { AgentState, AgentStateBase, AgentStatus, AgentStatusBase, } from '@dsbunny/rmm-schema';
 import { RecipeSchema } from '@dsbunny/publisher-schema';
 import { CapabilityTypes } from '@dsbunny/capability-schema';

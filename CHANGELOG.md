@@ -2,6 +2,7 @@
 ## v6.3.17
 - Bump to `zod@4.1.11`.
 - Move Zod to `peerDependencies` so users can bring their own Zod.
+- Force `zod/v4` due to import incompatibility.
 
 ## v6.2.16
 - Replace `LunaAgentStatusDetail.errors` with per module `_debug` containers.

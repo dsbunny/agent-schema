@@ -1,4 +1,4 @@
-import * as z from "zod";
+import * as z from "zod/v4";
 export declare const BlockedPort: z.ZodObject<{
     blockedPort: z.ZodNumber;
     direction: z.ZodEnum<{

@@ -19,7 +19,7 @@
 		"typescript": "^5.9.3",
 		"zod": "^4.1.12",
 		"@dsbunny/capability-schema": "github:dsbunny/capability-schema#dbe2588",
-		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema#ca273d3",
+		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema#4c443de",
 		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#106e8ab"
 	},
 	"peerDependencies": {

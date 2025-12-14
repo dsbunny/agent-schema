@@ -1,4 +1,4 @@
-import * as z from "zod";
+import * as z from "zod/v4";
 export declare const ExternalInputListStatus: z.ZodObject<{
     inputSourceList: z.ZodArray<z.ZodObject<{
         inputPort: z.ZodString;

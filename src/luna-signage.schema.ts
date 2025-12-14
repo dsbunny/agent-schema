@@ -1,6 +1,6 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 
-import * as z from "zod";
+import * as z from "zod/v4";
 
 export const CaptureScreenRequest = z.object({
 	_timestamp: z.iso.datetime()
@@ -191,7 +191,7 @@ export const RS232CState = z.object({
 		 768_000,
 		 921_600,
 		   9_600,
-		       0,
+		 0,
 	]).optional()
 		.describe('The RS-232C baud rate, e.g. 115200'),
 	dataBit: z.literal([
