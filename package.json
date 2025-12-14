@@ -1,6 +1,6 @@
 {
 	"name": "@dsbunny/agent-schema",
-	"version": "6.2.16",
+	"version": "6.3.17",
 	"description": "Schema for RMM agents",
 	"type": "module",
 	"main": "dist/index.js",
@@ -10,19 +10,22 @@
 	"private": false,
 	"scripts": {
 		"build": "tsc",
+		"clean": "rm -rf dist node_modules package-lock.json",
+		"pull:upstream": "./scripts/pull-upstream.sh",
+		"rebuild": "npm run clean && npm run pull:upstream && npm install && npm run build",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"devDependencies": {
-		"@dsbunny/capability-schema": "github:dsbunny/capability-schema#f7dfd46",
-		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema#1baefea",
-		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#c500cbd",
-		"typescript": "^5.5.3",
-		"zod": "^4.1.11"
+		"typescript": "^5.9.3",
+		"zod": "^4.1.12",
+		"@dsbunny/capability-schema": "github:dsbunny/capability-schema#dbe2588",
+		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema#ca273d3",
+		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#106e8ab"
 	},
 	"peerDependencies": {
+		"zod": "^4.0.0",
 		"@dsbunny/capability-schema": "github:dsbunny/capability-schema",
 		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema",
-		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema",
-		"zod": "^4.0.0"
+		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema"
 	}
 }
