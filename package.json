@@ -1,6 +1,6 @@
 {
 	"name": "@dsbunny/agent-schema",
-	"version": "6.3.17",
+	"version": "6.3.18",
 	"description": "Schema for RMM agents",
 	"type": "module",
 	"main": "dist/index.js",
@@ -16,16 +16,16 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"devDependencies": {
+		"@dsbunny/capdb-schema": "github:dsbunny/capdb-schema#b89d320",
+		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema#b71254f",
+		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#69c4b13",
 		"typescript": "^5.9.3",
-		"zod": "^4.1.12",
-		"@dsbunny/capability-schema": "github:dsbunny/capability-schema#dbe2588",
-		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema#4c443de",
-		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#106e8ab"
+		"zod": "^4.3.6"
 	},
 	"peerDependencies": {
-		"zod": "^4.0.0",
-		"@dsbunny/capability-schema": "github:dsbunny/capability-schema",
+		"@dsbunny/capdb-schema": "github:dsbunny/capdb-schema",
 		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema",
-		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema"
+		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema",
+		"zod": "^4.3.0"
 	}
 }

@@ -130,9 +130,9 @@ export declare const RS232CState: z.ZodObject<{
     port: z.ZodOptional<z.ZodNumber>;
     baudRate: z.ZodOptional<z.ZodLiteral<0 | 1024000 | 110 | 115200 | 1200 | 128000 | 14400 | 19200 | 230400 | 2400 | 256000 | 300 | 38400 | 4800 | 512000 | 57600 | 600 | 768000 | 921600 | 9600>>;
     dataBit: z.ZodOptional<z.ZodLiteral<0 | 8 | 7>>;
-    parity: z.ZodOptional<z.ZodLiteral<0 | 1 | 2 | 3>>;
+    parity: z.ZodOptional<z.ZodLiteral<0 | 3 | 1 | 2>>;
     stopBit: z.ZodOptional<z.ZodLiteral<0 | 1 | 2>>;
-    flowControl: z.ZodOptional<z.ZodLiteral<0 | 1 | 2 | 3>>;
+    flowControl: z.ZodOptional<z.ZodLiteral<0 | 3 | 1 | 2>>;
     rxTimeoutInMs: z.ZodOptional<z.ZodNumber>;
 }, z.core.$strip>;
 export type RS232CState = z.infer<typeof RS232CState>;
@@ -285,9 +285,9 @@ export declare const SignageState: z.ZodObject<{
         port: z.ZodOptional<z.ZodNumber>;
         baudRate: z.ZodOptional<z.ZodLiteral<0 | 1024000 | 110 | 115200 | 1200 | 128000 | 14400 | 19200 | 230400 | 2400 | 256000 | 300 | 38400 | 4800 | 512000 | 57600 | 600 | 768000 | 921600 | 9600>>;
         dataBit: z.ZodOptional<z.ZodLiteral<0 | 8 | 7>>;
-        parity: z.ZodOptional<z.ZodLiteral<0 | 1 | 2 | 3>>;
+        parity: z.ZodOptional<z.ZodLiteral<0 | 3 | 1 | 2>>;
         stopBit: z.ZodOptional<z.ZodLiteral<0 | 1 | 2>>;
-        flowControl: z.ZodOptional<z.ZodLiteral<0 | 1 | 2 | 3>>;
+        flowControl: z.ZodOptional<z.ZodLiteral<0 | 3 | 1 | 2>>;
         rxTimeoutInMs: z.ZodOptional<z.ZodNumber>;
     }, z.core.$strip>>;
     simplink: z.ZodOptional<z.ZodObject<{

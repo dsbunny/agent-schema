@@ -8,7 +8,7 @@ import {
 	AgentStatusBase,
 } from '@dsbunny/rmm-schema';
 import { RecipeSchema } from '@dsbunny/publisher-schema';
-import { CapabilityTypes } from '@dsbunny/capability-schema';
+import { CapabilityTypes } from '@dsbunny/capdb-schema';
 
 export const RENDERER_AGENT_URN = 'urn:dsbunny:agent:renderer';
 

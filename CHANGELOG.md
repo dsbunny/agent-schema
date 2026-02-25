@@ -1,4 +1,8 @@
 # Changelog
+## v6.3.18
+- Bump for `@dsbunny/capdb-schema` rename.
+- Bump to `zod@4.3.6`.
+
 ## v6.3.17
 - Bump to `zod@4.1.11`.
 - Move Zod to `peerDependencies` so users can bring their own Zod.

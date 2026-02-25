@@ -2,7 +2,7 @@
 import * as z from "zod/v4";
 import { AgentState, AgentStateBase, AgentStatus, AgentStatusBase, } from '@dsbunny/rmm-schema';
 import { RecipeSchema } from '@dsbunny/publisher-schema';
-import { CapabilityTypes } from '@dsbunny/capability-schema';
+import { CapabilityTypes } from '@dsbunny/capdb-schema';
 export const RENDERER_AGENT_URN = 'urn:dsbunny:agent:renderer';
 // #region State
 export const RendererAgentStateDetail = z.object({
