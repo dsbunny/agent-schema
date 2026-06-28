@@ -17,7 +17,7 @@
 	},
 	"devDependencies": {
 		"@dsbunny/capdb-schema": "github:dsbunny/capdb-schema#4a21bcc",
-		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema#28b474b",
+		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema#f26f040",
 		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#8a3bd52",
 		"typescript": "^5.9.3",
 		"zod": "^4.3.6"
