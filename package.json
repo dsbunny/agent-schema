@@ -1,6 +1,6 @@
 {
 	"name": "@dsbunny/agent-schema",
-	"version": "6.3.18",
+	"version": "6.3.19",
 	"description": "Schema for RMM agents",
 	"type": "module",
 	"main": "dist/index.js",
@@ -8,6 +8,11 @@
 	"author": "Steve-o <fnjordy@gmail.com>",
 	"license": "MIT",
 	"private": false,
+	"allowScripts": {
+		"@dsbunny/capdb-schema": true,
+		"@dsbunny/recipe-schema": true,
+		"@dsbunny/rmm-schema": true
+	},
 	"scripts": {
 		"build": "tsc",
 		"clean": "rm -rf dist node_modules package-lock.json",
@@ -16,15 +21,15 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"devDependencies": {
-		"@dsbunny/capdb-schema": "github:dsbunny/capdb-schema#4a21bcc",
-		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema#f26f040",
-		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#8a3bd52",
+		"@dsbunny/capdb-schema": "github:dsbunny/capdb-schema#76a8b31",
+		"@dsbunny/recipe-schema": "github:dsbunny/recipe-schema#c6942a2",
+		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#822dfc1",
 		"typescript": "^5.9.3",
 		"zod": "^4.3.6"
 	},
 	"peerDependencies": {
 		"@dsbunny/capdb-schema": "github:dsbunny/capdb-schema",
-		"@dsbunny/publisher-schema": "github:dsbunny/publisher-schema",
+		"@dsbunny/recipe-schema": "github:dsbunny/recipe-schema",
 		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema",
 		"zod": "^4.3.0"
 	}

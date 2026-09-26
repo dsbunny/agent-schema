@@ -13,7 +13,7 @@ export declare const RendererAgentStateDetail: z.ZodObject<{
     recipe_link: z.ZodOptional<z.ZodObject<{
         "@type": z.ZodLiteral<"RecipeLink">;
         recipe_id: z.ZodUUID;
-        asset_id: z.ZodUUID;
+        ref_id: z.ZodOptional<z.ZodString>;
         href: z.ZodURL;
         expires: z.ZodOptional<z.ZodISODateTime>;
         size: z.ZodNumber;
@@ -81,7 +81,7 @@ export declare const RendererAgentStateBase: z.ZodObject<{
         recipe_link: z.ZodOptional<z.ZodObject<{
             "@type": z.ZodLiteral<"RecipeLink">;
             recipe_id: z.ZodUUID;
-            asset_id: z.ZodUUID;
+            ref_id: z.ZodOptional<z.ZodString>;
             href: z.ZodURL;
             expires: z.ZodOptional<z.ZodISODateTime>;
             size: z.ZodNumber;
@@ -127,7 +127,7 @@ export declare const RendererAgentState: z.ZodObject<{
         recipe_link: z.ZodOptional<z.ZodObject<{
             "@type": z.ZodLiteral<"RecipeLink">;
             recipe_id: z.ZodUUID;
-            asset_id: z.ZodUUID;
+            ref_id: z.ZodOptional<z.ZodString>;
             href: z.ZodURL;
             expires: z.ZodOptional<z.ZodISODateTime>;
             size: z.ZodNumber;

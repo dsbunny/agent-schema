@@ -1,4 +1,7 @@
 # Changelog
+## v6.3.19
+- Relocate to `@dsbunny/recipe-schema`.
+
 ## v6.3.18
 - Bump for `@dsbunny/capdb-schema` rename.
 - Bump to `zod@4.3.6`.
