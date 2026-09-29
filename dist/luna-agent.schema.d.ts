@@ -1,6 +1,6 @@
 import * as z from "zod/v4";
 export declare const LUNA_AGENT_URN = "urn:dsbunny:agent:luna";
-export declare const LunaAgentStateDetail: z.ZodObject<{
+export declare const LunaAgentStateDetailSchema: z.ZodObject<{
     configuration: z.ZodOptional<z.ZodObject<{
         _clearCacheRequest: z.ZodOptional<z.ZodObject<{
             _timestamp: z.ZodISODateTime;
@@ -518,8 +518,8 @@ export declare const LunaAgentStateDetail: z.ZodObject<{
     }, z.core.$strip>>;
     _debug: z.ZodOptional<z.ZodBoolean>;
 }, z.core.$strip>;
-export type LunaAgentStateDetail = z.infer<typeof LunaAgentStateDetail>;
-export declare const LunaAgentStateBase: z.ZodObject<{
+export type LunaAgentStateDetail = z.infer<typeof LunaAgentStateDetailSchema>;
+export declare const LunaAgentStateBaseSchema: z.ZodObject<{
     pull_interval: z.ZodNullable<z.ZodNumber>;
     push_interval: z.ZodNullable<z.ZodNumber>;
     min_backoff_interval: z.ZodNullable<z.ZodNumber>;
@@ -1044,8 +1044,8 @@ export declare const LunaAgentStateBase: z.ZodObject<{
         _debug: z.ZodOptional<z.ZodBoolean>;
     }, z.core.$strip>>;
 }, z.core.$strip>;
-export type LunaAgentStateBase = z.infer<typeof LunaAgentStateBase>;
-export declare const LunaAgentState: z.ZodObject<{
+export type LunaAgentStateBase = z.infer<typeof LunaAgentStateBaseSchema>;
+export declare const LunaAgentStateSchema: z.ZodObject<{
     create_timestamp: z.ZodISODateTime;
     modify_timestamp: z.ZodISODateTime;
     is_deleted: z.ZodDefault<z.ZodBoolean>;
@@ -1573,8 +1573,8 @@ export declare const LunaAgentState: z.ZodObject<{
         _debug: z.ZodOptional<z.ZodBoolean>;
     }, z.core.$strip>>;
 }, z.core.$strip>;
-export type LunaAgentState = z.infer<typeof LunaAgentState>;
-export declare const LunaAgentStatusDetail: z.ZodObject<{
+export type LunaAgentState = z.infer<typeof LunaAgentStateSchema>;
+export declare const LunaAgentStatusDetailSchema: z.ZodObject<{
     configuration: z.ZodOptional<z.ZodObject<{
         currentTime: z.ZodOptional<z.ZodObject<{
             timestamp: z.ZodISODateTime;
@@ -1824,8 +1824,8 @@ export declare const LunaAgentStatusDetail: z.ZodObject<{
     }, z.core.$strip>>;
     _errorFlags: z.ZodOptional<z.ZodArray<z.ZodString>>;
 }, z.core.$strip>;
-export type LunaAgentStatusDetail = z.infer<typeof LunaAgentStatusDetail>;
-export declare const LunaAgentStatusBase: z.ZodObject<{
+export type LunaAgentStatusDetail = z.infer<typeof LunaAgentStatusDetailSchema>;
+export declare const LunaAgentStatusBaseSchema: z.ZodObject<{
     has_error: z.ZodDefault<z.ZodBoolean>;
     error_stack: z.ZodNullable<z.ZodString>;
     uri: z.ZodLiteral<"urn:dsbunny:agent:luna">;
@@ -2080,8 +2080,8 @@ export declare const LunaAgentStatusBase: z.ZodObject<{
         _errorFlags: z.ZodOptional<z.ZodArray<z.ZodString>>;
     }, z.core.$strip>>;
 }, z.core.$strip>;
-export type LunaAgentStatusBase = z.infer<typeof LunaAgentStatusBase>;
-export declare const LunaAgentStatus: z.ZodObject<{
+export type LunaAgentStatusBase = z.infer<typeof LunaAgentStatusBaseSchema>;
+export declare const LunaAgentStatusSchema: z.ZodObject<{
     create_timestamp: z.ZodISODateTime;
     modify_timestamp: z.ZodISODateTime;
     is_deleted: z.ZodDefault<z.ZodBoolean>;
@@ -2339,4 +2339,4 @@ export declare const LunaAgentStatus: z.ZodObject<{
         _errorFlags: z.ZodOptional<z.ZodArray<z.ZodString>>;
     }, z.core.$strip>>;
 }, z.core.$strip>;
-export type LunaAgentStatus = z.infer<typeof LunaAgentStatus>;
+export type LunaAgentStatus = z.infer<typeof LunaAgentStatusSchema>;

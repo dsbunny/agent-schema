@@ -1,6 +1,6 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 import * as z from "zod/v4";
-export const ExternalInputListStatus = z.object({
+export const ExternalInputListStatusSchema = z.object({
     inputSourceList: z.array(z.object({
         inputPort: z.string()
             .describe('The input source label, e.g. "ext://hdmi:1"'),
@@ -18,8 +18,8 @@ export const ExternalInputListStatus = z.object({
         .describe('The current input source label, e.g. "ext://hdmi:1"'),
 });
 // #region Status
-export const InputSourceStatus = z.object({
-    externalInputList: ExternalInputListStatus.optional()
+export const InputSourceStatusSchema = z.object({
+    externalInputList: ExternalInputListStatusSchema.optional()
         .describe('The list of external input sources'),
     _debug: z.string().optional()
         .describe('SCAP debug mode output'),

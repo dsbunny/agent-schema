@@ -1,4 +1,7 @@
 # Changelog
+## v7.0.20
+- Split schema definitions to separate Schema suffix to resolve vsCode and tooling confusion.
+
 ## v6.3.19
 - Relocate to `@dsbunny/recipe-schema`.
 

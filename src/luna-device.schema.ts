@@ -2,7 +2,7 @@
 
 import * as z from "zod/v4";
 
-export const BlockedPort = z.object({
+export const BlockedPortSchema = z.object({
 	blockedPort: z.number().int().min(1).max(65535)
 		.describe('The blocked port number, e.g., 80'),
 	direction: z.enum(['in', 'out', 'all'])
@@ -11,18 +11,18 @@ export const BlockedPort = z.object({
 		.describe('The protocol of the blocked port, e.g., "tcp" or "udp"'),
 })
 	.describe('The blocked port in the format "port/direction/protocol"');
-export type BlockedPort = z.infer<typeof BlockedPort>;
+export type BlockedPort = z.infer<typeof BlockedPortSchema>;
 
-export const BlockedPortListState = z.object({
+export const BlockedPortListStateSchema = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the last time the blocked port list was updated'),
-	blockedPortList: z.array(BlockedPort).max(30)
+	blockedPortList: z.array(BlockedPortSchema).max(30)
 		.describe('The list of blocked ports, maximum 30 entries'),
 })
 	.describe('The blocked port list, containing multiple blocked ports');
-export type BlockedPortListState = z.infer<typeof BlockedPortListState>;
+export type BlockedPortListState = z.infer<typeof BlockedPortListStateSchema>;
 
-export const NetworkCheckupState = z.object({
+export const NetworkCheckupStateSchema = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the last time the network checkup was performed'),
 	mode: z.enum(['default', 'manual'])
@@ -31,9 +31,9 @@ export const NetworkCheckupState = z.object({
 		.describe('The URL for the network checkup, e.g., "https://example.com/checkup"'),
 })
 	.describe('The network checkup information, including mode and URL');
-export type NetworkCheckupState = z.infer<typeof NetworkCheckupState>;
+export type NetworkCheckupState = z.infer<typeof NetworkCheckupStateSchema>;
 
-export const NetworkState = z.object({
+export const NetworkStateSchema = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the last time the network information was updated'),
 	wired: z.object({
@@ -69,9 +69,9 @@ export const NetworkState = z.object({
 			.describe('The secondary DNS server of the Wi-Fi connection'),
 	}).describe('The Wi-Fi network connection information'),
 });
-export type NetworkState = z.infer<typeof NetworkState>;
+export type NetworkState = z.infer<typeof NetworkStateSchema>;
 
-export const NetworkStatus = z.object({
+export const NetworkStatusSchema = z.object({
 	isInternetConnectionAvailable: z.boolean()
 		.describe('Whether the internet connection is available or not'),
 	wired: z.object({
@@ -136,9 +136,9 @@ export const NetworkStatus = z.object({
 	// - `wired.proxyinfo`: Describes the proxy information for the wired connection.
 })
 	.describe('The network information of the agent, including wired and Wi-Fi connections');
-export type NetworkStatus = z.infer<typeof NetworkStatus>;
+export type NetworkStatus = z.infer<typeof NetworkStatusSchema>;
 
-export const NetworkMacStatus = z.object({
+export const NetworkMacStatusSchema = z.object({
 	wiredInfo: z.object({
 		macAddress: z.string().optional()
 			.describe('The MAC address of the wired network interface, e.g., "00:1A:2B:3C:4D:5E"'),
@@ -149,9 +149,9 @@ export const NetworkMacStatus = z.object({
 	}).optional(),
 })
 	.describe('The MAC address information of the network interfaces, including wired and Wi-Fi');
-export type NetworkMacStatus = z.infer<typeof NetworkMacStatus>;
+export type NetworkMacStatus = z.infer<typeof NetworkMacStatusSchema>;
 
-export const PlatformStatus = z.object({
+export const PlatformStatusSchema = z.object({
 	hardwareVersion: z.string()
 		.describe('The hardware version of the signage device'),
 	manufacturer: z.string()
@@ -166,9 +166,9 @@ export const PlatformStatus = z.object({
 		.describe('The firmware version of the signage device, e.g., "WEBOS1"'),
 })
 	.describe('The platform information of the signage device, including hardware version, manufacturer, model name, SDK version, serial number, and firmware version');
-export type PlatformStatus = z.infer<typeof PlatformStatus>;
+export type PlatformStatus = z.infer<typeof PlatformStatusSchema>;
 
-export const ProxyState = z.object({
+export const ProxyStateSchema = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the last time the proxy information was updated'),
 	enabled: z.boolean()
@@ -183,18 +183,18 @@ export const ProxyState = z.object({
 		.describe('The password for the proxy server, e.g. "password"'),
 })
 	.describe('The proxy information of the agent, including whether it is enabled, the IP address, and the port number');
-export type ProxyState = z.infer<typeof ProxyState>;
+export type ProxyState = z.infer<typeof ProxyStateSchema>;
 
-export const SensorValuesState = z.object({
+export const SensorValuesStateSchema = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the last time the sensor values were updated'),
 	backlight: z.number().int().min(0).max(100)
 		.describe('The backlight level of the display. Range: [0–100]'),
 })
 	.describe('The sensor values of the agent, including backlight level and screen color check information');
-export type SensorValuesState = z.infer<typeof SensorValuesState>;
+export type SensorValuesState = z.infer<typeof SensorValuesStateSchema>;
 
-export const SensorValuesStatus = z.object({
+export const SensorValuesStatusSchema = z.object({
 	backlight: z.coerce.number().int().min(0).max(100)
 		.describe('The backlight level of the display. Range: [0–100]'),
 	checkscreen: z.union([z.object({
@@ -226,9 +226,9 @@ export const SensorValuesStatus = z.object({
 		.describe('The temperature level of the agent. Range: [-50–100]'),
 })
 	.describe('The sensor values of the agent, including backlight level and screen color check information');
-export type SensorValuesStatus = z.infer<typeof SensorValuesStatus>;
+export type SensorValuesStatus = z.infer<typeof SensorValuesStatusSchema>;
 
-export const SystemUsageStatus = z.object({
+export const SystemUsageStatusSchema = z.object({
 	cpus: z.array(z.object({
 		model: z.string().optional()  // Not supported in WebOS 6.0 and later.
 			.describe('The CPU model name'),
@@ -259,35 +259,35 @@ export const SystemUsageStatus = z.object({
 	}).optional(),
 })
 	.describe('The system usage information of the agent, including CPU and memory usage');
-export type SystemUsageStatus = z.infer<typeof SystemUsageStatus>;
+export type SystemUsageStatus = z.infer<typeof SystemUsageStatusSchema>;
 
 // #region State
-export const DeviceState = z.object({
+export const DeviceStateSchema = z.object({
 	// Skip `beaconInfo` as deprecated.
-	blockedPortList: BlockedPortListState.optional(),
+	blockedPortList: BlockedPortListStateSchema.optional(),
 	// Skip `eddystoneInfo` due to security concerns and narrow use cases.
 	// Skip `HDBaseTMode` due to narrow use cases.
 	// Skip `iBeaconInfo` due to security concerns and narrow use cases.
-	networkCheckup: NetworkCheckupState.optional(),
-	network: NetworkState.optional(),
-	proxy: ProxyState.optional(),
-	sensorValues: SensorValuesState.optional(),
+	networkCheckup: NetworkCheckupStateSchema.optional(),
+	network: NetworkStateSchema.optional(),
+	proxy: ProxyStateSchema.optional(),
+	sensorValues: SensorValuesStateSchema.optional(),
 	// Skip `softApInfo` due to security concerns.
 	// Skip `wps` due to security concerns and narrow use cases.
 });
-export type DeviceState = z.infer<typeof DeviceState>;
+export type DeviceState = z.infer<typeof DeviceStateSchema>;
 // #endregion
 
 // #region Status
-export const DeviceStatus = z.object({
-	networkInfo: NetworkStatus.optional(),
-	networkMacInfo: NetworkMacStatus.optional(),
-	platformInfo: PlatformStatus.optional(),
-	sensorValues: SensorValuesStatus.optional(),
-	systemUsageInfo: SystemUsageStatus.optional(),
+export const DeviceStatusSchema = z.object({
+	networkInfo: NetworkStatusSchema.optional(),
+	networkMacInfo: NetworkMacStatusSchema.optional(),
+	platformInfo: PlatformStatusSchema.optional(),
+	sensorValues: SensorValuesStatusSchema.optional(),
+	systemUsageInfo: SystemUsageStatusSchema.optional(),
 	// Skip `wifiList` due to security concerns.
 	_debug: z.string().optional()
 		.describe('SCAP debug mode output'),
 });
-export type DeviceStatus = z.infer<typeof DeviceStatus>;
+export type DeviceStatus = z.infer<typeof DeviceStatusSchema>;
 // #endregion

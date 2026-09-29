@@ -1,6 +1,6 @@
 import * as z from "zod/v4";
 export declare const RENDERER_AGENT_URN = "urn:dsbunny:agent:renderer";
-export declare const RendererAgentStateDetail: z.ZodObject<{
+export declare const RendererAgentStateDetailSchema: z.ZodObject<{
     playlist_element_name: z.ZodEnum<{
         "android-play-list": "android-play-list";
         "brightsign-play-list": "brightsign-play-list";
@@ -35,8 +35,8 @@ export declare const RendererAgentStateDetail: z.ZodObject<{
         device_id: z.ZodString;
     }, z.core.$strip>>;
 }, z.core.$strip>;
-export type RendererAgentStateDetail = z.infer<typeof RendererAgentStateDetail>;
-export declare const RendererScreenOrientation: z.ZodObject<{
+export type RendererAgentStateDetail = z.infer<typeof RendererAgentStateDetailSchema>;
+export declare const RendererScreenOrientationSchema: z.ZodObject<{
     type: z.ZodEnum<{
         "portrait-primary": "portrait-primary";
         "portrait-secondary": "portrait-secondary";
@@ -45,8 +45,8 @@ export declare const RendererScreenOrientation: z.ZodObject<{
     }>;
     angle: z.ZodNumber;
 }, z.core.$strip>;
-export type RendererScreenOrientation = z.infer<typeof RendererScreenOrientation>;
-export declare const RendererScreen: z.ZodObject<{
+export type RendererScreenOrientation = z.infer<typeof RendererScreenOrientationSchema>;
+export declare const RendererScreenSchema: z.ZodObject<{
     width: z.ZodNumber;
     height: z.ZodNumber;
     is_extended: z.ZodBoolean;
@@ -61,8 +61,8 @@ export declare const RendererScreen: z.ZodObject<{
     }, z.core.$strip>;
     device_pixel_ratio: z.ZodNumber;
 }, z.core.$strip>;
-export type RendererScreen = z.infer<typeof RendererScreen>;
-export declare const RendererAgentStateBase: z.ZodObject<{
+export type RendererScreen = z.infer<typeof RendererScreenSchema>;
+export declare const RendererAgentStateBaseSchema: z.ZodObject<{
     pull_interval: z.ZodNullable<z.ZodNumber>;
     push_interval: z.ZodNullable<z.ZodNumber>;
     min_backoff_interval: z.ZodNullable<z.ZodNumber>;
@@ -104,8 +104,8 @@ export declare const RendererAgentStateBase: z.ZodObject<{
         }, z.core.$strip>>;
     }, z.core.$strip>>;
 }, z.core.$strip>;
-export type RendererAgentStateBase = z.infer<typeof RendererAgentStateBase>;
-export declare const RendererAgentState: z.ZodObject<{
+export type RendererAgentStateBase = z.infer<typeof RendererAgentStateBaseSchema>;
+export declare const RendererAgentStateSchema: z.ZodObject<{
     create_timestamp: z.ZodISODateTime;
     modify_timestamp: z.ZodISODateTime;
     is_deleted: z.ZodDefault<z.ZodBoolean>;
@@ -150,8 +150,8 @@ export declare const RendererAgentState: z.ZodObject<{
         }, z.core.$strip>>;
     }, z.core.$strip>>;
 }, z.core.$strip>;
-export type RendererAgentState = z.infer<typeof RendererAgentState>;
-export declare const RendererAgentStatusDetail: z.ZodObject<{
+export type RendererAgentState = z.infer<typeof RendererAgentStateSchema>;
+export declare const RendererAgentStatusDetailSchema: z.ZodObject<{
     screen: z.ZodObject<{
         width: z.ZodNumber;
         height: z.ZodNumber;
@@ -196,8 +196,8 @@ export declare const RendererAgentStatusDetail: z.ZodObject<{
         is_power_efficient: z.ZodLiteral<true>;
     }, z.core.$strip>], "mime_type">>;
 }, z.core.$strip>;
-export type RendererAgentStatusDetail = z.infer<typeof RendererAgentStatusDetail>;
-export declare const RendererAgentStatusBase: z.ZodObject<{
+export type RendererAgentStatusDetail = z.infer<typeof RendererAgentStatusDetailSchema>;
+export declare const RendererAgentStatusBaseSchema: z.ZodObject<{
     has_error: z.ZodDefault<z.ZodBoolean>;
     error_stack: z.ZodNullable<z.ZodString>;
     uri: z.ZodLiteral<"urn:dsbunny:agent:renderer">;
@@ -247,8 +247,8 @@ export declare const RendererAgentStatusBase: z.ZodObject<{
         }, z.core.$strip>], "mime_type">>;
     }, z.core.$strip>>;
 }, z.core.$strip>;
-export type RendererAgentStatusBase = z.infer<typeof RendererAgentStatusBase>;
-export declare const RendererAgentStatus: z.ZodObject<{
+export type RendererAgentStatusBase = z.infer<typeof RendererAgentStatusBaseSchema>;
+export declare const RendererAgentStatusSchema: z.ZodObject<{
     create_timestamp: z.ZodISODateTime;
     modify_timestamp: z.ZodISODateTime;
     is_deleted: z.ZodDefault<z.ZodBoolean>;
@@ -301,4 +301,4 @@ export declare const RendererAgentStatus: z.ZodObject<{
         }, z.core.$strip>], "mime_type">>;
     }, z.core.$strip>>;
 }, z.core.$strip>;
-export type RendererAgentStatus = z.infer<typeof RendererAgentStatus>;
+export type RendererAgentStatus = z.infer<typeof RendererAgentStatusSchema>;

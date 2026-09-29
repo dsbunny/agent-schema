@@ -1,5 +1,5 @@
 import * as z from "zod/v4";
-export declare const ExternalInputListStatus: z.ZodObject<{
+export declare const ExternalInputListStatusSchema: z.ZodObject<{
     inputSourceList: z.ZodArray<z.ZodObject<{
         inputPort: z.ZodString;
         signalDetection: z.ZodBoolean;
@@ -9,8 +9,8 @@ export declare const ExternalInputListStatus: z.ZodObject<{
     count: z.ZodNumber;
     currentInputPort: z.ZodString;
 }, z.core.$strip>;
-export type ExternalInputListStatus = z.infer<typeof ExternalInputListStatus>;
-export declare const InputSourceStatus: z.ZodObject<{
+export type ExternalInputListStatus = z.infer<typeof ExternalInputListStatusSchema>;
+export declare const InputSourceStatusSchema: z.ZodObject<{
     externalInputList: z.ZodOptional<z.ZodObject<{
         inputSourceList: z.ZodArray<z.ZodObject<{
             inputPort: z.ZodString;
@@ -23,4 +23,4 @@ export declare const InputSourceStatus: z.ZodObject<{
     }, z.core.$strip>>;
     _debug: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>;
-export type InputSourceStatus = z.infer<typeof InputSourceStatus>;
+export type InputSourceStatus = z.infer<typeof InputSourceStatusSchema>;

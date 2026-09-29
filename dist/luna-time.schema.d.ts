@@ -1,7 +1,7 @@
 import * as z from "zod/v4";
-export declare const TimerWeek: z.ZodNumber;
-export type TimerWeek = z.infer<typeof TimerWeek>;
-export declare const OnOffTimer: z.ZodObject<{
+export declare const TimerWeekSchema: z.ZodNumber;
+export type TimerWeek = z.infer<typeof TimerWeekSchema>;
+export declare const OnOffTimerSchema: z.ZodObject<{
     id: z.ZodOptional<z.ZodNumber>;
     type: z.ZodEnum<{
         OFFTIMER: "OFFTIMER";
@@ -11,8 +11,8 @@ export declare const OnOffTimer: z.ZodObject<{
     minute: z.ZodNumber;
     week: z.ZodNumber;
 }, z.core.$strip>;
-export type OnOffTimer = z.infer<typeof OnOffTimer>;
-export declare const AllOnOffTimersState: z.ZodObject<{
+export type OnOffTimer = z.infer<typeof OnOffTimerSchema>;
+export declare const AllOnOffTimersStateSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
     timerList: z.ZodArray<z.ZodObject<{
         id: z.ZodOptional<z.ZodNumber>;
@@ -25,8 +25,8 @@ export declare const AllOnOffTimersState: z.ZodObject<{
         week: z.ZodNumber;
     }, z.core.$strip>>;
 }, z.core.$strip>;
-export type AllOnOffTimersState = z.infer<typeof AllOnOffTimersState>;
-export declare const HolidayScheduleState: z.ZodObject<{
+export type AllOnOffTimersState = z.infer<typeof AllOnOffTimersStateSchema>;
+export declare const HolidayScheduleStateSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
     holidayScheduleList: z.ZodOptional<z.ZodArray<z.ZodObject<{
         name: z.ZodOptional<z.ZodString>;
@@ -48,8 +48,8 @@ export declare const HolidayScheduleState: z.ZodObject<{
         }, z.core.$strip>>;
     }, z.core.$strip>>>;
 }, z.core.$strip>;
-export type HolidayScheduleState = z.infer<typeof HolidayScheduleState>;
-export declare const TimeState: z.ZodObject<{
+export type HolidayScheduleState = z.infer<typeof HolidayScheduleStateSchema>;
+export declare const TimeStateSchema: z.ZodObject<{
     allOnOffTimers: z.ZodOptional<z.ZodObject<{
         _timestamp: z.ZodISODateTime;
         timerList: z.ZodArray<z.ZodObject<{
@@ -86,8 +86,8 @@ export declare const TimeState: z.ZodObject<{
         }, z.core.$strip>>>;
     }, z.core.$strip>>;
 }, z.core.$strip>;
-export type TimeState = z.infer<typeof TimeState>;
-export declare const TimeStatus: z.ZodObject<{
+export type TimeState = z.infer<typeof TimeStateSchema>;
+export declare const TimeStatusSchema: z.ZodObject<{
     _debug: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>;
-export type TimeStatus = z.infer<typeof TimeStatus>;
+export type TimeStatus = z.infer<typeof TimeStatusSchema>;

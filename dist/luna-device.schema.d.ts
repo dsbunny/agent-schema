@@ -1,5 +1,5 @@
 import * as z from "zod/v4";
-export declare const BlockedPort: z.ZodObject<{
+export declare const BlockedPortSchema: z.ZodObject<{
     blockedPort: z.ZodNumber;
     direction: z.ZodEnum<{
         out: "out";
@@ -11,8 +11,8 @@ export declare const BlockedPort: z.ZodObject<{
         udp: "udp";
     }>;
 }, z.core.$strip>;
-export type BlockedPort = z.infer<typeof BlockedPort>;
-export declare const BlockedPortListState: z.ZodObject<{
+export type BlockedPort = z.infer<typeof BlockedPortSchema>;
+export declare const BlockedPortListStateSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
     blockedPortList: z.ZodArray<z.ZodObject<{
         blockedPort: z.ZodNumber;
@@ -27,8 +27,8 @@ export declare const BlockedPortListState: z.ZodObject<{
         }>;
     }, z.core.$strip>>;
 }, z.core.$strip>;
-export type BlockedPortListState = z.infer<typeof BlockedPortListState>;
-export declare const NetworkCheckupState: z.ZodObject<{
+export type BlockedPortListState = z.infer<typeof BlockedPortListStateSchema>;
+export declare const NetworkCheckupStateSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
     mode: z.ZodEnum<{
         default: "default";
@@ -36,8 +36,8 @@ export declare const NetworkCheckupState: z.ZodObject<{
     }>;
     url: z.ZodOptional<z.ZodURL>;
 }, z.core.$strip>;
-export type NetworkCheckupState = z.infer<typeof NetworkCheckupState>;
-export declare const NetworkState: z.ZodObject<{
+export type NetworkCheckupState = z.infer<typeof NetworkCheckupStateSchema>;
+export declare const NetworkStateSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
     wired: z.ZodObject<{
         enabled: z.ZodBoolean;
@@ -64,8 +64,8 @@ export declare const NetworkState: z.ZodObject<{
         dns2: z.ZodOptional<z.ZodString>;
     }, z.core.$strip>;
 }, z.core.$strip>;
-export type NetworkState = z.infer<typeof NetworkState>;
-export declare const NetworkStatus: z.ZodObject<{
+export type NetworkState = z.infer<typeof NetworkStateSchema>;
+export declare const NetworkStatusSchema: z.ZodObject<{
     isInternetConnectionAvailable: z.ZodBoolean;
     wired: z.ZodObject<{
         state: z.ZodEnum<{
@@ -112,8 +112,8 @@ export declare const NetworkStatus: z.ZodObject<{
         dns2: z.ZodOptional<z.ZodString>;
     }, z.core.$strip>;
 }, z.core.$strip>;
-export type NetworkStatus = z.infer<typeof NetworkStatus>;
-export declare const NetworkMacStatus: z.ZodObject<{
+export type NetworkStatus = z.infer<typeof NetworkStatusSchema>;
+export declare const NetworkMacStatusSchema: z.ZodObject<{
     wiredInfo: z.ZodOptional<z.ZodObject<{
         macAddress: z.ZodOptional<z.ZodString>;
     }, z.core.$strip>>;
@@ -121,8 +121,8 @@ export declare const NetworkMacStatus: z.ZodObject<{
         macAddress: z.ZodOptional<z.ZodString>;
     }, z.core.$strip>>;
 }, z.core.$strip>;
-export type NetworkMacStatus = z.infer<typeof NetworkMacStatus>;
-export declare const PlatformStatus: z.ZodObject<{
+export type NetworkMacStatus = z.infer<typeof NetworkMacStatusSchema>;
+export declare const PlatformStatusSchema: z.ZodObject<{
     hardwareVersion: z.ZodString;
     manufacturer: z.ZodString;
     modelName: z.ZodString;
@@ -130,8 +130,8 @@ export declare const PlatformStatus: z.ZodObject<{
     serialNumber: z.ZodString;
     firmwareVersion: z.ZodString;
 }, z.core.$strip>;
-export type PlatformStatus = z.infer<typeof PlatformStatus>;
-export declare const ProxyState: z.ZodObject<{
+export type PlatformStatus = z.infer<typeof PlatformStatusSchema>;
+export declare const ProxyStateSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
     enabled: z.ZodBoolean;
     ipAddress: z.ZodOptional<z.ZodString>;
@@ -139,13 +139,13 @@ export declare const ProxyState: z.ZodObject<{
     userName: z.ZodOptional<z.ZodString>;
     password: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>;
-export type ProxyState = z.infer<typeof ProxyState>;
-export declare const SensorValuesState: z.ZodObject<{
+export type ProxyState = z.infer<typeof ProxyStateSchema>;
+export declare const SensorValuesStateSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
     backlight: z.ZodNumber;
 }, z.core.$strip>;
-export type SensorValuesState = z.infer<typeof SensorValuesState>;
-export declare const SensorValuesStatus: z.ZodObject<{
+export type SensorValuesState = z.infer<typeof SensorValuesStateSchema>;
+export declare const SensorValuesStatusSchema: z.ZodObject<{
     backlight: z.ZodCoercedNumber<unknown>;
     checkscreen: z.ZodOptional<z.ZodUnion<readonly [z.ZodObject<{
         colorValid: z.ZodBoolean;
@@ -167,8 +167,8 @@ export declare const SensorValuesStatus: z.ZodObject<{
     }>, z.ZodLiteral<"Unsupported or Error">]>>;
     temperature: z.ZodNumber;
 }, z.core.$strip>;
-export type SensorValuesStatus = z.infer<typeof SensorValuesStatus>;
-export declare const SystemUsageStatus: z.ZodObject<{
+export type SensorValuesStatus = z.infer<typeof SensorValuesStatusSchema>;
+export declare const SystemUsageStatusSchema: z.ZodObject<{
     cpus: z.ZodOptional<z.ZodArray<z.ZodObject<{
         model: z.ZodOptional<z.ZodString>;
         times: z.ZodObject<{
@@ -187,8 +187,8 @@ export declare const SystemUsageStatus: z.ZodObject<{
         cached: z.ZodOptional<z.ZodNumber>;
     }, z.core.$strip>>;
 }, z.core.$strip>;
-export type SystemUsageStatus = z.infer<typeof SystemUsageStatus>;
-export declare const DeviceState: z.ZodObject<{
+export type SystemUsageStatus = z.infer<typeof SystemUsageStatusSchema>;
+export declare const DeviceStateSchema: z.ZodObject<{
     blockedPortList: z.ZodOptional<z.ZodObject<{
         _timestamp: z.ZodISODateTime;
         blockedPortList: z.ZodArray<z.ZodObject<{
@@ -252,8 +252,8 @@ export declare const DeviceState: z.ZodObject<{
         backlight: z.ZodNumber;
     }, z.core.$strip>>;
 }, z.core.$strip>;
-export type DeviceState = z.infer<typeof DeviceState>;
-export declare const DeviceStatus: z.ZodObject<{
+export type DeviceState = z.infer<typeof DeviceStateSchema>;
+export declare const DeviceStatusSchema: z.ZodObject<{
     networkInfo: z.ZodOptional<z.ZodObject<{
         isInternetConnectionAvailable: z.ZodBoolean;
         wired: z.ZodObject<{
@@ -360,4 +360,4 @@ export declare const DeviceStatus: z.ZodObject<{
     }, z.core.$strip>>;
     _debug: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>;
-export type DeviceStatus = z.infer<typeof DeviceStatus>;
+export type DeviceStatus = z.infer<typeof DeviceStatusSchema>;

@@ -1,6 +1,6 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 import * as z from "zod/v4";
-export const ApplicationInfoStatus = z.object({
+export const ApplicationInfoStatusSchema = z.object({
     appinfo: z.object({
         icon: z.string()
             .describe('The path of the image icon representing your app, displayed on the launcher'),
@@ -38,7 +38,7 @@ export const ApplicationInfoStatus = z.object({
     }),
 })
     .describe('The information about the application, including app ID, title, version, and other metadata');
-export const ClearBrowsingDataRequest = z.object({
+export const ClearBrowsingDataRequestSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the cache clear request'),
     types: z.array(z.enum([
@@ -57,34 +57,34 @@ export const ClearBrowsingDataRequest = z.object({
         .describe('The types of cache to clear'),
 })
     .describe('The request to clear the cache of the signage device, including timestamp');
-export const DisableApplicationRequest = z.object({
+export const DisableApplicationRequestSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the disable application request'),
     reset: z.boolean().optional()
         .describe('Whether to reset theserver settings to their default values after disabling it'),
 })
     .describe('The request to disable an application on the signage device, including timestamp and reset option');
-export const PowerOnOffHistoryStatus = z.object({
+export const PowerOnOffHistoryStatusSchema = z.object({
     powerOnOffHistory: z.array(z.string())
         .describe('The list of power on/off history timestamps'),
 })
     .describe('The power on/off history of the signage device, including timestamps');
-export const WebOSVersionStatus = z.object({
+export const WebOSVersionStatusSchema = z.object({
     webOSVersion: z.string()
         .describe('The webOS version of the signage device'),
 })
     .describe('The webOS version of the signage device');
 // #region State
-export const CustomJSState = z.object({
-    _clearBrowsingDataRequest: ClearBrowsingDataRequest.optional(),
-    _disableApplicationRequest: DisableApplicationRequest.optional(),
+export const CustomJSStateSchema = z.object({
+    _clearBrowsingDataRequest: ClearBrowsingDataRequestSchema.optional(),
+    _disableApplicationRequest: DisableApplicationRequestSchema.optional(),
 });
 // #endregion
 // #region Status
-export const CustomJSStatus = z.object({
-    applicationInfo: ApplicationInfoStatus.optional(),
-    powerOnOffHistory: PowerOnOffHistoryStatus.optional(),
-    webOSVersion: WebOSVersionStatus.optional(),
+export const CustomJSStatusSchema = z.object({
+    applicationInfo: ApplicationInfoStatusSchema.optional(),
+    powerOnOffHistory: PowerOnOffHistoryStatusSchema.optional(),
+    webOSVersion: WebOSVersionStatusSchema.optional(),
     _debug: z.string().optional()
         .describe('SCAP debug mode output'),
 });

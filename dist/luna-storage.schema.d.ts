@@ -1,10 +1,10 @@
 import * as z from "zod/v4";
-export declare const ChangeLogoImageRequest: z.ZodObject<{
+export declare const ChangeLogoImageRequestSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
     uri: z.ZodString;
 }, z.core.$strip>;
-export type ChangeLogoImageRequest = z.infer<typeof ChangeLogoImageRequest>;
-export declare const StorageSpaceStatus: z.ZodObject<{
+export type ChangeLogoImageRequest = z.infer<typeof ChangeLogoImageRequestSchema>;
+export declare const StorageSpaceStatusSchema: z.ZodObject<{
     free: z.ZodCoercedNumber<unknown>;
     total: z.ZodCoercedNumber<unknown>;
     used: z.ZodCoercedNumber<unknown>;
@@ -14,8 +14,8 @@ export declare const StorageSpaceStatus: z.ZodObject<{
         used: z.ZodCoercedNumber<unknown>;
     }, z.core.$strip>>>;
 }, z.core.$strip>;
-export type StorageSpaceStatus = z.infer<typeof StorageSpaceStatus>;
-export declare const USBStatus: z.ZodObject<{
+export type StorageSpaceStatus = z.infer<typeof StorageSpaceStatusSchema>;
+export declare const USBStatusSchema: z.ZodObject<{
     usbList: z.ZodArray<z.ZodObject<{
         usbName: z.ZodString;
         vendor: z.ZodString;
@@ -23,8 +23,8 @@ export declare const USBStatus: z.ZodObject<{
         deviceId: z.ZodOptional<z.ZodString>;
     }, z.core.$strip>>;
 }, z.core.$strip>;
-export type USBStatus = z.infer<typeof USBStatus>;
-export declare const UpgradeApplicationRequest: z.ZodObject<{
+export type USBStatus = z.infer<typeof USBStatusSchema>;
+export declare const UpgradeApplicationRequestSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
     to: z.ZodEnum<{
         local: "local";
@@ -36,13 +36,13 @@ export declare const UpgradeApplicationRequest: z.ZodObject<{
         zip: "zip";
     }>;
 }, z.core.$strip>;
-export type UpgradeApplicationRequest = z.infer<typeof UpgradeApplicationRequest>;
-export declare const UpgradeFirmwareRequest: z.ZodObject<{
+export type UpgradeApplicationRequest = z.infer<typeof UpgradeApplicationRequestSchema>;
+export declare const UpgradeFirmwareRequestSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
     uri: z.ZodURL;
 }, z.core.$strip>;
-export type UpgradeFirmwareRequest = z.infer<typeof UpgradeFirmwareRequest>;
-export declare const FirmwareUpgradeStatus: z.ZodObject<{
+export type UpgradeFirmwareRequest = z.infer<typeof UpgradeFirmwareRequestSchema>;
+export declare const FirmwareUpgradeStatusSchema: z.ZodObject<{
     status: z.ZodEnum<{
         idle: "idle";
         downloading: "downloading";
@@ -54,8 +54,8 @@ export declare const FirmwareUpgradeStatus: z.ZodObject<{
     downloadProgress: z.ZodNumber;
     upgradeProgress: z.ZodNumber;
 }, z.core.$strip>;
-export type FirmwareUpgradeStatus = z.infer<typeof FirmwareUpgradeStatus>;
-export declare const StorageState: z.ZodObject<{
+export type FirmwareUpgradeStatus = z.infer<typeof FirmwareUpgradeStatusSchema>;
+export declare const StorageStateSchema: z.ZodObject<{
     _changeLogoImageRequest: z.ZodOptional<z.ZodObject<{
         _timestamp: z.ZodISODateTime;
         uri: z.ZodString;
@@ -77,8 +77,8 @@ export declare const StorageState: z.ZodObject<{
         uri: z.ZodURL;
     }, z.core.$strip>>;
 }, z.core.$strip>;
-export type StorageState = z.infer<typeof StorageState>;
-export declare const StorageStatus: z.ZodObject<{
+export type StorageState = z.infer<typeof StorageStateSchema>;
+export declare const StorageStatusSchema: z.ZodObject<{
     firmwareUpgradeStatus: z.ZodOptional<z.ZodObject<{
         status: z.ZodEnum<{
             idle: "idle";
@@ -111,4 +111,4 @@ export declare const StorageStatus: z.ZodObject<{
     }, z.core.$strip>>;
     _debug: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>;
-export type StorageStatus = z.infer<typeof StorageStatus>;
+export type StorageStatus = z.infer<typeof StorageStatusSchema>;

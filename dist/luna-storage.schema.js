@@ -1,13 +1,13 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 import * as z from "zod/v4";
-export const ChangeLogoImageRequest = z.object({
+export const ChangeLogoImageRequestSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the logo image change request'),
     uri: z.string()
         .describe('The URI of the new logo image to be set, e.g., "file://internal/logo.png"'),
 })
     .describe('The request to change the logo image, including timestamp and URI of the new logo image');
-export const StorageSpaceStatus = z.object({
+export const StorageSpaceStatusSchema = z.object({
     free: z.coerce.number().positive()
         .describe('The free storage space in KB'),
     total: z.coerce.number().positive()
@@ -25,7 +25,7 @@ export const StorageSpaceStatus = z.object({
         .describe('The external memory storage information, if available'),
 })
     .describe('The storage information of the device, including free, total, and used storage space');
-export const USBStatus = z.object({
+export const USBStatusSchema = z.object({
     usbList: z.array(z.object({
         usbName: z.string()
             .describe('The name of the USB device, e.g., "usb1"'),
@@ -38,7 +38,7 @@ export const USBStatus = z.object({
     })),
 })
     .describe('The list of USB devices connected to the agent, including name, vendor, product, and device ID');
-export const UpgradeApplicationRequest = z.object({
+export const UpgradeApplicationRequestSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the application upgrade request'),
     to: z.enum(['local', 'usb'])
@@ -49,7 +49,7 @@ export const UpgradeApplicationRequest = z.object({
         .describe('Indicates the type of app this method is handling.'),
 })
     .describe('The request to upgrade the application, including timestamp and URL of the application');
-export const UpgradeFirmwareRequest = z.object({
+export const UpgradeFirmwareRequestSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the firmware upgrade request'),
     //path: z.string()
@@ -59,7 +59,7 @@ export const UpgradeFirmwareRequest = z.object({
         .describe('The URI of the firmware file to be upgraded, e.g., "https://example.com/firmware.epk"'),
 })
     .describe('The request to upgrade the firmware, including timestamp and path of the firmware file');
-export const FirmwareUpgradeStatus = z.object({
+export const FirmwareUpgradeStatusSchema = z.object({
     status: z.enum([
         'idle',
         'downloading',
@@ -76,19 +76,19 @@ export const FirmwareUpgradeStatus = z.object({
 })
     .describe('The firmware upgrade status, including status and download progress');
 // #region State
-export const StorageState = z.object({
+export const StorageStateSchema = z.object({
     // Skip `removeApplicationRequest` as a running application cannot remove itself.
-    _changeLogoImageRequest: ChangeLogoImageRequest.optional(),
-    _upgradeApplicationRequest: UpgradeApplicationRequest.optional(),
-    _upgradeFirmwareRequest: UpgradeFirmwareRequest.optional(),
+    _changeLogoImageRequest: ChangeLogoImageRequestSchema.optional(),
+    _upgradeApplicationRequest: UpgradeApplicationRequestSchema.optional(),
+    _upgradeFirmwareRequest: UpgradeFirmwareRequestSchema.optional(),
 })
     .describe('The storage information of the device, including firmware and app details');
 // #endregion
 // #region Status
-export const StorageStatus = z.object({
-    firmwareUpgradeStatus: FirmwareUpgradeStatus.optional(),
-    usbInfo: USBStatus.optional(),
-    storageInfo: StorageSpaceStatus.optional(),
+export const StorageStatusSchema = z.object({
+    firmwareUpgradeStatus: FirmwareUpgradeStatusSchema.optional(),
+    usbInfo: USBStatusSchema.optional(),
+    storageInfo: StorageSpaceStatusSchema.optional(),
     _debug: z.string().optional()
         .describe('SCAP debug mode output'),
 });

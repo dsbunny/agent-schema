@@ -1,8 +1,8 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 import * as z from "zod/v4";
-export const TimerWeek = z.number().int().min(0).max(127)
+export const TimerWeekSchema = z.number().int().min(0).max(127)
     .describe('The week bitmask for the timer, where Monday = 1, Tuesday = 2, ..., Sunday = 64, and Everyday = 127');
-export const OnOffTimer = z.object({
+export const OnOffTimerSchema = z.object({
     id: z.number().optional()
         .describe('The ID of the timer, used for identification'),
     type: z.enum(['OFFTIMER', 'ONTIMER'])
@@ -11,18 +11,18 @@ export const OnOffTimer = z.object({
         .describe('The hour of the timer, Range: [0–23]'),
     minute: z.number().int().min(0).max(59)
         .describe('The minute of the timer, Range: [0–59]'),
-    week: TimerWeek
+    week: TimerWeekSchema
         .describe('The week bitmask for the timer, where Monday = 1, Tuesday = 2, ..., Sunday = 64, and Everyday = 127'),
 })
     .describe('The on/off timer information of the device, including ID, type, hour, minute, and week bitmask');
-export const AllOnOffTimersState = z.object({
+export const AllOnOffTimersStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the on/off timers were updated'),
-    timerList: z.array(OnOffTimer).max(21)
+    timerList: z.array(OnOffTimerSchema).max(21)
         .describe('The list of on/off timers, each timer has an ID, type, hour, minute, and week bitmask'),
 })
     .describe('The time information of the device, including current time and time zone');
-export const HolidayScheduleState = z.object({
+export const HolidayScheduleStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the holiday schedule was updated'),
     holidayScheduleList: z.array(z.object({
@@ -48,14 +48,14 @@ export const HolidayScheduleState = z.object({
 })
     .describe('The holiday schedule information of the device, including a list of holiday schedules');
 // #region State
-export const TimeState = z.object({
-    allOnOffTimers: AllOnOffTimersState.optional(),
-    holidaySchedule: HolidayScheduleState.optional(),
+export const TimeStateSchema = z.object({
+    allOnOffTimers: AllOnOffTimersStateSchema.optional(),
+    holidaySchedule: HolidayScheduleStateSchema.optional(),
 })
     .describe('The time information of the device, including current time and time zone');
 // #endregion
 // #region Status
-export const TimeStatus = z.object({
+export const TimeStatusSchema = z.object({
     _debug: z.string().optional()
         .describe('SCAP debug mode output'),
 });

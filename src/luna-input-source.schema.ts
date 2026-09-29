@@ -2,7 +2,7 @@
 
 import * as z from "zod/v4";
 
-export const ExternalInputListStatus = z.object({
+export const ExternalInputListStatusSchema = z.object({
 	inputSourceList: z.array(z.object({
 		inputPort: z.string()
 			.describe('The input source label, e.g. "ext://hdmi:1"'),
@@ -19,14 +19,14 @@ export const ExternalInputListStatus = z.object({
 	currentInputPort: z.string()
 		.describe('The current input source label, e.g. "ext://hdmi:1"'),
 });
-export type ExternalInputListStatus = z.infer<typeof ExternalInputListStatus>;
+export type ExternalInputListStatus = z.infer<typeof ExternalInputListStatusSchema>;
 
 // #region Status
-export const InputSourceStatus = z.object({
-	externalInputList: ExternalInputListStatus.optional()
+export const InputSourceStatusSchema = z.object({
+	externalInputList: ExternalInputListStatusSchema.optional()
 		.describe('The list of external input sources'),
 	_debug: z.string().optional()
 		.describe('SCAP debug mode output'),
 });
-export type InputSourceStatus = z.infer<typeof InputSourceStatus>;
+export type InputSourceStatus = z.infer<typeof InputSourceStatusSchema>;
 // #endregion

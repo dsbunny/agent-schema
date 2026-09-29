@@ -7,14 +7,14 @@ export const ExternalSpeakerState = z.object({
         .describe('Whether the external speaker is enabled or not'),
 })
     .describe('External speaker configuration');
-export const MutedState = z.object({
+export const MutedStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the muted state was updated'),
     muted: z.boolean()
         .describe('Whether the sound is muted or not'),
 })
     .describe('Sound muted state');
-export const SoundModeState = z.object({
+export const SoundModeStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the sound mode was updated'),
     mode: z.enum([
@@ -30,7 +30,7 @@ export const SoundModeState = z.object({
         .describe('The audio balance of the sound mode, Range: [-50–50]'),
 })
     .describe('Sound mode configuration');
-export const SoundOutState = z.object({
+export const SoundOutStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the sound output state was updated'),
     speakerType: z.enum([
@@ -40,7 +40,7 @@ export const SoundOutState = z.object({
         .describe('The type of the speaker, either "tv_speaker" or "bt_soundbar"'),
 })
     .describe('Sound output configuration');
-export const VolumeState = z.object({
+export const VolumeStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the volume level was updated'),
     level: z.number().int().min(0).max(100)
@@ -50,16 +50,16 @@ export const VolumeState = z.object({
 })
     .describe('Sound volume level');
 // #region State
-export const SoundState = z.object({
-    muted: MutedState.optional(),
+export const SoundStateSchema = z.object({
+    muted: MutedStateSchema.optional(),
     externalSpeaker: ExternalSpeakerState.optional(),
-    soundMode: SoundModeState.optional(),
-    soundOut: SoundOutState.optional(),
-    volumeLevel: VolumeState.optional(),
+    soundMode: SoundModeStateSchema.optional(),
+    soundOut: SoundOutStateSchema.optional(),
+    volumeLevel: VolumeStateSchema.optional(),
 });
 // #endregion
 // #region Status
-export const SoundStatus = z.object({
+export const SoundStatusSchema = z.object({
     _debug: z.string().optional()
         .describe('SCAP debug mode output'),
 });

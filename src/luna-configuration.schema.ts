@@ -2,14 +2,14 @@
 
 import * as z from "zod/v4";
 
-export const ClearCacheRequest = z.object({
+export const ClearCacheRequestSchema = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the cache clear request'),
 })
 	.describe('The request to clear the cache of the signage device, including timestamp');
-export type ClearCacheRequest = z.infer<typeof ClearCacheRequest>;
+export type ClearCacheRequest = z.infer<typeof ClearCacheRequestSchema>;
 
-export const CurrentTimeState = z.object({
+export const CurrentTimeStateSchema = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the last time the current time was set'),
 	ntp: z.boolean().optional()
@@ -19,39 +19,39 @@ export const CurrentTimeState = z.object({
 	ntpServerAddress: z.string().optional()
 		.describe('The NTP server address (IPv4, IPv6, or domain name)'),
 });
-export type CurrentTimeState = z.infer<typeof CurrentTimeState>;
+export type CurrentTimeState = z.infer<typeof CurrentTimeStateSchema>;
 
-export const CurrentTimeStatus = z.object({
+export const CurrentTimeStatusSchema = z.object({
 	timestamp: z.iso.datetime()
 		.describe('The current local date and time of the signage device'),
 });
-export type CurrentTimeStatus = z.infer<typeof CurrentTimeStatus>;
+export type CurrentTimeStatus = z.infer<typeof CurrentTimeStatusSchema>;
 
-export const MasterPinState = z.object({
+export const MasterPinStateSchema = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the last time the master PIN was set'),
 	activated: z.boolean()
 		.describe('Whether the master PIN is activated or not'),
 });
-export type MasterPinState = z.infer<typeof MasterPinState>;
+export type MasterPinState = z.infer<typeof MasterPinStateSchema>;
 
-export const OSDLanguageState = z.object({
+export const OSDLanguageStateSchema = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the last time the OSD language was set'),
 	specifier: z.string()
 		.describe('The OSD (On-Screen Display) language specifier in <language-code>-<country-code> format, e.g., "en-US"'),
 });
-export type OSDLanguageState = z.infer<typeof OSDLanguageState>;
+export type OSDLanguageState = z.infer<typeof OSDLanguageStateSchema>;
 
-export const OSDLockState = z.object({
+export const OSDLockStateSchema = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the last time the OSD lock state was set'),
 	enabled: z.boolean()
 		.describe('Whether the OSD (On-Screen Display) is locked or not'),
 });
-export type OSDLockState = z.infer<typeof OSDLockState>;
+export type OSDLockState = z.infer<typeof OSDLockStateSchema>;
 
-export const Locale = z.object({
+export const LocaleSchema = z.object({
 	language: z.string()
 		.describe('The language in native language, e.g., "Español"'),
 	languageCode: z.string()
@@ -63,15 +63,15 @@ export const Locale = z.object({
 			.describe('The country specifier in <language-code>-<country-code> format, e.g., "es-ES"'),
 	})),
 }).describe('The locale in the format "language (language code) - country (specifier)"');
-export type Locale = z.infer<typeof Locale>;
+export type Locale = z.infer<typeof LocaleSchema>;
 
-export const LocaleListStatus = z.object({
-	localeList: z.array(Locale)
+export const LocaleListStatusSchema = z.object({
+	localeList: z.array(LocaleSchema)
 		.describe('The list of locales supported by the signage device'),
 });
-export type LocaleListStatus = z.infer<typeof LocaleListStatus>;
+export type LocaleListStatus = z.infer<typeof LocaleListStatusSchema>;
 
-export const PictureModeState = z.object({
+export const PictureModeStateSchema = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the last time the picture mode was set'),
 	mode: z.enum([
@@ -86,9 +86,9 @@ export const PictureModeState = z.object({
 	])
 		.describe('The picture mode of the agent'),
 });
-export type PictureModeState = z.infer<typeof PictureModeState>;
+export type PictureModeState = z.infer<typeof PictureModeStateSchema>;
 
-export const PicturePropertyState = z.object({
+export const PicturePropertyStateSchema = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the last time the picture properties were set'),
 	backlight: z.number().int().min(0).max(100).optional()
@@ -165,9 +165,9 @@ export const PicturePropertyState = z.object({
 	]).optional()
 		.describe('The gamma level of the display. Range: [low, medium, high, high3]'),
 });
-export type PicturePropertyState = z.infer<typeof PicturePropertyState>;
+export type PicturePropertyState = z.infer<typeof PicturePropertyStateSchema>;
 
-export const PropertyState = z.object({
+export const PropertyStateSchema = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the last time the properties were set'),
 	alias: z.string().optional()
@@ -179,24 +179,24 @@ export const PropertyState = z.object({
 	cec_device_control: z.string().nullable().optional()
 		.describe('Enables or disables CEC (Consumer Electronics Control) device control. A reboot is necessary to apply the changes.'),
 });
-export type PropertyState = z.infer<typeof PropertyState>;
+export type PropertyState = z.infer<typeof PropertyStateSchema>;
 
-export const ProxyBypassListState = z.object({
+export const ProxyBypassListStateSchema = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the last time the proxy bypass list was set'),
 	urlList: z.array(z.string())
 		.describe('The list of proxy bypass wildcard addresses, e.g., "*.example.com"'),
 });
-export type ProxyBypassListState = z.infer<typeof ProxyBypassListState>;
+export type ProxyBypassListState = z.infer<typeof ProxyBypassListStateSchema>;
 
-export const RestartApplicationRequest = z.object({
+export const RestartApplicationRequestSchema = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the application restart request'),
 })
 	.describe('The request to restart the application of the signage device, including timestamp');
-export type RestartApplicationRequest = z.infer<typeof RestartApplicationRequest>;
+export type RestartApplicationRequest = z.infer<typeof RestartApplicationRequestSchema>;
 
-export const ServerPropertyState = z.object({
+export const ServerPropertyStateSchema = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the last time the server properties were set'),
 	serverIp: z.string()
@@ -218,9 +218,9 @@ export const ServerPropertyState = z.object({
 	autoSet: z.enum(['on', 'off']).optional()
 		.describe('Whether the server properties are set via `scap_installation.json` on a USB device or not'),
 });
-export type ServerPropertyState = z.infer<typeof ServerPropertyState>;
+export type ServerPropertyState = z.infer<typeof ServerPropertyStateSchema>;
 
-export const TimeZone = z.object({
+export const TimeZoneSchema = z.object({
 	continent: z.string()
 		.describe('The continent of the time zone, e.g., "Europe"'),
 	country: z.string()
@@ -228,59 +228,59 @@ export const TimeZone = z.object({
 	city: z.string()
 		.describe('The city of the time zone, e.g., "Berlin"'),
 }).describe('The time zone in the format "Continent/Country/City"');
-export type TimeZone = z.infer<typeof TimeZone>;
+export type TimeZone = z.infer<typeof TimeZoneSchema>;
 
-export const TimeZoneState = z.object({
+export const TimeZoneStateSchema = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the last time the time zone was set'),
-	timeZone: TimeZone,
+	timeZone: TimeZoneSchema,
 })
 	.describe('The time zone of the signage device, including timestamp');
-export type TimeZoneState = z.infer<typeof TimeZoneState>;
+export type TimeZoneState = z.infer<typeof TimeZoneStateSchema>;
 
-export const TimeZoneListStatus = z.object({
-	timeZone: z.array(TimeZone)
+export const TimeZoneListStatusSchema = z.object({
+	timeZone: z.array(TimeZoneSchema)
 		.describe('The list of time zones supported by the agent'),
 });
-export type TimeZoneListStatus = z.infer<typeof TimeZoneListStatus>;
+export type TimeZoneListStatus = z.infer<typeof TimeZoneListStatusSchema>;
 
-export const USBLockState = z.object({
+export const USBLockStateSchema = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the last time the USB lock state was set'),
 	enabled: z.boolean()
 		.describe('Whether the USB ports are locked or not'),
 }).describe('The USB lock status of the signage device');
-export type USBLockState = z.infer<typeof USBLockState>;
+export type USBLockState = z.infer<typeof USBLockStateSchema>;
 
 // #region State
-export const ConfigurationState = z.object({
-	_clearCacheRequest: ClearCacheRequest.optional(),
-	_restartApplicationRequest: RestartApplicationRequest.optional(),
-	currentTime: CurrentTimeState.optional(),
-	masterPin: MasterPinState.optional(),
-	OSDLanguage: OSDLanguageState.optional(),
-	OSDLock: OSDLockState.optional(),
-	pictureMode: PictureModeState.optional(),
-	pictureProperty: PicturePropertyState.optional(),
-	property: PropertyState.optional(),
-	proxyBypassList: ProxyBypassListState.optional(),
-	serverProperty: ServerPropertyState.optional(),
-	timeZone: TimeZoneState.optional(),
-	USBLock: USBLockState.optional(),
+export const ConfigurationStateSchema = z.object({
+	_clearCacheRequest: ClearCacheRequestSchema.optional(),
+	_restartApplicationRequest: RestartApplicationRequestSchema.optional(),
+	currentTime: CurrentTimeStateSchema.optional(),
+	masterPin: MasterPinStateSchema.optional(),
+	OSDLanguage: OSDLanguageStateSchema.optional(),
+	OSDLock: OSDLockStateSchema.optional(),
+	pictureMode: PictureModeStateSchema.optional(),
+	pictureProperty: PicturePropertyStateSchema.optional(),
+	property: PropertyStateSchema.optional(),
+	proxyBypassList: ProxyBypassListStateSchema.optional(),
+	serverProperty: ServerPropertyStateSchema.optional(),
+	timeZone: TimeZoneStateSchema.optional(),
+	USBLock: USBLockStateSchema.optional(),
 });
-export type ConfigurationState = z.infer<typeof ConfigurationState>;
+export type ConfigurationState = z.infer<typeof ConfigurationStateSchema>;
 // #endregion
 
 // #region Status
-export const ConfigurationStatus = z.object({
-	currentTime: CurrentTimeStatus.optional()
+export const ConfigurationStatusSchema = z.object({
+	currentTime: CurrentTimeStatusSchema.optional()
 		.describe('The local date and time of the signage device'),
-	localeList: LocaleListStatus.optional()
+	localeList: LocaleListStatusSchema.optional()
 		.describe('The list of locales supported by the signage device'),
-	timeZoneList: TimeZoneListStatus.optional()
+	timeZoneList: TimeZoneListStatusSchema.optional()
 		.describe('The list of time zones supported by the signage device'),
 	_debug: z.string().optional()
 		.describe('SCAP debug mode output'),
 });
-export type ConfigurationStatus = z.infer<typeof ConfigurationStatus>;
+export type ConfigurationStatus = z.infer<typeof ConfigurationStatusSchema>;
 // #endregion

@@ -1,34 +1,34 @@
 import * as z from "zod/v4";
-export declare const ClearCacheRequest: z.ZodObject<{
+export declare const ClearCacheRequestSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
 }, z.core.$strip>;
-export type ClearCacheRequest = z.infer<typeof ClearCacheRequest>;
-export declare const CurrentTimeState: z.ZodObject<{
+export type ClearCacheRequest = z.infer<typeof ClearCacheRequestSchema>;
+export declare const CurrentTimeStateSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
     ntp: z.ZodOptional<z.ZodBoolean>;
     ntpServerAddress: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>;
-export type CurrentTimeState = z.infer<typeof CurrentTimeState>;
-export declare const CurrentTimeStatus: z.ZodObject<{
+export type CurrentTimeState = z.infer<typeof CurrentTimeStateSchema>;
+export declare const CurrentTimeStatusSchema: z.ZodObject<{
     timestamp: z.ZodISODateTime;
 }, z.core.$strip>;
-export type CurrentTimeStatus = z.infer<typeof CurrentTimeStatus>;
-export declare const MasterPinState: z.ZodObject<{
+export type CurrentTimeStatus = z.infer<typeof CurrentTimeStatusSchema>;
+export declare const MasterPinStateSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
     activated: z.ZodBoolean;
 }, z.core.$strip>;
-export type MasterPinState = z.infer<typeof MasterPinState>;
-export declare const OSDLanguageState: z.ZodObject<{
+export type MasterPinState = z.infer<typeof MasterPinStateSchema>;
+export declare const OSDLanguageStateSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
     specifier: z.ZodString;
 }, z.core.$strip>;
-export type OSDLanguageState = z.infer<typeof OSDLanguageState>;
-export declare const OSDLockState: z.ZodObject<{
+export type OSDLanguageState = z.infer<typeof OSDLanguageStateSchema>;
+export declare const OSDLockStateSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
     enabled: z.ZodBoolean;
 }, z.core.$strip>;
-export type OSDLockState = z.infer<typeof OSDLockState>;
-export declare const Locale: z.ZodObject<{
+export type OSDLockState = z.infer<typeof OSDLockStateSchema>;
+export declare const LocaleSchema: z.ZodObject<{
     language: z.ZodString;
     languageCode: z.ZodString;
     countries: z.ZodArray<z.ZodObject<{
@@ -36,8 +36,8 @@ export declare const Locale: z.ZodObject<{
         specifier: z.ZodString;
     }, z.core.$strip>>;
 }, z.core.$strip>;
-export type Locale = z.infer<typeof Locale>;
-export declare const LocaleListStatus: z.ZodObject<{
+export type Locale = z.infer<typeof LocaleSchema>;
+export declare const LocaleListStatusSchema: z.ZodObject<{
     localeList: z.ZodArray<z.ZodObject<{
         language: z.ZodString;
         languageCode: z.ZodString;
@@ -47,8 +47,8 @@ export declare const LocaleListStatus: z.ZodObject<{
         }, z.core.$strip>>;
     }, z.core.$strip>>;
 }, z.core.$strip>;
-export type LocaleListStatus = z.infer<typeof LocaleListStatus>;
-export declare const PictureModeState: z.ZodObject<{
+export type LocaleListStatus = z.infer<typeof LocaleListStatusSchema>;
+export declare const PictureModeStateSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
     mode: z.ZodEnum<{
         eco: "eco";
@@ -61,8 +61,8 @@ export declare const PictureModeState: z.ZodObject<{
         vivid: "vivid";
     }>;
 }, z.core.$strip>;
-export type PictureModeState = z.infer<typeof PictureModeState>;
-export declare const PicturePropertyState: z.ZodObject<{
+export type PictureModeState = z.infer<typeof PictureModeStateSchema>;
+export declare const PicturePropertyStateSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
     backlight: z.ZodOptional<z.ZodNumber>;
     contrast: z.ZodOptional<z.ZodNumber>;
@@ -121,25 +121,25 @@ export declare const PicturePropertyState: z.ZodObject<{
         high3: "high3";
     }>>;
 }, z.core.$strip>;
-export type PicturePropertyState = z.infer<typeof PicturePropertyState>;
-export declare const PropertyState: z.ZodObject<{
+export type PicturePropertyState = z.infer<typeof PicturePropertyStateSchema>;
+export declare const PropertyStateSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
     alias: z.ZodOptional<z.ZodString>;
     operation_mode_after_screen_share: z.ZodOptional<z.ZodString>;
     key_delivery_to_simplink: z.ZodOptional<z.ZodString>;
     cec_device_control: z.ZodOptional<z.ZodNullable<z.ZodString>>;
 }, z.core.$strip>;
-export type PropertyState = z.infer<typeof PropertyState>;
-export declare const ProxyBypassListState: z.ZodObject<{
+export type PropertyState = z.infer<typeof PropertyStateSchema>;
+export declare const ProxyBypassListStateSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
     urlList: z.ZodArray<z.ZodString>;
 }, z.core.$strip>;
-export type ProxyBypassListState = z.infer<typeof ProxyBypassListState>;
-export declare const RestartApplicationRequest: z.ZodObject<{
+export type ProxyBypassListState = z.infer<typeof ProxyBypassListStateSchema>;
+export declare const RestartApplicationRequestSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
 }, z.core.$strip>;
-export type RestartApplicationRequest = z.infer<typeof RestartApplicationRequest>;
-export declare const ServerPropertyState: z.ZodObject<{
+export type RestartApplicationRequest = z.infer<typeof RestartApplicationRequestSchema>;
+export declare const ServerPropertyStateSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
     serverIp: z.ZodString;
     serverPort: z.ZodNumber;
@@ -161,14 +161,14 @@ export declare const ServerPropertyState: z.ZodObject<{
         on: "on";
     }>>;
 }, z.core.$strip>;
-export type ServerPropertyState = z.infer<typeof ServerPropertyState>;
-export declare const TimeZone: z.ZodObject<{
+export type ServerPropertyState = z.infer<typeof ServerPropertyStateSchema>;
+export declare const TimeZoneSchema: z.ZodObject<{
     continent: z.ZodString;
     country: z.ZodString;
     city: z.ZodString;
 }, z.core.$strip>;
-export type TimeZone = z.infer<typeof TimeZone>;
-export declare const TimeZoneState: z.ZodObject<{
+export type TimeZone = z.infer<typeof TimeZoneSchema>;
+export declare const TimeZoneStateSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
     timeZone: z.ZodObject<{
         continent: z.ZodString;
@@ -176,21 +176,21 @@ export declare const TimeZoneState: z.ZodObject<{
         city: z.ZodString;
     }, z.core.$strip>;
 }, z.core.$strip>;
-export type TimeZoneState = z.infer<typeof TimeZoneState>;
-export declare const TimeZoneListStatus: z.ZodObject<{
+export type TimeZoneState = z.infer<typeof TimeZoneStateSchema>;
+export declare const TimeZoneListStatusSchema: z.ZodObject<{
     timeZone: z.ZodArray<z.ZodObject<{
         continent: z.ZodString;
         country: z.ZodString;
         city: z.ZodString;
     }, z.core.$strip>>;
 }, z.core.$strip>;
-export type TimeZoneListStatus = z.infer<typeof TimeZoneListStatus>;
-export declare const USBLockState: z.ZodObject<{
+export type TimeZoneListStatus = z.infer<typeof TimeZoneListStatusSchema>;
+export declare const USBLockStateSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
     enabled: z.ZodBoolean;
 }, z.core.$strip>;
-export type USBLockState = z.infer<typeof USBLockState>;
-export declare const ConfigurationState: z.ZodObject<{
+export type USBLockState = z.infer<typeof USBLockStateSchema>;
+export declare const ConfigurationStateSchema: z.ZodObject<{
     _clearCacheRequest: z.ZodOptional<z.ZodObject<{
         _timestamp: z.ZodISODateTime;
     }, z.core.$strip>>;
@@ -332,8 +332,8 @@ export declare const ConfigurationState: z.ZodObject<{
         enabled: z.ZodBoolean;
     }, z.core.$strip>>;
 }, z.core.$strip>;
-export type ConfigurationState = z.infer<typeof ConfigurationState>;
-export declare const ConfigurationStatus: z.ZodObject<{
+export type ConfigurationState = z.infer<typeof ConfigurationStateSchema>;
+export declare const ConfigurationStatusSchema: z.ZodObject<{
     currentTime: z.ZodOptional<z.ZodObject<{
         timestamp: z.ZodISODateTime;
     }, z.core.$strip>>;
@@ -356,4 +356,4 @@ export declare const ConfigurationStatus: z.ZodObject<{
     }, z.core.$strip>>;
     _debug: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>;
-export type ConfigurationStatus = z.infer<typeof ConfigurationStatus>;
+export type ConfigurationStatus = z.infer<typeof ConfigurationStatusSchema>;

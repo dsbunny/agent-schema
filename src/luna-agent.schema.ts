@@ -2,73 +2,73 @@
 
 import * as z from "zod/v4";
 import {
-	AgentState,
-	AgentStateBase,
-	AgentStatus,
-	AgentStatusBase,
+	AgentStateSchema,
+	AgentStateBaseSchema,
+	AgentStatusSchema,
+	AgentStatusBaseSchema,
 } from '@dsbunny/rmm-schema';
-import { ConfigurationState, ConfigurationStatus } from './luna-configuration.schema.js';
-import { DeviceState, DeviceStatus } from './luna-device.schema.js';
-import { InputSourceStatus } from './luna-input-source.schema.js';
-import { PowerState, PowerStatus } from './luna-power.schema.js';
-import { SecurityState, SecurityStatus } from './luna-security.schema.js';
-import { SignageState, SignageStatus } from './luna-signage.schema.js';
-import { SoundState, SoundStatus } from './luna-sound.schema.js';
-import { TimeState, TimeStatus } from './luna-time.schema.js';
-import { StorageState, StorageStatus } from './luna-storage.schema.js';
-import { CustomJSState, CustomJSStatus } from './luna-customjs.schema.js';
+import { ConfigurationStateSchema, ConfigurationStatusSchema } from './luna-configuration.schema.js';
+import { DeviceStateSchema, DeviceStatusSchema } from './luna-device.schema.js';
+import { InputSourceStatusSchema } from './luna-input-source.schema.js';
+import { PowerStateSchema, PowerStatusSchema } from './luna-power.schema.js';
+import { SecurityStateSchema, SecurityStatusSchema } from './luna-security.schema.js';
+import { SignageStateSchema, SignageStatusSchema } from './luna-signage.schema.js';
+import { SoundStateSchema, SoundStatusSchema } from './luna-sound.schema.js';
+import { TimeStateSchema, TimeStatusSchema } from './luna-time.schema.js';
+import { StorageStateSchema, StorageStatusSchema } from './luna-storage.schema.js';
+import { CustomJSStateSchema, CustomJSStatusSchema } from './luna-customjs.schema.js';
 
 export const LUNA_AGENT_URN = 'urn:dsbunny:agent:luna';
 
 // #region State
-export const LunaAgentStateDetail = z.object({
-	configuration: ConfigurationState.optional(),
-	device: DeviceState.optional(),
-	power: PowerState.optional(),
-	security: SecurityState.optional(),
-	signage: SignageState.optional(),
-	sound: SoundState.optional(),
-	storage: StorageState.optional(),
-	time: TimeState.optional(),
-	customJS: CustomJSState.optional(),
+export const LunaAgentStateDetailSchema = z.object({
+	configuration: ConfigurationStateSchema.optional(),
+	device: DeviceStateSchema.optional(),
+	power: PowerStateSchema.optional(),
+	security: SecurityStateSchema.optional(),
+	signage: SignageStateSchema.optional(),
+	sound: SoundStateSchema.optional(),
+	storage: StorageStateSchema.optional(),
+	time: TimeStateSchema.optional(),
+	customJS: CustomJSStateSchema.optional(),
 	_debug: z.boolean().optional()
 		.describe('Indicates if SCAP debug mode is enabled'),
 });
-export type LunaAgentStateDetail = z.infer<typeof LunaAgentStateDetail>;
+export type LunaAgentStateDetail = z.infer<typeof LunaAgentStateDetailSchema>;
 
-export const LunaAgentStateBase = AgentStateBase.extend({
+export const LunaAgentStateBaseSchema = AgentStateBaseSchema.extend({
 	uri: z.literal(LUNA_AGENT_URN),
-	detail: LunaAgentStateDetail.nullable()
+	detail: LunaAgentStateDetailSchema.nullable()
 		.describe('The detail of the Luna agent state'),
 });
-export type LunaAgentStateBase = z.infer<typeof LunaAgentStateBase>;
-export const LunaAgentState = AgentState.extend(LunaAgentStateBase.shape);
-export type LunaAgentState = z.infer<typeof LunaAgentState>;
+export type LunaAgentStateBase = z.infer<typeof LunaAgentStateBaseSchema>;
+export const LunaAgentStateSchema = AgentStateSchema.extend(LunaAgentStateBaseSchema.shape);
+export type LunaAgentState = z.infer<typeof LunaAgentStateSchema>;
 // #endregion
 
 // #region Status
-export const LunaAgentStatusDetail = z.object({
-	configuration: ConfigurationStatus.optional(),
-	device: DeviceStatus.optional(),
-	inputSource: InputSourceStatus.optional(),
-	power: PowerStatus.optional(),
-	security: SecurityStatus.optional(),
-	signage: SignageStatus.optional(),
-	sound: SoundStatus.optional(),
-	storage: StorageStatus.optional(),
-	time: TimeStatus.optional(),
-	customJS: CustomJSStatus.optional(),
+export const LunaAgentStatusDetailSchema = z.object({
+	configuration: ConfigurationStatusSchema.optional(),
+	device: DeviceStatusSchema.optional(),
+	inputSource: InputSourceStatusSchema.optional(),
+	power: PowerStatusSchema.optional(),
+	security: SecurityStatusSchema.optional(),
+	signage: SignageStatusSchema.optional(),
+	sound: SoundStatusSchema.optional(),
+	storage: StorageStatusSchema.optional(),
+	time: TimeStatusSchema.optional(),
+	customJS: CustomJSStatusSchema.optional(),
 	_errorFlags: z.array(z.string()).optional()
 		.describe('An array of error flags indicating issues with the Luna agent'),
 });
-export type LunaAgentStatusDetail = z.infer<typeof LunaAgentStatusDetail>;
+export type LunaAgentStatusDetail = z.infer<typeof LunaAgentStatusDetailSchema>;
 
-export const LunaAgentStatusBase = AgentStatusBase.extend({
+export const LunaAgentStatusBaseSchema = AgentStatusBaseSchema.extend({
 	uri: z.literal(LUNA_AGENT_URN),
-	detail: LunaAgentStatusDetail.nullable()
+	detail: LunaAgentStatusDetailSchema.nullable()
 		.describe('The detail of the Luna agent status'),
 });
-export type LunaAgentStatusBase = z.infer<typeof LunaAgentStatusBase>;
-export const LunaAgentStatus = AgentStatus.extend(LunaAgentStatusBase.shape);
-export type LunaAgentStatus = z.infer<typeof LunaAgentStatus>;
+export type LunaAgentStatusBase = z.infer<typeof LunaAgentStatusBaseSchema>;
+export const LunaAgentStatusSchema = AgentStatusSchema.extend(LunaAgentStatusBaseSchema.shape);
+export type LunaAgentStatus = z.infer<typeof LunaAgentStatusSchema>;
 // #endregion
