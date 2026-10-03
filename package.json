@@ -22,7 +22,7 @@
 	},
 	"devDependencies": {
 		"@dsbunny/capdb-schema": "github:dsbunny/capdb-schema#169a15a",
-		"@dsbunny/recipe-schema": "github:dsbunny/recipe-schema#77d1c17",
+		"@dsbunny/recipe-schema": "github:dsbunny/recipe-schema#000e141",
 		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#c888aab",
 		"typescript": "^5.9.3",
 		"zod": "^4.3.6"
