@@ -1,4 +1,4 @@
-import * as z from "zod/v4";
+import * as z from "zod";
 export declare const TimerWeekSchema: z.ZodNumber;
 export type TimerWeek = z.infer<typeof TimerWeekSchema>;
 export declare const OnOffTimerSchema: z.ZodObject<{

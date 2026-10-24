@@ -1,6 +1,7 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 
-import * as z from "zod/v4";
+import * as z from "zod";
+import { dsbunnyRegistry } from '@dsbunny/zod-registry';
 import {
 	AgentStateSchema,
 	AgentStateBaseSchema,
@@ -42,6 +43,9 @@ export const RendererAgentStateDetailSchema = z.object({
 			.describe('The device ID of the USB device'),
 	}).optional()
 		.describe('The USB device information'),
+}).register(dsbunnyRegistry, {
+	id: 'RendererAgentStateDetailSchema',
+	description: 'The detailed state information of the renderer agent, including playlist element, recipe link, storage, and USB device information',
 });
 export type RendererAgentStateDetail = z.infer<typeof RendererAgentStateDetailSchema>;
 
@@ -56,6 +60,9 @@ export const RendererScreenOrientationSchema = z.object({
 		.describe('The orientation of the screen'),
 	angle: z.number()
 		.describe('The angle of the screen in degrees'),
+}).register(dsbunnyRegistry, {
+	id: 'RendererScreenOrientationSchema',
+	description: 'The screen orientation information of the renderer device, including type and angle',
 });
 export type RendererScreenOrientation = z.infer<typeof RendererScreenOrientationSchema>;
 
@@ -70,6 +77,9 @@ export const RendererScreenSchema = z.object({
 		.describe('The orientation of the screen'),
 	device_pixel_ratio: z.number()
 		.describe('The ratio of the resolution in physical pixels to the resolution in CSS pixels for the current display device'),
+}).register(dsbunnyRegistry, {
+	id: 'RendererScreenSchema',
+	description: 'The screen information of the renderer device, including width, height, extended status, orientation, and device pixel ratio',
 });
 export type RendererScreen = z.infer<typeof RendererScreenSchema>;
 
@@ -77,9 +87,15 @@ export const RendererAgentStateBaseSchema = AgentStateBaseSchema.extend({
 	uri: z.literal(RENDERER_AGENT_URN),
 	detail: RendererAgentStateDetailSchema.nullable()
 		.describe('The detail of the renderer agent state'),
+}).register(dsbunnyRegistry, {
+	id: 'RendererAgentStateBaseSchema',
+	description: 'The base state information of the renderer agent, including URI and detail',
 });
 export type RendererAgentStateBase = z.infer<typeof RendererAgentStateBaseSchema>;
-export const RendererAgentStateSchema = AgentStateSchema.extend(RendererAgentStateBaseSchema.shape);
+export const RendererAgentStateSchema = AgentStateSchema.extend(RendererAgentStateBaseSchema.shape).register(dsbunnyRegistry, {
+	id: 'RendererAgentStateSchema',
+	description: 'The state information of the renderer agent, including base state and additional details',
+});
 export type RendererAgentState = z.infer<typeof RendererAgentStateSchema>;
 // #endregion
 
@@ -96,8 +112,14 @@ export const RendererAgentStatusBaseSchema = AgentStatusBaseSchema.extend({
 	uri: z.literal(RENDERER_AGENT_URN),
 	detail: RendererAgentStatusDetailSchema.nullable()
 		.describe('The detail of the renderer agent status'),
+}).register(dsbunnyRegistry, {
+	id: 'RendererAgentStatusBaseSchema',
+	description: 'The base status information of the renderer agent, including URI and detail',
 });
 export type RendererAgentStatusBase = z.infer<typeof RendererAgentStatusBaseSchema>;
-export const RendererAgentStatusSchema = AgentStatusSchema.extend(RendererAgentStatusBaseSchema.shape);
+export const RendererAgentStatusSchema = AgentStatusSchema.extend(RendererAgentStatusBaseSchema.shape).register(dsbunnyRegistry, {
+	id: 'RendererAgentStatusSchema',
+	description: 'The status information of the renderer agent, including base status and additional details',
+});
 export type RendererAgentStatus = z.infer<typeof RendererAgentStatusSchema>;
 // #endregion

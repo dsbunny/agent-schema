@@ -1,12 +1,15 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 
-import * as z from "zod/v4";
+import * as z from "zod";
+import { lunaRegistry } from './registry.js';
 
 export const ClearCacheRequestSchema = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the cache clear request'),
-})
-	.describe('The request to clear the cache of the signage device, including timestamp');
+}).register(lunaRegistry, {
+	id: 'ClearCacheRequestSchema',
+	description: 'The request to clear the cache of the signage device, including timestamp',
+});
 export type ClearCacheRequest = z.infer<typeof ClearCacheRequestSchema>;
 
 export const CurrentTimeStateSchema = z.object({
@@ -18,12 +21,18 @@ export const CurrentTimeStateSchema = z.object({
 	// WebOS 6 will default to `us.pool.ntp.org`, `uk.pool.ntp.org`, `kr.pool.ntp.org`, `au.pool.ntp.org`
 	ntpServerAddress: z.string().optional()
 		.describe('The NTP server address (IPv4, IPv6, or domain name)'),
+}).register(lunaRegistry, {
+	id: 'CurrentTimeStateSchema',
+	description: 'The state of the current time configuration of the signage device',
 });
 export type CurrentTimeState = z.infer<typeof CurrentTimeStateSchema>;
 
 export const CurrentTimeStatusSchema = z.object({
 	timestamp: z.iso.datetime()
 		.describe('The current local date and time of the signage device'),
+}).register(lunaRegistry, {
+	id: 'CurrentTimeStatusSchema',
+	description: 'The status of the current time configuration of the signage device',
 });
 export type CurrentTimeStatus = z.infer<typeof CurrentTimeStatusSchema>;
 
@@ -32,6 +41,9 @@ export const MasterPinStateSchema = z.object({
 		.describe('The timestamp of the last time the master PIN was set'),
 	activated: z.boolean()
 		.describe('Whether the master PIN is activated or not'),
+}).register(lunaRegistry, {
+	id: 'MasterPinStateSchema',
+	description: 'The state of the master PIN configuration of the signage device',
 });
 export type MasterPinState = z.infer<typeof MasterPinStateSchema>;
 
@@ -40,6 +52,9 @@ export const OSDLanguageStateSchema = z.object({
 		.describe('The timestamp of the last time the OSD language was set'),
 	specifier: z.string()
 		.describe('The OSD (On-Screen Display) language specifier in <language-code>-<country-code> format, e.g., "en-US"'),
+}).register(lunaRegistry, {
+	id: 'OSDLanguageStateSchema',
+	description: 'The state of the OSD language configuration of the signage device',
 });
 export type OSDLanguageState = z.infer<typeof OSDLanguageStateSchema>;
 
@@ -48,6 +63,9 @@ export const OSDLockStateSchema = z.object({
 		.describe('The timestamp of the last time the OSD lock state was set'),
 	enabled: z.boolean()
 		.describe('Whether the OSD (On-Screen Display) is locked or not'),
+}).register(lunaRegistry, {
+	id: 'OSDLockStateSchema',
+	description: 'The state of the OSD lock configuration of the signage device',
 });
 export type OSDLockState = z.infer<typeof OSDLockStateSchema>;
 
@@ -62,12 +80,18 @@ export const LocaleSchema = z.object({
 		specifier: z.string()
 			.describe('The country specifier in <language-code>-<country-code> format, e.g., "es-ES"'),
 	})),
-}).describe('The locale in the format "language (language code) - country (specifier)"');
+}).register(lunaRegistry, {
+	id: 'LocaleSchema',
+	description: 'The locale in the format "language (language code) - country (specifier)"',
+});
 export type Locale = z.infer<typeof LocaleSchema>;
 
 export const LocaleListStatusSchema = z.object({
 	localeList: z.array(LocaleSchema)
 		.describe('The list of locales supported by the signage device'),
+}).register(lunaRegistry, {
+	id: 'LocaleListStatusSchema',
+	description: 'The status of the list of locales supported by the signage device',
 });
 export type LocaleListStatus = z.infer<typeof LocaleListStatusSchema>;
 
@@ -85,6 +109,9 @@ export const PictureModeStateSchema = z.object({
 		'vivid',
 	])
 		.describe('The picture mode of the agent'),
+}).register(lunaRegistry, {
+	id: 'PictureModeStateSchema',
+	description: 'The state of the picture mode configuration of the signage device',
 });
 export type PictureModeState = z.infer<typeof PictureModeStateSchema>;
 
@@ -164,6 +191,9 @@ export const PicturePropertyStateSchema = z.object({
 		'high3',
 	]).optional()
 		.describe('The gamma level of the display. Range: [low, medium, high, high3]'),
+}).register(lunaRegistry, {
+	id: 'PicturePropertyStateSchema',
+	description: 'The state of the picture property configuration of the signage device',
 });
 export type PicturePropertyState = z.infer<typeof PicturePropertyStateSchema>;
 
@@ -178,6 +208,9 @@ export const PropertyStateSchema = z.object({
 		.describe('Enables or disables the delivery of key input to Simplink devices. A reboot is necessary to apply the changes.'),
 	cec_device_control: z.string().nullable().optional()
 		.describe('Enables or disables CEC (Consumer Electronics Control) device control. A reboot is necessary to apply the changes.'),
+}).register(lunaRegistry, {
+	id: 'PropertyStateSchema',
+	description: 'The state of the property configuration of the signage device',
 });
 export type PropertyState = z.infer<typeof PropertyStateSchema>;
 
@@ -186,14 +219,19 @@ export const ProxyBypassListStateSchema = z.object({
 		.describe('The timestamp of the last time the proxy bypass list was set'),
 	urlList: z.array(z.string())
 		.describe('The list of proxy bypass wildcard addresses, e.g., "*.example.com"'),
+}).register(lunaRegistry, {
+	id: 'ProxyBypassListStateSchema',
+	description: 'The state of the proxy bypass list configuration of the signage device',
 });
 export type ProxyBypassListState = z.infer<typeof ProxyBypassListStateSchema>;
 
 export const RestartApplicationRequestSchema = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the application restart request'),
-})
-	.describe('The request to restart the application of the signage device, including timestamp');
+}).register(lunaRegistry, {
+	id: 'RestartApplicationRequestSchema',
+	description: 'The request to restart the application of the signage device, including timestamp',
+});
 export type RestartApplicationRequest = z.infer<typeof RestartApplicationRequestSchema>;
 
 export const ServerPropertyStateSchema = z.object({
@@ -217,6 +255,9 @@ export const ServerPropertyStateSchema = z.object({
 		.describe('The device ID of the application to be launched by the agent'),
 	autoSet: z.enum(['on', 'off']).optional()
 		.describe('Whether the server properties are set via `scap_installation.json` on a USB device or not'),
+}).register(lunaRegistry, {
+	id: 'ServerPropertyStateSchema',
+	description: 'The state of the server property configuration of the signage device',
 });
 export type ServerPropertyState = z.infer<typeof ServerPropertyStateSchema>;
 
@@ -227,20 +268,28 @@ export const TimeZoneSchema = z.object({
 		.describe('The country of the time zone, e.g., "Germany"'),
 	city: z.string()
 		.describe('The city of the time zone, e.g., "Berlin"'),
-}).describe('The time zone in the format "Continent/Country/City"');
+}).register(lunaRegistry, {
+	id: 'TimeZoneSchema',
+	description: 'The time zone in the format "Continent/Country/City"',
+});
 export type TimeZone = z.infer<typeof TimeZoneSchema>;
 
 export const TimeZoneStateSchema = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the last time the time zone was set'),
 	timeZone: TimeZoneSchema,
-})
-	.describe('The time zone of the signage device, including timestamp');
+}).register(lunaRegistry, {
+	id: 'TimeZoneStateSchema',
+	description: 'The time zone of the signage device, including timestamp',
+});
 export type TimeZoneState = z.infer<typeof TimeZoneStateSchema>;
 
 export const TimeZoneListStatusSchema = z.object({
 	timeZone: z.array(TimeZoneSchema)
 		.describe('The list of time zones supported by the agent'),
+}).register(lunaRegistry, {
+	id: 'TimeZoneListStatusSchema',
+	description: 'The list of time zones supported by the agent',
 });
 export type TimeZoneListStatus = z.infer<typeof TimeZoneListStatusSchema>;
 
@@ -249,7 +298,10 @@ export const USBLockStateSchema = z.object({
 		.describe('The timestamp of the last time the USB lock state was set'),
 	enabled: z.boolean()
 		.describe('Whether the USB ports are locked or not'),
-}).describe('The USB lock status of the signage device');
+}).register(lunaRegistry, {
+	id: 'USBLockStateSchema',
+	description: 'The USB lock status of the signage device',
+});
 export type USBLockState = z.infer<typeof USBLockStateSchema>;
 
 // #region State
@@ -267,6 +319,9 @@ export const ConfigurationStateSchema = z.object({
 	serverProperty: ServerPropertyStateSchema.optional(),
 	timeZone: TimeZoneStateSchema.optional(),
 	USBLock: USBLockStateSchema.optional(),
+}).register(lunaRegistry, {
+	id: 'ConfigurationStateSchema',
+	description: 'The configuration state of the signage device',
 });
 export type ConfigurationState = z.infer<typeof ConfigurationStateSchema>;
 // #endregion
@@ -281,6 +336,9 @@ export const ConfigurationStatusSchema = z.object({
 		.describe('The list of time zones supported by the signage device'),
 	_debug: z.string().optional()
 		.describe('SCAP debug mode output'),
+}).register(lunaRegistry, {
+	id: 'ConfigurationStatusSchema',
+	description: 'The configuration status of the signage device',
 });
 export type ConfigurationStatus = z.infer<typeof ConfigurationStatusSchema>;
 // #endregion

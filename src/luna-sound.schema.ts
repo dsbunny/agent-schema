@@ -1,14 +1,17 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 
-import * as z from "zod/v4";
+import * as z from "zod";
+import { lunaRegistry } from './registry.js';
 
 export const ExternalSpeakerState = z.object({
 	_timestamp: z.iso.datetime()
 		.describe('The timestamp of the last time the external speaker state was updated'),
 	externalSpeaker: z.boolean()
 		.describe('Whether the external speaker is enabled or not'),
-})
-	.describe('External speaker configuration');
+}).register(lunaRegistry, {
+	id: 'ExternalSpeakerState',
+	description: 'The external speaker configuration of the device',
+});
 export type ExternalSpeakere = z.infer<typeof ExternalSpeakerState>;
 
 export const MutedStateSchema = z.object({
@@ -16,8 +19,10 @@ export const MutedStateSchema = z.object({
 		.describe('The timestamp of the last time the muted state was updated'),
 	muted: z.boolean()
 		.describe('Whether the sound is muted or not'),
-})
-	.describe('Sound muted state');
+}).register(lunaRegistry, {
+	id: 'MutedStateSchema',
+	description: 'The sound muted state of the device',
+});
 export type MutedState = z.infer<typeof MutedStateSchema>;
 
 export const SoundModeStateSchema = z.object({
@@ -34,8 +39,10 @@ export const SoundModeStateSchema = z.object({
 		.describe('The current sound mode'),
 	balance: z.coerce.number().int().min(-50).max(50).optional()
 		.describe('The audio balance of the sound mode, Range: [-50–50]'),
-})
-	.describe('Sound mode configuration');
+}).register(lunaRegistry, {
+	id: 'SoundModeStateSchema',
+	description: 'The sound mode configuration of the device',
+});
 export type SoundModeState = z.infer<typeof SoundModeStateSchema>;
 
 export const SoundOutStateSchema = z.object({
@@ -46,8 +53,10 @@ export const SoundOutStateSchema = z.object({
 		'bt_soundbar',
 	])
 		.describe('The type of the speaker, either "tv_speaker" or "bt_soundbar"'),
-})
-	.describe('Sound output configuration');
+}).register(lunaRegistry, {
+	id: 'SoundOutStateSchema',
+	description: 'The sound output configuration of the device',
+});
 export type SoundOutState = z.infer<typeof SoundOutStateSchema>;
 
 export const VolumeStateSchema = z.object({
@@ -57,8 +66,10 @@ export const VolumeStateSchema = z.object({
 		.describe('The sound level of the device, Range: [0–100]'),
 	volOsdEnabled: z.boolean().optional()
 		.describe('Whether the volume OSD (On-Screen Display) is enabled or not'),
-})
-	.describe('Sound volume level');
+}).register(lunaRegistry, {
+	id: 'VolumeStateSchema',
+	description: 'The sound volume level of the device',
+});
 export type VolumeState = z.infer<typeof VolumeStateSchema>;
 
 // #region State
@@ -68,6 +79,9 @@ export const SoundStateSchema = z.object({
 	soundMode: SoundModeStateSchema.optional(),
 	soundOut: SoundOutStateSchema.optional(),
 	volumeLevel: VolumeStateSchema.optional(),
+}).register(lunaRegistry, {
+	id: 'SoundStateSchema',
+	description: 'The state of the sound system of the device, including muted state, external speaker, sound mode, sound output, and volume level',
 });
 export type SoundState = z.infer<typeof SoundStateSchema>;
 // #endregion
@@ -76,6 +90,9 @@ export type SoundState = z.infer<typeof SoundStateSchema>;
 export const SoundStatusSchema = z.object({
 	_debug: z.string().optional()
 		.describe('SCAP debug mode output'),
+}).register(lunaRegistry, {
+	id: 'SoundStatusSchema',
+	description: 'The status of the sound system of the device, including debug information',
 });
 export type SoundStatus = z.infer<typeof SoundStatusSchema>;
 // #endregion

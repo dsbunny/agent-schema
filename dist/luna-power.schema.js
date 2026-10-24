@@ -1,5 +1,6 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
-import * as z from "zod/v4";
+import * as z from "zod";
+import { lunaRegistry } from './registry.js';
 export const DisplayModeStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the display mode was updated'),
@@ -8,8 +9,10 @@ export const DisplayModeStateSchema = z.object({
         'Active',
     ])
         .describe('Indicates whether the device screen is turned on or off'),
-})
-    .describe('The display mode of the signage device, indicating whether the screen is on or off');
+}).register(lunaRegistry, {
+    id: 'DisplayModeStateSchema',
+    description: 'The display mode of the signage device, indicating whether the screen is on or off',
+});
 export const DPMWakeupStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the DPM wakeup signal was updated'),
@@ -18,8 +21,10 @@ export const DPMWakeupStateSchema = z.object({
         'clockAndData',
     ])
         .describe('The DPM (Display Power Management) signal type, either "clock" or "clockAndData"'),
-})
-    .describe('The DPM wakeup signal type, which indicates how the device can be woken up from a low power state');
+}).register(lunaRegistry, {
+    id: 'DPMWakeupStateSchema',
+    description: 'The DPM wakeup signal type, which indicates how the device can be woken up from a low power state',
+});
 export const PMModeStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the power management mode was updated'),
@@ -32,8 +37,10 @@ export const PMModeStateSchema = z.object({
         'networkReady',
     ])
         .describe('The power management mode, which determines how the signage device behaves when its power is turned off'),
-})
-    .describe('The power management mode configuration for the signage device, specifying how it behaves in different power states');
+}).register(lunaRegistry, {
+    id: 'PMModeStateSchema',
+    description: 'The power management mode configuration for the signage device, specifying how it behaves in different power states',
+});
 export const PowerCommandRequestSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last power command request'),
@@ -42,22 +49,28 @@ export const PowerCommandRequestSchema = z.object({
         'powerOff',
     ])
         .describe('The power command to be executed, either "reboot" or "powerOff"'),
-})
-    .describe('The request to control the power state of the signage device, including the power command and the timestamp of the request');
+}).register(lunaRegistry, {
+    id: 'PowerCommandRequestSchema',
+    description: 'The request to control the power state of the signage device, including the power command and the timestamp of the request',
+});
 export const PowerOnDelayStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the power-on delay was updated'),
     delayTime: z.number().int().min(0).max(250)
         .describe('The power-on delay time in seconds, ranging from 0 to 250'),
-})
-    .describe('The power-on delay configuration for the signage device, specifying how long to wait before turning on the device after a power command is issued');
+}).register(lunaRegistry, {
+    id: 'PowerOnDelayStateSchema',
+    description: 'The power-on delay configuration for the signage device, specifying how long to wait before turning on the device after a power command is issued',
+});
 export const WakeOnLanStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the Wake-on-LAN configuration was updated'),
     wakeOnLan: z.boolean()
         .describe('Whether Wake-on-LAN is enabled or not'),
-})
-    .describe('The Wake-on-LAN configuration for the signage device, indicating if it can be woken up remotely over the network');
+}).register(lunaRegistry, {
+    id: 'WakeOnLanStateSchema',
+    description: 'The Wake-on-LAN configuration for the signage device, indicating if it can be woken up remotely over the network',
+});
 // #region State
 export const PowerStateSchema = z.object({
     _powerCommandRequest: PowerCommandRequestSchema.optional(),
@@ -67,12 +80,18 @@ export const PowerStateSchema = z.object({
     powerOnDelay: PowerOnDelayStateSchema.optional(),
     wakeOnLan: WakeOnLanStateSchema.optional(),
     // Skip `offTimerList` and `onTimerList` as deprecated.
+}).register(lunaRegistry, {
+    id: 'PowerStateSchema',
+    description: 'The power state of the signage device, including power command request, display mode, DPM wakeup, PM mode, power-on delay, and Wake-on-LAN configuration',
 });
 // #endregion
 // #region Status
 export const PowerStatusSchema = z.object({
     _debug: z.string().optional()
         .describe('SCAP debug mode output'),
+}).register(lunaRegistry, {
+    id: 'PowerStatusSchema',
+    description: 'The status of the power subsystem of the signage device, including debug information',
 });
 // #endregion
 //# sourceMappingURL=luna-power.schema.js.map

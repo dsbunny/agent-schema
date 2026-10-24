@@ -1,4 +1,4 @@
-import * as z from "zod/v4";
+import * as z from "zod";
 export declare const ApplicationInfoStatusSchema: z.ZodObject<{
     appinfo: z.ZodObject<{
         icon: z.ZodString;

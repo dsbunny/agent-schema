@@ -1,5 +1,6 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
-import * as z from "zod/v4";
+import * as z from "zod";
+import { lunaRegistry } from './registry.js';
 export const CaptureScreenRequestSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the screenshot request'),
@@ -11,8 +12,10 @@ export const CaptureScreenRequestSchema = z.object({
         'HD', // 1280×720
     ]).optional()
         .describe('The resolution of the screenshot to be captured, either "thumbnail", "FHD", or "HD"'),
-})
-    .describe('The request to capture a screenshot, including timestamp, thumbnail option, and image resolution');
+}).register(lunaRegistry, {
+    id: 'CaptureScreenRequestSchema',
+    description: 'The request to capture a screenshot, including timestamp, thumbnail option, and image resolution',
+});
 export const CaptureScreenStatusSchema = z.object({
     data: z.base64()
         .describe('The screenshot data in base64 format'),
@@ -20,22 +23,28 @@ export const CaptureScreenStatusSchema = z.object({
         .describe('The size of the screenshot (bytes)'),
     encoding: z.literal('Base64')
         .describe('The encoding of the screenshot'),
-})
-    .describe('The response of the screenshot capture request, including data, size, and encoding');
+}).register(lunaRegistry, {
+    id: 'CaptureScreenStatusSchema',
+    description: 'The response of the screenshot capture request, including data, size, and encoding',
+});
 export const CheckScreenStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the pixel sensor was checked'),
     checkScreen: z.boolean()
         .describe('Indicates whether to enable the pixel sensor'),
-})
-    .describe('The check screen request to enable or disable the pixel sensor');
+}).register(lunaRegistry, {
+    id: 'CheckScreenStateSchema',
+    description: 'The check screen request to enable or disable the pixel sensor',
+});
 export const DigitalAudioInputStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the digital audio input mode was updated'),
     digitalAudioInputMode: z.enum(['audioIn', 'hdmi'])
         .describe('Indicates the status of the digital audio input mode, either "audioIn" or "hdmi"'),
-})
-    .describe('The digital audio input mode of the signage device');
+}).register(lunaRegistry, {
+    id: 'DigitalAudioInputStateSchema',
+    description: 'The digital audio input mode of the signage device',
+});
 export const FailoverModeStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the failover mode was updated'),
@@ -43,15 +52,19 @@ export const FailoverModeStateSchema = z.object({
         .describe('The failover mode, either "auto", "manual", or "off"'),
     priority: z.array(z.string()).optional()
         .describe('The list of input sources in priority order for failover, e.g., ["ext://hdmi:1", "ext://hdmi:2"]'),
-})
-    .describe('The failover mode and priority of input sources for the agent');
+}).register(lunaRegistry, {
+    id: 'FailoverModeStateSchema',
+    description: 'The failover mode and priority of input sources for the agent',
+});
 export const IntelligentAutoStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the Intelligent Auto feature was updated'),
     enabled: z.boolean()
         .describe('Whether Intelligent Auto is enabled or disabled. Intelligent Auto is a feature that automatically calibrates the signage device screen when an analog RGB signal is received.'),
-})
-    .describe('The Intelligent Auto feature of the signage device, indicating whether it is enabled or disabled');
+}).register(lunaRegistry, {
+    id: 'IntelligentAutoStateSchema',
+    description: 'The Intelligent Auto feature of the signage device, indicating whether it is enabled or disabled',
+});
 export const IsmMethodStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the ISM method was updated'),
@@ -66,35 +79,45 @@ export const IsmMethodStateSchema = z.object({
         'WHITEWASH',
     ])
         .describe('The ISM (Image Sticking Minimization) method'),
-})
-    .describe('The ISM method of the signage device, which helps to prevent image retention on the screen');
+}).register(lunaRegistry, {
+    id: 'IsmMethodStateSchema',
+    description: 'The ISM method of the signage device, which helps to prevent image retention on the screen',
+});
 export const LanDaisyChainStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the LAN daisy chain state was updated'),
     enabled: z.boolean()
         .describe('Whether the LAN daisy chain is enabled or not'),
-})
-    .describe('The LAN daisy chain feature of the signage device, indicating whether it is enabled or not');
+}).register(lunaRegistry, {
+    id: 'LanDaisyChainStateSchema',
+    description: 'The LAN daisy chain feature of the signage device, indicating whether it is enabled or not',
+});
 export const MirrorModeStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the mirror mode was updated'),
     mode: z.enum(['off', 'on'])
-})
-    .describe('Indicates the status of the mirror mode, either "off" or "on"');
+}).register(lunaRegistry, {
+    id: 'MirrorModeStateSchema',
+    description: 'Indicates the status of the mirror mode, either "off" or "on"',
+});
 export const NoSignalImageModeStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the No Signal Image mode was updated'),
     noSignalImageMode: z.enum(['off', 'on'])
         .describe('Indicates the status of the No Signal Image mode, either "off" or "on"'),
-})
-    .describe('The No Signal Image mode of the signage device, indicating whether it is enabled or not');
+}).register(lunaRegistry, {
+    id: 'NoSignalImageModeStateSchema',
+    description: 'The No Signal Image mode of the signage device, indicating whether it is enabled or not',
+});
 export const PortraitModeStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the portrait mode was updated'),
     portraitMode: z.enum(['off', '90', '___undefined___'])
         .describe('The display portrait mode, either "off", "90" (90 degrees rotation), or "___undefined___" (unknown)'),
-})
-    .describe('The portrait mode of the signage device, indicating the orientation of the display');
+}).register(lunaRegistry, {
+    id: 'PortraitModeStateSchema',
+    description: 'The portrait mode of the signage device, indicating the orientation of the display',
+});
 export const PowerSaveModeStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the power save mode was updated'),
@@ -118,22 +141,28 @@ export const PowerSaveModeStateSchema = z.object({
         .describe('The automatic standby mode.'),
     do15MinOff: z.boolean()
         .describe('Whether the 15-minute off mode is enabled or not'),
-})
-    .describe('The power save mode of the agent, including SES mode, DPM mode, automatic standby mode, and 15-minute off mode');
+}).register(lunaRegistry, {
+    id: 'PowerSaveModeStateSchema',
+    description: 'The power save mode of the agent, including SES mode, DPM mode, automatic standby mode, and 15-minute off mode',
+});
 export const QuietModeStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the quiet mode was updated'),
     mode: z.enum(['off', 'on'])
         .describe('The quiet mode status'),
-})
-    .describe('The quiet mode of the signage device, indicating whether it is enabled or not');
+}).register(lunaRegistry, {
+    id: 'QuietModeStateSchema',
+    description: 'The quiet mode of the signage device, indicating whether it is enabled or not',
+});
 export const ResetRequestSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the reset request'),
     mode: z.enum(['softReset', 'factoryReset'])
         .describe('The reset mode, either "softReset" or "factoryReset"'),
-})
-    .describe('The request to reset the signage device, including timestamp and reset mode');
+}).register(lunaRegistry, {
+    id: 'ResetRequestSchema',
+    description: 'The request to reset the signage device, including timestamp and reset mode',
+});
 export const RS232CStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the RS-232C configuration was updated'),
@@ -192,15 +221,19 @@ export const RS232CStateSchema = z.object({
         .describe('The flow control setting, either 3 (RTS/CTS), 1 (none), 0 (unknown), or 2 (XON/XOFF)'),
     rxTimeoutInMs: z.number().int().min(0).max(1000).optional()
         .describe('The receive timeout in milliseconds, e.g. 1000'),
-})
-    .describe('The RS-232C configuration of the signage device');
+}).register(lunaRegistry, {
+    id: 'RS232CStateSchema',
+    description: 'The RS-232C configuration of the signage device',
+});
 export const SimplinkStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the SIMPLINK status was updated'),
     simplinkEnable: z.enum(['on', 'off'])
         .describe('Indicates the status of the SIMPLINK feature, either "on" or "off"'),
-})
-    .describe('The SIMPLINK status of the signage device, indicating whether the SIMPLINK feature is enabled or not');
+}).register(lunaRegistry, {
+    id: 'SimplinkStateSchema',
+    description: 'The SIMPLINK status of the signage device, indicating whether the SIMPLINK feature is enabled or not',
+});
 export const TileStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the tile information was updated'),
@@ -214,15 +247,19 @@ export const TileStateSchema = z.object({
         .describe('The tile ID of the signage device in the video wall, Range: [1–225]'),
     naturalMode: z.boolean()
         .describe('Whether the natural mode (bezel correction) is enabled or not.'),
-})
-    .describe('The tile information of the signage device, including whether tile mode is enabled, number of rows and columns, tile ID, and natural mode status');
+}).register(lunaRegistry, {
+    id: 'TileStateSchema',
+    description: 'The tile information of the signage device, including whether tile mode is enabled, number of rows and columns, tile ID, and natural mode status',
+});
 export const UsageStatusSchema = z.object({
     uptime: z.coerce.number().positive()
         .describe('The uptime of the device in hours, and minutes as fractional part'),
     totalUsed: z.coerce.number().positive()
         .describe('The total usage time of the device in hours'),
-})
-    .describe('The usage data of the device, including uptime and total used time');
+}).register(lunaRegistry, {
+    id: 'UsageStatusSchema',
+    description: 'The usage data of the device, including uptime and total used time',
+});
 export const UsagePermissionStateSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the last time the usage permission was updated'),
@@ -230,8 +267,10 @@ export const UsagePermissionStateSchema = z.object({
         .describe('The remote key operation mode that represents the access control for remote key input.'),
     localKeyOperationMode: z.enum(['normal', 'blockAll', 'usePwrOnly'])
         .describe('The local key operation mode that represents the access control for local key input.'),
-})
-    .describe('The usage permission of the device, including remote and local key operation modes');
+}).register(lunaRegistry, {
+    id: 'UsagePermissionStateSchema',
+    description: 'The usage permission of the device, including remote and local key operation modes',
+});
 // #region State
 export const SignageStateSchema = z.object({
     _captureScreenRequest: CaptureScreenRequestSchema.optional(),
@@ -251,6 +290,9 @@ export const SignageStateSchema = z.object({
     simplink: SimplinkStateSchema.optional(),
     tile: TileStateSchema.nullable().optional(),
     usagePermission: UsagePermissionStateSchema.optional(),
+}).register(lunaRegistry, {
+    id: 'SignageStateSchema',
+    description: 'The state of the signage device, including various operational modes and settings',
 });
 // #endregion
 // #region Status
@@ -259,6 +301,9 @@ export const SignageStatusSchema = z.object({
     usageData: UsageStatusSchema.optional(),
     _debug: z.string().optional()
         .describe('SCAP debug mode output'),
+}).register(lunaRegistry, {
+    id: 'SignageStatusSchema',
+    description: 'The status of the signage device, including capture screen status and usage data',
 });
 // #endregion
 //# sourceMappingURL=luna-signage.schema.js.map

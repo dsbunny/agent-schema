@@ -1,5 +1,6 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
-import * as z from "zod/v4";
+import * as z from "zod";
+import { lunaRegistry } from './registry.js';
 export const ExternalInputListStatusSchema = z.object({
     inputSourceList: z.array(z.object({
         inputPort: z.string()
@@ -16,6 +17,9 @@ export const ExternalInputListStatusSchema = z.object({
         .describe('The number of external input sources'),
     currentInputPort: z.string()
         .describe('The current input source label, e.g. "ext://hdmi:1"'),
+}).register(lunaRegistry, {
+    id: 'ExternalInputListStatusSchema',
+    description: 'The list of external input sources, including input port, signal detection, vendor ID, and name',
 });
 // #region Status
 export const InputSourceStatusSchema = z.object({
@@ -23,6 +27,9 @@ export const InputSourceStatusSchema = z.object({
         .describe('The list of external input sources'),
     _debug: z.string().optional()
         .describe('SCAP debug mode output'),
+}).register(lunaRegistry, {
+    id: 'InputSourceStatusSchema',
+    description: 'The status of the input source, including the list of external input sources',
 });
 // #endregion
 //# sourceMappingURL=luna-input-source.schema.js.map

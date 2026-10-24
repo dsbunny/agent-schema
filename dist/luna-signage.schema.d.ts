@@ -1,4 +1,4 @@
-import * as z from "zod/v4";
+import * as z from "zod";
 export declare const CaptureScreenRequestSchema: z.ZodObject<{
     _timestamp: z.ZodISODateTime;
     thumbnail: z.ZodOptional<z.ZodBoolean>;

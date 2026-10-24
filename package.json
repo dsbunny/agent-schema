@@ -1,6 +1,6 @@
 {
 	"name": "@dsbunny/agent-schema",
-	"version": "7.0.20",
+	"version": "7.1.21",
 	"description": "Schema for RMM agents",
 	"type": "module",
 	"main": "dist/index.js",
@@ -21,9 +21,10 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"devDependencies": {
-		"@dsbunny/capdb-schema": "github:dsbunny/capdb-schema#169a15a",
-		"@dsbunny/recipe-schema": "github:dsbunny/recipe-schema#284d78e",
-		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#c888aab",
+		"@dsbunny/capdb-schema": "github:dsbunny/capdb-schema#801e62f",
+		"@dsbunny/recipe-schema": "github:dsbunny/recipe-schema#a6c8160",
+		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#034eed1",
+		"@dsbunny/zod-registry": "github:dsbunny/zod-registry#35c7ef6",
 		"typescript": "^5.9.3",
 		"zod": "^4.3.6"
 	},
@@ -31,6 +32,7 @@
 		"@dsbunny/capdb-schema": "github:dsbunny/capdb-schema",
 		"@dsbunny/recipe-schema": "github:dsbunny/recipe-schema",
 		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema",
+		"@dsbunny/zod-registry": "github:dsbunny/rmm-schema",
 		"zod": "^4.3.0"
 	}
 }

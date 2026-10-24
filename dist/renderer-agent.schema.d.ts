@@ -1,4 +1,4 @@
-import * as z from "zod/v4";
+import * as z from "zod";
 export declare const RENDERER_AGENT_URN = "urn:dsbunny:agent:renderer";
 export declare const RendererAgentStateDetailSchema: z.ZodObject<{
     playlist_element_name: z.ZodEnum<{

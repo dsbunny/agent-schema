@@ -1,6 +1,7 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 
-import * as z from "zod/v4";
+import * as z from "zod";
+import { lunaRegistry } from './registry.js';
 
 export const BlockedPortSchema = z.object({
 	blockedPort: z.number().int().min(1).max(65535)
@@ -9,8 +10,10 @@ export const BlockedPortSchema = z.object({
 		.describe('The direction of the blocked port, e.g., "in", "out", or "all"'),
 	protocol: z.enum(['tcp', 'udp'])
 		.describe('The protocol of the blocked port, e.g., "tcp" or "udp"'),
-})
-	.describe('The blocked port in the format "port/direction/protocol"');
+}).register(lunaRegistry, {
+	id: 'BlockedPortSchema',
+	description: 'The blocked port information, including port number, direction, and protocol',
+});
 export type BlockedPort = z.infer<typeof BlockedPortSchema>;
 
 export const BlockedPortListStateSchema = z.object({
@@ -18,8 +21,10 @@ export const BlockedPortListStateSchema = z.object({
 		.describe('The timestamp of the last time the blocked port list was updated'),
 	blockedPortList: z.array(BlockedPortSchema).max(30)
 		.describe('The list of blocked ports, maximum 30 entries'),
-})
-	.describe('The blocked port list, containing multiple blocked ports');
+}).register(lunaRegistry, {
+	id: 'BlockedPortListStateSchema',
+	description: 'The blocked port list, containing multiple blocked ports',
+});
 export type BlockedPortListState = z.infer<typeof BlockedPortListStateSchema>;
 
 export const NetworkCheckupStateSchema = z.object({
@@ -29,8 +34,10 @@ export const NetworkCheckupStateSchema = z.object({
 		.describe('The network checkup mode, either "default" or "manual"'),
 	url: z.url().optional()
 		.describe('The URL for the network checkup, e.g., "https://example.com/checkup"'),
-})
-	.describe('The network checkup information, including mode and URL');
+}).register(lunaRegistry, {
+	id: 'NetworkCheckupStateSchema',
+	description: 'The network checkup information, including mode and URL',
+});
 export type NetworkCheckupState = z.infer<typeof NetworkCheckupStateSchema>;
 
 export const NetworkStateSchema = z.object({
@@ -68,6 +75,9 @@ export const NetworkStateSchema = z.object({
 		dns2: z.string().optional()
 			.describe('The secondary DNS server of the Wi-Fi connection'),
 	}).describe('The Wi-Fi network connection information'),
+}).register(lunaRegistry, {
+	id: 'NetworkStateSchema',
+	description: 'The network information, including wired and Wi-Fi connections',
 });
 export type NetworkState = z.infer<typeof NetworkStateSchema>;
 
@@ -134,8 +144,10 @@ export const NetworkStatusSchema = z.object({
 	// - `wan`: Describes the WAN connection information.
 	// - `wifiDirect`: Describes the Wi-Fi Direct connection information.
 	// - `wired.proxyinfo`: Describes the proxy information for the wired connection.
-})
-	.describe('The network information of the agent, including wired and Wi-Fi connections');
+}).register(lunaRegistry, {
+	id: 'NetworkStatusSchema',
+	description: 'The network information of the agent, including wired and Wi-Fi connections',
+});
 export type NetworkStatus = z.infer<typeof NetworkStatusSchema>;
 
 export const NetworkMacStatusSchema = z.object({
@@ -147,8 +159,10 @@ export const NetworkMacStatusSchema = z.object({
 		macAddress: z.string().optional()
 			.describe('The MAC address of the Wi-Fi network interface, e.g., "00:1A:2B:3C:4D:5F"'),
 	}).optional(),
-})
-	.describe('The MAC address information of the network interfaces, including wired and Wi-Fi');
+}).register(lunaRegistry, {
+	id: 'NetworkMacStatusSchema',
+	description: 'The MAC address information of the network interfaces, including wired and Wi-Fi',
+});
 export type NetworkMacStatus = z.infer<typeof NetworkMacStatusSchema>;
 
 export const PlatformStatusSchema = z.object({
@@ -164,8 +178,10 @@ export const PlatformStatusSchema = z.object({
 		.describe('The serial number of the signage device, e.g., "WEBOS1"'),
 	firmwareVersion: z.string()
 		.describe('The firmware version of the signage device, e.g., "WEBOS1"'),
-})
-	.describe('The platform information of the signage device, including hardware version, manufacturer, model name, SDK version, serial number, and firmware version');
+}).register(lunaRegistry, {
+	id: 'PlatformStatusSchema',
+	description: 'The platform information of the signage device, including hardware version, manufacturer, model name, SDK version, serial number, and firmware version',
+});
 export type PlatformStatus = z.infer<typeof PlatformStatusSchema>;
 
 export const ProxyStateSchema = z.object({
@@ -181,8 +197,10 @@ export const ProxyStateSchema = z.object({
 		.describe('The username for the proxy server, e.g. "user"'),
 	password: z.string().optional()  // Write-only field for security reasons.
 		.describe('The password for the proxy server, e.g. "password"'),
-})
-	.describe('The proxy information of the agent, including whether it is enabled, the IP address, and the port number');
+}).register(lunaRegistry, {
+	id: 'ProxyStateSchema',
+	description: 'The proxy information of the agent, including whether it is enabled, the IP address, and the port number',
+});
 export type ProxyState = z.infer<typeof ProxyStateSchema>;
 
 export const SensorValuesStateSchema = z.object({
@@ -190,8 +208,10 @@ export const SensorValuesStateSchema = z.object({
 		.describe('The timestamp of the last time the sensor values were updated'),
 	backlight: z.number().int().min(0).max(100)
 		.describe('The backlight level of the display. Range: [0–100]'),
-})
-	.describe('The sensor values of the agent, including backlight level and screen color check information');
+}).register(lunaRegistry, {
+	id: 'SensorValuesStateSchema',
+	description: 'The sensor values of the agent, including backlight level and screen color check information',
+});
 export type SensorValuesState = z.infer<typeof SensorValuesStateSchema>;
 
 export const SensorValuesStatusSchema = z.object({
@@ -224,8 +244,10 @@ export const SensorValuesStatusSchema = z.object({
 	// Device will automatically shutdown if the temperature exceeds 86 degrees Celsius.
 	temperature: z.number().int().min(-50).max(100)
 		.describe('The temperature level of the agent. Range: [-50–100]'),
-})
-	.describe('The sensor values of the agent, including backlight level and screen color check information');
+}).register(lunaRegistry, {
+	id: 'SensorValuesStatusSchema',
+	description: 'The sensor values of the agent, including backlight level and screen color check information',
+});
 export type SensorValuesStatus = z.infer<typeof SensorValuesStatusSchema>;
 
 export const SystemUsageStatusSchema = z.object({
@@ -257,8 +279,10 @@ export const SystemUsageStatusSchema = z.object({
 		cached: z.number().optional()
 			.describe('Cached memory space (bytes)'),
 	}).optional(),
-})
-	.describe('The system usage information of the agent, including CPU and memory usage');
+}).register(lunaRegistry, {
+	id: 'SystemUsageStatusSchema',
+	description: 'The system usage information of the agent, including CPU and memory usage',
+});
 export type SystemUsageStatus = z.infer<typeof SystemUsageStatusSchema>;
 
 // #region State
@@ -274,6 +298,9 @@ export const DeviceStateSchema = z.object({
 	sensorValues: SensorValuesStateSchema.optional(),
 	// Skip `softApInfo` due to security concerns.
 	// Skip `wps` due to security concerns and narrow use cases.
+}).register(lunaRegistry, {
+	id: 'DeviceStateSchema',
+	description: 'The state of the device, including blocked port list, network checkup, network, proxy, and sensor values',
 });
 export type DeviceState = z.infer<typeof DeviceStateSchema>;
 // #endregion
@@ -288,6 +315,9 @@ export const DeviceStatusSchema = z.object({
 	// Skip `wifiList` due to security concerns.
 	_debug: z.string().optional()
 		.describe('SCAP debug mode output'),
+}).register(lunaRegistry, {
+	id: 'DeviceStatusSchema',
+	description: 'The status of the device, including network info, network MAC info, platform info, sensor values, and system usage info',
 });
 export type DeviceStatus = z.infer<typeof DeviceStatusSchema>;
 // #endregion

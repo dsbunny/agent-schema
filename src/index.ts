@@ -12,3 +12,4 @@ export * from './luna-sound.schema.js';
 export * from './luna-storage.schema.js';
 export * from './luna-time.schema.js';
 export * from './renderer-agent.schema.js';
+export * from './registry.js';

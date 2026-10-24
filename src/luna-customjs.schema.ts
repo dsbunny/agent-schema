@@ -1,6 +1,7 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 
-import * as z from "zod/v4";
+import * as z from "zod";
+import { lunaRegistry } from './registry.js';
 
 export const ApplicationInfoStatusSchema = z.object({
 	appinfo: z.object({
@@ -38,8 +39,10 @@ export const ApplicationInfoStatusSchema = z.object({
 		vendor: z.string().optional()
 			.describe('The App owner'),
 	}),
-})
-	.describe('The information about the application, including app ID, title, version, and other metadata');
+}).register(lunaRegistry, {
+	id: 'ApplicationInfoStatusSchema',
+	description: 'The information about the application, including app ID, title, version, and other metadata',
+});
 export type ApplicationInfoStatus = z.infer<typeof ApplicationInfoStatusSchema>;
 
 export const ClearBrowsingDataRequestSchema = z.object({
@@ -59,8 +62,10 @@ export const ClearBrowsingDataRequestSchema = z.object({
 	]))
 		.optional()
 		.describe('The types of cache to clear'),
-})
-	.describe('The request to clear the cache of the signage device, including timestamp');
+}).register(lunaRegistry, {
+	id: 'ClearBrowsingDataRequestSchema',
+	description: 'The request to clear the cache of the signage device, including timestamp',
+});
 export type ClearBrowsingDataRequest = z.infer<typeof ClearBrowsingDataRequestSchema>;
 
 export const DisableApplicationRequestSchema = z.object({
@@ -68,28 +73,37 @@ export const DisableApplicationRequestSchema = z.object({
 		.describe('The timestamp of the disable application request'),
 	reset: z.boolean().optional()
 		.describe('Whether to reset theserver settings to their default values after disabling it'),
-})
-	.describe('The request to disable an application on the signage device, including timestamp and reset option');
+}).register(lunaRegistry, {
+	id: 'DisableApplicationRequestSchema',
+	description: 'The request to disable an application on the signage device, including timestamp and reset option',
+});
 export type DisableApplicationRequest = z.infer<typeof DisableApplicationRequestSchema>;
 
 export const PowerOnOffHistoryStatusSchema = z.object({
 	powerOnOffHistory: z.array(z.string())
 		.describe('The list of power on/off history timestamps'),
-})
-	.describe('The power on/off history of the signage device, including timestamps');
+}).register(lunaRegistry, {
+	id: 'PowerOnOffHistoryStatusSchema',
+	description: 'The power on/off history of the signage device, including timestamps',
+});
 export type PowerOnOffHistoryStatus = z.infer<typeof PowerOnOffHistoryStatusSchema>;
 
 export const WebOSVersionStatusSchema = z.object({
 	webOSVersion: z.string()
 		.describe('The webOS version of the signage device'),
-})
-	.describe('The webOS version of the signage device');
+}).register(lunaRegistry, {
+	id: 'WebOSVersionStatusSchema',
+	description: 'The webOS version of the signage device',
+});
 export type WebOSVersionStatus = z.infer<typeof WebOSVersionStatusSchema>;
 
 // #region State
 export const CustomJSStateSchema = z.object({
 	_clearBrowsingDataRequest: ClearBrowsingDataRequestSchema.optional(),
 	_disableApplicationRequest: DisableApplicationRequestSchema.optional(),
+}).register(lunaRegistry, {
+	id: 'CustomJSStateSchema',
+	description: 'The state of the CustomJS module, including clear browsing data and disable application requests',
 });
 export type CustomJSState = z.infer<typeof CustomJSStateSchema>;
 // #endregion
@@ -101,6 +115,9 @@ export const CustomJSStatusSchema = z.object({
 	webOSVersion: WebOSVersionStatusSchema.optional(),
 	_debug: z.string().optional()
 		.describe('SCAP debug mode output'),
+}).register(lunaRegistry, {
+	id: 'CustomJSStatusSchema',
+	description: 'The status of the CustomJS module, including application info, power on/off history, and webOS version',
 });
 export type CustomJSStatus = z.infer<typeof CustomJSStatusSchema>;
 // #endregion

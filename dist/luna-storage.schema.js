@@ -1,12 +1,15 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
-import * as z from "zod/v4";
+import * as z from "zod";
+import { lunaRegistry } from './registry.js';
 export const ChangeLogoImageRequestSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the logo image change request'),
     uri: z.string()
         .describe('The URI of the new logo image to be set, e.g., "file://internal/logo.png"'),
-})
-    .describe('The request to change the logo image, including timestamp and URI of the new logo image');
+}).register(lunaRegistry, {
+    id: 'ChangeLogoImageRequestSchema',
+    description: 'The request to change the logo image, including timestamp and URI of the new logo image',
+});
 export const StorageSpaceStatusSchema = z.object({
     free: z.coerce.number().positive()
         .describe('The free storage space in KB'),
@@ -23,8 +26,10 @@ export const StorageSpaceStatusSchema = z.object({
             .describe('The used storage space in KB of the external memory'),
     })).optional()
         .describe('The external memory storage information, if available'),
-})
-    .describe('The storage information of the device, including free, total, and used storage space');
+}).register(lunaRegistry, {
+    id: 'StorageSpaceStatusSchema',
+    description: 'The storage information of the device, including free, total, and used storage space',
+});
 export const USBStatusSchema = z.object({
     usbList: z.array(z.object({
         usbName: z.string()
@@ -36,8 +41,10 @@ export const USBStatusSchema = z.object({
         deviceId: z.string().optional()
             .describe('The device ID of the USB device, e.g., "1234567890"'),
     })),
-})
-    .describe('The list of USB devices connected to the agent, including name, vendor, product, and device ID');
+}).register(lunaRegistry, {
+    id: 'USBStatusSchema',
+    description: 'The list of USB devices connected to the agent, including name, vendor, product, and device ID',
+});
 export const UpgradeApplicationRequestSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the application upgrade request'),
@@ -47,8 +54,10 @@ export const UpgradeApplicationRequestSchema = z.object({
         .describe('Indicates whether to use the recovery mode or not.'),
     type: z.enum(['ipk', 'zip'])
         .describe('Indicates the type of app this method is handling.'),
-})
-    .describe('The request to upgrade the application, including timestamp and URL of the application');
+}).register(lunaRegistry, {
+    id: 'UpgradeApplicationRequestSchema',
+    description: 'The request to upgrade the application, including timestamp and URL of the application',
+});
 export const UpgradeFirmwareRequestSchema = z.object({
     _timestamp: z.iso.datetime()
         .describe('The timestamp of the firmware upgrade request'),
@@ -57,8 +66,10 @@ export const UpgradeFirmwareRequestSchema = z.object({
     // Pre-processed with `downloadFirmware` to generate a local path.
     uri: z.url()
         .describe('The URI of the firmware file to be upgraded, e.g., "https://example.com/firmware.epk"'),
-})
-    .describe('The request to upgrade the firmware, including timestamp and path of the firmware file');
+}).register(lunaRegistry, {
+    id: 'UpgradeFirmwareRequestSchema',
+    description: 'The request to upgrade the firmware, including timestamp and path of the firmware file',
+});
 export const FirmwareUpgradeStatusSchema = z.object({
     status: z.enum([
         'idle',
@@ -73,16 +84,20 @@ export const FirmwareUpgradeStatusSchema = z.object({
         .describe('The download progress of the firmware upgrade in percentage'),
     upgradeProgress: z.number().int().min(0).max(100)
         .describe('The upgrade progress of the firmware in percentage'),
-})
-    .describe('The firmware upgrade status, including status and download progress');
+}).register(lunaRegistry, {
+    id: 'FirmwareUpgradeStatusSchema',
+    description: 'The firmware upgrade status, including status and download progress',
+});
 // #region State
 export const StorageStateSchema = z.object({
     // Skip `removeApplicationRequest` as a running application cannot remove itself.
     _changeLogoImageRequest: ChangeLogoImageRequestSchema.optional(),
     _upgradeApplicationRequest: UpgradeApplicationRequestSchema.optional(),
     _upgradeFirmwareRequest: UpgradeFirmwareRequestSchema.optional(),
-})
-    .describe('The storage information of the device, including firmware and app details');
+}).register(lunaRegistry, {
+    id: 'StorageStateSchema',
+    description: 'The storage information of the device, including firmware and app details',
+});
 // #endregion
 // #region Status
 export const StorageStatusSchema = z.object({
@@ -91,5 +106,8 @@ export const StorageStatusSchema = z.object({
     storageInfo: StorageSpaceStatusSchema.optional(),
     _debug: z.string().optional()
         .describe('SCAP debug mode output'),
+}).register(lunaRegistry, {
+    id: 'StorageStatusSchema',
+    description: 'The status of the storage system of the device, including firmware upgrade status, USB info, and storage info',
 });
 //# sourceMappingURL=luna-storage.schema.js.map

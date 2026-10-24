@@ -1,9 +1,13 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 
-import * as z from "zod/v4";
+import * as z from "zod";
+import { lunaRegistry } from './registry.js';
 
 export const PEMChainSchema = z.string().refine((val) => {
 	return val.trim().startsWith('-----BEGIN CERTIFICATE-----') && val.trim().endsWith('-----END CERTIFICATE-----');
+}).register(lunaRegistry, {
+	id: 'PEMChainSchema',
+	description: 'A PEM-encoded certificate chain, starting with "-----BEGIN CERTIFICATE-----" and ending with "-----END CERTIFICATE-----"',
 });
 export type PEMChain = z.infer<typeof PEMChainSchema>;
 
@@ -16,8 +20,10 @@ export const ServerCertificateSchema = z.object({
 		.describe('The start date of the server certificate validity period, e.g., "2023-01-01T00:00:00Z"'),
 	validTo: z.iso.datetime().optional()
 		.describe('The end date of the server certificate validity period, e.g., "2024-01-01T00:00:00Z"'),
-})
-	.describe('The server certificate information, including domain name, issuer name, and validity period');
+}).register(lunaRegistry, {
+	id: 'ServerCertificateSchema',
+	description: 'The server certificate information, including domain name, issuer name, and validity period',
+});
 export type ServerCertificate = z.infer<typeof ServerCertificateSchema>;
 
 export const ServerCertificateListStateSchema = z.object({
@@ -25,20 +31,27 @@ export const ServerCertificateListStateSchema = z.object({
 		.describe('The timestamp of the last time the server certificate list was updated, e.g., "2023-01-01T00:00:00Z"'),
 	serverCertificateList: z.array(PEMChainSchema)
 		.describe('The list of server certificates, each containing domain name, issuer name, and validity period'),
-})
-	.describe('The state of server certificates, including a list of certificates with their details');
+}).register(lunaRegistry, {
+	id: 'ServerCertificateListStateSchema',
+	description: 'The state of server certificates, including a list of certificates with their details',
+});
 export type ServerCertificateListState = z.infer<typeof ServerCertificateListStateSchema>;
 
 export const ServerCertificateListStatusSchema = z.object({
 	serverCertificateList: z.array(ServerCertificateSchema)
 		.describe('The list of server certificates, each containing domain name, issuer name, and validity period'),
-})
-	.describe('The status of server certificates, including a list of certificates with their details');
+}).register(lunaRegistry, {
+	id: 'ServerCertificateListStatusSchema',
+	description: 'The status of server certificates, including a list of certificates with their details',
+});
 export type ServerCertificateListStatus = z.infer<typeof ServerCertificateListStatusSchema>;
 
 // #region State
 export const SecurityStateSchema = z.object({
 	serverCertificateList: ServerCertificateListStateSchema.optional()
+}).register(lunaRegistry, {
+	id: 'SecurityStateSchema',
+	description: 'The security state of the signage device, including the server certificate list',
 });
 export type SecurityState = z.infer<typeof SecurityStateSchema>;
 // #endregion
@@ -48,6 +61,9 @@ export const SecurityStatusSchema = z.object({
 	serverCertificateList: ServerCertificateListStatusSchema.optional(),
 	_debug: z.string().optional()
 		.describe('SCAP debug mode output'),
+}).register(lunaRegistry, {
+	id: 'SecurityStatusSchema',
+	description: 'The security status of the signage device, including the server certificate list and debug information',
 });
 export type SecurityStatus = z.infer<typeof SecurityStatusSchema>;
 // #endregion
