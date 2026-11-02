@@ -18,6 +18,7 @@ export declare const RendererAgentStateDetailSchema: z.ZodObject<{
         expires: z.ZodOptional<z.ZodISODateTime>;
         size: z.ZodNumber;
         hash: z.ZodObject<{
+            "@type": z.ZodLiteral<"HashValue">;
             method: z.ZodLiteral<"SHA256">;
             hex: z.ZodString;
         }, z.core.$strip>;
@@ -86,6 +87,7 @@ export declare const RendererAgentStateBaseSchema: z.ZodObject<{
             expires: z.ZodOptional<z.ZodISODateTime>;
             size: z.ZodNumber;
             hash: z.ZodObject<{
+                "@type": z.ZodLiteral<"HashValue">;
                 method: z.ZodLiteral<"SHA256">;
                 hex: z.ZodString;
             }, z.core.$strip>;
@@ -132,6 +134,7 @@ export declare const RendererAgentStateSchema: z.ZodObject<{
             expires: z.ZodOptional<z.ZodISODateTime>;
             size: z.ZodNumber;
             hash: z.ZodObject<{
+                "@type": z.ZodLiteral<"HashValue">;
                 method: z.ZodLiteral<"SHA256">;
                 hex: z.ZodString;
             }, z.core.$strip>;
