@@ -2,6 +2,7 @@ import * as z from "zod";
 export declare const PEMChainSchema: z.ZodString;
 export type PEMChain = z.infer<typeof PEMChainSchema>;
 export declare const ServerCertificateSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"ServerCertificate">;
     domainName: z.ZodOptional<z.ZodString>;
     issuerName: z.ZodOptional<z.ZodString>;
     validFrom: z.ZodOptional<z.ZodISODateTime>;
@@ -9,12 +10,15 @@ export declare const ServerCertificateSchema: z.ZodObject<{
 }, z.core.$strip>;
 export type ServerCertificate = z.infer<typeof ServerCertificateSchema>;
 export declare const ServerCertificateListStateSchema: z.ZodObject<{
-    _timestamp: z.ZodISODateTime;
+    '@type': z.ZodLiteral<"ServerCertificateListState">;
+    '@timestamp': z.ZodISODateTime;
     serverCertificateList: z.ZodArray<z.ZodString>;
 }, z.core.$strip>;
 export type ServerCertificateListState = z.infer<typeof ServerCertificateListStateSchema>;
 export declare const ServerCertificateListStatusSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"ServerCertificateListStatus">;
     serverCertificateList: z.ZodArray<z.ZodObject<{
+        '@type': z.ZodLiteral<"ServerCertificate">;
         domainName: z.ZodOptional<z.ZodString>;
         issuerName: z.ZodOptional<z.ZodString>;
         validFrom: z.ZodOptional<z.ZodISODateTime>;
@@ -23,15 +27,20 @@ export declare const ServerCertificateListStatusSchema: z.ZodObject<{
 }, z.core.$strip>;
 export type ServerCertificateListStatus = z.infer<typeof ServerCertificateListStatusSchema>;
 export declare const SecurityStateSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"SecurityState">;
     serverCertificateList: z.ZodOptional<z.ZodObject<{
-        _timestamp: z.ZodISODateTime;
+        '@type': z.ZodLiteral<"ServerCertificateListState">;
+        '@timestamp': z.ZodISODateTime;
         serverCertificateList: z.ZodArray<z.ZodString>;
     }, z.core.$strip>>;
 }, z.core.$strip>;
 export type SecurityState = z.infer<typeof SecurityStateSchema>;
 export declare const SecurityStatusSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"SecurityStatus">;
     serverCertificateList: z.ZodOptional<z.ZodObject<{
+        '@type': z.ZodLiteral<"ServerCertificateListStatus">;
         serverCertificateList: z.ZodArray<z.ZodObject<{
+            '@type': z.ZodLiteral<"ServerCertificate">;
             domainName: z.ZodOptional<z.ZodString>;
             issuerName: z.ZodOptional<z.ZodString>;
             validFrom: z.ZodOptional<z.ZodISODateTime>;

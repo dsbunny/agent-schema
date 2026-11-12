@@ -4,6 +4,8 @@ import * as z from "zod";
 import { lunaRegistry } from './registry.js';
 
 export const BlockedPortSchema = z.object({
+	'@type': z.literal('BlockedPort')
+		.describe('Type of the blocked port'),
 	blockedPort: z.number().int().min(1).max(65535)
 		.describe('The blocked port number, e.g., 80'),
 	direction: z.enum(['in', 'out', 'all'])
@@ -17,7 +19,9 @@ export const BlockedPortSchema = z.object({
 export type BlockedPort = z.infer<typeof BlockedPortSchema>;
 
 export const BlockedPortListStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('BlockedPortListState')
+		.describe('Type of the blocked port list state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the blocked port list was updated'),
 	blockedPortList: z.array(BlockedPortSchema).max(30)
 		.describe('The list of blocked ports, maximum 30 entries'),
@@ -28,7 +32,9 @@ export const BlockedPortListStateSchema = z.object({
 export type BlockedPortListState = z.infer<typeof BlockedPortListStateSchema>;
 
 export const NetworkCheckupStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('NetworkCheckupState')
+		.describe('Type of the network checkup state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the network checkup was performed'),
 	mode: z.enum(['default', 'manual'])
 		.describe('The network checkup mode, either "default" or "manual"'),
@@ -41,7 +47,9 @@ export const NetworkCheckupStateSchema = z.object({
 export type NetworkCheckupState = z.infer<typeof NetworkCheckupStateSchema>;
 
 export const NetworkStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('NetworkState')
+		.describe('Type of the network state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the network information was updated'),
 	wired: z.object({
 		enabled: z.boolean()
@@ -82,6 +90,8 @@ export const NetworkStateSchema = z.object({
 export type NetworkState = z.infer<typeof NetworkStateSchema>;
 
 export const NetworkStatusSchema = z.object({
+	'@type': z.literal('NetworkStatus')
+		.describe('Type of the network status'),
 	isInternetConnectionAvailable: z.boolean()
 		.describe('Whether the internet connection is available or not'),
 	wired: z.object({
@@ -151,6 +161,8 @@ export const NetworkStatusSchema = z.object({
 export type NetworkStatus = z.infer<typeof NetworkStatusSchema>;
 
 export const NetworkMacStatusSchema = z.object({
+	'@type': z.literal('NetworkMacStatus')
+		.describe('Type of the network MAC status'),
 	wiredInfo: z.object({
 		macAddress: z.string().optional()
 			.describe('The MAC address of the wired network interface, e.g., "00:1A:2B:3C:4D:5E"'),
@@ -166,6 +178,8 @@ export const NetworkMacStatusSchema = z.object({
 export type NetworkMacStatus = z.infer<typeof NetworkMacStatusSchema>;
 
 export const PlatformStatusSchema = z.object({
+	'@type': z.literal('PlatformStatus')
+		.describe('Type of the platform status'),
 	hardwareVersion: z.string()
 		.describe('The hardware version of the signage device'),
 	manufacturer: z.string()
@@ -185,7 +199,9 @@ export const PlatformStatusSchema = z.object({
 export type PlatformStatus = z.infer<typeof PlatformStatusSchema>;
 
 export const ProxyStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('ProxyState')
+		.describe('Type of the proxy state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the proxy information was updated'),
 	enabled: z.boolean()
 		.describe('Whether the proxy is enabled or not'),
@@ -204,7 +220,9 @@ export const ProxyStateSchema = z.object({
 export type ProxyState = z.infer<typeof ProxyStateSchema>;
 
 export const SensorValuesStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('SensorValuesState')
+		.describe('Type of the sensor values state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the sensor values were updated'),
 	backlight: z.number().int().min(0).max(100)
 		.describe('The backlight level of the display. Range: [0–100]'),
@@ -215,6 +233,8 @@ export const SensorValuesStateSchema = z.object({
 export type SensorValuesState = z.infer<typeof SensorValuesStateSchema>;
 
 export const SensorValuesStatusSchema = z.object({
+	'@type': z.literal('SensorValuesStatus')
+		.describe('Type of the sensor values status'),
 	backlight: z.coerce.number().int().min(0).max(100)
 		.describe('The backlight level of the display. Range: [0–100]'),
 	checkscreen: z.union([z.object({
@@ -251,6 +271,8 @@ export const SensorValuesStatusSchema = z.object({
 export type SensorValuesStatus = z.infer<typeof SensorValuesStatusSchema>;
 
 export const SystemUsageStatusSchema = z.object({
+	'@type': z.literal('SystemUsageStatus')
+		.describe('Type of the system usage status'),
 	cpus: z.array(z.object({
 		model: z.string().optional()  // Not supported in WebOS 6.0 and later.
 			.describe('The CPU model name'),
@@ -287,6 +309,8 @@ export type SystemUsageStatus = z.infer<typeof SystemUsageStatusSchema>;
 
 // #region State
 export const DeviceStateSchema = z.object({
+	'@type': z.literal('DeviceState')
+		.describe('Type of the device state'),
 	// Skip `beaconInfo` as deprecated.
 	blockedPortList: BlockedPortListStateSchema.optional(),
 	// Skip `eddystoneInfo` due to security concerns and narrow use cases.
@@ -307,6 +331,8 @@ export type DeviceState = z.infer<typeof DeviceStateSchema>;
 
 // #region Status
 export const DeviceStatusSchema = z.object({
+	'@type': z.literal('DeviceStatus')
+		.describe('Type of the device status'),
 	networkInfo: NetworkStatusSchema.optional(),
 	networkMacInfo: NetworkMacStatusSchema.optional(),
 	platformInfo: PlatformStatusSchema.optional(),

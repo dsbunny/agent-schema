@@ -3,19 +3,23 @@
 import * as z from "zod";
 import { lunaRegistry } from './registry.js';
 
-export const ExternalSpeakerState = z.object({
-	_timestamp: z.iso.datetime()
+export const ExternalSpeakerStateSchema = z.object({
+	'@type': z.literal('ExternalSpeakerState')
+		.describe('Type of the external speaker state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the external speaker state was updated'),
 	externalSpeaker: z.boolean()
 		.describe('Whether the external speaker is enabled or not'),
 }).register(lunaRegistry, {
-	id: 'ExternalSpeakerState',
+	id: 'ExternalSpeakerStateSchema',
 	description: 'The external speaker configuration of the device',
 });
-export type ExternalSpeakere = z.infer<typeof ExternalSpeakerState>;
+export type ExternalSpeakere = z.infer<typeof ExternalSpeakerStateSchema>;
 
 export const MutedStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('MutedState')
+		.describe('Type of the muted state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the muted state was updated'),
 	muted: z.boolean()
 		.describe('Whether the sound is muted or not'),
@@ -26,7 +30,9 @@ export const MutedStateSchema = z.object({
 export type MutedState = z.infer<typeof MutedStateSchema>;
 
 export const SoundModeStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('SoundModeState')
+		.describe('Type of the sound mode state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the sound mode was updated'),
 	mode: z.enum([
 		'standard',
@@ -46,7 +52,9 @@ export const SoundModeStateSchema = z.object({
 export type SoundModeState = z.infer<typeof SoundModeStateSchema>;
 
 export const SoundOutStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('SoundOutState')
+		.describe('Type of the sound output state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the sound output state was updated'),
 	speakerType: z.enum([
 		'tv_speaker',
@@ -60,7 +68,9 @@ export const SoundOutStateSchema = z.object({
 export type SoundOutState = z.infer<typeof SoundOutStateSchema>;
 
 export const VolumeStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('VolumeState')
+		.describe('Type of the volume state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the volume level was updated'),
 	level: z.number().int().min(0).max(100)
 		.describe('The sound level of the device, Range: [0–100]'),
@@ -74,8 +84,10 @@ export type VolumeState = z.infer<typeof VolumeStateSchema>;
 
 // #region State
 export const SoundStateSchema = z.object({
+	'@type': z.literal('SoundState')
+		.describe('Type of the sound state'),
 	muted: MutedStateSchema.optional(),
-	externalSpeaker: ExternalSpeakerState.optional(),
+	externalSpeaker: ExternalSpeakerStateSchema.optional(),
 	soundMode: SoundModeStateSchema.optional(),
 	soundOut: SoundOutStateSchema.optional(),
 	volumeLevel: VolumeStateSchema.optional(),
@@ -88,6 +100,8 @@ export type SoundState = z.infer<typeof SoundStateSchema>;
 
 // #region Status
 export const SoundStatusSchema = z.object({
+	'@type': z.literal('SoundStatus')
+		.describe('Type of the sound status'),
 	_debug: z.string().optional()
 		.describe('SCAP debug mode output'),
 }).register(lunaRegistry, {

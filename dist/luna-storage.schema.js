@@ -2,7 +2,9 @@
 import * as z from "zod";
 import { lunaRegistry } from './registry.js';
 export const ChangeLogoImageRequestSchema = z.object({
-    _timestamp: z.iso.datetime()
+    '@type': z.literal('ChangeLogoImageRequest')
+        .describe('Type of the change logo image request'),
+    '@timestamp': z.iso.datetime()
         .describe('The timestamp of the logo image change request'),
     uri: z.string()
         .describe('The URI of the new logo image to be set, e.g., "file://internal/logo.png"'),
@@ -11,6 +13,8 @@ export const ChangeLogoImageRequestSchema = z.object({
     description: 'The request to change the logo image, including timestamp and URI of the new logo image',
 });
 export const StorageSpaceStatusSchema = z.object({
+    '@type': z.literal('StorageSpaceStatus')
+        .describe('Type of the storage space status'),
     free: z.coerce.number().positive()
         .describe('The free storage space in KB'),
     total: z.coerce.number().positive()
@@ -31,6 +35,8 @@ export const StorageSpaceStatusSchema = z.object({
     description: 'The storage information of the device, including free, total, and used storage space',
 });
 export const USBStatusSchema = z.object({
+    '@type': z.literal('USBStatus')
+        .describe('Type of the USB status'),
     usbList: z.array(z.object({
         usbName: z.string()
             .describe('The name of the USB device, e.g., "usb1"'),
@@ -46,7 +52,9 @@ export const USBStatusSchema = z.object({
     description: 'The list of USB devices connected to the agent, including name, vendor, product, and device ID',
 });
 export const UpgradeApplicationRequestSchema = z.object({
-    _timestamp: z.iso.datetime()
+    '@type': z.literal('UpgradeApplicationRequest')
+        .describe('Type of the upgrade application request'),
+    '@timestamp': z.iso.datetime()
         .describe('The timestamp of the application upgrade request'),
     to: z.enum(['local', 'usb'])
         .describe('The target storage to store the new app.'),
@@ -59,7 +67,9 @@ export const UpgradeApplicationRequestSchema = z.object({
     description: 'The request to upgrade the application, including timestamp and URL of the application',
 });
 export const UpgradeFirmwareRequestSchema = z.object({
-    _timestamp: z.iso.datetime()
+    '@type': z.literal('UpgradeFirmwareRequest')
+        .describe('Type of the upgrade firmware request'),
+    '@timestamp': z.iso.datetime()
         .describe('The timestamp of the firmware upgrade request'),
     //path: z.string()
     //	.describe('The path of the firmware file to be upgraded, e.g., "file://internal/test.epk"'),
@@ -71,6 +81,8 @@ export const UpgradeFirmwareRequestSchema = z.object({
     description: 'The request to upgrade the firmware, including timestamp and path of the firmware file',
 });
 export const FirmwareUpgradeStatusSchema = z.object({
+    '@type': z.literal('FirmwareUpgradeStatus')
+        .describe('Type of the firmware upgrade status'),
     status: z.enum([
         'idle',
         'downloading',
@@ -90,6 +102,8 @@ export const FirmwareUpgradeStatusSchema = z.object({
 });
 // #region State
 export const StorageStateSchema = z.object({
+    '@type': z.literal('StorageState')
+        .describe('Type of the storage state'),
     // Skip `removeApplicationRequest` as a running application cannot remove itself.
     _changeLogoImageRequest: ChangeLogoImageRequestSchema.optional(),
     _upgradeApplicationRequest: UpgradeApplicationRequestSchema.optional(),
@@ -101,6 +115,8 @@ export const StorageStateSchema = z.object({
 // #endregion
 // #region Status
 export const StorageStatusSchema = z.object({
+    '@type': z.literal('StorageStatus')
+        .describe('Type of the storage status'),
     firmwareUpgradeStatus: FirmwareUpgradeStatusSchema.optional(),
     usbInfo: USBStatusSchema.optional(),
     storageInfo: StorageSpaceStatusSchema.optional(),

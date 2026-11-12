@@ -1,5 +1,6 @@
 import * as z from "zod";
 export declare const ApplicationInfoStatusSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"ApplicationInfoStatus">;
     appinfo: z.ZodObject<{
         icon: z.ZodString;
         id: z.ZodLiteral<"com.lg.app.signage">;
@@ -31,7 +32,8 @@ export declare const ApplicationInfoStatusSchema: z.ZodObject<{
 }, z.core.$strip>;
 export type ApplicationInfoStatus = z.infer<typeof ApplicationInfoStatusSchema>;
 export declare const ClearBrowsingDataRequestSchema: z.ZodObject<{
-    _timestamp: z.ZodISODateTime;
+    '@type': z.ZodLiteral<"ClearBrowsingDataRequest">;
+    '@timestamp': z.ZodISODateTime;
     types: z.ZodOptional<z.ZodArray<z.ZodEnum<{
         all: "all";
         appcache: "appcache";
@@ -47,21 +49,26 @@ export declare const ClearBrowsingDataRequestSchema: z.ZodObject<{
 }, z.core.$strip>;
 export type ClearBrowsingDataRequest = z.infer<typeof ClearBrowsingDataRequestSchema>;
 export declare const DisableApplicationRequestSchema: z.ZodObject<{
-    _timestamp: z.ZodISODateTime;
+    '@type': z.ZodLiteral<"DisableApplicationRequest">;
+    '@timestamp': z.ZodISODateTime;
     reset: z.ZodOptional<z.ZodBoolean>;
 }, z.core.$strip>;
 export type DisableApplicationRequest = z.infer<typeof DisableApplicationRequestSchema>;
 export declare const PowerOnOffHistoryStatusSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"PowerOnOffHistoryStatus">;
     powerOnOffHistory: z.ZodArray<z.ZodString>;
 }, z.core.$strip>;
 export type PowerOnOffHistoryStatus = z.infer<typeof PowerOnOffHistoryStatusSchema>;
 export declare const WebOSVersionStatusSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"WebOSVersionStatus">;
     webOSVersion: z.ZodString;
 }, z.core.$strip>;
 export type WebOSVersionStatus = z.infer<typeof WebOSVersionStatusSchema>;
 export declare const CustomJSStateSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"CustomJSState">;
     _clearBrowsingDataRequest: z.ZodOptional<z.ZodObject<{
-        _timestamp: z.ZodISODateTime;
+        '@type': z.ZodLiteral<"ClearBrowsingDataRequest">;
+        '@timestamp': z.ZodISODateTime;
         types: z.ZodOptional<z.ZodArray<z.ZodEnum<{
             all: "all";
             appcache: "appcache";
@@ -76,13 +83,16 @@ export declare const CustomJSStateSchema: z.ZodObject<{
         }>>>;
     }, z.core.$strip>>;
     _disableApplicationRequest: z.ZodOptional<z.ZodObject<{
-        _timestamp: z.ZodISODateTime;
+        '@type': z.ZodLiteral<"DisableApplicationRequest">;
+        '@timestamp': z.ZodISODateTime;
         reset: z.ZodOptional<z.ZodBoolean>;
     }, z.core.$strip>>;
 }, z.core.$strip>;
 export type CustomJSState = z.infer<typeof CustomJSStateSchema>;
 export declare const CustomJSStatusSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"CustomJSStatus">;
     applicationInfo: z.ZodOptional<z.ZodObject<{
+        '@type': z.ZodLiteral<"ApplicationInfoStatus">;
         appinfo: z.ZodObject<{
             icon: z.ZodString;
             id: z.ZodLiteral<"com.lg.app.signage">;
@@ -113,9 +123,11 @@ export declare const CustomJSStatusSchema: z.ZodObject<{
         }, z.core.$strip>;
     }, z.core.$strip>>;
     powerOnOffHistory: z.ZodOptional<z.ZodObject<{
+        '@type': z.ZodLiteral<"PowerOnOffHistoryStatus">;
         powerOnOffHistory: z.ZodArray<z.ZodString>;
     }, z.core.$strip>>;
     webOSVersion: z.ZodOptional<z.ZodObject<{
+        '@type': z.ZodLiteral<"WebOSVersionStatus">;
         webOSVersion: z.ZodString;
     }, z.core.$strip>>;
     _debug: z.ZodOptional<z.ZodString>;

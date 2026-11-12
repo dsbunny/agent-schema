@@ -2,6 +2,8 @@
 import * as z from "zod";
 import { lunaRegistry } from './registry.js';
 export const ApplicationInfoStatusSchema = z.object({
+    '@type': z.literal('ApplicationInfoStatus')
+        .describe('Type of the application info status'),
     appinfo: z.object({
         icon: z.string()
             .describe('The path of the image icon representing your app, displayed on the launcher'),
@@ -42,7 +44,9 @@ export const ApplicationInfoStatusSchema = z.object({
     description: 'The information about the application, including app ID, title, version, and other metadata',
 });
 export const ClearBrowsingDataRequestSchema = z.object({
-    _timestamp: z.iso.datetime()
+    '@type': z.literal('ClearBrowsingDataRequest')
+        .describe('Type of the clear browsing data request'),
+    '@timestamp': z.iso.datetime()
         .describe('The timestamp of the cache clear request'),
     types: z.array(z.enum([
         'all',
@@ -63,7 +67,9 @@ export const ClearBrowsingDataRequestSchema = z.object({
     description: 'The request to clear the cache of the signage device, including timestamp',
 });
 export const DisableApplicationRequestSchema = z.object({
-    _timestamp: z.iso.datetime()
+    '@type': z.literal('DisableApplicationRequest')
+        .describe('Type of the disable application request'),
+    '@timestamp': z.iso.datetime()
         .describe('The timestamp of the disable application request'),
     reset: z.boolean().optional()
         .describe('Whether to reset theserver settings to their default values after disabling it'),
@@ -72,6 +78,8 @@ export const DisableApplicationRequestSchema = z.object({
     description: 'The request to disable an application on the signage device, including timestamp and reset option',
 });
 export const PowerOnOffHistoryStatusSchema = z.object({
+    '@type': z.literal('PowerOnOffHistoryStatus')
+        .describe('Type of the power on/off history status'),
     powerOnOffHistory: z.array(z.string())
         .describe('The list of power on/off history timestamps'),
 }).register(lunaRegistry, {
@@ -79,6 +87,8 @@ export const PowerOnOffHistoryStatusSchema = z.object({
     description: 'The power on/off history of the signage device, including timestamps',
 });
 export const WebOSVersionStatusSchema = z.object({
+    '@type': z.literal('WebOSVersionStatus')
+        .describe('Type of the webOS version status'),
     webOSVersion: z.string()
         .describe('The webOS version of the signage device'),
 }).register(lunaRegistry, {
@@ -87,6 +97,8 @@ export const WebOSVersionStatusSchema = z.object({
 });
 // #region State
 export const CustomJSStateSchema = z.object({
+    '@type': z.literal('CustomJSState')
+        .describe('Type of the CustomJS state'),
     _clearBrowsingDataRequest: ClearBrowsingDataRequestSchema.optional(),
     _disableApplicationRequest: DisableApplicationRequestSchema.optional(),
 }).register(lunaRegistry, {
@@ -96,6 +108,8 @@ export const CustomJSStateSchema = z.object({
 // #endregion
 // #region Status
 export const CustomJSStatusSchema = z.object({
+    '@type': z.literal('CustomJSStatus')
+        .describe('Type of the CustomJS status'),
     applicationInfo: ApplicationInfoStatusSchema.optional(),
     powerOnOffHistory: PowerOnOffHistoryStatusSchema.optional(),
     webOSVersion: WebOSVersionStatusSchema.optional(),

@@ -4,6 +4,8 @@ import * as z from "zod";
 import { lunaRegistry } from './registry.js';
 
 export const ExternalInputListStatusSchema = z.object({
+	'@type': z.literal('ExternalInputListStatus')
+		.describe('Type of the external input list status'),
 	inputSourceList: z.array(z.object({
 		inputPort: z.string()
 			.describe('The input source label, e.g. "ext://hdmi:1"'),
@@ -27,6 +29,8 @@ export type ExternalInputListStatus = z.infer<typeof ExternalInputListStatusSche
 
 // #region Status
 export const InputSourceStatusSchema = z.object({
+	'@type': z.literal('InputSourceStatus')
+		.describe('Type of the input source status'),
 	externalInputList: ExternalInputListStatusSchema.optional()
 		.describe('The list of external input sources'),
 	_debug: z.string().optional()

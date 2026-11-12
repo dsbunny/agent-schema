@@ -2,6 +2,7 @@ import * as z from "zod";
 export declare const TimerWeekSchema: z.ZodNumber;
 export type TimerWeek = z.infer<typeof TimerWeekSchema>;
 export declare const OnOffTimerSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"OnOffTimer">;
     id: z.ZodOptional<z.ZodNumber>;
     type: z.ZodEnum<{
         OFFTIMER: "OFFTIMER";
@@ -13,8 +14,10 @@ export declare const OnOffTimerSchema: z.ZodObject<{
 }, z.core.$strip>;
 export type OnOffTimer = z.infer<typeof OnOffTimerSchema>;
 export declare const AllOnOffTimersStateSchema: z.ZodObject<{
-    _timestamp: z.ZodISODateTime;
+    '@type': z.ZodLiteral<"AllOnOffTimersState">;
+    '@timestamp': z.ZodISODateTime;
     timerList: z.ZodArray<z.ZodObject<{
+        '@type': z.ZodLiteral<"OnOffTimer">;
         id: z.ZodOptional<z.ZodNumber>;
         type: z.ZodEnum<{
             OFFTIMER: "OFFTIMER";
@@ -27,7 +30,8 @@ export declare const AllOnOffTimersStateSchema: z.ZodObject<{
 }, z.core.$strip>;
 export type AllOnOffTimersState = z.infer<typeof AllOnOffTimersStateSchema>;
 export declare const HolidayScheduleStateSchema: z.ZodObject<{
-    _timestamp: z.ZodISODateTime;
+    '@type': z.ZodLiteral<"HolidayScheduleState">;
+    '@timestamp': z.ZodISODateTime;
     holidayScheduleList: z.ZodOptional<z.ZodArray<z.ZodObject<{
         name: z.ZodOptional<z.ZodString>;
         settings: z.ZodOptional<z.ZodObject<{
@@ -50,9 +54,12 @@ export declare const HolidayScheduleStateSchema: z.ZodObject<{
 }, z.core.$strip>;
 export type HolidayScheduleState = z.infer<typeof HolidayScheduleStateSchema>;
 export declare const TimeStateSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"TimeState">;
     allOnOffTimers: z.ZodOptional<z.ZodObject<{
-        _timestamp: z.ZodISODateTime;
+        '@type': z.ZodLiteral<"AllOnOffTimersState">;
+        '@timestamp': z.ZodISODateTime;
         timerList: z.ZodArray<z.ZodObject<{
+            '@type': z.ZodLiteral<"OnOffTimer">;
             id: z.ZodOptional<z.ZodNumber>;
             type: z.ZodEnum<{
                 OFFTIMER: "OFFTIMER";
@@ -64,7 +71,8 @@ export declare const TimeStateSchema: z.ZodObject<{
         }, z.core.$strip>>;
     }, z.core.$strip>>;
     holidaySchedule: z.ZodOptional<z.ZodObject<{
-        _timestamp: z.ZodISODateTime;
+        '@type': z.ZodLiteral<"HolidayScheduleState">;
+        '@timestamp': z.ZodISODateTime;
         holidayScheduleList: z.ZodOptional<z.ZodArray<z.ZodObject<{
             name: z.ZodOptional<z.ZodString>;
             settings: z.ZodOptional<z.ZodObject<{
@@ -88,6 +96,7 @@ export declare const TimeStateSchema: z.ZodObject<{
 }, z.core.$strip>;
 export type TimeState = z.infer<typeof TimeStateSchema>;
 export declare const TimeStatusSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"TimeStatus">;
     _debug: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>;
 export type TimeStatus = z.infer<typeof TimeStatusSchema>;

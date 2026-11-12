@@ -4,7 +4,9 @@ import * as z from "zod";
 import { lunaRegistry } from './registry.js';
 
 export const CaptureScreenRequestSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('CaptureScreenRequest')
+		.describe('Type of the capture screen request'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the screenshot request'),
 	thumbnail: z.boolean().optional()
 		.describe('Whether to capture a thumbnail screenshot or not'),
@@ -21,6 +23,8 @@ export const CaptureScreenRequestSchema = z.object({
 export type CaptureScreenRequest = z.infer<typeof CaptureScreenRequestSchema>;
 
 export const CaptureScreenStatusSchema = z.object({
+	'@type': z.literal('CaptureScreenStatus')
+		.describe('Type of the capture screen status'),
 	data: z.base64()
 		.describe('The screenshot data in base64 format'),
 	size: z.number().int().min(0)
@@ -34,7 +38,9 @@ export const CaptureScreenStatusSchema = z.object({
 export type CaptureScreenStatus = z.infer<typeof CaptureScreenStatusSchema>;
 
 export const CheckScreenStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('CheckScreenState')
+		.describe('Type of the check screen state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the pixel sensor was checked'),
 	checkScreen: z.boolean()
 		.describe('Indicates whether to enable the pixel sensor'),
@@ -45,7 +51,9 @@ export const CheckScreenStateSchema = z.object({
 export type CheckScreenState = z.infer<typeof CheckScreenStateSchema>;
 
 export const DigitalAudioInputStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('DigitalAudioInputState')
+		.describe('Type of the digital audio input state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the digital audio input mode was updated'),
 	digitalAudioInputMode: z.enum(['audioIn', 'hdmi'])
 		.describe('Indicates the status of the digital audio input mode, either "audioIn" or "hdmi"'),
@@ -56,7 +64,9 @@ export const DigitalAudioInputStateSchema = z.object({
 export type DigitalAudioInputState = z.infer<typeof DigitalAudioInputStateSchema>;
 
 export const FailoverModeStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('FailoverModeState')
+		.describe('Type of the failover mode state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the failover mode was updated'),
 	mode: z.enum(['auto', 'manual', 'off', '___undefined___'])
 		.describe('The failover mode, either "auto", "manual", or "off"'),
@@ -69,7 +79,9 @@ export const FailoverModeStateSchema = z.object({
 export type FailoverModeState = z.infer<typeof FailoverModeStateSchema>;
 
 export const IntelligentAutoStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('IntelligentAutoState')
+		.describe('Type of the Intelligent Auto state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the Intelligent Auto feature was updated'),
 	enabled: z.boolean()
 		.describe('Whether Intelligent Auto is enabled or disabled. Intelligent Auto is a feature that automatically calibrates the signage device screen when an analog RGB signal is received.'),
@@ -80,7 +92,9 @@ export const IntelligentAutoStateSchema = z.object({
 export type IntelligentAutoState = z.infer<typeof IntelligentAutoStateSchema>;
 
 export const IsmMethodStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('IsmMethodState')
+		.describe('Type of the ISM method state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the ISM method was updated'),
 	ismMethod: z.enum([
 		'COLORWASH',
@@ -100,7 +114,9 @@ export const IsmMethodStateSchema = z.object({
 export type IsmMethodState = z.infer<typeof IsmMethodStateSchema>;
 
 export const LanDaisyChainStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('LanDaisyChainState')
+		.describe('Type of the LAN daisy chain state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the LAN daisy chain state was updated'),
 	enabled: z.boolean()
 		.describe('Whether the LAN daisy chain is enabled or not'),
@@ -111,7 +127,9 @@ export const LanDaisyChainStateSchema = z.object({
 export type LanDaisyChainState = z.infer<typeof LanDaisyChainStateSchema>;
 
 export const MirrorModeStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('MirrorModeState')
+		.describe('Type of the mirror mode state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the mirror mode was updated'),
 	mode: z.enum(['off', 'on'])
 }).register(lunaRegistry, {
@@ -121,7 +139,9 @@ export const MirrorModeStateSchema = z.object({
 export type MirrorModeState = z.infer<typeof MirrorModeStateSchema>;
 
 export const NoSignalImageModeStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('NoSignalImageModeState')
+		.describe('Type of the No Signal Image mode state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the No Signal Image mode was updated'),
 	noSignalImageMode: z.enum(['off', 'on'])
 		.describe('Indicates the status of the No Signal Image mode, either "off" or "on"'),
@@ -132,7 +152,9 @@ export const NoSignalImageModeStateSchema = z.object({
 export type NoSignalImageModeState = z.infer<typeof NoSignalImageModeStateSchema>;
 
 export const PortraitModeStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('PortraitModeState')
+		.describe('Type of the portrait mode state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the portrait mode was updated'),
 	portraitMode: z.enum(['off', '90', '___undefined___'])
 		.describe('The display portrait mode, either "off", "90" (90 degrees rotation), or "___undefined___" (unknown)'),
@@ -143,7 +165,9 @@ export const PortraitModeStateSchema = z.object({
 export type PortraitModeState = z.infer<typeof PortraitModeStateSchema>;
 
 export const PowerSaveModeStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('PowerSaveModeState')
+		.describe('Type of the power save mode state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the power save mode was updated'),
 	ses: z.boolean()
 		.describe('Whether the SES (Smart Energy Saving) mode is enabled or not'),
@@ -172,7 +196,9 @@ export const PowerSaveModeStateSchema = z.object({
 export type PowerSaveModeState = z.infer<typeof PowerSaveModeStateSchema>;
 
 export const QuietModeStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('QuietModeState')
+		.describe('Type of the quiet mode state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the quiet mode was updated'),
 	mode: z.enum(['off', 'on'])
 		.describe('The quiet mode status'),
@@ -183,7 +209,9 @@ export const QuietModeStateSchema = z.object({
 export type QuietModeState = z.infer<typeof QuietModeStateSchema>;
 
 export const ResetRequestSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('ResetRequest')
+		.describe('Type of the reset request'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the reset request'),
 	mode: z.enum(['softReset', 'factoryReset'])
 		.describe('The reset mode, either "softReset" or "factoryReset"'),
@@ -194,7 +222,9 @@ export const ResetRequestSchema = z.object({
 export type ResetRequest = z.infer<typeof ResetRequestSchema>;
 
 export const RS232CStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('RS232CState')
+		.describe('Type of the RS-232C state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the RS-232C configuration was updated'),
 	mode: z.literal([0, 1])
 		.describe('The RS-232C mode, either 0 ("mediabox_[DATA]_[CHECKSUM]") or 1 (ASCII data)'),
@@ -258,7 +288,9 @@ export const RS232CStateSchema = z.object({
 export type RS232CState = z.infer<typeof RS232CStateSchema>;
 
 export const SimplinkStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('SimplinkState')
+		.describe('Type of the SIMPLINK state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the SIMPLINK status was updated'),
 	simplinkEnable: z.enum(['on', 'off'])
 		.describe('Indicates the status of the SIMPLINK feature, either "on" or "off"'),
@@ -269,7 +301,9 @@ export const SimplinkStateSchema = z.object({
 export type SimplinkState = z.infer<typeof SimplinkStateSchema>;
 
 export const TileStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('TileState')
+		.describe('Type of the tile state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the tile information was updated'),
 	enabled: z.boolean()
 		.describe('Whether the tile mode is enabled or not'),
@@ -288,6 +322,8 @@ export const TileStateSchema = z.object({
 export type TileState = z.infer<typeof TileStateSchema>;
 
 export const UsageStatusSchema = z.object({
+	'@type': z.literal('UsageStatus')
+		.describe('Type of the usage status'),
 	uptime: z.coerce.number().positive()
 		.describe('The uptime of the device in hours, and minutes as fractional part'),
 	totalUsed: z.coerce.number().positive()
@@ -299,7 +335,9 @@ export const UsageStatusSchema = z.object({
 export type UsageStatus = z.infer<typeof UsageStatusSchema>;
 
 export const UsagePermissionStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('UsagePermissionState')
+		.describe('Type of the usage permission state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the usage permission was updated'),
 	remoteKeyOperationMode: z.enum(['normal', 'blockAll', 'usePwrOnly'])
 		.describe('The remote key operation mode that represents the access control for remote key input.'),
@@ -313,6 +351,8 @@ export type UsagePermissionState = z.infer<typeof UsagePermissionStateSchema>;
 
 // #region State
 export const SignageStateSchema = z.object({
+	'@type': z.literal('SignageState')
+		.describe('Type of the signage state'),
 	_captureScreenRequest: CaptureScreenRequestSchema.optional(),
 	_resetRequest: ResetRequestSchema.optional(),
 	checkScreen: CheckScreenStateSchema.optional(),
@@ -339,6 +379,8 @@ export type SignageState = z.infer<typeof SignageStateSchema>;
 
 // #region Status
 export const SignageStatusSchema = z.object({
+	'@type': z.literal('SignageStatus')
+		.describe('Type of the signage status'),
 	captureScreenStatus: CaptureScreenStatusSchema.optional(),
 	usageData: UsageStatusSchema.optional(),
 	_debug: z.string().optional()

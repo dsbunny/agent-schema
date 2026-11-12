@@ -4,7 +4,9 @@ import * as z from "zod";
 import { lunaRegistry } from './registry.js';
 
 export const DisplayModeStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('DisplayModeState')
+		.describe('Type of the display mode state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the display mode was updated'),
 	displayMode: z.enum([
 		'Screen Off',
@@ -18,7 +20,9 @@ export const DisplayModeStateSchema = z.object({
 export type DisplayModeState = z.infer<typeof DisplayModeStateSchema>;
 
 export const DPMWakeupStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('DPMWakeupState')
+		.describe('Type of the DPM wakeup state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the DPM wakeup signal was updated'),
 	dpmSignalType: z.enum([
 		'clock',
@@ -32,7 +36,9 @@ export const DPMWakeupStateSchema = z.object({
 export type DPMWakeupState = z.infer<typeof DPMWakeupStateSchema>;
 
 export const PMModeStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('PMModeState')
+		.describe('Type of the PM mode state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the power management mode was updated'),
 	mode: z.enum([
 		'powerOff',
@@ -50,7 +56,9 @@ export const PMModeStateSchema = z.object({
 export type PMModeState = z.infer<typeof PMModeStateSchema>;
 
 export const PowerCommandRequestSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('PowerCommandRequest')
+		.describe('Type of the power command request'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last power command request'),
 	powerCommand: z.enum([
 		'reboot',
@@ -64,7 +72,9 @@ export const PowerCommandRequestSchema = z.object({
 export type PowerCommandRequest = z.infer<typeof PowerCommandRequestSchema>;
 
 export const PowerOnDelayStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('PowerOnDelayState')
+		.describe('Type of the power-on delay state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the power-on delay was updated'),
 	delayTime: z.number().int().min(0).max(250)
 		.describe('The power-on delay time in seconds, ranging from 0 to 250'),
@@ -75,7 +85,9 @@ export const PowerOnDelayStateSchema = z.object({
 export type PowerOnDelayState = z.infer<typeof PowerOnDelayStateSchema>;
 
 export const WakeOnLanStateSchema = z.object({
-	_timestamp: z.iso.datetime()
+	'@type': z.literal('WakeOnLanState')
+		.describe('Type of the Wake-on-LAN state'),
+	'@timestamp': z.iso.datetime()
 		.describe('The timestamp of the last time the Wake-on-LAN configuration was updated'),
 	wakeOnLan: z.boolean()
 		.describe('Whether Wake-on-LAN is enabled or not'),
@@ -87,6 +99,8 @@ export type WakeOnLanState = z.infer<typeof WakeOnLanStateSchema>;
 
 // #region State
 export const PowerStateSchema = z.object({
+	'@type': z.literal('PowerState')
+		.describe('Type of the power state'),
 	_powerCommandRequest: PowerCommandRequestSchema.optional(),
 	displayMode: DisplayModeStateSchema.optional(),
 	dpmWakeup: DPMWakeupStateSchema.optional(),
@@ -103,6 +117,8 @@ export type PowerState = z.infer<typeof PowerStateSchema>;
 
 // #region Status
 export const PowerStatusSchema = z.object({
+	'@type': z.literal('PowerStatus')
+		.describe('Type of the power status'),
 	_debug: z.string().optional()
 		.describe('SCAP debug mode output'),
 }).register(lunaRegistry, {

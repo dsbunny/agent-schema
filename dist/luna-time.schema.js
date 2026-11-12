@@ -6,6 +6,8 @@ export const TimerWeekSchema = z.number().int().min(0).max(127).register(lunaReg
     description: 'The week bitmask for the timer, where Monday = 1, Tuesday = 2, ..., Sunday = 64, and Everyday = 127',
 });
 export const OnOffTimerSchema = z.object({
+    '@type': z.literal('OnOffTimer')
+        .describe('Type of the on/off timer'),
     id: z.number().optional()
         .describe('The ID of the timer, used for identification'),
     type: z.enum(['OFFTIMER', 'ONTIMER'])
@@ -21,7 +23,9 @@ export const OnOffTimerSchema = z.object({
     description: 'The on/off timer information of the device, including ID, type, hour, minute, and week bitmask',
 });
 export const AllOnOffTimersStateSchema = z.object({
-    _timestamp: z.iso.datetime()
+    '@type': z.literal('AllOnOffTimersState')
+        .describe('Type of the all on/off timers state'),
+    '@timestamp': z.iso.datetime()
         .describe('The timestamp of the last time the on/off timers were updated'),
     timerList: z.array(OnOffTimerSchema).max(21)
         .describe('The list of on/off timers, each timer has an ID, type, hour, minute, and week bitmask'),
@@ -30,7 +34,9 @@ export const AllOnOffTimersStateSchema = z.object({
     description: 'The state of all on/off timers of the device, including timestamp and timer list',
 });
 export const HolidayScheduleStateSchema = z.object({
-    _timestamp: z.iso.datetime()
+    '@type': z.literal('HolidayScheduleState')
+        .describe('Type of the holiday schedule state'),
+    '@timestamp': z.iso.datetime()
         .describe('The timestamp of the last time the holiday schedule was updated'),
     holidayScheduleList: z.array(z.object({
         name: z.string().optional()
@@ -58,6 +64,8 @@ export const HolidayScheduleStateSchema = z.object({
 });
 // #region State
 export const TimeStateSchema = z.object({
+    '@type': z.literal('TimeState')
+        .describe('Type of the time state'),
     allOnOffTimers: AllOnOffTimersStateSchema.optional(),
     holidaySchedule: HolidayScheduleStateSchema.optional(),
 }).register(lunaRegistry, {
@@ -67,6 +75,8 @@ export const TimeStateSchema = z.object({
 // #endregion
 // #region Status
 export const TimeStatusSchema = z.object({
+    '@type': z.literal('TimeStatus')
+        .describe('Type of the time status'),
     _debug: z.string().optional()
         .describe('SCAP debug mode output'),
 }).register(lunaRegistry, {

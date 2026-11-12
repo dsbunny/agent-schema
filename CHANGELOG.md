@@ -1,4 +1,9 @@
 # Changelog
+## v8.0.22
+- Add `@type` fields to all schemas to enable discovery.
+- Replace `_timestamp` with `@timestamp` to highlight metadata role.
+- Reflect nested layout of `CapabilitySchema` to preserve `@type` values.
+
 ## v7.1.21
 - Add `id` _ZOD_ metadata for schemas.
 - Normalize _ZOD_ imports to `zod` per upstream recommendation.

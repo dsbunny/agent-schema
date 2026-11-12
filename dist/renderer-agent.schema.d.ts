@@ -1,6 +1,7 @@
 import * as z from "zod";
 export declare const RENDERER_AGENT_URN = "urn:dsbunny:agent:renderer";
 export declare const RendererAgentStateDetailSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"RendererAgentStateDetail">;
     playlist_element_name: z.ZodEnum<{
         "android-play-list": "android-play-list";
         "brightsign-play-list": "brightsign-play-list";
@@ -38,6 +39,7 @@ export declare const RendererAgentStateDetailSchema: z.ZodObject<{
 }, z.core.$strip>;
 export type RendererAgentStateDetail = z.infer<typeof RendererAgentStateDetailSchema>;
 export declare const RendererScreenOrientationSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"RendererScreenOrientation">;
     type: z.ZodEnum<{
         "portrait-primary": "portrait-primary";
         "portrait-secondary": "portrait-secondary";
@@ -48,10 +50,12 @@ export declare const RendererScreenOrientationSchema: z.ZodObject<{
 }, z.core.$strip>;
 export type RendererScreenOrientation = z.infer<typeof RendererScreenOrientationSchema>;
 export declare const RendererScreenSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"RendererScreen">;
     width: z.ZodNumber;
     height: z.ZodNumber;
     is_extended: z.ZodBoolean;
     orientation: z.ZodObject<{
+        '@type': z.ZodLiteral<"RendererScreenOrientation">;
         type: z.ZodEnum<{
             "portrait-primary": "portrait-primary";
             "portrait-secondary": "portrait-secondary";
@@ -68,8 +72,10 @@ export declare const RendererAgentStateBaseSchema: z.ZodObject<{
     push_interval: z.ZodNullable<z.ZodNumber>;
     min_backoff_interval: z.ZodNullable<z.ZodNumber>;
     max_backoff_interval: z.ZodNullable<z.ZodNumber>;
+    '@type': z.ZodLiteral<"RendererAgentStateBase">;
     uri: z.ZodLiteral<"urn:dsbunny:agent:renderer">;
     detail: z.ZodNullable<z.ZodObject<{
+        '@type': z.ZodLiteral<"RendererAgentStateDetail">;
         playlist_element_name: z.ZodEnum<{
             "android-play-list": "android-play-list";
             "brightsign-play-list": "brightsign-play-list";
@@ -117,6 +123,7 @@ export declare const RendererAgentStateSchema: z.ZodObject<{
     max_backoff_interval: z.ZodNullable<z.ZodNumber>;
     uri: z.ZodLiteral<"urn:dsbunny:agent:renderer">;
     detail: z.ZodNullable<z.ZodObject<{
+        '@type': z.ZodLiteral<"RendererAgentStateDetail">;
         playlist_element_name: z.ZodEnum<{
             "android-play-list": "android-play-list";
             "brightsign-play-list": "brightsign-play-list";
@@ -152,14 +159,18 @@ export declare const RendererAgentStateSchema: z.ZodObject<{
             device_id: z.ZodString;
         }, z.core.$strip>>;
     }, z.core.$strip>>;
+    '@type': z.ZodLiteral<"RendererAgentState">;
 }, z.core.$strip>;
 export type RendererAgentState = z.infer<typeof RendererAgentStateSchema>;
 export declare const RendererAgentStatusDetailSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"RendererAgentStatusDetail">;
     screen: z.ZodObject<{
+        '@type': z.ZodLiteral<"RendererScreen">;
         width: z.ZodNumber;
         height: z.ZodNumber;
         is_extended: z.ZodBoolean;
         orientation: z.ZodObject<{
+            '@type': z.ZodLiteral<"RendererScreenOrientation">;
             type: z.ZodEnum<{
                 "portrait-primary": "portrait-primary";
                 "portrait-secondary": "portrait-secondary";
@@ -175,6 +186,7 @@ export declare const RendererAgentStatusDetailSchema: z.ZodObject<{
         is_supported: z.ZodBoolean;
         is_smooth: z.ZodBoolean;
         is_power_efficient: z.ZodBoolean;
+        '@type': z.ZodLiteral<"CapabilityVideo">;
         mime_type: z.ZodLiteral<"video">;
         codec: z.ZodString;
         width: z.ZodNumber;
@@ -185,6 +197,7 @@ export declare const RendererAgentStatusDetailSchema: z.ZodObject<{
         is_supported: z.ZodBoolean;
         is_smooth: z.ZodBoolean;
         is_power_efficient: z.ZodBoolean;
+        '@type': z.ZodLiteral<"CapabilityAudio">;
         mime_type: z.ZodLiteral<"audio">;
         codec: z.ZodString;
         sample_rate: z.ZodNumber;
@@ -192,6 +205,7 @@ export declare const RendererAgentStatusDetailSchema: z.ZodObject<{
     }, z.core.$strip>, z.ZodObject<{
         mime_subtype: z.ZodString;
         is_supported: z.ZodBoolean;
+        '@type': z.ZodLiteral<"CapabilityImage">;
         mime_type: z.ZodLiteral<"image">;
         width: z.ZodNumber;
         height: z.ZodNumber;
@@ -203,13 +217,17 @@ export type RendererAgentStatusDetail = z.infer<typeof RendererAgentStatusDetail
 export declare const RendererAgentStatusBaseSchema: z.ZodObject<{
     has_error: z.ZodDefault<z.ZodBoolean>;
     error_stack: z.ZodNullable<z.ZodString>;
+    '@type': z.ZodLiteral<"RendererAgentStatusBase">;
     uri: z.ZodLiteral<"urn:dsbunny:agent:renderer">;
     detail: z.ZodNullable<z.ZodObject<{
+        '@type': z.ZodLiteral<"RendererAgentStatusDetail">;
         screen: z.ZodObject<{
+            '@type': z.ZodLiteral<"RendererScreen">;
             width: z.ZodNumber;
             height: z.ZodNumber;
             is_extended: z.ZodBoolean;
             orientation: z.ZodObject<{
+                '@type': z.ZodLiteral<"RendererScreenOrientation">;
                 type: z.ZodEnum<{
                     "portrait-primary": "portrait-primary";
                     "portrait-secondary": "portrait-secondary";
@@ -225,6 +243,7 @@ export declare const RendererAgentStatusBaseSchema: z.ZodObject<{
             is_supported: z.ZodBoolean;
             is_smooth: z.ZodBoolean;
             is_power_efficient: z.ZodBoolean;
+            '@type': z.ZodLiteral<"CapabilityVideo">;
             mime_type: z.ZodLiteral<"video">;
             codec: z.ZodString;
             width: z.ZodNumber;
@@ -235,6 +254,7 @@ export declare const RendererAgentStatusBaseSchema: z.ZodObject<{
             is_supported: z.ZodBoolean;
             is_smooth: z.ZodBoolean;
             is_power_efficient: z.ZodBoolean;
+            '@type': z.ZodLiteral<"CapabilityAudio">;
             mime_type: z.ZodLiteral<"audio">;
             codec: z.ZodString;
             sample_rate: z.ZodNumber;
@@ -242,6 +262,7 @@ export declare const RendererAgentStatusBaseSchema: z.ZodObject<{
         }, z.core.$strip>, z.ZodObject<{
             mime_subtype: z.ZodString;
             is_supported: z.ZodBoolean;
+            '@type': z.ZodLiteral<"CapabilityImage">;
             mime_type: z.ZodLiteral<"image">;
             width: z.ZodNumber;
             height: z.ZodNumber;
@@ -259,11 +280,14 @@ export declare const RendererAgentStatusSchema: z.ZodObject<{
     error_stack: z.ZodNullable<z.ZodString>;
     uri: z.ZodLiteral<"urn:dsbunny:agent:renderer">;
     detail: z.ZodNullable<z.ZodObject<{
+        '@type': z.ZodLiteral<"RendererAgentStatusDetail">;
         screen: z.ZodObject<{
+            '@type': z.ZodLiteral<"RendererScreen">;
             width: z.ZodNumber;
             height: z.ZodNumber;
             is_extended: z.ZodBoolean;
             orientation: z.ZodObject<{
+                '@type': z.ZodLiteral<"RendererScreenOrientation">;
                 type: z.ZodEnum<{
                     "portrait-primary": "portrait-primary";
                     "portrait-secondary": "portrait-secondary";
@@ -279,6 +303,7 @@ export declare const RendererAgentStatusSchema: z.ZodObject<{
             is_supported: z.ZodBoolean;
             is_smooth: z.ZodBoolean;
             is_power_efficient: z.ZodBoolean;
+            '@type': z.ZodLiteral<"CapabilityVideo">;
             mime_type: z.ZodLiteral<"video">;
             codec: z.ZodString;
             width: z.ZodNumber;
@@ -289,6 +314,7 @@ export declare const RendererAgentStatusSchema: z.ZodObject<{
             is_supported: z.ZodBoolean;
             is_smooth: z.ZodBoolean;
             is_power_efficient: z.ZodBoolean;
+            '@type': z.ZodLiteral<"CapabilityAudio">;
             mime_type: z.ZodLiteral<"audio">;
             codec: z.ZodString;
             sample_rate: z.ZodNumber;
@@ -296,6 +322,7 @@ export declare const RendererAgentStatusSchema: z.ZodObject<{
         }, z.core.$strip>, z.ZodObject<{
             mime_subtype: z.ZodString;
             is_supported: z.ZodBoolean;
+            '@type': z.ZodLiteral<"CapabilityImage">;
             mime_type: z.ZodLiteral<"image">;
             width: z.ZodNumber;
             height: z.ZodNumber;
@@ -303,5 +330,6 @@ export declare const RendererAgentStatusSchema: z.ZodObject<{
             is_power_efficient: z.ZodLiteral<true>;
         }, z.core.$strip>], "mime_type">>;
     }, z.core.$strip>>;
+    '@type': z.ZodLiteral<"RendererAgentStatus">;
 }, z.core.$strip>;
 export type RendererAgentStatus = z.infer<typeof RendererAgentStatusSchema>;

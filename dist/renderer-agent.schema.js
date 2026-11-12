@@ -3,10 +3,12 @@ import * as z from "zod";
 import { dsbunnyRegistry } from '@dsbunny/zod-registry';
 import { AgentStateSchema, AgentStateBaseSchema, AgentStatusSchema, AgentStatusBaseSchema, } from '@dsbunny/rmm-schema';
 import { RecipeSchema } from '@dsbunny/recipe-schema';
-import { CapabilityTypesSchema } from '@dsbunny/capdb-schema';
+import { CapabilitySchema } from '@dsbunny/capdb-schema';
 export const RENDERER_AGENT_URN = 'urn:dsbunny:agent:renderer';
 // #region State
 export const RendererAgentStateDetailSchema = z.object({
+    '@type': z.literal('RendererAgentStateDetail')
+        .describe('Type of the renderer agent state detail'),
     playlist_element_name: z.enum([
         'android-play-list',
         'brightsign-play-list',
@@ -41,6 +43,8 @@ export const RendererAgentStateDetailSchema = z.object({
 });
 // REF: https://developer.mozilla.org/en-US/docs/Web/API/ScreenOrientation
 export const RendererScreenOrientationSchema = z.object({
+    '@type': z.literal('RendererScreenOrientation')
+        .describe('Type of the renderer screen orientation'),
     type: z.enum([
         'portrait-primary',
         'portrait-secondary',
@@ -55,6 +59,8 @@ export const RendererScreenOrientationSchema = z.object({
     description: 'The screen orientation information of the renderer device, including type and angle',
 });
 export const RendererScreenSchema = z.object({
+    '@type': z.literal('RendererScreen')
+        .describe('Type of the renderer screen'),
     width: z.number()
         .describe('The width of the screen in pixels'),
     height: z.number()
@@ -70,6 +76,8 @@ export const RendererScreenSchema = z.object({
     description: 'The screen information of the renderer device, including width, height, extended status, orientation, and device pixel ratio',
 });
 export const RendererAgentStateBaseSchema = AgentStateBaseSchema.extend({
+    '@type': z.literal('RendererAgentStateBase')
+        .describe('Type of the renderer agent state base'),
     uri: z.literal(RENDERER_AGENT_URN),
     detail: RendererAgentStateDetailSchema.nullable()
         .describe('The detail of the renderer agent state'),
@@ -77,19 +85,29 @@ export const RendererAgentStateBaseSchema = AgentStateBaseSchema.extend({
     id: 'RendererAgentStateBaseSchema',
     description: 'The base state information of the renderer agent, including URI and detail',
 });
-export const RendererAgentStateSchema = AgentStateSchema.extend(RendererAgentStateBaseSchema.shape).register(dsbunnyRegistry, {
+export const RendererAgentStateSchema = AgentStateSchema.extend(RendererAgentStateBaseSchema.shape).extend({
+    '@type': z.literal('RendererAgentState')
+        .describe('Type of the renderer agent state'),
+}).register(dsbunnyRegistry, {
     id: 'RendererAgentStateSchema',
     description: 'The state information of the renderer agent, including base state and additional details',
 });
 // #endregion
 // #region Status
 export const RendererAgentStatusDetailSchema = z.object({
+    '@type': z.literal('RendererAgentStatusDetail')
+        .describe('Type of the renderer agent status detail'),
     screen: RendererScreenSchema
         .describe('The screen of the renderer device'),
-    capabilities: z.array(CapabilityTypesSchema)
+    capabilities: z.array(CapabilitySchema.shape.data)
         .describe('The capabilities of the screen'),
+}).register(dsbunnyRegistry, {
+    id: 'RendererAgentStatusDetailSchema',
+    description: 'The detail status information of the renderer agent, including screen and capabilities',
 });
 export const RendererAgentStatusBaseSchema = AgentStatusBaseSchema.extend({
+    '@type': z.literal('RendererAgentStatusBase')
+        .describe('Type of the renderer agent status base'),
     uri: z.literal(RENDERER_AGENT_URN),
     detail: RendererAgentStatusDetailSchema.nullable()
         .describe('The detail of the renderer agent status'),
@@ -97,7 +115,10 @@ export const RendererAgentStatusBaseSchema = AgentStatusBaseSchema.extend({
     id: 'RendererAgentStatusBaseSchema',
     description: 'The base status information of the renderer agent, including URI and detail',
 });
-export const RendererAgentStatusSchema = AgentStatusSchema.extend(RendererAgentStatusBaseSchema.shape).register(dsbunnyRegistry, {
+export const RendererAgentStatusSchema = AgentStatusSchema.extend(RendererAgentStatusBaseSchema.shape).extend({
+    '@type': z.literal('RendererAgentStatus')
+        .describe('Type of the renderer agent status'),
+}).register(dsbunnyRegistry, {
     id: 'RendererAgentStatusSchema',
     description: 'The status information of the renderer agent, including base status and additional details',
 });

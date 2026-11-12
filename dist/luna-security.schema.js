@@ -8,6 +8,8 @@ export const PEMChainSchema = z.string().refine((val) => {
     description: 'A PEM-encoded certificate chain, starting with "-----BEGIN CERTIFICATE-----" and ending with "-----END CERTIFICATE-----"',
 });
 export const ServerCertificateSchema = z.object({
+    '@type': z.literal('ServerCertificate')
+        .describe('Type of the server certificate'),
     domainName: z.string().optional()
         .describe('The domain name of the server certificate, e.g., "example.com"'),
     issuerName: z.string().optional()
@@ -21,7 +23,9 @@ export const ServerCertificateSchema = z.object({
     description: 'The server certificate information, including domain name, issuer name, and validity period',
 });
 export const ServerCertificateListStateSchema = z.object({
-    _timestamp: z.iso.datetime()
+    '@type': z.literal('ServerCertificateListState')
+        .describe('Type of the server certificate list state'),
+    '@timestamp': z.iso.datetime()
         .describe('The timestamp of the last time the server certificate list was updated, e.g., "2023-01-01T00:00:00Z"'),
     serverCertificateList: z.array(PEMChainSchema)
         .describe('The list of server certificates, each containing domain name, issuer name, and validity period'),
@@ -30,6 +34,8 @@ export const ServerCertificateListStateSchema = z.object({
     description: 'The state of server certificates, including a list of certificates with their details',
 });
 export const ServerCertificateListStatusSchema = z.object({
+    '@type': z.literal('ServerCertificateListStatus')
+        .describe('Type of the server certificate list status'),
     serverCertificateList: z.array(ServerCertificateSchema)
         .describe('The list of server certificates, each containing domain name, issuer name, and validity period'),
 }).register(lunaRegistry, {
@@ -38,6 +44,8 @@ export const ServerCertificateListStatusSchema = z.object({
 });
 // #region State
 export const SecurityStateSchema = z.object({
+    '@type': z.literal('SecurityState')
+        .describe('Type of the security state'),
     serverCertificateList: ServerCertificateListStateSchema.optional()
 }).register(lunaRegistry, {
     id: 'SecurityStateSchema',
@@ -46,6 +54,8 @@ export const SecurityStateSchema = z.object({
 // #endregion
 // #region Status
 export const SecurityStatusSchema = z.object({
+    '@type': z.literal('SecurityStatus')
+        .describe('Type of the security status'),
     serverCertificateList: ServerCertificateListStatusSchema.optional(),
     _debug: z.string().optional()
         .describe('SCAP debug mode output'),

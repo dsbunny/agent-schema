@@ -1,16 +1,19 @@
 import * as z from "zod";
-export declare const ExternalSpeakerState: z.ZodObject<{
-    _timestamp: z.ZodISODateTime;
+export declare const ExternalSpeakerStateSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"ExternalSpeakerState">;
+    '@timestamp': z.ZodISODateTime;
     externalSpeaker: z.ZodBoolean;
 }, z.core.$strip>;
-export type ExternalSpeakere = z.infer<typeof ExternalSpeakerState>;
+export type ExternalSpeakere = z.infer<typeof ExternalSpeakerStateSchema>;
 export declare const MutedStateSchema: z.ZodObject<{
-    _timestamp: z.ZodISODateTime;
+    '@type': z.ZodLiteral<"MutedState">;
+    '@timestamp': z.ZodISODateTime;
     muted: z.ZodBoolean;
 }, z.core.$strip>;
 export type MutedState = z.infer<typeof MutedStateSchema>;
 export declare const SoundModeStateSchema: z.ZodObject<{
-    _timestamp: z.ZodISODateTime;
+    '@type': z.ZodLiteral<"SoundModeState">;
+    '@timestamp': z.ZodISODateTime;
     mode: z.ZodEnum<{
         game: "game";
         sports: "sports";
@@ -23,7 +26,8 @@ export declare const SoundModeStateSchema: z.ZodObject<{
 }, z.core.$strip>;
 export type SoundModeState = z.infer<typeof SoundModeStateSchema>;
 export declare const SoundOutStateSchema: z.ZodObject<{
-    _timestamp: z.ZodISODateTime;
+    '@type': z.ZodLiteral<"SoundOutState">;
+    '@timestamp': z.ZodISODateTime;
     speakerType: z.ZodEnum<{
         tv_speaker: "tv_speaker";
         bt_soundbar: "bt_soundbar";
@@ -31,22 +35,27 @@ export declare const SoundOutStateSchema: z.ZodObject<{
 }, z.core.$strip>;
 export type SoundOutState = z.infer<typeof SoundOutStateSchema>;
 export declare const VolumeStateSchema: z.ZodObject<{
-    _timestamp: z.ZodISODateTime;
+    '@type': z.ZodLiteral<"VolumeState">;
+    '@timestamp': z.ZodISODateTime;
     level: z.ZodNumber;
     volOsdEnabled: z.ZodOptional<z.ZodBoolean>;
 }, z.core.$strip>;
 export type VolumeState = z.infer<typeof VolumeStateSchema>;
 export declare const SoundStateSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"SoundState">;
     muted: z.ZodOptional<z.ZodObject<{
-        _timestamp: z.ZodISODateTime;
+        '@type': z.ZodLiteral<"MutedState">;
+        '@timestamp': z.ZodISODateTime;
         muted: z.ZodBoolean;
     }, z.core.$strip>>;
     externalSpeaker: z.ZodOptional<z.ZodObject<{
-        _timestamp: z.ZodISODateTime;
+        '@type': z.ZodLiteral<"ExternalSpeakerState">;
+        '@timestamp': z.ZodISODateTime;
         externalSpeaker: z.ZodBoolean;
     }, z.core.$strip>>;
     soundMode: z.ZodOptional<z.ZodObject<{
-        _timestamp: z.ZodISODateTime;
+        '@type': z.ZodLiteral<"SoundModeState">;
+        '@timestamp': z.ZodISODateTime;
         mode: z.ZodEnum<{
             game: "game";
             sports: "sports";
@@ -58,20 +67,23 @@ export declare const SoundStateSchema: z.ZodObject<{
         balance: z.ZodOptional<z.ZodCoercedNumber<unknown>>;
     }, z.core.$strip>>;
     soundOut: z.ZodOptional<z.ZodObject<{
-        _timestamp: z.ZodISODateTime;
+        '@type': z.ZodLiteral<"SoundOutState">;
+        '@timestamp': z.ZodISODateTime;
         speakerType: z.ZodEnum<{
             tv_speaker: "tv_speaker";
             bt_soundbar: "bt_soundbar";
         }>;
     }, z.core.$strip>>;
     volumeLevel: z.ZodOptional<z.ZodObject<{
-        _timestamp: z.ZodISODateTime;
+        '@type': z.ZodLiteral<"VolumeState">;
+        '@timestamp': z.ZodISODateTime;
         level: z.ZodNumber;
         volOsdEnabled: z.ZodOptional<z.ZodBoolean>;
     }, z.core.$strip>>;
 }, z.core.$strip>;
 export type SoundState = z.infer<typeof SoundStateSchema>;
 export declare const SoundStatusSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"SoundStatus">;
     _debug: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>;
 export type SoundStatus = z.infer<typeof SoundStatusSchema>;

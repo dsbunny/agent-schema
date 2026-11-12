@@ -23,6 +23,8 @@ export const LUNA_AGENT_URN = 'urn:dsbunny:agent:luna';
 
 // #region State
 export const LunaAgentStateDetailSchema = z.object({
+	'@type': z.literal('LunaAgentStateDetail')
+		.describe('Type of the Luna agent state detail'),
 	configuration: ConfigurationStateSchema.optional(),
 	device: DeviceStateSchema.optional(),
 	power: PowerStateSchema.optional(),
@@ -41,6 +43,8 @@ export const LunaAgentStateDetailSchema = z.object({
 export type LunaAgentStateDetail = z.infer<typeof LunaAgentStateDetailSchema>;
 
 export const LunaAgentStateBaseSchema = AgentStateBaseSchema.extend({
+	'@type': z.literal('LunaAgentStateBase')
+		.describe('Type of the Luna agent state base'),
 	uri: z.literal(LUNA_AGENT_URN),
 	detail: LunaAgentStateDetailSchema.nullable()
 		.describe('The detail of the Luna agent state'),
@@ -49,7 +53,10 @@ export const LunaAgentStateBaseSchema = AgentStateBaseSchema.extend({
 	description: 'The schema for the base of the Luna agent state',
 });
 export type LunaAgentStateBase = z.infer<typeof LunaAgentStateBaseSchema>;
-export const LunaAgentStateSchema = AgentStateSchema.extend(LunaAgentStateBaseSchema.shape).register(lunaRegistry, {
+export const LunaAgentStateSchema = AgentStateSchema.extend(LunaAgentStateBaseSchema.shape).extend({
+	'@type': z.literal('LunaAgentState')
+		.describe('Type of the Luna agent state'),
+}).register(lunaRegistry, {
 	id: 'LunaAgentStateSchema',
 	description: 'The schema for the Luna agent state',
 });
@@ -58,6 +65,8 @@ export type LunaAgentState = z.infer<typeof LunaAgentStateSchema>;
 
 // #region Status
 export const LunaAgentStatusDetailSchema = z.object({
+	'@type': z.literal('LunaAgentStatusDetail')
+		.describe('Type of the Luna agent status detail'),
 	configuration: ConfigurationStatusSchema.optional(),
 	device: DeviceStatusSchema.optional(),
 	inputSource: InputSourceStatusSchema.optional(),
@@ -77,6 +86,8 @@ export const LunaAgentStatusDetailSchema = z.object({
 export type LunaAgentStatusDetail = z.infer<typeof LunaAgentStatusDetailSchema>;
 
 export const LunaAgentStatusBaseSchema = AgentStatusBaseSchema.extend({
+	'@type': z.literal('LunaAgentStatusBase')
+		.describe('Type of the Luna agent status base'),
 	uri: z.literal(LUNA_AGENT_URN),
 	detail: LunaAgentStatusDetailSchema.nullable()
 		.describe('The detail of the Luna agent status'),
@@ -85,7 +96,10 @@ export const LunaAgentStatusBaseSchema = AgentStatusBaseSchema.extend({
 	description: 'The schema for the base of the Luna agent status',
 });
 export type LunaAgentStatusBase = z.infer<typeof LunaAgentStatusBaseSchema>;
-export const LunaAgentStatusSchema = AgentStatusSchema.extend(LunaAgentStatusBaseSchema.shape).register(lunaRegistry, {
+export const LunaAgentStatusSchema = AgentStatusSchema.extend(LunaAgentStatusBaseSchema.shape).extend({
+	'@type': z.literal('LunaAgentStatus')
+		.describe('Type of the Luna agent status'),
+}).register(lunaRegistry, {
 	id: 'LunaAgentStatusSchema',
 	description: 'The schema for the Luna agent status',
 });
