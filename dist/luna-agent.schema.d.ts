@@ -2641,3 +2641,4 @@ export declare const LunaAgentStatusSchema: z.ZodObject<{
     '@type': z.ZodLiteral<"LunaAgentStatus">;
 }, z.core.$strip>;
 export type LunaAgentStatus = z.infer<typeof LunaAgentStatusSchema>;
+//# sourceMappingURL=luna-agent.schema.d.ts.map

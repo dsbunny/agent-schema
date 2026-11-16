@@ -100,3 +100,4 @@ export declare const TimeStatusSchema: z.ZodObject<{
     _debug: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>;
 export type TimeStatus = z.infer<typeof TimeStatusSchema>;
+//# sourceMappingURL=luna-time.schema.d.ts.map

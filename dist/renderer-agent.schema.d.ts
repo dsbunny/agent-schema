@@ -333,3 +333,4 @@ export declare const RendererAgentStatusSchema: z.ZodObject<{
     '@type': z.ZodLiteral<"RendererAgentStatus">;
 }, z.core.$strip>;
 export type RendererAgentStatus = z.infer<typeof RendererAgentStatusSchema>;
+//# sourceMappingURL=renderer-agent.schema.d.ts.map

@@ -126,3 +126,4 @@ export declare const StorageStatusSchema: z.ZodObject<{
     _debug: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>;
 export type StorageStatus = z.infer<typeof StorageStatusSchema>;
+//# sourceMappingURL=luna-storage.schema.d.ts.map

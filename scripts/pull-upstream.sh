@@ -30,7 +30,7 @@ jq \
 	.peerDependencies["@dsbunny/capdb-schema"]	= "github:dsbunny/capdb-schema"				|
 	.peerDependencies["@dsbunny/recipe-schema"]	= "github:dsbunny/recipe-schema"			|
 	.peerDependencies["@dsbunny/rmm-schema"]	= "github:dsbunny/rmm-schema"				|
-	.peerDependencies["@dsbunny/zod-registry"]	= "github:dsbunny/rmm-schema"				|
+	.peerDependencies["@dsbunny/zod-registry"]	= "github:dsbunny/zod-registry"				|
 	.devDependencies["@dsbunny/capdb-schema"]	= ("github:dsbunny/capdb-schema#" + $capdb_commit)	|
 	.devDependencies["@dsbunny/recipe-schema"]	= ("github:dsbunny/recipe-schema#" + $recipe_commit)	|
 	.devDependencies["@dsbunny/rmm-schema"]		= ("github:dsbunny/rmm-schema#" + $rmm_commit)		|

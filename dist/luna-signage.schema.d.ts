@@ -373,3 +373,4 @@ export declare const SignageStatusSchema: z.ZodObject<{
     _debug: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>;
 export type SignageStatus = z.infer<typeof SignageStatusSchema>;
+//# sourceMappingURL=luna-signage.schema.d.ts.map

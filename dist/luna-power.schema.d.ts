@@ -106,3 +106,4 @@ export declare const PowerStatusSchema: z.ZodObject<{
     _debug: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>;
 export type PowerStatus = z.infer<typeof PowerStatusSchema>;
+//# sourceMappingURL=luna-power.schema.d.ts.map

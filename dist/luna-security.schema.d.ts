@@ -50,3 +50,4 @@ export declare const SecurityStatusSchema: z.ZodObject<{
     _debug: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>;
 export type SecurityStatus = z.infer<typeof SecurityStatusSchema>;
+//# sourceMappingURL=luna-security.schema.d.ts.map

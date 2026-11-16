@@ -386,3 +386,4 @@ export declare const DeviceStatusSchema: z.ZodObject<{
     _debug: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>;
 export type DeviceStatus = z.infer<typeof DeviceStatusSchema>;
+//# sourceMappingURL=luna-device.schema.d.ts.map

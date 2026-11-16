@@ -87,3 +87,4 @@ export declare const SoundStatusSchema: z.ZodObject<{
     _debug: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>;
 export type SoundStatus = z.infer<typeof SoundStatusSchema>;
+//# sourceMappingURL=luna-sound.schema.d.ts.map
