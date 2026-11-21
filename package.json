@@ -23,7 +23,7 @@
 	"devDependencies": {
 		"@dsbunny/capdb-schema": "github:dsbunny/capdb-schema#0819553",
 		"@dsbunny/recipe-schema": "github:dsbunny/recipe-schema#774f850",
-		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#97e8516",
+		"@dsbunny/rmm-schema": "github:dsbunny/rmm-schema#822ecab",
 		"@dsbunny/zod-registry": "github:dsbunny/zod-registry#35c7ef6",
 		"typescript": "^5.9.3",
 		"zod": "^4.3.6"
