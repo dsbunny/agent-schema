@@ -250,7 +250,7 @@ export const RS232CStateSchema = z.object({
 		 768_000,
 		 921_600,
 		   9_600,
-		 0,
+		       0,
 	]).optional()
 		.describe('The RS-232C baud rate, e.g. 115200'),
 	dataBit: z.literal([
